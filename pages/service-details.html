@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <link rel="icon" type="image/svg+xml" href="../assets/css/favicon.svg">
+    <link rel="shortcut icon" href="../assets/css/favicon.svg">
+    <link rel="apple-touch-icon" href="../assets/css/favicon.svg">
+
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SwiftShip Express Parcel Shipping - Reliable door-to-door parcel delivery with GPS tracking, insurance up to $10K, and flexible scheduling across 50+ cities.">
+    <meta name="keywords" content="parcel shipping, package delivery, courier service, GPS tracking, insured shipping, SwiftShip Express">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Parcel Shipping | SwiftShip Express">
+    <meta property="og:description" content="Reliable door-to-door parcel delivery with real-time GPS tracking, insurance up to $10K, and flexible pickup scheduling.">
+    <meta property="og:type" content="website">
+    <title>Parcel Shipping | SwiftShip Express - Courier &amp; Parcel Delivery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = { darkMode:'class', theme:{ extend:{ colors:{ brand:{ 50:'#fff7ed',100:'#ffedd5',200:'#fed7aa',300:'#fdba74',400:'#fb923c',500:'#f97316',600:'#ea580c',700:'#c2410c',800:'#9a3412',900:'#7c2d12' } } } } }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/custom.css">
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+
+    <!-- Preloader -->
+    <div class="preloader fixed inset-0 z-[9999] bg-white dark:bg-gray-900 flex items-center justify-center" id="preloader">
+        <div class="text-center">
+            <div class="relative w-20 h-20 mx-auto mb-4">
+                <div class="absolute inset-0 border-4 border-brand-200 dark:border-brand-800 rounded-full"></div>
+                <div class="absolute inset-0 border-4 border-transparent border-t-brand-500 rounded-full animate-spin"></div>
+                <i class="fas fa-shuttle-van absolute inset-0 flex items-center justify-center text-brand-500 text-xl"></i>
+            </div>
+            <p class="text-sm font-semibold text-gray-500 tracking-wider uppercase">SwiftShip Express</p>
+        </div>
+    </div>
+
+    <!-- ======================== MOBILE MENU OVERLAY ======================== -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 z-[9998] bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 lg:hidden" aria-hidden="true"></div>
+
+    <!-- ======================== MOBILE MENU ======================== -->
+    <div id="mobile-menu" class="fixed top-0 right-0 z-[9999] h-full w-80 max-w-[85vw] bg-white dark:bg-gray-900 shadow-2xl transform translate-x-full transition-transform duration-300 lg:hidden" role="dialog" aria-label="Mobile navigation">
+        <div class="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
+            <span class="text-xl font-bold text-brand-500">SwiftShip</span>
+            <button id="mobile-menu-close" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Close menu"><i class="fas fa-times text-xl"></i></button>
+        </div>
+        <nav class="p-6 space-y-1" aria-label="Mobile navigation links">
+            <div class="mobile-nav-item" data-submenu="home-mobile">
+                <button class="w-full flex items-center justify-between px-4 py-3 rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 font-medium transition-colors">
+                    <span><i class="fas fa-home mr-2 text-brand-500"></i> Home</span>
+                    <i class="fas fa-chevron-down text-xs transition-transform duration-200"></i>
+                </button>
+                <div id="home-mobile" class="hidden pl-6 space-y-1">
+                    <a href="../index.html" class="mobile-nav-link block px-4 py-2.5 text-sm rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors"><i class="fas fa-circle text-[6px] mr-2 text-brand-400"></i> Home Default</a>
+                    <a href="index-2.html" class="mobile-nav-link block px-4 py-2.5 text-sm rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors"><i class="fas fa-circle text-[6px] mr-2 text-brand-400"></i> Home Express</a>
+                </div>
+            </div>
+            <a href="about.html" class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 font-medium transition-colors">About</a>
+            <a href="services.html" class="mobile-nav-link block px-4 py-3 rounded-lg bg-brand-50 dark:bg-brand-900/20 text-brand-500 font-medium transition-colors">Services</a>
+            <a href="pricing.html" class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 font-medium transition-colors">Pricing</a>
+            <a href="how-it-works.html" class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 font-medium transition-colors">How It Works</a>
+            <a href="blog.html" class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 font-medium transition-colors">Blog</a>
+            <a href="contact.html" class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 font-medium transition-colors">Contact</a>
+        </nav>
+        <div class="p-6 border-t border-gray-200 dark:border-gray-700 space-y-3">
+            <a href="login.html" class="block w-full text-center px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 font-semibold transition-colors">Login</a>
+            <a href="register.html" class="block w-full text-center px-4 py-3 bg-brand-500 text-white rounded-lg hover:bg-brand-600 font-semibold transition-colors">Register</a>
+        </div>
+    </div>
+
+    <!-- ======================== NAVBAR ======================== -->
+    <header id="navbar" class="fixed top-0 left-0 right-0 z-[100] transition-all duration-300 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md" role="banner">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 lg:h-20">
+                <a href="../index.html" class="flex items-center gap-2 shrink-0" aria-label="SwiftShip Express Home">
+                    <div class="w-10 h-10 bg-brand-500 rounded-xl flex items-center justify-center shadow-lg shadow-brand-500/30">
+                        <i class="fas fa-shuttle-van text-white text-lg"></i>
+                    </div>
+                    <span class="text-xl font-extrabold tracking-tight">
+                        <span class="text-brand-500">Swift</span><span class="dark:text-white">Ship</span>
+                    </span>
+                </a>
+                <nav class="hidden lg:flex items-center gap-1" aria-label="Main navigation">
+                    <div class="relative group">
+                        <button class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors inline-flex items-center gap-1">
+                            Home <i class="fas fa-chevron-down text-[10px] transition-transform group-hover:rotate-180"></i>
+                        </button>
+                        <div class="absolute top-full left-0 mt-1 w-48 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform scale-95 group-hover:scale-100 z-50 py-2">
+                            <a href="../index.html" class="block px-4 py-2.5 text-sm hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors"><i class="fas fa-home mr-2 text-brand-500"></i> Home Default</a>
+                            <a href="index-2.html" class="block px-4 py-2.5 text-sm hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors"><i class="fas fa-rocket mr-2 text-brand-500"></i> Home Express</a>
+                        </div>
+                    </div>
+                    <a href="about.html" class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors">About</a>
+                    <a href="services.html" class="px-3 py-2 rounded-lg text-sm font-medium bg-brand-50 dark:bg-brand-900/20 text-brand-500">Services</a>
+                    <a href="pricing.html" class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors">Pricing</a>
+                    <a href="how-it-works.html" class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors">How It Works</a>
+                    <a href="blog.html" class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors">Blog</a>
+                    <a href="contact.html" class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors">Contact</a>
+                </nav>
+                <div class="hidden lg:flex items-center gap-3">
+                    <button id="theme-toggle" class="p-2.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Toggle dark mode">
+                        <i class="fas fa-moon dark:hidden text-gray-600"></i>
+                        <i class="fas fa-sun hidden dark:inline text-yellow-400"></i>
+                    </button>
+                    <button id="rtl-toggle" class="p-2.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-sm font-bold" aria-label="Toggle text direction">RTL</button>
+                    <a href="login.html" class="px-4 py-2 text-sm font-semibold border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">Login</a>
+                    <a href="register.html" class="px-4 py-2 text-sm font-semibold bg-brand-500 text-white rounded-lg hover:bg-brand-600 shadow-lg shadow-brand-500/25 transition-all">Register</a>
+                </div>
+                <div class="flex lg:hidden items-center gap-2">
+                    <button id="theme-toggle-mobile" class="p-2.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Toggle dark mode">
+                        <i class="fas fa-moon dark:hidden text-gray-600"></i>
+                        <i class="fas fa-sun hidden dark:inline text-yellow-400"></i>
+                    </button>
+                    <button id="mobile-menu-open" class="p-2.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Open menu">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="relative pt-20 lg:pt-24">
+        <div class="relative h-64 sm:h-80 lg:h-96 overflow-hidden">
+            <img src="../assets/images/services/service-details-banner.webp" alt="SwiftShip Express service delivery operations" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-r from-gray-900/90 to-gray-900/60"></div>
+            <div class="absolute inset-0 flex items-center">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                    <nav class="text-sm text-gray-400 mb-4" aria-label="Breadcrumb">
+                        <a href="../index.html" class="hover:text-brand-500">Home</a>
+                        <i class="fas fa-chevron-right mx-2 text-xs"></i>
+                        <a href="services.html" class="hover:text-brand-500">Services</a>
+                        <i class="fas fa-chevron-right mx-2 text-xs"></i>
+                        <span class="text-white">Parcel Shipping</span>
+                    </nav>
+                    <h1 id="service-title" class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white">Parcel <span class="text-brand-500">Shipping</span></h1>
+                    <p class="text-lg text-gray-300 mt-4 max-w-xl">Reliable door-to-door parcel delivery with real-time GPS tracking and insurance coverage up to $10,000.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content: Two-Column Layout -->
+    <section class="section-padding">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-3 gap-12">
+                <!-- Left Column (65%) -->
+                <div class="lg:col-span-2 space-y-12">
+                    <article>
+                        <h2 id="service-overview-title" class="text-3xl font-extrabold dark:text-white mb-6">Comprehensive Parcel Shipping Solutions</h2>
+                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">SwiftShip Express offers end-to-end parcel shipping services designed to meet the needs of individuals and businesses alike. Whether you're sending a single package across town or managing high-volume shipments across the country, our logistics network ensures your parcels arrive safely and on time.</p>
+                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">Every shipment is backed by our industry-leading insurance coverage of up to $10,000, giving you complete peace of mind. Our fleet of over 2,000 vehicles operates across 50+ metropolitan areas, providing same-day and next-day delivery options to suit your schedule.</p>
+
+                        <h3 class="text-xl font-bold dark:text-white mt-8 mb-4">Service Features</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3">
+                                <i class="fas fa-check-circle text-brand-500 mt-1 shrink-0"></i>
+                                <span class="text-gray-600 dark:text-gray-400">Door-to-door pickup and delivery across 50+ cities nationwide</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fas fa-check-circle text-brand-500 mt-1 shrink-0"></i>
+                                <span class="text-gray-600 dark:text-gray-400">Real-time GPS tracking with SMS and email notifications at every milestone</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fas fa-check-circle text-brand-500 mt-1 shrink-0"></i>
+                                <span class="text-gray-600 dark:text-gray-400">Full insurance coverage up to $10,000 per parcel at no extra cost</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fas fa-check-circle text-brand-500 mt-1 shrink-0"></i>
+                                <span class="text-gray-600 dark:text-gray-400">Flexible pickup scheduling — choose a 2-hour window that works for you</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fas fa-check-circle text-brand-500 mt-1 shrink-0"></i>
+                                <span class="text-gray-600 dark:text-gray-400">Signature confirmation and photo proof of delivery for every shipment</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fas fa-check-circle text-brand-500 mt-1 shrink-0"></i>
+                                <span class="text-gray-600 dark:text-gray-400">Eco-friendly packaging materials and carbon-neutral delivery options</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fas fa-check-circle text-brand-500 mt-1 shrink-0"></i>
+                                <span class="text-gray-600 dark:text-gray-400">Dedicated account manager for business clients with volume discounts</span>
+                            </li>
+                        </ul>
+
+                        <h3 class="text-xl font-bold dark:text-white mt-8 mb-4">Coverage &amp; Limitations</h3>
+                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-4">Our parcel shipping service covers all 50 major metropolitan areas across the United States, with intercity routes connecting over 200 secondary markets. Rural and remote area delivery is available through our extended partner network with a 1–2 day additional transit window.</p>
+                        <div class="grid sm:grid-cols-2 gap-4 mt-6">
+                            <div class="p-4 bg-gray-50 dark:bg-gray-800 rounded-xl">
+                                <h4 class="font-bold dark:text-white mb-2"><i class="fas fa-weight-hanging text-brand-500 mr-2"></i>Weight Limit</h4>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm">Maximum 50 kg per parcel. Packages exceeding this limit should be shipped via our Bulk Cargo service.</p>
+                            </div>
+                            <div class="p-4 bg-gray-50 dark:bg-gray-800 rounded-xl">
+                                <h4 class="font-bold dark:text-white mb-2"><i class="fas fa-ruler-combined text-brand-500 mr-2"></i>Size Restrictions</h4>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm">Max dimensions: 150 cm (L) x 80 cm (W) x 80 cm (H). Combined length + girth must not exceed 300 cm.</p>
+                            </div>
+                            <div class="p-4 bg-gray-50 dark:bg-gray-800 rounded-xl">
+                                <h4 class="font-bold dark:text-white mb-2"><i class="fas fa-clock text-brand-500 mr-2"></i>Transit Time</h4>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm">Same-day within city. 1–3 business days for intercity. Next-day guaranteed for orders placed before 2 PM.</p>
+                            </div>
+                            <div class="p-4 bg-gray-50 dark:bg-gray-800 rounded-xl">
+                                <h4 class="font-bold dark:text-white mb-2"><i class="fas fa-box-open text-brand-500 mr-2"></i>Packaging</h4>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm">Free branded packaging provided for accounts with 50+ monthly shipments. Standard boxes available at pickup.</p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Right Sidebar (35%) -->
+                <aside class="lg:col-span-1">
+                    <div class="sticky top-28 space-y-8">
+                        <!-- Quick Quote Form -->
+                        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 overflow-hidden">
+                            <div class="bg-brand-500 p-6">
+                                <h3 class="text-xl font-bold text-white"><i class="fas fa-calculator mr-2"></i>Get a Quick Quote</h3>
+                                <p class="text-white/80 text-sm mt-1">Estimate your shipping cost instantly.</p>
+                            </div>
+                            <form class="p-6 space-y-4" aria-label="Quick quote form">
+                                <div>
+                                    <label for="weight" class="block text-sm font-semibold mb-1.5 dark:text-gray-300">Package Weight (kg)</label>
+                                    <input type="number" id="weight" name="weight" min="0.1" max="50" step="0.1" placeholder="e.g. 5" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition text-sm" required>
+                                </div>
+                                <div>
+                                    <label for="pickup-city" class="block text-sm font-semibold mb-1.5 dark:text-gray-300">Pickup City</label>
+                                    <select id="pickup-city" name="pickup-city" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition text-sm" required>
+                                        <option value="">Select city</option>
+                                        <option>Dallas</option>
+                                        <option>Houston</option>
+                                        <option>Austin</option>
+                                        <option>San Antonio</option>
+                                        <option>Fort Worth</option>
+                                        <option>El Paso</option>
+                                        <option>New York</option>
+                                        <option>Los Angeles</option>
+                                        <option>Chicago</option>
+                                        <option>Phoenix</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="delivery-city" class="block text-sm font-semibold mb-1.5 dark:text-gray-300">Delivery City</label>
+                                    <select id="delivery-city" name="delivery-city" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition text-sm" required>
+                                        <option value="">Select city</option>
+                                        <option>Dallas</option>
+                                        <option>Houston</option>
+                                        <option>Austin</option>
+                                        <option>San Antonio</option>
+                                        <option>Fort Worth</option>
+                                        <option>El Paso</option>
+                                        <option>New York</option>
+                                        <option>Los Angeles</option>
+                                        <option>Chicago</option>
+                                        <option>Phoenix</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="service-type" class="block text-sm font-semibold mb-1.5 dark:text-gray-300">Service Type</label>
+                                    <select id="service-type" name="service-type" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition text-sm" required>
+                                        <option value="">Select service</option>
+                                        <option value="standard">Standard (2-3 days)</option>
+                                        <option value="express">Express (Next day)</option>
+                                        <option value="sameday">Same-Day</option>
+                                        <option value="economy">Economy (3-5 days)</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="w-full py-3.5 bg-brand-500 hover:bg-brand-600 text-white font-bold rounded-xl shadow-lg shadow-brand-500/25 transition-all hover:-translate-y-0.5">
+                                    <i class="fas fa-paper-plane mr-2"></i>Calculate Shipping
+                                </button>
+                            </form>
+                        </div>
+
+                        <!-- Contact Card -->
+                        <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6 border border-gray-100 dark:border-gray-700">
+                            <h4 class="font-bold dark:text-white mb-3">Need Help?</h4>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Our shipping experts are available 24/7 to assist with your parcel delivery needs.</p>
+                            <a href="contact.html" class="flex items-center justify-center gap-2 w-full py-3 border-2 border-brand-500 text-brand-500 font-semibold rounded-xl hover:bg-brand-50 dark:hover:bg-brand-900/20 transition-colors">
+                                <i class="fas fa-headset"></i>Contact Support
+                            </a>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Grid -->
+    <section class="section-padding-sm bg-gray-50 dark:bg-gray-800/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-brand-500 font-semibold text-sm uppercase tracking-wider">Why Choose Us</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold mt-3 dark:text-white">Parcel Shipping Features</h2>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="text-center p-8 bg-white dark:bg-gray-800 rounded-2xl shadow-sm hover:shadow-lg transition-shadow">
+                    <div class="w-16 h-16 bg-brand-500/10 rounded-2xl flex items-center justify-center mx-auto mb-5">
+                        <i class="fas fa-map-marker-alt text-brand-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold dark:text-white mb-2">Real-Time GPS Tracking</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Monitor your parcel's exact location from pickup to delivery with live GPS updates sent directly to your phone and email.</p>
+                </div>
+                <div class="text-center p-8 bg-white dark:bg-gray-800 rounded-2xl shadow-sm hover:shadow-lg transition-shadow">
+                    <div class="w-16 h-16 bg-brand-500/10 rounded-2xl flex items-center justify-center mx-auto mb-5">
+                        <i class="fas fa-shield-alt text-brand-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold dark:text-white mb-2">Insured up to $10K</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Every parcel is automatically covered for up to $10,000 in value. No additional insurance fees or hidden charges.</p>
+                </div>
+                <div class="text-center p-8 bg-white dark:bg-gray-800 rounded-2xl shadow-sm hover:shadow-lg transition-shadow">
+                    <div class="w-16 h-16 bg-brand-500/10 rounded-2xl flex items-center justify-center mx-auto mb-5">
+                        <i class="fas fa-calendar-check text-brand-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold dark:text-white mb-2">Flexible Pickup Scheduling</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Choose a convenient 2-hour pickup window. Reschedule or cancel up to 1 hour before your scheduled time at no cost.</p>
+                </div>
+                <div class="text-center p-8 bg-white dark:bg-gray-800 rounded-2xl shadow-sm hover:shadow-lg transition-shadow">
+                    <div class="w-16 h-16 bg-brand-500/10 rounded-2xl flex items-center justify-center mx-auto mb-5">
+                        <i class="fas fa-signature text-brand-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold dark:text-white mb-2">Signature Confirmation</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Require a signature upon delivery for added security. Digital signature capture with timestamp and recipient details.</p>
+                </div>
+                <div class="text-center p-8 bg-white dark:bg-gray-800 rounded-2xl shadow-sm hover:shadow-lg transition-shadow">
+                    <div class="w-16 h-16 bg-brand-500/10 rounded-2xl flex items-center justify-center mx-auto mb-5">
+                        <i class="fas fa-camera text-brand-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold dark:text-white mb-2">Photo Proof of Delivery</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Receive a timestamped photo of your delivered parcel at the drop-off location, accessible from your tracking dashboard.</p>
+                </div>
+                <div class="text-center p-8 bg-white dark:bg-gray-800 rounded-2xl shadow-sm hover:shadow-lg transition-shadow">
+                    <div class="w-16 h-16 bg-brand-500/10 rounded-2xl flex items-center justify-center mx-auto mb-5">
+                        <i class="fas fa-leaf text-brand-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold dark:text-white mb-2">Eco-Friendly Packaging</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">We use 100% recyclable packaging materials and offer carbon-neutral shipping options to minimize environmental impact.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Table -->
+    <section class="section-padding">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-brand-500 font-semibold text-sm uppercase tracking-wider">Transparent Pricing</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold mt-3 dark:text-white">Parcel Shipping Rates</h2>
+                <p class="text-gray-600 dark:text-gray-400 mt-4 max-w-xl mx-auto">Simple, upfront pricing based on weight. No hidden fees — what you see is what you pay.</p>
+            </div>
+            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden border border-gray-100 dark:border-gray-700">
+                <div class="overflow-x-auto">
+                    <table class="w-full" role="table">
+                        <thead>
+                            <tr class="bg-brand-500 text-white">
+                                <th class="px-6 py-4 text-left font-bold" scope="col">Weight Category</th>
+                                <th class="px-6 py-4 text-left font-bold" scope="col">Dimensions (Max)</th>
+                                <th class="px-6 py-4 text-right font-bold" scope="col">Starting Price</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-100 dark:divide-gray-700">
+                            <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
+                                <td class="px-6 py-5">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center"><i class="fas fa-feather text-green-600 dark:text-green-400"></i></div>
+                                        <span class="font-semibold dark:text-white">Under 1 kg</span>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-5 text-gray-600 dark:text-gray-400 text-sm">30 x 25 x 10 cm</td>
+                                <td class="px-6 py-5 text-right"><span class="text-xl font-extrabold text-brand-500">$4.99</span></td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
+                                <td class="px-6 py-5">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center"><i class="fas fa-box text-blue-600 dark:text-blue-400"></i></div>
+                                        <span class="font-semibold dark:text-white">1 – 5 kg</span>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-5 text-gray-600 dark:text-gray-400 text-sm">45 x 35 x 20 cm</td>
+                                <td class="px-6 py-5 text-right"><span class="text-xl font-extrabold text-brand-500">$8.99</span></td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
+                                <td class="px-6 py-5">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-yellow-100 dark:bg-yellow-900/30 rounded-lg flex items-center justify-center"><i class="fas fa-boxes text-yellow-600 dark:text-yellow-400"></i></div>
+                                        <span class="font-semibold dark:text-white">5 – 10 kg</span>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-5 text-gray-600 dark:text-gray-400 text-sm">60 x 45 x 30 cm</td>
+                                <td class="px-6 py-5 text-right"><span class="text-xl font-extrabold text-brand-500">$14.99</span></td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
+                                <td class="px-6 py-5">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-orange-100 dark:bg-orange-900/30 rounded-lg flex items-center justify-center"><i class="fas fa-truck-loading text-orange-600 dark:text-orange-400"></i></div>
+                                        <span class="font-semibold dark:text-white">10 – 20 kg</span>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-5 text-gray-600 dark:text-gray-400 text-sm">80 x 60 x 40 cm</td>
+                                <td class="px-6 py-5 text-right"><span class="text-xl font-extrabold text-brand-500">$22.99</span></td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
+                                <td class="px-6 py-5">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-red-100 dark:bg-red-900/30 rounded-lg flex items-center justify-center"><i class="fas fa-dolly text-red-600 dark:text-red-400"></i></div>
+                                        <span class="font-semibold dark:text-white">20 – 50 kg</span>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-5 text-gray-600 dark:text-gray-400 text-sm">150 x 80 x 80 cm</td>
+                                <td class="px-6 py-5 text-right"><span class="text-xl font-extrabold text-brand-500">$34.99</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="px-6 py-4 bg-gray-50 dark:bg-gray-700/30 border-t border-gray-100 dark:border-gray-700">
+                    <p class="text-sm text-gray-500 dark:text-gray-400 text-center"><i class="fas fa-info-circle mr-1"></i>All prices include insurance up to $10,000. Additional surcharges may apply for rural delivery or oversized packaging.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Accordion -->
+    <section class="section-padding-sm bg-gray-50 dark:bg-gray-800/50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-brand-500 font-semibold text-sm uppercase tracking-wider">FAQ</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold mt-3 dark:text-white">Frequently Asked Questions</h2>
+            </div>
+            <div class="space-y-4" role="list" aria-label="Frequently asked questions">
+                <!-- FAQ 1 -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden faq-item">
+                    <button class="faq-toggle w-full flex items-center justify-between p-6 text-left" aria-expanded="false" aria-controls="faq-answer-1">
+                        <span class="font-bold dark:text-white pr-4">What sizes can I ship?</span>
+                        <i class="fas fa-chevron-down text-brand-500 transition-transform duration-300 shrink-0"></i>
+                    </button>
+                    <div id="faq-answer-1" class="px-6 pb-6 hidden" role="region">
+                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed">We accept parcels up to 50 kg in weight with maximum dimensions of 150 cm x 80 cm x 80 cm. The combined length plus girth (2 x width + 2 x height) must not exceed 300 cm. For packages exceeding these limits, please consider our Bulk Cargo service which accommodates oversized freight and palletized shipments.</p>
+                    </div>
+                </div>
+                <!-- FAQ 2 -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden faq-item">
+                    <button class="faq-toggle w-full flex items-center justify-between p-6 text-left" aria-expanded="false" aria-controls="faq-answer-2">
+                        <span class="font-bold dark:text-white pr-4">How is insurance calculated?</span>
+                        <i class="fas fa-chevron-down text-brand-500 transition-transform duration-300 shrink-0"></i>
+                    </button>
+                    <div id="faq-answer-2" class="px-6 pb-6 hidden" role="region">
+                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Every parcel shipped with SwiftShip Express is automatically insured for up to $10,000 at no additional cost. This coverage is included in the base shipping price across all weight tiers. If your parcel's declared value exceeds $10,000, additional coverage can be purchased at 2% of the declared value above the threshold. Claims are processed within 3–5 business days.</p>
+                    </div>
+                </div>
+                <!-- FAQ 3 -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden faq-item">
+                    <button class="faq-toggle w-full flex items-center justify-between p-6 text-left" aria-expanded="false" aria-controls="faq-answer-3">
+                        <span class="font-bold dark:text-white pr-4">Can I schedule a pickup?</span>
+                        <i class="fas fa-chevron-down text-brand-500 transition-transform duration-300 shrink-0"></i>
+                    </button>
+                    <div id="faq-answer-3" class="px-6 pb-6 hidden" role="region">
+                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Absolutely. You can schedule a pickup through our website, mobile app, or by calling our support line. Choose any 2-hour pickup window during our operating hours (7 AM – 9 PM, 7 days a week). You can reschedule or cancel a pickup up to 1 hour before the scheduled window at no extra charge. Business accounts can set up recurring pickup schedules for regular shipments.</p>
+                    </div>
+                </div>
+                <!-- FAQ 4 -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden faq-item">
+                    <button class="faq-toggle w-full flex items-center justify-between p-6 text-left" aria-expanded="false" aria-controls="faq-answer-4">
+                        <span class="font-bold dark:text-white pr-4">What items are restricted?</span>
+                        <i class="fas fa-chevron-down text-brand-500 transition-transform duration-300 shrink-0"></i>
+                    </button>
+                    <div id="faq-answer-4" class="px-6 pb-6 hidden" role="region">
+                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Prohibited items include hazardous materials, flammable liquids, explosives, firearms, live animals, perishable food without proper insulation, and illegal substances. Lithium batteries must be shipped under UN38.3 compliance. Fragile items like glassware and electronics are accepted but must be packaged in manufacturer-approved containers. A full restricted items list is available in our Terms of Service.</p>
+                    </div>
+                </div>
+                <!-- FAQ 5 -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden faq-item">
+                    <button class="faq-toggle w-full flex items-center justify-between p-6 text-left" aria-expanded="false" aria-controls="faq-answer-5">
+                        <span class="font-bold dark:text-white pr-4">How do I track my parcel?</span>
+                        <i class="fas fa-chevron-down text-brand-500 transition-transform duration-300 shrink-0"></i>
+                    </button>
+                    <div id="faq-answer-5" class="px-6 pb-6 hidden" role="region">
+                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Once your parcel is picked up, you'll receive a unique tracking number via email and SMS. Enter this number on our tracking page or mobile app to see real-time GPS location updates at every checkpoint. You'll also receive automatic notifications when your parcel is in transit, out for delivery, and successfully delivered. Photo proof of delivery is available on your dashboard after completion.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Services -->
+    <section class="section-padding">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-brand-500 font-semibold text-sm uppercase tracking-wider">Explore More</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold mt-3 dark:text-white">Related Services</h2>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <a href="service-details.html" class="group card overflow-hidden">
+                    <div class="relative h-52 overflow-hidden">
+                        <img src="../assets/images/services/service-1.webp" alt="Document delivery service" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="w-14 h-14 bg-brand-500/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-brand-500 group-hover:text-white transition-colors"><i class="fas fa-file-alt text-brand-500 text-xl group-hover:text-white"></i></div>
+                        <h3 class="text-xl font-bold mb-2 dark:text-white">Document Delivery</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4">Secure and swift delivery of legal documents, contracts, and invoices with signature confirmation and chain-of-custody tracking.</p>
+                        <span class="text-brand-500 font-semibold text-sm group-hover:underline">Learn More <i class="fas fa-arrow-right ml-1 text-xs"></i></span>
+                    </div>
+                </a>
+                <a href="service-details.html" class="group card overflow-hidden">
+                    <div class="relative h-52 overflow-hidden">
+                        <img src="../assets/images/services/service-2.webp" alt="Same-day delivery service" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-4 left-4 px-3 py-1 bg-red-500 text-white text-xs font-bold rounded-full">Fastest</div>
+                    </div>
+                    <div class="p-6">
+                        <div class="w-14 h-14 bg-brand-500/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-brand-500 group-hover:text-white transition-colors"><i class="fas fa-bolt text-brand-500 text-xl group-hover:text-white"></i></div>
+                        <h3 class="text-xl font-bold mb-2 dark:text-white">Same-Day Delivery</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4">Need it delivered today? Our express couriers pick up and deliver within 4 hours with live GPS tracking across all service areas.</p>
+                        <span class="text-brand-500 font-semibold text-sm group-hover:underline">Learn More <i class="fas fa-arrow-right ml-1 text-xs"></i></span>
+                    </div>
+                </a>
+                <a href="service-details.html" class="group card overflow-hidden">
+                    <div class="relative h-52 overflow-hidden">
+                        <img src="../assets/images/services/service-3.webp" alt="Bulk cargo delivery service" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="w-14 h-14 bg-brand-500/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-brand-500 group-hover:text-white transition-colors"><i class="fas fa-truck text-brand-500 text-xl group-hover:text-white"></i></div>
+                        <h3 class="text-xl font-bold mb-2 dark:text-white">Bulk Cargo</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4">Heavy and oversized cargo delivery with dedicated trucks. From pallets to full truckloads with competitive freight rates and scheduling.</p>
+                        <span class="text-brand-500 font-semibold text-sm group-hover:underline">Learn More <i class="fas fa-arrow-right ml-1 text-xs"></i></span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="relative py-20 overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1591027015003-5e90bbe60c7f?w=1920&h=600&fit=crop" alt="SwiftShip delivery fleet" class="absolute inset-0 w-full h-full object-cover">
+        <div class="absolute inset-0 bg-brand-600/90"></div>
+        <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">Ready to Ship Your Parcel?</h2>
+            <p class="text-xl text-white/80 mb-8">Get instant quotes, schedule pickups, and track deliveries — all in one place.</p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#quote-form" class="px-8 py-4 bg-white text-brand-600 font-bold rounded-xl hover:bg-gray-100 shadow-xl transition-all hover:-translate-y-0.5">Get a Quote</a>
+                <a href="contact.html" class="px-8 py-4 border-2 border-white text-white font-bold rounded-xl hover:bg-white/10 transition-all">Contact Sales</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 pt-16 pb-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+                <div>
+                    <a href="../index.html" class="flex items-center gap-2 mb-6"><div class="w-10 h-10 bg-brand-500 rounded-xl flex items-center justify-center"><i class="fas fa-shuttle-van text-white"></i></div><span class="text-xl font-extrabold text-white"><span class="text-brand-500">Swift</span>Ship</span></a>
+                    <p class="text-sm leading-relaxed mb-6">Fast, reliable courier and parcel delivery services across 50+ cities.</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-6">Quick Links</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="../index.html" class="hover:text-brand-500">Home</a></li>
+                        <li><a href="about.html" class="hover:text-brand-500">About Us</a></li>
+                        <li><a href="services.html" class="hover:text-brand-500">Services</a></li>
+                        <li><a href="pricing.html" class="hover:text-brand-500">Pricing</a></li>
+                        <li><a href="blog.html" class="hover:text-brand-500">Blog</a></li>
+                        <li><a href="contact.html" class="hover:text-brand-500">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-6">Our Services</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="service-details.html" class="hover:text-brand-500">Document Delivery</a></li>
+                        <li><a href="service-details.html" class="hover:text-brand-500">Parcel Shipping</a></li>
+                        <li><a href="service-details.html" class="hover:text-brand-500">Same-Day Delivery</a></li>
+                        <li><a href="service-details.html" class="hover:text-brand-500">Bulk Cargo</a></li>
+                        <li><a href="service-details.html" class="hover:text-brand-500">International Shipping</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-6">Contact Us</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-start gap-3"><i class="fas fa-map-marker-alt text-brand-500 mt-1 shrink-0"></i><span>1200 Shipping Lane, Suite 400<br>Dallas, TX 75201</span></li>
+                        <li class="flex items-center gap-3"><i class="fas fa-phone text-brand-500 shrink-0"></i><a href="tel:+18005550199" class="hover:text-brand-500">1-800-555-0199</a></li>
+                        <li class="flex items-center gap-3"><i class="fas fa-envelope text-brand-500 shrink-0"></i><a href="mailto:support@swiftship.com" class="hover:text-brand-500">support@swiftship.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
+                <p>&copy; 2026 SwiftShip Express. All rights reserved.</p>
+                <div class="flex gap-6"><a href="#" class="hover:text-brand-500">Privacy Policy</a><a href="#" class="hover:text-brand-500">Terms of Service</a></div>
+            </div>
+        </div>
+    </footer>
+
+    <button id="scroll-top" class="fixed bottom-8 right-8 z-50 w-12 h-12 bg-brand-500 text-white rounded-xl shadow-xl flex items-center justify-center opacity-0 invisible translate-y-4 hover:bg-brand-600 transition-all duration-300" aria-label="Scroll to top"><i class="fas fa-arrow-up"></i></button>
+    <script src="../assets/js/main.js"></script>
+
+<script>
+(function(){
+const services={
+document:{
+title:"Document Delivery",overview:"Secure Document Delivery Solutions",
+intro:"Fast, confidential delivery for legal documents, contracts, invoices, certificates and other important paperwork. Every shipment can include signature confirmation and chain-of-custody tracking.",
+featuresTitle:"Document Delivery Features",
+features:["Confidential Handling","Signature Confirmation","Chain-of-Custody Tracking","Priority Delivery","Digital Proof of Delivery","Secure Packaging"],
+coverage:"Legal offices, businesses, government departments and customers across our supported service network.",
+ratesTitle:"Document Delivery Rates",cta:"Ready to Send Important Documents?"
+},
+parcel:{
+title:"Parcel Shipping",overview:"Comprehensive Parcel Shipping Solutions",
+intro:"Reliable door-to-door parcel delivery for packages of all sizes, with real-time GPS tracking, insurance options and flexible pickup scheduling.",
+featuresTitle:"Parcel Shipping Features",
+features:["Real-Time GPS Tracking","Insured Shipments","Flexible Pickup Scheduling","Signature Confirmation","Photo Proof of Delivery","Eco-Friendly Packaging"],
+coverage:"Local and regional parcel delivery with standard, express and same-day options across supported cities.",
+ratesTitle:"Parcel Shipping Rates",cta:"Ready to Ship Your Parcel?"
+},
+"same-day":{
+title:"Same-Day Delivery",overview:"Fast Same-Day Delivery Solutions",
+intro:"When timing matters, our dedicated express couriers collect and deliver urgent parcels within hours, with live tracking and delivery confirmation.",
+featuresTitle:"Same-Day Delivery Features",
+features:["Delivery Within 4 Hours","Dedicated Courier","Live GPS Tracking","Priority Dispatch","Photo Proof of Delivery","Instant Notifications"],
+coverage:"Same-day service is available across our primary metro delivery network, subject to pickup and destination availability.",
+ratesTitle:"Same-Day Delivery Rates",cta:"Need Your Parcel Delivered Today?"
+},
+"bulk-cargo":{
+title:"Bulk Cargo",overview:"Heavy & Bulk Cargo Delivery Solutions",
+intro:"Move pallets, oversized shipments and commercial cargo with dedicated vehicles, scheduled pickups and dependable freight coordination.",
+featuresTitle:"Bulk Cargo Features",
+features:["Pallet & Freight Handling","Dedicated Trucks","Scheduled Pickup Windows","Load Tracking","Commercial Delivery Support","Freight Documentation"],
+coverage:"Bulk cargo service covers major business corridors and can be arranged for regional freight destinations.",
+ratesTitle:"Bulk Cargo Rates",cta:"Ready to Move Your Cargo?"
+},
+international:{
+title:"International Shipping",overview:"International Shipping Solutions",
+intro:"Ship across borders with door-to-door coordination, customs support, shipment tracking and insurance options for international parcels.",
+featuresTitle:"International Shipping Features",
+features:["200+ Country Reach","Customs Clearance Support","Air & Sea Freight","Door-to-Door Tracking","Shipment Insurance","International Documentation"],
+coverage:"International shipping is available to supported destinations worldwide, with service options depending on destination and shipment type.",
+ratesTitle:"International Shipping Rates",cta:"Ready to Ship Internationally?"
+},
+warehouse:{
+title:"Warehouse & Fulfillment",overview:"End-to-End Fulfillment Solutions",
+intro:"Store inventory, pick and pack orders, and dispatch directly to customers with scalable fulfillment support and real-time inventory visibility.",
+featuresTitle:"Warehouse & Fulfillment Features",
+features:["Inventory Storage","Pick & Pack","Order Dispatch","Real-Time Inventory","Returns Handling","Scalable Capacity"],
+coverage:"Fulfillment support is available from our warehouse network with delivery options tailored to your destination markets.",
+ratesTitle:"Fulfillment Service Rates",cta:"Ready to Simplify Fulfillment?"
+}
+};
+const key=new URLSearchParams(location.search).get("service")||"parcel";
+const s=services[key]||services.parcel;
+const set=(id,text)=>{const el=document.getElementById(id);if(el)el.textContent=text;};
+set("service-title",s.title);
+set("service-overview-title",s.overview);
+set("service-features-title","Service Features");
+set("service-coverage-title","Coverage & Availability");
+set("service-quote-title","Get a Quick Quote");
+set("service-features-section-title",s.featuresTitle);
+set("service-rates-title",s.ratesTitle);
+set("service-cta-title",s.cta);
+
+// Replace the main overview paragraph with the service-specific introduction.
+const h2=document.getElementById("service-overview-title");
+if(h2){
+ let p=h2.nextElementSibling;
+ while(p && p.tagName!=="P") p=p.nextElementSibling;
+ if(p) p.textContent=s.intro;
+}
+// Replace the six feature-card headings.
+const featureSection=document.getElementById("service-features-section-title");
+if(featureSection){
+ const section=featureSection.closest("section");
+ const heads=section?section.querySelectorAll("h3"):document.querySelectorAll("h3");
+ s.features.forEach((name,i)=>{if(heads[i+1]) heads[i+1].textContent=name;});
+}
+// Update related CTA and browser title.
+document.title=s.title+" | SwiftShip Express";
+})();
+</script>
+
+</body>
+</html>

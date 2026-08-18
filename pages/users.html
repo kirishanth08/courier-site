@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <link rel="icon" type="image/svg+xml" href="../assets/css/favicon.svg">
+    <link rel="shortcut icon" href="../assets/css/favicon.svg">
+    <link rel="apple-touch-icon" href="../assets/css/favicon.svg">
+
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Manage SwiftShip Express customers and staff accounts.">
+    <meta name="robots" content="noindex, follow">
+    <title>Users | SwiftShip Express</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config={darkMode:'class',theme:{extend:{colors:{brand:{50:'#fff7ed',100:'#ffedd5',200:'#fed7aa',300:'#fdba74',400:'#fb923c',500:'#f97316',600:'#ea580c',700:'#c2410c',800:'#9a3412',900:'#7c2d12'}}}}}</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/custom.css">
+</head>
+<body class="bg-gray-100 dark:bg-gray-950 text-gray-800 dark:text-gray-200">
+
+    <div class="preloader fixed inset-0 z-[9999] bg-white dark:bg-gray-900 flex items-center justify-center transition-opacity duration-500" id="preloader">
+        <div class="text-center">
+            <div class="relative w-20 h-20 mx-auto mb-4">
+                <div class="absolute inset-0 border-4 border-brand-200 dark:border-brand-800 rounded-full"></div>
+                <div class="absolute inset-0 border-4 border-transparent border-t-brand-500 rounded-full animate-spin"></div>
+                <i class="fas fa-shuttle-van absolute inset-0 flex items-center justify-center text-brand-500 text-xl"></i>
+            </div>
+            <p class="text-sm font-semibold text-gray-500 tracking-wider uppercase">Loading</p>
+        </div>
+    </div>
+
+    <aside class="sidebar bg-gray-900 dark:bg-gray-950 border-r-0">
+        <div class="px-6 py-5 border-b border-gray-800">
+            <a href="../index.html" class="flex items-center gap-3" aria-label="SwiftShip Express Home">
+                <div class="w-10 h-10 bg-brand-500 rounded-xl flex items-center justify-center shadow-lg shadow-brand-500/30">
+                    <i class="fas fa-shuttle-van text-white"></i>
+                </div>
+                <span class="text-xl font-extrabold text-white sidebar-logo-text">Swift<span class="text-brand-500">Ship</span></span>
+            </a>
+        </div>
+        <nav class="py-4" aria-label="Dashboard navigation">
+            <div class="px-6 mb-2"><span class="text-xs font-semibold text-gray-500 uppercase tracking-wider sidebar-label">Main</span></div>
+            <a href="dashboard.html" class="sidebar-link text-gray-400">
+                <i class="fas fa-tachometer-alt w-5 text-center"></i>
+                <span class="sidebar-label">Dashboard</span>
+            </a>
+            <a href="shipments.html" class="sidebar-link text-gray-400">
+                <i class="fas fa-box w-5 text-center"></i>
+                <span class="sidebar-label">Shipments</span>
+            </a>
+            <a href="orders.html" class="sidebar-link text-gray-400">
+                <i class="fas fa-shopping-cart w-5 text-center"></i>
+                <span class="sidebar-label">Orders</span>
+            </a>
+            <a href="users.html" class="sidebar-link active">
+                <i class="fas fa-users w-5 text-center"></i>
+                <span class="sidebar-label">Users</span>
+            </a>
+            <div class="px-6 mb-2 mt-6"><span class="text-xs font-semibold text-gray-500 uppercase tracking-wider sidebar-label">Communication</span></div>
+            <a href="messages.html" class="sidebar-link text-gray-400 relative">
+                <i class="fas fa-envelope w-5 text-center"></i>
+                <span class="sidebar-label">Messages</span>
+                <span class="absolute right-3 top-1/2 -translate-y-1/2 bg-red-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center sidebar-label">3</span>
+            </a>
+            <div class="px-6 mb-2 mt-6"><span class="text-xs font-semibold text-gray-500 uppercase tracking-wider sidebar-label">Management</span></div>
+            <a href="analytics.html" class="sidebar-link text-gray-400">
+                <i class="fas fa-chart-line w-5 text-center"></i>
+                <span class="sidebar-label">Analytics</span>
+            </a>
+            <a href="pricing.html" class="sidebar-link text-gray-400">
+                <i class="fas fa-dollar-sign w-5 text-center"></i>
+                <span class="sidebar-label">Pricing</span>
+            </a>
+            <a href="settings.html" class="sidebar-link text-gray-400">
+                <i class="fas fa-cog w-5 text-center"></i>
+                <span class="sidebar-label">Settings</span>
+            </a>
+        </nav>
+        <div class="absolute bottom-0 left-0 right-0 border-t border-gray-800 bg-gray-900 dark:bg-gray-950 p-4">
+            <a href="../index.html" class="sidebar-link text-gray-400">
+                <i class="fas fa-arrow-left w-5 text-center"></i>
+                <span class="sidebar-label">Back to Site</span>
+            </a>
+            <a href="login.html" class="sidebar-link text-gray-400">
+                <i class="fas fa-sign-out-alt w-5 text-center"></i>
+                <span class="sidebar-label">Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <div class="dashboard-main">
+        <header class="sticky top-0 z-50 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 transition-colors">
+            <div class="flex items-center justify-between h-16 px-6">
+                <div class="flex items-center gap-4">
+                    <button id="sidebarToggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-gray-500" aria-label="Toggle sidebar">
+                        <i class="fas fa-bars text-lg"></i>
+                    </button>
+                    <div>
+                        <nav class="hidden sm:flex items-center gap-1.5 text-xs text-gray-400 mb-0.5" aria-label="Breadcrumb">
+                            <a href="dashboard.html" class="hover:text-brand-500 transition-colors">Dashboard</a>
+                            <i class="fas fa-chevron-right text-[9px]"></i>
+                            <span class="text-gray-500 dark:text-gray-400">Users</span>
+                        </nav>
+                        <h1 class="text-base sm:text-lg font-bold dark:text-white leading-tight">Users</h1>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div class="relative hidden md:block">
+                        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"><i class="fas fa-search text-sm"></i></span>
+                        <input type="text" placeholder="Search users..." class="pl-10 pr-4 py-2 w-64 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 transition-colors">
+                    </div>
+                    <div class="relative">
+                        <button class="dropdown-trigger relative p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-gray-500" aria-label="Notifications">
+                            <i class="fas fa-bell text-lg"></i>
+                            <span class="absolute top-1 right-1 w-4 h-4 bg-red-500 text-white text-[9px] font-bold rounded-full flex items-center justify-center">5</span>
+                        </button>
+                        <div class="dropdown-menu w-80">
+                            <div class="px-4 py-3 border-b border-gray-100 dark:border-gray-800 flex items-center justify-between">
+                                <span class="text-sm font-bold dark:text-white">Notifications</span>
+                                <a href="messages.html" class="text-xs font-semibold text-brand-500 hover:text-brand-600">View all</a>
+                            </div>
+                            <a href="shipments.html" class="dropdown-item"><i class="fas fa-truck text-brand-500"></i> Shipment #SS10234 delivered</a>
+                            <a href="orders.html" class="dropdown-item"><i class="fas fa-shopping-cart text-blue-500"></i> New order #ORD-2291 received</a>
+                            <a href="messages.html" class="dropdown-item"><i class="fas fa-envelope text-purple-500"></i> 3 unread messages</a>
+                            <a href="users.html" class="dropdown-item"><i class="fas fa-user-plus text-green-500"></i> New user registered</a>
+                        </div>
+                    </div>
+                    <button id="themeToggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-gray-500" aria-label="Toggle dark mode">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:inline text-yellow-400"></i>
+                    </button>
+                    <div class="relative">
+                        <button class="dropdown-trigger flex items-center gap-3 pl-3 pr-2 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                            <div class="w-9 h-9 bg-brand-500 rounded-full flex items-center justify-center text-white font-bold text-sm">AU</div>
+                            <div class="hidden md:block text-left">
+                                <p class="text-sm font-semibold dark:text-white leading-tight">Admin User</p>
+                                <p class="text-xs text-gray-500 leading-tight">Super Admin</p>
+                            </div>
+                            <i class="fas fa-chevron-down text-xs text-gray-400 hidden md:inline"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a href="settings.html#profile" class="dropdown-item"><i class="fas fa-user"></i> My Profile</a>
+                            <a href="settings.html" class="dropdown-item"><i class="fas fa-cog"></i> Account Settings</a>
+                            <a href="messages.html" class="dropdown-item"><i class="fas fa-bell"></i> Notifications</a>
+                            <div class="border-t border-gray-200 dark:border-gray-700 my-1"></div>
+                            <a href="login.html" class="dropdown-item text-red-500"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="p-6">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+                <div>
+                    <h2 class="text-xl font-bold dark:text-white">Users</h2>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">Manage customers, staff, and their access</p>
+                </div>
+                <button id="inviteUserBtn" class="inline-flex items-center gap-2 bg-brand-500 hover:bg-brand-600 text-white font-semibold px-5 py-2.5 rounded-xl transition-colors text-sm shrink-0">
+                    <i class="fas fa-user-plus"></i> Invite User
+                </button>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
+                <div class="stats-card"><div class="stats-icon bg-brand-100 dark:bg-brand-900/30 text-brand-500"><i class="fas fa-users"></i></div><div><p class="text-sm text-gray-500 dark:text-gray-400 mb-0.5">Total Users</p><p class="text-xl font-extrabold dark:text-white">7</p></div></div>
+                <div class="stats-card"><div class="stats-icon bg-green-100 dark:bg-green-900/30 text-green-600"><i class="fas fa-user-check"></i></div><div><p class="text-sm text-gray-500 dark:text-gray-400 mb-0.5">Active</p><p class="text-xl font-extrabold dark:text-white">5</p></div></div>
+                <div class="stats-card"><div class="stats-icon bg-orange-100 dark:bg-orange-900/30 text-orange-600"><i class="fas fa-user-clock"></i></div><div><p class="text-sm text-gray-500 dark:text-gray-400 mb-0.5">Pending</p><p class="text-xl font-extrabold dark:text-white">1</p></div></div>
+                <div class="stats-card"><div class="stats-icon bg-red-100 dark:bg-red-900/30 text-red-600"><i class="fas fa-user-slash"></i></div><div><p class="text-sm text-gray-500 dark:text-gray-400 mb-0.5">Suspended</p><p class="text-xl font-extrabold dark:text-white">1</p></div></div>
+            </div>
+
+            <div class="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-6 pb-4">
+                    <div class="flex flex-wrap gap-2" id="userFilters">
+                        <button class="user-filter-btn px-3 py-1.5 text-xs font-semibold bg-brand-500 text-white rounded-lg" data-status="all">All</button>
+                        <button class="user-filter-btn px-3 py-1.5 text-xs font-semibold bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" data-status="Active">Active</button>
+                        <button class="user-filter-btn px-3 py-1.5 text-xs font-semibold bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" data-status="Pending">Pending</button>
+                        <button class="user-filter-btn px-3 py-1.5 text-xs font-semibold bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" data-status="Suspended">Suspended</button>
+                    </div>
+                    <div class="relative">
+                        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"><i class="fas fa-search text-sm"></i></span>
+                        <input type="text" id="userSearch" placeholder="Search name or email..." class="pl-10 pr-4 py-2 w-full sm:w-64 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 transition-colors">
+                    </div>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="data-table" id="usersTable">
+                        <thead><tr><th>User</th><th>Role</th><th>Status</th><th>Joined</th><th>Action</th></tr></thead>
+                        <tbody>
+                                <tr data-status="Active" data-role="Super Admin">
+                                    <td>
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-9 h-9 rounded-full bg-brand-500 flex items-center justify-center text-white font-bold text-xs shrink-0">AU</div>
+                                            <div>
+                                                <p class="font-semibold dark:text-white leading-tight">Admin User</p>
+                                                <p class="text-xs text-gray-500 leading-tight">admin@swiftship.com</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>Super Admin</td>
+                                    <td><span class="badge badge-success">Active</span></td>
+                                    <td class="text-gray-500 dark:text-gray-400">Aug 2026</td>
+                                    <td><div class="flex gap-1"><button class="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 hover:text-brand-500 transition-colors" title="Edit"><i class="fas fa-pen text-sm"></i></button><button class="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 hover:text-red-500 transition-colors" title="Suspend"><i class="fas fa-user-slash text-sm"></i></button></div></td>
+                                </tr>
+                                <tr data-status="Active" data-role="Customer">
+                                    <td>
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-9 h-9 rounded-full bg-blue-500 flex items-center justify-center text-white font-bold text-xs shrink-0">JS</div>
+                                            <div>
+                                                <p class="font-semibold dark:text-white leading-tight">John Smith</p>
+                                                <p class="text-xs text-gray-500 leading-tight">john.smith@example.com</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>Customer</td>
+                                    <td><span class="badge badge-success">Active</span></td>
+                                    <td class="text-gray-500 dark:text-gray-400">Aug 2026</td>
+                                    <td><div class="flex gap-1"><button class="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 hover:text-brand-500 transition-colors" title="Edit"><i class="fas fa-pen text-sm"></i></button><button class="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 hover:text-red-500 transition-colors" title="Suspend"><i class="fas fa-user-slash text-sm"></i></button></div></td>
+                                </tr>
+                                <tr data-status="Active" data-role="Customer">
+                                    <td>
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-9 h-9 rounded-full bg-green-500 flex items-center justify-center text-white font-bold text-xs shrink-0">EW</div>
+                                            <div>
+                                                <p class="font-semibold dark:text-white leading-tight">Emma Wilson</p>
+                                                <p class="text-xs text-gray-500 leading-tight">emma.wilson@example.com</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>Customer</td>
+                                    <td><span class="badge badge-success">Active</span></td>
+                                    <td class="text-gray-500 dark:text-gray-400">Aug 2026</td>
+                                    <td><div class="flex gap-1"><button class="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 hover:text-brand-500 transition-colors" title="Edit"><i class="fas fa-pen text-sm"></i></button><button class="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 hover:text-red-500 transition-colors" title="Suspend"><i class="fas fa-user-slash text-sm"></i></button></div></td>
+                                </tr>
+                                <tr data-status="Active" data-role="Dispatcher">
+                                    <td>
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-9 h-9 rounded-full bg-purple-500 flex items-center justify-center text-white font-bold text-xs shrink-0">SC</div>
+                                            <div>
+                                                <p class="font-semibold dark:text-white leading-tight">Sarah Connor</p>
+                                                <p class="text-xs text-gray-500 leading-tight">sarah.connor@example.com</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>Dispatcher</td>
+                                    <td><span class="badge badge-success">Active</span></td>
+                                    <td class="text-gray-500 dark:text-gray-400">Aug 2026</td>
+                                    <td><div class="flex gap-1"><button class="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 hover:text-brand-500 transition-colors" title="Edit"><i class="fas fa-pen text-sm"></i></button><button class="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 hover:text-red-500 transition-colors" title="Suspend"><i class="fas fa-user-slash text-sm"></i></button></div></td>
+                                </tr>
+                                <tr data-status="Suspended" data-role="Customer">
+                                    <td>
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-9 h-9 rounded-full bg-cyan-500 flex items-center justify-center text-white font-bold text-xs shrink-0">DL</div>
+                                            <div>
+                                                <p class="font-semibold dark:text-white leading-tight">David Lee</p>
+                                                <p class="text-xs text-gray-500 leading-tight">david.lee@example.com</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>Customer</td>
+                                    <td><span class="badge badge-danger">Suspended</span></td>
+                                    <td class="text-gray-500 dark:text-gray-400">Aug 2026</td>
+                                    <td><div class="flex gap-1"><button class="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 hover:text-brand-500 transition-colors" title="Edit"><i class="fas fa-pen text-sm"></i></button><button class="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 hover:text-red-500 transition-colors" title="Suspend"><i class="fas fa-user-slash text-sm"></i></button></div></td>
+                                </tr>
+                                <tr data-status="Active" data-role="Support Agent">
+                                    <td>
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-9 h-9 rounded-full bg-pink-500 flex items-center justify-center text-white font-bold text-xs shrink-0">AB</div>
+                                            <div>
+                                                <p class="font-semibold dark:text-white leading-tight">Anna Brown</p>
+                                                <p class="text-xs text-gray-500 leading-tight">anna.brown@example.com</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>Support Agent</td>
+                                    <td><span class="badge badge-success">Active</span></td>
+                                    <td class="text-gray-500 dark:text-gray-400">Aug 2026</td>
+                                    <td><div class="flex gap-1"><button class="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 hover:text-brand-500 transition-colors" title="Edit"><i class="fas fa-pen text-sm"></i></button><button class="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 hover:text-red-500 transition-colors" title="Suspend"><i class="fas fa-user-slash text-sm"></i></button></div></td>
+                                </tr>
+                                <tr data-status="Pending" data-role="Customer">
+                                    <td>
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-9 h-9 rounded-full bg-orange-500 flex items-center justify-center text-white font-bold text-xs shrink-0">KN</div>
+                                            <div>
+                                                <p class="font-semibold dark:text-white leading-tight">Kevin Nguyen</p>
+                                                <p class="text-xs text-gray-500 leading-tight">kevin.nguyen@example.com</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>Customer</td>
+                                    <td><span class="badge badge-warning">Pending</span></td>
+                                    <td class="text-gray-500 dark:text-gray-400">Aug 2026</td>
+                                    <td><div class="flex gap-1"><button class="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 hover:text-brand-500 transition-colors" title="Edit"><i class="fas fa-pen text-sm"></i></button><button class="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 hover:text-red-500 transition-colors" title="Suspend"><i class="fas fa-user-slash text-sm"></i></button></div></td>
+                                </tr>
+                        </tbody>
+                    </table>
+                    <p id="noUsers" class="hidden text-center text-sm text-gray-500 py-10">No users match your filters.</p>
+                </div>
+            </div>
+
+            <div id="inviteUserModal" class="hidden fixed inset-0 z-[200] flex items-center justify-center p-4">
+                <div class="absolute inset-0 bg-black/50" id="inviteModalOverlay"></div>
+                <div class="relative bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 w-full max-w-md p-6 shadow-2xl">
+                    <div class="flex items-center justify-between mb-5">
+                        <h3 class="text-lg font-bold dark:text-white">Invite a User</h3>
+                        <button id="closeInviteModal" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-400"><i class="fas fa-xmark"></i></button>
+                    </div>
+                    <form id="inviteUserForm" class="space-y-4">
+                        <div class="form-group mb-0"><label class="form-label">Email Address</label><input type="email" class="form-control" placeholder="name@example.com" required></div>
+                        <div class="form-group mb-0"><label class="form-label">Role</label><select class="form-control"><option>Customer</option><option>Dispatcher</option><option>Support Agent</option><option>Admin</option></select></div>
+                        <button type="submit" class="w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-brand-500 text-white font-semibold rounded-xl hover:bg-brand-600 transition-all"><i class="fas fa-paper-plane"></i> Send Invite</button>
+                    </form>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script src="../assets/js/main.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var rows = document.querySelectorAll('#usersTable tbody tr');
+        var noResults = document.getElementById('noUsers');
+        var filterBtns = document.querySelectorAll('.user-filter-btn');
+        var searchInput = document.getElementById('userSearch');
+        var currentStatus = 'all';
+
+        function applyFilters() {
+            var q = (searchInput.value || '').toLowerCase();
+            var visibleCount = 0;
+            rows.forEach(function(row) {
+                var status = row.getAttribute('data-status');
+                var text = row.textContent.toLowerCase();
+                var matchesStatus = currentStatus === 'all' || status === currentStatus;
+                var matchesSearch = text.indexOf(q) > -1;
+                var show = matchesStatus && matchesSearch;
+                row.style.display = show ? '' : 'none';
+                if (show) visibleCount++;
+            });
+            noResults.classList.toggle('hidden', visibleCount !== 0);
+        }
+
+        filterBtns.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                filterBtns.forEach(function(b) { b.classList.remove('bg-brand-500', 'text-white'); b.classList.add('bg-gray-100', 'dark:bg-gray-800', 'text-gray-600', 'dark:text-gray-400'); });
+                this.classList.add('bg-brand-500', 'text-white');
+                this.classList.remove('bg-gray-100', 'dark:bg-gray-800', 'text-gray-600', 'dark:text-gray-400');
+                currentStatus = this.getAttribute('data-status');
+                applyFilters();
+            });
+        });
+        if (searchInput) searchInput.addEventListener('input', applyFilters);
+
+        var modal = document.getElementById('inviteUserModal');
+        var openBtn = document.getElementById('inviteUserBtn');
+        var closeBtn = document.getElementById('closeInviteModal');
+        var overlay = document.getElementById('inviteModalOverlay');
+        function openModal() { modal.classList.remove('hidden'); document.body.style.overflow = 'hidden'; }
+        function closeModal() { modal.classList.add('hidden'); document.body.style.overflow = ''; }
+        if (openBtn) openBtn.addEventListener('click', openModal);
+        if (closeBtn) closeBtn.addEventListener('click', closeModal);
+        if (overlay) overlay.addEventListener('click', closeModal);
+
+        var form = document.getElementById('inviteUserForm');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                closeModal();
+                showToast('Invitation sent', 'success');
+                form.reset();
+            });
+        }
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en">
+<head>
+    <link rel="icon" type="image/svg+xml" href="../assets/css/favicon.svg">
+    <link rel="shortcut icon" href="../assets/css/favicon.svg">
+    <link rel="apple-touch-icon" href="../assets/css/favicon.svg">
+
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Learn about SwiftShip Express - our story, mission, team, and commitment to fast, reliable courier and parcel delivery services." name="description"/>
+<title>About Us | SwiftShip Express - Courier &amp; Parcel Delivery</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = { darkMode:'class', theme:{ extend:{ colors:{ brand:{ 50:'#fff7ed',100:'#ffedd5',200:'#fed7aa',300:'#fdba74',400:'#fb923c',500:'#f97316',600:'#ea580c',700:'#c2410c',800:'#9a3412',900:'#7c2d12' } } } } }
+    </script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<link href="../assets/css/custom.css" rel="stylesheet"/>
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+<!-- Preloader -->
+<div class="preloader fixed inset-0 z-[9999] bg-white dark:bg-gray-900 flex items-center justify-center transition-opacity duration-500" id="preloader">
+<div class="text-center">
+<div class="relative w-20 h-20 mx-auto mb-4">
+<div class="absolute inset-0 border-4 border-brand-200 dark:border-brand-800 rounded-full"></div>
+<div class="absolute inset-0 border-4 border-transparent border-t-brand-500 rounded-full animate-spin"></div>
+<i class="fas fa-shuttle-van absolute inset-0 flex items-center justify-center text-brand-500 text-xl"></i>
+</div>
+<p class="text-sm font-semibold text-gray-500 tracking-wider uppercase">SwiftShip Express</p>
+</div>
+</div>
+<!-- ======================== MOBILE MENU OVERLAY ======================== -->
+<div aria-hidden="true" class="fixed inset-0 z-[9998] bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 lg:hidden" id="mobile-menu-overlay"></div>
+<!-- ======================== MOBILE MENU ======================== -->
+<div aria-label="Mobile navigation" class="fixed top-0 right-0 z-[9999] h-full w-80 max-w-[85vw] bg-white dark:bg-gray-900 shadow-2xl transform translate-x-full transition-transform duration-300 lg:hidden" id="mobile-menu" role="dialog">
+<div class="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
+<span class="text-xl font-bold text-brand-500">SwiftShip</span>
+<button aria-label="Close menu" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" id="mobile-menu-close">
+<i class="fas fa-times text-xl"></i>
+</button>
+</div>
+<nav aria-label="Mobile navigation links" class="p-6 space-y-1">
+<div class="mobile-nav-item" data-submenu="home-mobile">
+<button class="w-full flex items-center justify-between px-4 py-3 rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 font-medium transition-colors">
+<span><i class="fas fa-home mr-2 text-brand-500"></i> Home</span>
+<i class="fas fa-chevron-down text-xs transition-transform duration-200"></i>
+</button>
+<div class="hidden pl-6 space-y-1" id="home-mobile">
+<a class="mobile-nav-link block px-4 py-2.5 text-sm rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors" href="../index.html"><i class="fas fa-circle text-[6px] mr-2 text-brand-400"></i> Home Default</a>
+<a class="mobile-nav-link block px-4 py-2.5 text-sm rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors" href="index-2.html"><i class="fas fa-circle text-[6px] mr-2 text-brand-400"></i> Home Express</a>
+</div>
+</div>
+<a class="mobile-nav-link block px-4 py-3 rounded-lg bg-brand-50 dark:bg-brand-900/20 text-brand-500 font-medium transition-colors" href="about.html">About</a>
+<a class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 font-medium transition-colors" href="services.html">Services</a>
+<a class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 font-medium transition-colors" href="pricing.html">Pricing</a>
+<a class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 font-medium transition-colors" href="how-it-works.html">How It Works</a>
+<a class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 font-medium transition-colors" href="blog.html">Blog</a>
+<a class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 font-medium transition-colors" href="contact.html">Contact</a>
+</nav>
+<div class="p-6 border-t border-gray-200 dark:border-gray-700 space-y-3">
+<a class="block w-full text-center px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 font-semibold transition-colors" href="login.html">Login</a>
+<a class="block w-full text-center px-4 py-3 bg-brand-500 text-white rounded-lg hover:bg-brand-600 font-semibold transition-colors" href="register.html">Register</a>
+</div>
+</div>
+<!-- ======================== NAVBAR ======================== -->
+<header class="fixed top-0 left-0 right-0 z-[100] transition-all duration-300 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md" id="navbar" role="banner">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-16 lg:h-20">
+<a aria-label="SwiftShip Express Home" class="flex items-center gap-2 shrink-0" href="../index.html">
+<div class="w-10 h-10 bg-brand-500 rounded-xl flex items-center justify-center shadow-lg shadow-brand-500/30">
+<i class="fas fa-shuttle-van text-white text-lg"></i>
+</div>
+<span class="text-xl font-extrabold tracking-tight">
+<span class="text-brand-500">Swift</span><span class="dark:text-white">Ship</span>
+</span>
+</a>
+<nav aria-label="Main navigation" class="hidden lg:flex items-center gap-1">
+<div class="relative group">
+<button class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors inline-flex items-center gap-1">
+                            Home <i class="fas fa-chevron-down text-[10px] transition-transform group-hover:rotate-180"></i>
+</button>
+<div class="absolute top-full left-0 mt-1 w-48 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform scale-95 group-hover:scale-100 z-50 py-2">
+<a class="block px-4 py-2.5 text-sm hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors" href="../index.html"><i class="fas fa-home mr-2 text-brand-500"></i> Home Default</a>
+<a class="block px-4 py-2.5 text-sm hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors" href="index-2.html"><i class="fas fa-rocket mr-2 text-brand-500"></i> Home Express</a>
+</div>
+</div>
+<a class="px-3 py-2 rounded-lg text-sm font-medium bg-brand-50 dark:bg-brand-900/20 text-brand-500" href="about.html">About</a>
+<a class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors" href="services.html">Services</a>
+<a class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors" href="pricing.html">Pricing</a>
+<a class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors" href="how-it-works.html">How It Works</a>
+<a class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors" href="blog.html">Blog</a>
+<a class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors" href="contact.html">Contact</a>
+</nav>
+<div class="hidden lg:flex items-center gap-3">
+<button aria-label="Toggle dark mode" class="p-2.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" id="theme-toggle">
+<i class="fas fa-moon dark:hidden text-gray-600"></i>
+<i class="fas fa-sun hidden dark:inline text-yellow-400"></i>
+</button>
+<button aria-label="Toggle text direction" class="p-2.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-sm font-bold" id="rtl-toggle">RTL</button>
+<a class="px-4 py-2 text-sm font-semibold border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors" href="login.html">Login</a>
+<a class="px-4 py-2 text-sm font-semibold bg-brand-500 text-white rounded-lg hover:bg-brand-600 shadow-lg shadow-brand-500/25 transition-all" href="register.html">Register</a>
+</div>
+<div class="flex lg:hidden items-center gap-2">
+<button aria-label="Toggle dark mode" class="p-2.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" id="theme-toggle-mobile">
+<i class="fas fa-moon dark:hidden text-gray-600"></i>
+<i class="fas fa-sun hidden dark:inline text-yellow-400"></i>
+</button>
+<button aria-label="Open menu" class="p-2.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" id="mobile-menu-open">
+<i class="fas fa-bars text-xl"></i>
+</button>
+</div>
+</div>
+</div>
+</header>
+<!-- Hero Banner -->
+<section class="relative pt-20 lg:pt-24">
+<div class="relative h-64 sm:h-80 lg:h-96 overflow-hidden">
+<img alt="SwiftShip Express office" class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&amp;h=600&amp;fit=crop"/>
+<div class="absolute inset-0 bg-gradient-to-r from-gray-900/90 to-gray-900/60"></div>
+<div class="absolute inset-0 flex items-center">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+<nav class="text-sm text-gray-400 mb-4"><a class="hover:text-brand-500" href="../index.html">Home</a> <i class="fas fa-chevron-right mx-2 text-xs"></i> <span class="text-white">About Us</span></nav>
+<h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white">About <span class="text-brand-500">SwiftShip</span> Express</h1>
+<p class="text-lg text-gray-300 mt-4 max-w-xl">Delivering trust, one parcel at a time. Learn about our journey revolutionizing the courier industry.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Our Story -->
+<section class="section-padding">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid lg:grid-cols-2 gap-12 items-center">
+<div>
+<span class="text-brand-500 font-semibold text-sm uppercase tracking-wider">Our Story</span>
+<h2 class="text-3xl sm:text-4xl font-extrabold mt-3 mb-6 dark:text-white">Revolutionizing Parcel Delivery Since 2010</h2>
+<p class="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">SwiftShip Express was founded with a simple mission: to make parcel delivery faster, more reliable, and completely transparent. What started as a small local courier service in Dallas has grown into a nationwide delivery network spanning 50+ cities.</p>
+<p class="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">We recognized that traditional courier services were plagued by delayed deliveries, lost packages, and zero visibility. Our founders set out to build a technology-driven delivery company that puts real-time tracking, same-day delivery, and customer satisfaction at the core of everything we do.</p>
+<p class="text-gray-600 dark:text-gray-400 leading-relaxed">Today, we handle over 500,000 deliveries annually with a 98% on-time rate, serving everyone from individual senders to major e-commerce enterprises.</p>
+</div>
+<div class="relative">
+<img alt="SwiftShip warehouse operations" class="rounded-2xl shadow-2xl" src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=700&amp;h=500&amp;fit=crop"/>
+<div class="absolute -bottom-6 -left-6 bg-brand-500 text-white p-6 rounded-2xl shadow-xl">
+<div class="text-3xl font-extrabold">15+</div>
+<div class="text-sm font-medium">Years of Excellence</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Mission & Vision -->
+<section class="section-padding-sm bg-gray-50 dark:bg-gray-800/50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid md:grid-cols-2 gap-8">
+<div class="card p-8">
+<div class="w-16 h-16 bg-brand-500/10 rounded-2xl flex items-center justify-center mb-6"><i class="fas fa-bullseye text-brand-500 text-2xl"></i></div>
+<h3 class="text-2xl font-bold mb-4 dark:text-white">Our Mission</h3>
+<p class="text-gray-600 dark:text-gray-400 leading-relaxed">To provide the fastest, most reliable, and technology-driven courier and parcel delivery services, empowering businesses and individuals with seamless logistics solutions across every city we serve.</p>
+</div>
+<div class="card p-8">
+<div class="w-16 h-16 bg-brand-500/10 rounded-2xl flex items-center justify-center mb-6"><i class="fas fa-eye text-brand-500 text-2xl"></i></div>
+<h3 class="text-2xl font-bold mb-4 dark:text-white">Our Vision</h3>
+<p class="text-gray-600 dark:text-gray-400 leading-relaxed">To become the most trusted delivery partner worldwide, setting the industry standard for speed, safety, and sustainability in logistics while connecting communities through reliable parcel delivery.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Stats -->
+<section class="section-padding">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="text-center p-6 card">
+<div class="text-4xl font-extrabold text-brand-500"><span class="counter-value" data-suffix="+" data-target="15">0</span></div>
+<div class="text-gray-600 dark:text-gray-400 mt-2 font-medium">Years in Business</div>
+</div>
+<div class="text-center p-6 card">
+<div class="text-4xl font-extrabold text-brand-500"><span class="counter-value" data-suffix="+" data-target="500000">0</span></div>
+<div class="text-gray-600 dark:text-gray-400 mt-2 font-medium">Deliveries Completed</div>
+</div>
+<div class="text-center p-6 card">
+<div class="text-4xl font-extrabold text-brand-500"><span class="counter-value" data-suffix="+" data-target="50">0</span></div>
+<div class="text-gray-600 dark:text-gray-400 mt-2 font-medium">Cities Covered</div>
+</div>
+<div class="text-center p-6 card">
+<div class="text-4xl font-extrabold text-brand-500"><span class="counter-value" data-suffix="+" data-target="200">0</span></div>
+<div class="text-gray-600 dark:text-gray-400 mt-2 font-medium">Team Members</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Team -->
+<section class="section-padding-sm bg-gray-50 dark:bg-gray-800/50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-12">
+<span class="text-brand-500 font-semibold text-sm uppercase tracking-wider">Our Team</span>
+<h2 class="text-3xl sm:text-4xl font-extrabold mt-3 dark:text-white">Meet the People Behind SwiftShip</h2>
+<p class="text-gray-600 dark:text-gray-400 mt-4 max-w-2xl mx-auto">Our leadership team brings decades of combined experience in logistics, technology, and customer service.</p>
+</div>
+<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="team-card">
+<div class="team-image"><img alt="James Mitchell CEO" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&amp;h=400&amp;fit=crop"/></div>
+
+<div class="p-5">
+<h4 class="font-bold text-lg dark:text-white">James Mitchell</h4>
+<p class="text-brand-500 text-sm font-medium">Chief Executive Officer</p>
+</div>
+</div>
+<div class="team-card">
+<div class="team-image"><img alt="Sarah Chen COO" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&amp;h=400&amp;fit=crop"/></div>
+
+<div class="p-5">
+<h4 class="font-bold text-lg dark:text-white">Sarah Chen</h4>
+<p class="text-brand-500 text-sm font-medium">Chief Operations Officer</p>
+</div>
+</div>
+<div class="team-card">
+<div class="team-image"><img alt="David Park Head of Operations" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&amp;h=400&amp;fit=crop"/></div>
+
+<div class="p-5">
+<h4 class="font-bold text-lg dark:text-white">David Park</h4>
+<p class="text-brand-500 text-sm font-medium">Head of Operations</p>
+</div>
+</div>
+<div class="team-card">
+<div class="team-image"><img alt="Emily Rodriguez Head of Technology" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&amp;h=400&amp;fit=crop"/></div>
+
+<div class="p-5">
+<h4 class="font-bold text-lg dark:text-white">Emily Rodriguez</h4>
+<p class="text-brand-500 text-sm font-medium">Head of Technology</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Values -->
+<section class="section-padding">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-12">
+<span class="text-brand-500 font-semibold text-sm uppercase tracking-wider">Our Values</span>
+<h2 class="text-3xl sm:text-4xl font-extrabold mt-3 dark:text-white">What Drives Us Every Day</h2>
+</div>
+<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="text-center p-6">
+<div class="w-20 h-20 bg-brand-500/10 rounded-full flex items-center justify-center mx-auto mb-5"><i class="fas fa-shield-alt text-brand-500 text-3xl"></i></div>
+<h4 class="font-bold text-lg mb-3 dark:text-white">Reliability</h4>
+<p class="text-gray-600 dark:text-gray-400 text-sm">Every parcel is handled with care and delivered on time, guaranteed.</p>
+</div>
+<div class="text-center p-6">
+<div class="w-20 h-20 bg-brand-500/10 rounded-full flex items-center justify-center mx-auto mb-5"><i class="fas fa-bolt text-brand-500 text-3xl"></i></div>
+<h4 class="font-bold text-lg mb-3 dark:text-white">Speed</h4>
+<p class="text-gray-600 dark:text-gray-400 text-sm">Same-day and express options ensure your parcels arrive when needed.</p>
+</div>
+<div class="text-center p-6">
+<div class="w-20 h-20 bg-brand-500/10 rounded-full flex items-center justify-center mx-auto mb-5"><i class="fas fa-microchip text-brand-500 text-3xl"></i></div>
+<h4 class="font-bold text-lg mb-3 dark:text-white">Innovation</h4>
+<p class="text-gray-600 dark:text-gray-400 text-sm">AI-powered routing and real-time GPS tracking on every shipment.</p>
+</div>
+<div class="text-center p-6">
+<div class="w-20 h-20 bg-brand-500/10 rounded-full flex items-center justify-center mx-auto mb-5"><i class="fas fa-heart text-brand-500 text-3xl"></i></div>
+<h4 class="font-bold text-lg mb-3 dark:text-white">Customer First</h4>
+<p class="text-gray-600 dark:text-gray-400 text-sm">24/7 support and flexible solutions tailored to every delivery need.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials -->
+<section class="section-padding-sm bg-gray-50 dark:bg-gray-800/50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-12">
+<span class="text-brand-500 font-semibold text-sm uppercase tracking-wider">Testimonials</span>
+<h2 class="text-3xl sm:text-4xl font-extrabold mt-3 dark:text-white">What Our Clients Say</h2>
+</div>
+<div class="grid md:grid-cols-3 gap-8">
+<div class="testimonial-card">
+<div class="quote-icon font-serif">"</div>
+<div class="stars mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+<p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">SwiftShip has transformed our e-commerce fulfillment. Same-day delivery in Dallas means our customers get their orders within hours. The real-time tracking is a game-changer.</p>
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 bg-brand-500 rounded-full flex items-center justify-center text-white font-bold">MR</div>
+<div><h5 class="font-bold text-sm dark:text-white">Michael Rodriguez</h5><p class="text-xs text-gray-500">CEO, ShopFast E-Commerce</p></div>
+</div>
+</div>
+<div class="testimonial-card">
+<div class="quote-icon font-serif">"</div>
+<div class="stars mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+<p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">As a law firm, we rely on SwiftShip for time-sensitive document delivery. Their express service has never let us down. Every legal filing arrives on time, every time.</p>
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 bg-brand-500 rounded-full flex items-center justify-center text-white font-bold">LW</div>
+<div><h5 class="font-bold text-sm dark:text-white">Linda Washington</h5><p class="text-xs text-gray-500">Partner, Washington &amp; Associates</p></div>
+</div>
+</div>
+<div class="testimonial-card">
+<div class="quote-icon font-serif">"</div>
+<div class="stars mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+<p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">We ship thousands of medical supplies monthly. SwiftShip's bulk cargo service and cold-chain logistics have been instrumental in our supply chain operations.</p>
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 bg-brand-500 rounded-full flex items-center justify-center text-white font-bold">AK</div>
+<div><h5 class="font-bold text-sm dark:text-white">Dr. Amanda Kim</h5><p class="text-xs text-gray-500">Director, MedSupply Corp</p></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA -->
+<section class="relative py-20 overflow-hidden">
+<img alt="Delivery fleet" class="absolute inset-0 w-full h-full object-cover" src="https://images.unsplash.com/photo-1494412574643-ff11b0a5eb19?w=1920&amp;h=600&amp;fit=crop"/>
+<div class="absolute inset-0 bg-brand-600/90"></div>
+<div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+<h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">Ready to Ship with SwiftShip?</h2>
+<p class="text-xl text-white/80 mb-8">Join 50,000+ businesses and individuals who trust us with their deliveries.</p>
+<div class="flex flex-wrap gap-4 justify-center">
+<a class="px-8 py-4 bg-white text-brand-600 font-bold rounded-xl hover:bg-gray-100 shadow-xl transition-all hover:-translate-y-0.5" href="register.html">Get Started Free</a>
+<a class="px-8 py-4 bg-white/10 text-white font-bold rounded-xl border border-white/30 hover:bg-white/20 transition-all hover:-translate-y-0.5" href="contact.html">Contact Sales</a>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-gray-900 text-gray-400 pt-16 pb-0">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+<div>
+<a class="flex items-center gap-2 mb-6" href="../index.html">
+<div class="w-10 h-10 bg-brand-500 rounded-xl flex items-center justify-center"><i class="fas fa-shuttle-van text-white"></i></div>
+<span class="text-xl font-extrabold text-white"><span class="text-brand-500">Swift</span>Ship</span>
+</a>
+<p class="text-sm leading-relaxed mb-6">Fast, reliable courier and parcel delivery services. Same-day delivery, real-time tracking, and insured shipments across 50+ cities.</p>
+<div class="flex gap-3">
+<a class="w-10 h-10 bg-gray-800 hover:bg-brand-500 rounded-lg flex items-center justify-center transition-colors" href="#"><i class="fab fa-facebook-f text-sm"></i></a>
+<a class="w-10 h-10 bg-gray-800 hover:bg-brand-500 rounded-lg flex items-center justify-center transition-colors" href="#"><i class="fab fa-twitter text-sm"></i></a>
+<a class="w-10 h-10 bg-gray-800 hover:bg-brand-500 rounded-lg flex items-center justify-center transition-colors" href="#"><i class="fab fa-instagram text-sm"></i></a>
+<a class="w-10 h-10 bg-gray-800 hover:bg-brand-500 rounded-lg flex items-center justify-center transition-colors" href="#"><i class="fab fa-linkedin-in text-sm"></i></a>
+</div>
+</div>
+<div>
+<h4 class="text-white font-bold mb-6">Quick Links</h4>
+<ul class="space-y-3 text-sm">
+<li><a class="hover:text-brand-500 transition-colors" href="../index.html">Home</a></li>
+<li><a class="hover:text-brand-500 transition-colors" href="about.html">About Us</a></li>
+<li><a class="hover:text-brand-500 transition-colors" href="services.html">Services</a></li>
+<li><a class="hover:text-brand-500 transition-colors" href="pricing.html">Pricing</a></li>
+<li><a class="hover:text-brand-500 transition-colors" href="blog.html">Blog</a></li>
+<li><a class="hover:text-brand-500 transition-colors" href="contact.html">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-white font-bold mb-6">Our Services</h4>
+<ul class="space-y-3 text-sm">
+<li><a class="hover:text-brand-500 transition-colors" href="service-details.html">Document Delivery</a></li>
+<li><a class="hover:text-brand-500 transition-colors" href="service-details.html">Parcel Shipping</a></li>
+<li><a class="hover:text-brand-500 transition-colors" href="service-details.html">Same-Day Delivery</a></li>
+<li><a class="hover:text-brand-500 transition-colors" href="service-details.html">Bulk Cargo</a></li>
+<li><a class="hover:text-brand-500 transition-colors" href="service-details.html">International Shipping</a></li>
+<li><a class="hover:text-brand-500 transition-colors" href="service-details.html">Warehouse &amp; Fulfillment</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-white font-bold mb-6">Contact Us</h4>
+<ul class="space-y-3 text-sm">
+<li class="flex items-start gap-3"><i class="fas fa-map-marker-alt text-brand-500 mt-1 shrink-0"></i><span>1200 Shipping Lane, Suite 400<br/>Dallas, TX 75201</span></li>
+<li class="flex items-center gap-3"><i class="fas fa-phone text-brand-500 shrink-0"></i><a class="hover:text-brand-500" href="tel:+18005550199">1-800-555-0199</a></li>
+<li class="flex items-center gap-3"><i class="fas fa-envelope text-brand-500 shrink-0"></i><a class="hover:text-brand-500" href="mailto:support@swiftship.com">support@swiftship.com</a></li>
+<li class="flex items-center gap-3"><i class="fas fa-clock text-brand-500 shrink-0"></i><span>24/7 Customer Support</span></li>
+</ul>
+</div>
+</div>
+<div class="border-t border-gray-800 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
+<p>© 2026 SwiftShip Express. All rights reserved.</p>
+<div class="flex gap-6">
+<a class="hover:text-brand-500" href="#">Privacy Policy</a>
+<a class="hover:text-brand-500" href="#">Terms of Service</a>
+<a class="hover:text-brand-500" href="#">Cookie Policy</a>
+</div>
+</div>
+</div>
+</footer>
+<button aria-label="Scroll to top" class="fixed bottom-8 right-8 z-50 w-12 h-12 bg-brand-500 text-white rounded-xl shadow-xl flex items-center justify-center opacity-0 invisible translate-y-4 hover:bg-brand-600 transition-all duration-300" id="scroll-top"><i class="fas fa-arrow-up"></i></button>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

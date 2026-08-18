@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <link rel="icon" type="image/svg+xml" href="../assets/css/favicon.svg">
+    <link rel="shortcut icon" href="../assets/css/favicon.svg">
+    <link rel="apple-touch-icon" href="../assets/css/favicon.svg">
+
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Review and manage customer orders for SwiftShip Express.">
+    <meta name="robots" content="noindex, follow">
+    <title>Orders | SwiftShip Express</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config={darkMode:'class',theme:{extend:{colors:{brand:{50:'#fff7ed',100:'#ffedd5',200:'#fed7aa',300:'#fdba74',400:'#fb923c',500:'#f97316',600:'#ea580c',700:'#c2410c',800:'#9a3412',900:'#7c2d12'}}}}}</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/custom.css">
+</head>
+<body class="bg-gray-100 dark:bg-gray-950 text-gray-800 dark:text-gray-200">
+
+    <div class="preloader fixed inset-0 z-[9999] bg-white dark:bg-gray-900 flex items-center justify-center transition-opacity duration-500" id="preloader">
+        <div class="text-center">
+            <div class="relative w-20 h-20 mx-auto mb-4">
+                <div class="absolute inset-0 border-4 border-brand-200 dark:border-brand-800 rounded-full"></div>
+                <div class="absolute inset-0 border-4 border-transparent border-t-brand-500 rounded-full animate-spin"></div>
+                <i class="fas fa-shuttle-van absolute inset-0 flex items-center justify-center text-brand-500 text-xl"></i>
+            </div>
+            <p class="text-sm font-semibold text-gray-500 tracking-wider uppercase">Loading</p>
+        </div>
+    </div>
+
+    <aside class="sidebar bg-gray-900 dark:bg-gray-950 border-r-0">
+        <div class="px-6 py-5 border-b border-gray-800">
+            <a href="../index.html" class="flex items-center gap-3" aria-label="SwiftShip Express Home">
+                <div class="w-10 h-10 bg-brand-500 rounded-xl flex items-center justify-center shadow-lg shadow-brand-500/30">
+                    <i class="fas fa-shuttle-van text-white"></i>
+                </div>
+                <span class="text-xl font-extrabold text-white sidebar-logo-text">Swift<span class="text-brand-500">Ship</span></span>
+            </a>
+        </div>
+        <nav class="py-4" aria-label="Dashboard navigation">
+            <div class="px-6 mb-2"><span class="text-xs font-semibold text-gray-500 uppercase tracking-wider sidebar-label">Main</span></div>
+            <a href="dashboard.html" class="sidebar-link text-gray-400">
+                <i class="fas fa-tachometer-alt w-5 text-center"></i>
+                <span class="sidebar-label">Dashboard</span>
+            </a>
+            <a href="shipments.html" class="sidebar-link text-gray-400">
+                <i class="fas fa-box w-5 text-center"></i>
+                <span class="sidebar-label">Shipments</span>
+            </a>
+            <a href="orders.html" class="sidebar-link active">
+                <i class="fas fa-shopping-cart w-5 text-center"></i>
+                <span class="sidebar-label">Orders</span>
+            </a>
+            <a href="users.html" class="sidebar-link text-gray-400">
+                <i class="fas fa-users w-5 text-center"></i>
+                <span class="sidebar-label">Users</span>
+            </a>
+            <div class="px-6 mb-2 mt-6"><span class="text-xs font-semibold text-gray-500 uppercase tracking-wider sidebar-label">Communication</span></div>
+            <a href="messages.html" class="sidebar-link text-gray-400 relative">
+                <i class="fas fa-envelope w-5 text-center"></i>
+                <span class="sidebar-label">Messages</span>
+                <span class="absolute right-3 top-1/2 -translate-y-1/2 bg-red-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center sidebar-label">3</span>
+            </a>
+            <div class="px-6 mb-2 mt-6"><span class="text-xs font-semibold text-gray-500 uppercase tracking-wider sidebar-label">Management</span></div>
+            <a href="analytics.html" class="sidebar-link text-gray-400">
+                <i class="fas fa-chart-line w-5 text-center"></i>
+                <span class="sidebar-label">Analytics</span>
+            </a>
+            <a href="pricing.html" class="sidebar-link text-gray-400">
+                <i class="fas fa-dollar-sign w-5 text-center"></i>
+                <span class="sidebar-label">Pricing</span>
+            </a>
+            <a href="settings.html" class="sidebar-link text-gray-400">
+                <i class="fas fa-cog w-5 text-center"></i>
+                <span class="sidebar-label">Settings</span>
+            </a>
+        </nav>
+        <div class="absolute bottom-0 left-0 right-0 border-t border-gray-800 bg-gray-900 dark:bg-gray-950 p-4">
+            <a href="../index.html" class="sidebar-link text-gray-400">
+                <i class="fas fa-arrow-left w-5 text-center"></i>
+                <span class="sidebar-label">Back to Site</span>
+            </a>
+            <a href="login.html" class="sidebar-link text-gray-400">
+                <i class="fas fa-sign-out-alt w-5 text-center"></i>
+                <span class="sidebar-label">Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <div class="dashboard-main">
+        <header class="sticky top-0 z-50 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 transition-colors">
+            <div class="flex items-center justify-between h-16 px-6">
+                <div class="flex items-center gap-4">
+                    <button id="sidebarToggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-gray-500" aria-label="Toggle sidebar">
+                        <i class="fas fa-bars text-lg"></i>
+                    </button>
+                    <div>
+                        <nav class="hidden sm:flex items-center gap-1.5 text-xs text-gray-400 mb-0.5" aria-label="Breadcrumb">
+                            <a href="dashboard.html" class="hover:text-brand-500 transition-colors">Dashboard</a>
+                            <i class="fas fa-chevron-right text-[9px]"></i>
+                            <span class="text-gray-500 dark:text-gray-400">Orders</span>
+                        </nav>
+                        <h1 class="text-base sm:text-lg font-bold dark:text-white leading-tight">Orders</h1>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div class="relative hidden md:block">
+                        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"><i class="fas fa-search text-sm"></i></span>
+                        <input type="text" placeholder="Search orders..." class="pl-10 pr-4 py-2 w-64 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 transition-colors">
+                    </div>
+                    <div class="relative">
+                        <button class="dropdown-trigger relative p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-gray-500" aria-label="Notifications">
+                            <i class="fas fa-bell text-lg"></i>
+                            <span class="absolute top-1 right-1 w-4 h-4 bg-red-500 text-white text-[9px] font-bold rounded-full flex items-center justify-center">5</span>
+                        </button>
+                        <div class="dropdown-menu w-80">
+                            <div class="px-4 py-3 border-b border-gray-100 dark:border-gray-800 flex items-center justify-between">
+                                <span class="text-sm font-bold dark:text-white">Notifications</span>
+                                <a href="messages.html" class="text-xs font-semibold text-brand-500 hover:text-brand-600">View all</a>
+                            </div>
+                            <a href="shipments.html" class="dropdown-item"><i class="fas fa-truck text-brand-500"></i> Shipment #SS10234 delivered</a>
+                            <a href="orders.html" class="dropdown-item"><i class="fas fa-shopping-cart text-blue-500"></i> New order #ORD-2291 received</a>
+                            <a href="messages.html" class="dropdown-item"><i class="fas fa-envelope text-purple-500"></i> 3 unread messages</a>
+                            <a href="users.html" class="dropdown-item"><i class="fas fa-user-plus text-green-500"></i> New user registered</a>
+                        </div>
+                    </div>
+                    <button id="themeToggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-gray-500" aria-label="Toggle dark mode">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:inline text-yellow-400"></i>
+                    </button>
+                    <div class="relative">
+                        <button class="dropdown-trigger flex items-center gap-3 pl-3 pr-2 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                            <div class="w-9 h-9 bg-brand-500 rounded-full flex items-center justify-center text-white font-bold text-sm">AU</div>
+                            <div class="hidden md:block text-left">
+                                <p class="text-sm font-semibold dark:text-white leading-tight">Admin User</p>
+                                <p class="text-xs text-gray-500 leading-tight">Super Admin</p>
+                            </div>
+                            <i class="fas fa-chevron-down text-xs text-gray-400 hidden md:inline"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a href="settings.html#profile" class="dropdown-item"><i class="fas fa-user"></i> My Profile</a>
+                            <a href="settings.html" class="dropdown-item"><i class="fas fa-cog"></i> Account Settings</a>
+                            <a href="messages.html" class="dropdown-item"><i class="fas fa-bell"></i> Notifications</a>
+                            <div class="border-t border-gray-200 dark:border-gray-700 my-1"></div>
+                            <a href="login.html" class="dropdown-item text-red-500"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="p-6">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+                <div>
+                    <h2 class="text-xl font-bold dark:text-white">Orders</h2>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">All customer orders and their payment status</p>
+                </div>
+                <a href="../pages/pricing.html" class="inline-flex items-center gap-2 bg-brand-500 hover:bg-brand-600 text-white font-semibold px-5 py-2.5 rounded-xl transition-colors text-sm shrink-0">
+                    <i class="fas fa-tags"></i> View Pricing Plans
+                </a>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
+                <div class="stats-card"><div class="stats-icon bg-purple-100 dark:bg-purple-900/30 text-purple-600"><i class="fas fa-dollar-sign"></i></div><div><p class="text-sm text-gray-500 dark:text-gray-400 mb-0.5">Total Value</p><p class="text-xl font-extrabold dark:text-white">$923.50</p></div></div>
+                <div class="stats-card"><div class="stats-icon bg-green-100 dark:bg-green-900/30 text-green-600"><i class="fas fa-check"></i></div><div><p class="text-sm text-gray-500 dark:text-gray-400 mb-0.5">Completed</p><p class="text-xl font-extrabold dark:text-white">4</p></div></div>
+                <div class="stats-card"><div class="stats-icon bg-blue-100 dark:bg-blue-900/30 text-blue-600"><i class="fas fa-hourglass-half"></i></div><div><p class="text-sm text-gray-500 dark:text-gray-400 mb-0.5">Processing</p><p class="text-xl font-extrabold dark:text-white">2</p></div></div>
+                <div class="stats-card"><div class="stats-icon bg-orange-100 dark:bg-orange-900/30 text-orange-600"><i class="fas fa-clock"></i></div><div><p class="text-sm text-gray-500 dark:text-gray-400 mb-0.5">Pending Payment</p><p class="text-xl font-extrabold dark:text-white">1</p></div></div>
+            </div>
+
+            <div class="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-6 pb-4">
+                    <div class="flex flex-wrap gap-2" id="orderFilters">
+                        <button class="order-filter-btn px-3 py-1.5 text-xs font-semibold bg-brand-500 text-white rounded-lg" data-status="all">All</button>
+                        <button class="order-filter-btn px-3 py-1.5 text-xs font-semibold bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" data-status="Completed">Completed</button>
+                        <button class="order-filter-btn px-3 py-1.5 text-xs font-semibold bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" data-status="Processing">Processing</button>
+                        <button class="order-filter-btn px-3 py-1.5 text-xs font-semibold bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" data-status="Pending Payment">Pending Payment</button>
+                        <button class="order-filter-btn px-3 py-1.5 text-xs font-semibold bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" data-status="Cancelled">Cancelled</button>
+                    </div>
+                    <div class="relative">
+                        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"><i class="fas fa-search text-sm"></i></span>
+                        <input type="text" id="orderSearch" placeholder="Search order ID or customer..." class="pl-10 pr-4 py-2 w-full sm:w-64 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 transition-colors">
+                    </div>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="data-table" id="ordersTable">
+                        <thead><tr><th>Order ID</th><th>Customer</th><th>Service</th><th>Amount</th><th>Status</th><th>Date</th><th>Action</th></tr></thead>
+                        <tbody>
+                                <tr data-status="Processing">
+                                    <td class="font-semibold text-brand-500">#ORD-2291</td>
+                                    <td>Emma Wilson</td>
+                                    <td>Parcel Shipping</td>
+                                    <td class="font-semibold dark:text-white">$48.00</td>
+                                    <td><span class="badge badge-info">Processing</span></td>
+                                    <td class="text-gray-500 dark:text-gray-400">Aug 18, 2026</td>
+                                    <td><div class="flex gap-1"><button class="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 hover:text-brand-500 transition-colors" title="View"><i class="fas fa-eye text-sm"></i></button><button class="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 hover:text-green-500 transition-colors" title="Invoice"><i class="fas fa-file-invoice text-sm"></i></button></div></td>
+                                </tr>
+                                <tr data-status="Completed">
+                                    <td class="font-semibold text-brand-500">#ORD-2290</td>
+                                    <td>Mike Johnson</td>
+                                    <td>Same-Day Delivery</td>
+                                    <td class="font-semibold dark:text-white">$65.00</td>
+                                    <td><span class="badge badge-success">Completed</span></td>
+                                    <td class="text-gray-500 dark:text-gray-400">Aug 17, 2026</td>
+                                    <td><div class="flex gap-1"><button class="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 hover:text-brand-500 transition-colors" title="View"><i class="fas fa-eye text-sm"></i></button><button class="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 hover:text-green-500 transition-colors" title="Invoice"><i class="fas fa-file-invoice text-sm"></i></button></div></td>
+                                </tr>
+                                <tr data-status="Completed">
+                                    <td class="font-semibold text-brand-500">#ORD-2289</td>
+                                    <td>Lisa Park</td>
+                                    <td>Document Delivery</td>
+                                    <td class="font-semibold dark:text-white">$18.50</td>
+                                    <td><span class="badge badge-success">Completed</span></td>
+                                    <td class="text-gray-500 dark:text-gray-400">Aug 17, 2026</td>
+                                    <td><div class="flex gap-1"><button class="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 hover:text-brand-500 transition-colors" title="View"><i class="fas fa-eye text-sm"></i></button><button class="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 hover:text-green-500 transition-colors" title="Invoice"><i class="fas fa-file-invoice text-sm"></i></button></div></td>
+                                </tr>
+                                <tr data-status="Processing">
+                                    <td class="font-semibold text-brand-500">#ORD-2288</td>
+                                    <td>Tom Harris</td>
+                                    <td>International Shipping</td>
+                                    <td class="font-semibold dark:text-white">$210.00</td>
+                                    <td><span class="badge badge-info">Processing</span></td>
+                                    <td class="text-gray-500 dark:text-gray-400">Aug 16, 2026</td>
+                                    <td><div class="flex gap-1"><button class="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 hover:text-brand-500 transition-colors" title="View"><i class="fas fa-eye text-sm"></i></button><button class="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 hover:text-green-500 transition-colors" title="Invoice"><i class="fas fa-file-invoice text-sm"></i></button></div></td>
+                                </tr>
+                                <tr data-status="Pending Payment">
+                                    <td class="font-semibold text-brand-500">#ORD-2287</td>
+                                    <td>Priya Patel</td>
+                                    <td>Bulk Cargo</td>
+                                    <td class="font-semibold dark:text-white">$340.00</td>
+                                    <td><span class="badge badge-warning">Pending Payment</span></td>
+                                    <td class="text-gray-500 dark:text-gray-400">Aug 16, 2026</td>
+                                    <td><div class="flex gap-1"><button class="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 hover:text-brand-500 transition-colors" title="View"><i class="fas fa-eye text-sm"></i></button><button class="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 hover:text-green-500 transition-colors" title="Invoice"><i class="fas fa-file-invoice text-sm"></i></button></div></td>
+                                </tr>
+                                <tr data-status="Completed">
+                                    <td class="font-semibold text-brand-500">#ORD-2286</td>
+                                    <td>Carlos Diaz</td>
+                                    <td>Parcel Shipping</td>
+                                    <td class="font-semibold dark:text-white">$52.00</td>
+                                    <td><span class="badge badge-success">Completed</span></td>
+                                    <td class="text-gray-500 dark:text-gray-400">Aug 15, 2026</td>
+                                    <td><div class="flex gap-1"><button class="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 hover:text-brand-500 transition-colors" title="View"><i class="fas fa-eye text-sm"></i></button><button class="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 hover:text-green-500 transition-colors" title="Invoice"><i class="fas fa-file-invoice text-sm"></i></button></div></td>
+                                </tr>
+                                <tr data-status="Cancelled">
+                                    <td class="font-semibold text-brand-500">#ORD-2285</td>
+                                    <td>Maria Garcia</td>
+                                    <td>Same-Day Delivery</td>
+                                    <td class="font-semibold dark:text-white">$70.00</td>
+                                    <td><span class="badge badge-danger">Cancelled</span></td>
+                                    <td class="text-gray-500 dark:text-gray-400">Aug 14, 2026</td>
+                                    <td><div class="flex gap-1"><button class="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 hover:text-brand-500 transition-colors" title="View"><i class="fas fa-eye text-sm"></i></button><button class="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 hover:text-green-500 transition-colors" title="Invoice"><i class="fas fa-file-invoice text-sm"></i></button></div></td>
+                                </tr>
+                                <tr data-status="Completed">
+                                    <td class="font-semibold text-brand-500">#ORD-2284</td>
+                                    <td>Alex Turner</td>
+                                    <td>Warehouse & Fulfillment</td>
+                                    <td class="font-semibold dark:text-white">$120.00</td>
+                                    <td><span class="badge badge-success">Completed</span></td>
+                                    <td class="text-gray-500 dark:text-gray-400">Aug 13, 2026</td>
+                                    <td><div class="flex gap-1"><button class="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 hover:text-brand-500 transition-colors" title="View"><i class="fas fa-eye text-sm"></i></button><button class="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 hover:text-green-500 transition-colors" title="Invoice"><i class="fas fa-file-invoice text-sm"></i></button></div></td>
+                                </tr>
+                        </tbody>
+                    </table>
+                    <p id="noOrders" class="hidden text-center text-sm text-gray-500 py-10">No orders match your filters.</p>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script src="../assets/js/main.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var rows = document.querySelectorAll('#ordersTable tbody tr');
+        var noResults = document.getElementById('noOrders');
+        var filterBtns = document.querySelectorAll('.order-filter-btn');
+        var searchInput = document.getElementById('orderSearch');
+        var currentStatus = 'all';
+
+        function applyFilters() {
+            var q = (searchInput.value || '').toLowerCase();
+            var visibleCount = 0;
+            rows.forEach(function(row) {
+                var status = row.getAttribute('data-status');
+                var text = row.textContent.toLowerCase();
+                var matchesStatus = currentStatus === 'all' || status === currentStatus;
+                var matchesSearch = text.indexOf(q) > -1;
+                var show = matchesStatus && matchesSearch;
+                row.style.display = show ? '' : 'none';
+                if (show) visibleCount++;
+            });
+            noResults.classList.toggle('hidden', visibleCount !== 0);
+        }
+
+        filterBtns.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                filterBtns.forEach(function(b) { b.classList.remove('bg-brand-500', 'text-white'); b.classList.add('bg-gray-100', 'dark:bg-gray-800', 'text-gray-600', 'dark:text-gray-400'); });
+                this.classList.add('bg-brand-500', 'text-white');
+                this.classList.remove('bg-gray-100', 'dark:bg-gray-800', 'text-gray-600', 'dark:text-gray-400');
+                currentStatus = this.getAttribute('data-status');
+                applyFilters();
+            });
+        });
+        if (searchInput) searchInput.addEventListener('input', applyFilters);
+    });
+    </script>
+</body>
+</html>

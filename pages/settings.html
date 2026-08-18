@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <link rel="icon" type="image/svg+xml" href="../assets/css/favicon.svg">
+    <link rel="shortcut icon" href="../assets/css/favicon.svg">
+    <link rel="apple-touch-icon" href="../assets/css/favicon.svg">
+
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Account, security, and notification settings for SwiftShip Express.">
+    <meta name="robots" content="noindex, follow">
+    <title>Settings | SwiftShip Express</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config={darkMode:'class',theme:{extend:{colors:{brand:{50:'#fff7ed',100:'#ffedd5',200:'#fed7aa',300:'#fdba74',400:'#fb923c',500:'#f97316',600:'#ea580c',700:'#c2410c',800:'#9a3412',900:'#7c2d12'}}}}}</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/custom.css">
+    <style>
+        .settings-tab-btn { color: var(--text-muted, #6b7280); background: transparent; text-align: left; }
+        .settings-tab-btn:hover { background: rgba(249,115,22,0.08); color: #f97316; }
+        .settings-tab-btn.active { background: #f97316; color: #fff; }
+    </style>
+</head>
+<body class="bg-gray-100 dark:bg-gray-950 text-gray-800 dark:text-gray-200">
+
+    <div class="preloader fixed inset-0 z-[9999] bg-white dark:bg-gray-900 flex items-center justify-center transition-opacity duration-500" id="preloader">
+        <div class="text-center">
+            <div class="relative w-20 h-20 mx-auto mb-4">
+                <div class="absolute inset-0 border-4 border-brand-200 dark:border-brand-800 rounded-full"></div>
+                <div class="absolute inset-0 border-4 border-transparent border-t-brand-500 rounded-full animate-spin"></div>
+                <i class="fas fa-shuttle-van absolute inset-0 flex items-center justify-center text-brand-500 text-xl"></i>
+            </div>
+            <p class="text-sm font-semibold text-gray-500 tracking-wider uppercase">Loading</p>
+        </div>
+    </div>
+
+    <aside class="sidebar bg-gray-900 dark:bg-gray-950 border-r-0">
+        <div class="px-6 py-5 border-b border-gray-800">
+            <a href="../index.html" class="flex items-center gap-3" aria-label="SwiftShip Express Home">
+                <div class="w-10 h-10 bg-brand-500 rounded-xl flex items-center justify-center shadow-lg shadow-brand-500/30">
+                    <i class="fas fa-shuttle-van text-white"></i>
+                </div>
+                <span class="text-xl font-extrabold text-white sidebar-logo-text">Swift<span class="text-brand-500">Ship</span></span>
+            </a>
+        </div>
+        <nav class="py-4" aria-label="Dashboard navigation">
+            <div class="px-6 mb-2"><span class="text-xs font-semibold text-gray-500 uppercase tracking-wider sidebar-label">Main</span></div>
+            <a href="dashboard.html" class="sidebar-link text-gray-400">
+                <i class="fas fa-tachometer-alt w-5 text-center"></i>
+                <span class="sidebar-label">Dashboard</span>
+            </a>
+            <a href="shipments.html" class="sidebar-link text-gray-400">
+                <i class="fas fa-box w-5 text-center"></i>
+                <span class="sidebar-label">Shipments</span>
+            </a>
+            <a href="orders.html" class="sidebar-link text-gray-400">
+                <i class="fas fa-shopping-cart w-5 text-center"></i>
+                <span class="sidebar-label">Orders</span>
+            </a>
+            <a href="users.html" class="sidebar-link text-gray-400">
+                <i class="fas fa-users w-5 text-center"></i>
+                <span class="sidebar-label">Users</span>
+            </a>
+            <div class="px-6 mb-2 mt-6"><span class="text-xs font-semibold text-gray-500 uppercase tracking-wider sidebar-label">Communication</span></div>
+            <a href="messages.html" class="sidebar-link text-gray-400 relative">
+                <i class="fas fa-envelope w-5 text-center"></i>
+                <span class="sidebar-label">Messages</span>
+                <span class="absolute right-3 top-1/2 -translate-y-1/2 bg-red-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center sidebar-label">3</span>
+            </a>
+            <div class="px-6 mb-2 mt-6"><span class="text-xs font-semibold text-gray-500 uppercase tracking-wider sidebar-label">Management</span></div>
+            <a href="analytics.html" class="sidebar-link text-gray-400">
+                <i class="fas fa-chart-line w-5 text-center"></i>
+                <span class="sidebar-label">Analytics</span>
+            </a>
+            <a href="pricing.html" class="sidebar-link text-gray-400">
+                <i class="fas fa-dollar-sign w-5 text-center"></i>
+                <span class="sidebar-label">Pricing</span>
+            </a>
+            <a href="settings.html" class="sidebar-link active">
+                <i class="fas fa-cog w-5 text-center"></i>
+                <span class="sidebar-label">Settings</span>
+            </a>
+        </nav>
+        <div class="absolute bottom-0 left-0 right-0 border-t border-gray-800 bg-gray-900 dark:bg-gray-950 p-4">
+            <a href="../index.html" class="sidebar-link text-gray-400">
+                <i class="fas fa-arrow-left w-5 text-center"></i>
+                <span class="sidebar-label">Back to Site</span>
+            </a>
+            <a href="login.html" class="sidebar-link text-gray-400">
+                <i class="fas fa-sign-out-alt w-5 text-center"></i>
+                <span class="sidebar-label">Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <div class="dashboard-main">
+        <header class="sticky top-0 z-50 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 transition-colors">
+            <div class="flex items-center justify-between h-16 px-6">
+                <div class="flex items-center gap-4">
+                    <button id="sidebarToggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-gray-500" aria-label="Toggle sidebar">
+                        <i class="fas fa-bars text-lg"></i>
+                    </button>
+                    <div>
+                        <nav class="hidden sm:flex items-center gap-1.5 text-xs text-gray-400 mb-0.5" aria-label="Breadcrumb">
+                            <a href="dashboard.html" class="hover:text-brand-500 transition-colors">Dashboard</a>
+                            <i class="fas fa-chevron-right text-[9px]"></i>
+                            <span class="text-gray-500 dark:text-gray-400">Settings</span>
+                        </nav>
+                        <h1 class="text-base sm:text-lg font-bold dark:text-white leading-tight">Settings</h1>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div class="relative hidden md:block">
+                        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"><i class="fas fa-search text-sm"></i></span>
+                        <input type="text" placeholder="Search settings..." class="pl-10 pr-4 py-2 w-64 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 transition-colors">
+                    </div>
+                    <div class="relative">
+                        <button class="dropdown-trigger relative p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-gray-500" aria-label="Notifications">
+                            <i class="fas fa-bell text-lg"></i>
+                            <span class="absolute top-1 right-1 w-4 h-4 bg-red-500 text-white text-[9px] font-bold rounded-full flex items-center justify-center">5</span>
+                        </button>
+                        <div class="dropdown-menu w-80">
+                            <div class="px-4 py-3 border-b border-gray-100 dark:border-gray-800 flex items-center justify-between">
+                                <span class="text-sm font-bold dark:text-white">Notifications</span>
+                                <a href="messages.html" class="text-xs font-semibold text-brand-500 hover:text-brand-600">View all</a>
+                            </div>
+                            <a href="shipments.html" class="dropdown-item"><i class="fas fa-truck text-brand-500"></i> Shipment #SS10234 delivered</a>
+                            <a href="orders.html" class="dropdown-item"><i class="fas fa-shopping-cart text-blue-500"></i> New order #ORD-2291 received</a>
+                            <a href="messages.html" class="dropdown-item"><i class="fas fa-envelope text-purple-500"></i> 3 unread messages</a>
+                            <a href="users.html" class="dropdown-item"><i class="fas fa-user-plus text-green-500"></i> New user registered</a>
+                        </div>
+                    </div>
+                    <button id="themeToggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-gray-500" aria-label="Toggle dark mode">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:inline text-yellow-400"></i>
+                    </button>
+                    <div class="relative">
+                        <button class="dropdown-trigger flex items-center gap-3 pl-3 pr-2 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                            <div class="w-9 h-9 bg-brand-500 rounded-full flex items-center justify-center text-white font-bold text-sm">AU</div>
+                            <div class="hidden md:block text-left">
+                                <p class="text-sm font-semibold dark:text-white leading-tight">Admin User</p>
+                                <p class="text-xs text-gray-500 leading-tight">Super Admin</p>
+                            </div>
+                            <i class="fas fa-chevron-down text-xs text-gray-400 hidden md:inline"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a href="settings.html#profile" class="dropdown-item"><i class="fas fa-user"></i> My Profile</a>
+                            <a href="settings.html" class="dropdown-item"><i class="fas fa-cog"></i> Account Settings</a>
+                            <a href="messages.html" class="dropdown-item"><i class="fas fa-bell"></i> Notifications</a>
+                            <div class="border-t border-gray-200 dark:border-gray-700 my-1"></div>
+                            <a href="login.html" class="dropdown-item text-red-500"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="p-6">
+            <div class="mb-6">
+                <h2 class="text-xl font-bold dark:text-white">Settings</h2>
+                <p class="text-sm text-gray-500 dark:text-gray-400">Manage your profile, security, and notification preferences</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-6">
+                <nav class="flex lg:flex-col gap-1 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0" id="settingsTabs">
+                    <button class="settings-tab-btn active flex items-center gap-2.5 px-4 py-2.5 rounded-lg text-sm font-semibold whitespace-nowrap" data-tab="profile"><i class="fas fa-user w-4"></i> Profile</button>
+                    <button class="settings-tab-btn flex items-center gap-2.5 px-4 py-2.5 rounded-lg text-sm font-semibold whitespace-nowrap" data-tab="security"><i class="fas fa-shield-halved w-4"></i> Security</button>
+                    <button class="settings-tab-btn flex items-center gap-2.5 px-4 py-2.5 rounded-lg text-sm font-semibold whitespace-nowrap" data-tab="notifications"><i class="fas fa-bell w-4"></i> Notifications</button>
+                    <button class="settings-tab-btn flex items-center gap-2.5 px-4 py-2.5 rounded-lg text-sm font-semibold whitespace-nowrap" data-tab="billing"><i class="fas fa-credit-card w-4"></i> Billing</button>
+                </nav>
+
+                <div>
+                    <div class="settings-panel bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 p-6" id="panel-profile">
+                        <h3 class="text-base font-bold dark:text-white mb-5">Profile Information</h3>
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-16 h-16 rounded-full bg-brand-500 flex items-center justify-center text-white font-bold text-xl">AU</div>
+                            <div>
+                                <button type="button" class="text-sm font-semibold text-brand-500 hover:text-brand-600">Change photo</button>
+                                <p class="text-xs text-gray-400">JPG or PNG, max 2MB</p>
+                            </div>
+                        </div>
+                        <form class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="profileForm">
+                            <div class="form-group mb-0"><label class="form-label">Full Name</label><input type="text" class="form-control" value="Admin User"></div>
+                            <div class="form-group mb-0"><label class="form-label">Email Address</label><input type="email" class="form-control" value="admin@swiftship.com"></div>
+                            <div class="form-group mb-0"><label class="form-label">Phone</label><input type="tel" class="form-control" value="(800) 555-0199"></div>
+                            <div class="form-group mb-0"><label class="form-label">Role</label><input type="text" class="form-control" value="Super Admin" disabled></div>
+                            <div class="sm:col-span-2 flex justify-end">
+                                <button type="submit" class="inline-flex items-center gap-2 px-6 py-2.5 bg-brand-500 hover:bg-brand-600 text-white font-semibold rounded-xl transition-colors text-sm"><i class="fas fa-check"></i> Save Changes</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="settings-panel hidden bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 p-6" id="panel-security">
+                        <h3 class="text-base font-bold dark:text-white mb-5">Password &amp; Security</h3>
+                        <form class="space-y-4 max-w-md" id="securityForm">
+                            <div class="form-group mb-0"><label class="form-label">Current Password</label><input type="password" class="form-control" placeholder="••••••••"></div>
+                            <div class="form-group mb-0"><label class="form-label">New Password</label><input type="password" class="form-control" placeholder="Min 8 characters"></div>
+                            <div class="form-group mb-0"><label class="form-label">Confirm New Password</label><input type="password" class="form-control" placeholder="Re-enter password"></div>
+                            <button type="submit" class="inline-flex items-center gap-2 px-6 py-2.5 bg-brand-500 hover:bg-brand-600 text-white font-semibold rounded-xl transition-colors text-sm"><i class="fas fa-key"></i> Update Password</button>
+                        </form>
+                        <div class="border-t border-gray-100 dark:border-gray-800 mt-6 pt-6 flex items-center justify-between max-w-md">
+                            <div>
+                                <p class="text-sm font-semibold dark:text-white">Two-Factor Authentication</p>
+                                <p class="text-xs text-gray-500">Add an extra layer of security to your account</p>
+                            </div>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" class="sr-only peer">
+                                <div class="w-11 h-6 bg-gray-200 dark:bg-gray-700 rounded-full peer peer-checked:bg-brand-500 transition-colors"></div>
+                                <div class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform peer-checked:translate-x-5"></div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="settings-panel hidden bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 p-6" id="panel-notifications">
+                        <h3 class="text-base font-bold dark:text-white mb-5">Notification Preferences</h3>
+                        <div class="space-y-4 max-w-lg">
+                            <div class="flex items-center justify-between py-2">
+                                <div>
+                                    <p class="text-sm font-semibold dark:text-white">New shipment updates</p>
+                                    <p class="text-xs text-gray-500">Get notified when a shipment status changes</p>
+                                </div>
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" class="sr-only peer" checked>
+                                    <div class="w-11 h-6 bg-gray-200 dark:bg-gray-700 rounded-full peer peer-checked:bg-brand-500 transition-colors"></div>
+                                    <div class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform peer-checked:translate-x-5"></div>
+                                </label>
+                            </div>
+                            <div class="flex items-center justify-between py-2">
+                                <div>
+                                    <p class="text-sm font-semibold dark:text-white">Order confirmations</p>
+                                    <p class="text-xs text-gray-500">Receive an email whenever a new order is placed</p>
+                                </div>
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" class="sr-only peer" checked>
+                                    <div class="w-11 h-6 bg-gray-200 dark:bg-gray-700 rounded-full peer peer-checked:bg-brand-500 transition-colors"></div>
+                                    <div class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform peer-checked:translate-x-5"></div>
+                                </label>
+                            </div>
+                            <div class="flex items-center justify-between py-2">
+                                <div>
+                                    <p class="text-sm font-semibold dark:text-white">Customer messages</p>
+                                    <p class="text-xs text-gray-500">Alert me when a customer sends a message</p>
+                                </div>
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" class="sr-only peer" checked>
+                                    <div class="w-11 h-6 bg-gray-200 dark:bg-gray-700 rounded-full peer peer-checked:bg-brand-500 transition-colors"></div>
+                                    <div class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform peer-checked:translate-x-5"></div>
+                                </label>
+                            </div>
+                            <div class="flex items-center justify-between py-2">
+                                <div>
+                                    <p class="text-sm font-semibold dark:text-white">Weekly performance digest</p>
+                                    <p class="text-xs text-gray-500">A summary of deliveries and revenue every Monday</p>
+                                </div>
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" class="sr-only peer" >
+                                    <div class="w-11 h-6 bg-gray-200 dark:bg-gray-700 rounded-full peer peer-checked:bg-brand-500 transition-colors"></div>
+                                    <div class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform peer-checked:translate-x-5"></div>
+                                </label>
+                            </div>
+                            <div class="flex items-center justify-between py-2">
+                                <div>
+                                    <p class="text-sm font-semibold dark:text-white">Product announcements</p>
+                                    <p class="text-xs text-gray-500">News about new SwiftShip Express features</p>
+                                </div>
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" class="sr-only peer" >
+                                    <div class="w-11 h-6 bg-gray-200 dark:bg-gray-700 rounded-full peer peer-checked:bg-brand-500 transition-colors"></div>
+                                    <div class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform peer-checked:translate-x-5"></div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-panel hidden bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 p-6" id="panel-billing">
+                        <h3 class="text-base font-bold dark:text-white mb-5">Billing &amp; Plan</h3>
+                        <div class="flex items-center justify-between p-4 rounded-xl bg-brand-50 dark:bg-brand-900/20 border border-brand-100 dark:border-brand-900/40 mb-5">
+                            <div>
+                                <p class="text-sm font-semibold dark:text-white">Business Plan</p>
+                                <p class="text-xs text-gray-500">$49/month &middot; renews Sep 1, 2026</p>
+                            </div>
+                            <a href="pricing.html" class="text-sm font-semibold text-brand-500 hover:text-brand-600">Change Plan</a>
+                        </div>
+                        <div class="flex items-center justify-between max-w-md">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-7 bg-gray-800 rounded flex items-center justify-center text-white text-[10px] font-bold">VISA</div>
+                                <div>
+                                    <p class="text-sm font-semibold dark:text-white">•••• •••• •••• 4242</p>
+                                    <p class="text-xs text-gray-500">Expires 08/28</p>
+                                </div>
+                            </div>
+                            <button type="button" class="text-sm font-semibold text-brand-500 hover:text-brand-600">Update</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script src="../assets/js/main.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var tabBtns = document.querySelectorAll('.settings-tab-btn');
+        var panels = document.querySelectorAll('.settings-panel');
+        tabBtns.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                tabBtns.forEach(function(b) { b.classList.remove('active'); });
+                this.classList.add('active');
+                var target = this.getAttribute('data-tab');
+                panels.forEach(function(p) { p.classList.toggle('hidden', p.id !== 'panel-' + target); });
+            });
+        });
+
+        if (window.location.hash === '#profile') {
+            var profileBtn = document.querySelector('.settings-tab-btn[data-tab="profile"]');
+            if (profileBtn) profileBtn.click();
+        }
+
+        ['profileForm', 'securityForm'].forEach(function(id) {
+            var form = document.getElementById(id);
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    showToast('Settings saved', 'success');
+                });
+            }
+        });
+    });
+    </script>
+</body>
+</html>

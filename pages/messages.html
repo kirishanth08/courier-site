@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <link rel="icon" type="image/svg+xml" href="../assets/css/favicon.svg">
+    <link rel="shortcut icon" href="../assets/css/favicon.svg">
+    <link rel="apple-touch-icon" href="../assets/css/favicon.svg">
+
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Chat with SwiftShip Express customers.">
+    <meta name="robots" content="noindex, follow">
+    <title>Messages | SwiftShip Express</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config={darkMode:'class',theme:{extend:{colors:{brand:{50:'#fff7ed',100:'#ffedd5',200:'#fed7aa',300:'#fdba74',400:'#fb923c',500:'#f97316',600:'#ea580c',700:'#c2410c',800:'#9a3412',900:'#7c2d12'}}}}}</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/custom.css">
+</head>
+<body class="bg-gray-100 dark:bg-gray-950 text-gray-800 dark:text-gray-200">
+
+    <div class="preloader fixed inset-0 z-[9999] bg-white dark:bg-gray-900 flex items-center justify-center transition-opacity duration-500" id="preloader">
+        <div class="text-center">
+            <div class="relative w-20 h-20 mx-auto mb-4">
+                <div class="absolute inset-0 border-4 border-brand-200 dark:border-brand-800 rounded-full"></div>
+                <div class="absolute inset-0 border-4 border-transparent border-t-brand-500 rounded-full animate-spin"></div>
+                <i class="fas fa-shuttle-van absolute inset-0 flex items-center justify-center text-brand-500 text-xl"></i>
+            </div>
+            <p class="text-sm font-semibold text-gray-500 tracking-wider uppercase">Loading</p>
+        </div>
+    </div>
+
+    <aside class="sidebar bg-gray-900 dark:bg-gray-950 border-r-0">
+        <div class="px-6 py-5 border-b border-gray-800">
+            <a href="../index.html" class="flex items-center gap-3" aria-label="SwiftShip Express Home">
+                <div class="w-10 h-10 bg-brand-500 rounded-xl flex items-center justify-center shadow-lg shadow-brand-500/30">
+                    <i class="fas fa-shuttle-van text-white"></i>
+                </div>
+                <span class="text-xl font-extrabold text-white sidebar-logo-text">Swift<span class="text-brand-500">Ship</span></span>
+            </a>
+        </div>
+        <nav class="py-4" aria-label="Dashboard navigation">
+            <div class="px-6 mb-2"><span class="text-xs font-semibold text-gray-500 uppercase tracking-wider sidebar-label">Main</span></div>
+            <a href="dashboard.html" class="sidebar-link text-gray-400">
+                <i class="fas fa-tachometer-alt w-5 text-center"></i>
+                <span class="sidebar-label">Dashboard</span>
+            </a>
+            <a href="shipments.html" class="sidebar-link text-gray-400">
+                <i class="fas fa-box w-5 text-center"></i>
+                <span class="sidebar-label">Shipments</span>
+            </a>
+            <a href="orders.html" class="sidebar-link text-gray-400">
+                <i class="fas fa-shopping-cart w-5 text-center"></i>
+                <span class="sidebar-label">Orders</span>
+            </a>
+            <a href="users.html" class="sidebar-link text-gray-400">
+                <i class="fas fa-users w-5 text-center"></i>
+                <span class="sidebar-label">Users</span>
+            </a>
+            <div class="px-6 mb-2 mt-6"><span class="text-xs font-semibold text-gray-500 uppercase tracking-wider sidebar-label">Communication</span></div>
+            <a href="messages.html" class="sidebar-link active relative">
+                <i class="fas fa-envelope w-5 text-center"></i>
+                <span class="sidebar-label">Messages</span>
+                <span class="absolute right-3 top-1/2 -translate-y-1/2 bg-red-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center sidebar-label">3</span>
+            </a>
+            <div class="px-6 mb-2 mt-6"><span class="text-xs font-semibold text-gray-500 uppercase tracking-wider sidebar-label">Management</span></div>
+            <a href="analytics.html" class="sidebar-link text-gray-400">
+                <i class="fas fa-chart-line w-5 text-center"></i>
+                <span class="sidebar-label">Analytics</span>
+            </a>
+            <a href="pricing.html" class="sidebar-link text-gray-400">
+                <i class="fas fa-dollar-sign w-5 text-center"></i>
+                <span class="sidebar-label">Pricing</span>
+            </a>
+            <a href="settings.html" class="sidebar-link text-gray-400">
+                <i class="fas fa-cog w-5 text-center"></i>
+                <span class="sidebar-label">Settings</span>
+            </a>
+        </nav>
+        <div class="absolute bottom-0 left-0 right-0 border-t border-gray-800 bg-gray-900 dark:bg-gray-950 p-4">
+            <a href="../index.html" class="sidebar-link text-gray-400">
+                <i class="fas fa-arrow-left w-5 text-center"></i>
+                <span class="sidebar-label">Back to Site</span>
+            </a>
+            <a href="login.html" class="sidebar-link text-gray-400">
+                <i class="fas fa-sign-out-alt w-5 text-center"></i>
+                <span class="sidebar-label">Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <div class="dashboard-main">
+        <header class="sticky top-0 z-50 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 transition-colors">
+            <div class="flex items-center justify-between h-16 px-6">
+                <div class="flex items-center gap-4">
+                    <button id="sidebarToggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-gray-500" aria-label="Toggle sidebar">
+                        <i class="fas fa-bars text-lg"></i>
+                    </button>
+                    <div>
+                        <nav class="hidden sm:flex items-center gap-1.5 text-xs text-gray-400 mb-0.5" aria-label="Breadcrumb">
+                            <a href="dashboard.html" class="hover:text-brand-500 transition-colors">Dashboard</a>
+                            <i class="fas fa-chevron-right text-[9px]"></i>
+                            <span class="text-gray-500 dark:text-gray-400">Messages</span>
+                        </nav>
+                        <h1 class="text-base sm:text-lg font-bold dark:text-white leading-tight">Messages</h1>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div class="relative hidden md:block">
+                        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"><i class="fas fa-search text-sm"></i></span>
+                        <input type="text" placeholder="Search messages..." class="pl-10 pr-4 py-2 w-64 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 transition-colors">
+                    </div>
+                    <div class="relative">
+                        <button class="dropdown-trigger relative p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-gray-500" aria-label="Notifications">
+                            <i class="fas fa-bell text-lg"></i>
+                            <span class="absolute top-1 right-1 w-4 h-4 bg-red-500 text-white text-[9px] font-bold rounded-full flex items-center justify-center">5</span>
+                        </button>
+                        <div class="dropdown-menu w-80">
+                            <div class="px-4 py-3 border-b border-gray-100 dark:border-gray-800 flex items-center justify-between">
+                                <span class="text-sm font-bold dark:text-white">Notifications</span>
+                                <a href="messages.html" class="text-xs font-semibold text-brand-500 hover:text-brand-600">View all</a>
+                            </div>
+                            <a href="shipments.html" class="dropdown-item"><i class="fas fa-truck text-brand-500"></i> Shipment #SS10234 delivered</a>
+                            <a href="orders.html" class="dropdown-item"><i class="fas fa-shopping-cart text-blue-500"></i> New order #ORD-2291 received</a>
+                            <a href="messages.html" class="dropdown-item"><i class="fas fa-envelope text-purple-500"></i> 3 unread messages</a>
+                            <a href="users.html" class="dropdown-item"><i class="fas fa-user-plus text-green-500"></i> New user registered</a>
+                        </div>
+                    </div>
+                    <button id="themeToggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-gray-500" aria-label="Toggle dark mode">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:inline text-yellow-400"></i>
+                    </button>
+                    <div class="relative">
+                        <button class="dropdown-trigger flex items-center gap-3 pl-3 pr-2 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                            <div class="w-9 h-9 bg-brand-500 rounded-full flex items-center justify-center text-white font-bold text-sm">AU</div>
+                            <div class="hidden md:block text-left">
+                                <p class="text-sm font-semibold dark:text-white leading-tight">Admin User</p>
+                                <p class="text-xs text-gray-500 leading-tight">Super Admin</p>
+                            </div>
+                            <i class="fas fa-chevron-down text-xs text-gray-400 hidden md:inline"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a href="settings.html#profile" class="dropdown-item"><i class="fas fa-user"></i> My Profile</a>
+                            <a href="settings.html" class="dropdown-item"><i class="fas fa-cog"></i> Account Settings</a>
+                            <a href="messages.html" class="dropdown-item"><i class="fas fa-bell"></i> Notifications</a>
+                            <div class="border-t border-gray-200 dark:border-gray-700 my-1"></div>
+                            <a href="login.html" class="dropdown-item text-red-500"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="p-6">
+            <div class="mb-6">
+                <h2 class="text-xl font-bold dark:text-white">Messages</h2>
+                <p class="text-sm text-gray-500 dark:text-gray-400">Conversations with your customers</p>
+            </div>
+
+            <div class="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 overflow-hidden" style="height: 620px;">
+                <div class="grid grid-cols-1 lg:grid-cols-[320px_1fr] h-full">
+                    <div class="border-r border-gray-100 dark:border-gray-800 flex flex-col h-full">
+                        <div class="p-4 border-b border-gray-100 dark:border-gray-800">
+                            <div class="relative">
+                                <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"><i class="fas fa-search text-sm"></i></span>
+                                <input type="text" id="convSearch" placeholder="Search conversations..." class="pl-10 pr-4 py-2 w-full bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 transition-colors">
+                            </div>
+                        </div>
+                        <div class="overflow-y-auto flex-1" id="convList">
+                        <button class="conv-item w-full text-left flex items-start gap-3 p-4 border-b border-gray-100 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors bg-brand-50 dark:bg-brand-900/20" data-name="John Smith" data-initials="JS" data-avatar="bg-blue-500">
+                            <div class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center text-white font-bold text-sm shrink-0">JS</div>
+                            <div class="flex-1 min-w-0">
+                                <div class="flex items-center justify-between mb-0.5">
+                                    <h4 class="text-sm font-semibold dark:text-white truncate">John Smith</h4>
+                                    <span class="text-xs text-gray-400 shrink-0">2m ago</span>
+                                </div>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 truncate">Hi, I need to update the delivery address for order #SS10234...</p>
+                            </div>
+                            <span class="w-2 h-2 rounded-full bg-brand-500 shrink-0"></span>
+                        </button>
+                        <button class="conv-item w-full text-left flex items-start gap-3 p-4 border-b border-gray-100 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors" data-name="Emma Wilson" data-initials="EW" data-avatar="bg-green-500">
+                            <div class="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center text-white font-bold text-sm shrink-0">EW</div>
+                            <div class="flex-1 min-w-0">
+                                <div class="flex items-center justify-between mb-0.5">
+                                    <h4 class="text-sm font-semibold dark:text-white truncate">Emma Wilson</h4>
+                                    <span class="text-xs text-gray-400 shrink-0">15m ago</span>
+                                </div>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 truncate">Thank you for the quick delivery! The package arrived in perfect condition.</p>
+                            </div>
+                            
+                        </button>
+                        <button class="conv-item w-full text-left flex items-start gap-3 p-4 border-b border-gray-100 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors" data-name="Sarah Connor" data-initials="SC" data-avatar="bg-purple-500">
+                            <div class="w-10 h-10 rounded-full bg-purple-500 flex items-center justify-center text-white font-bold text-sm shrink-0">SC</div>
+                            <div class="flex-1 min-w-0">
+                                <div class="flex items-center justify-between mb-0.5">
+                                    <h4 class="text-sm font-semibold dark:text-white truncate">Sarah Connor</h4>
+                                    <span class="text-xs text-gray-400 shrink-0">1h ago</span>
+                                </div>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 truncate">Could you provide an estimated delivery time for my international shipment?</p>
+                            </div>
+                            <span class="w-2 h-2 rounded-full bg-brand-500 shrink-0"></span>
+                        </button>
+                        <button class="conv-item w-full text-left flex items-start gap-3 p-4 border-b border-gray-100 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors" data-name="David Lee" data-initials="DL" data-avatar="bg-cyan-500">
+                            <div class="w-10 h-10 rounded-full bg-cyan-500 flex items-center justify-center text-white font-bold text-sm shrink-0">DL</div>
+                            <div class="flex-1 min-w-0">
+                                <div class="flex items-center justify-between mb-0.5">
+                                    <h4 class="text-sm font-semibold dark:text-white truncate">David Lee</h4>
+                                    <span class="text-xs text-gray-400 shrink-0">3h ago</span>
+                                </div>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 truncate">My tracking number isn't updating, can you check on it?</p>
+                            </div>
+                            
+                        </button>
+                        <button class="conv-item w-full text-left flex items-start gap-3 p-4 border-b border-gray-100 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors" data-name="Anna Brown" data-initials="AB" data-avatar="bg-pink-500">
+                            <div class="w-10 h-10 rounded-full bg-pink-500 flex items-center justify-center text-white font-bold text-sm shrink-0">AB</div>
+                            <div class="flex-1 min-w-0">
+                                <div class="flex items-center justify-between mb-0.5">
+                                    <h4 class="text-sm font-semibold dark:text-white truncate">Anna Brown</h4>
+                                    <span class="text-xs text-gray-400 shrink-0">1d ago</span>
+                                </div>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 truncate">Perfect, thanks for confirming the pickup window.</p>
+                            </div>
+                            
+                        </button>
+                        </div>
+                    </div>
+                    <div class="flex flex-col h-full">
+                        <div class="flex items-center gap-3 p-4 border-b border-gray-100 dark:border-gray-800">
+                            <div class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center text-white font-bold text-sm" id="activeAvatar">JS</div>
+                            <div>
+                                <h4 class="text-sm font-semibold dark:text-white" id="activeName">John Smith</h4>
+                                <p class="text-xs text-green-500">Online</p>
+                            </div>
+                        </div>
+                        <div class="flex-1 overflow-y-auto p-5 space-y-4" id="chatThread">
+                            <div class="flex items-end gap-2">
+                                <div class="w-7 h-7 rounded-full bg-blue-500 flex items-center justify-center text-white font-bold text-[10px] shrink-0">JS</div>
+                                <div class="bg-gray-100 dark:bg-gray-800 rounded-2xl rounded-bl-sm px-4 py-2.5 text-sm max-w-xs">Hi, I need to update the delivery address for order #SS10234, is that still possible?</div>
+                            </div>
+                            <div class="flex items-end gap-2 justify-end">
+                                <div class="bg-brand-500 text-white rounded-2xl rounded-br-sm px-4 py-2.5 text-sm max-w-xs">Of course! Since it hasn't left the warehouse yet, I can update it for you. What's the new address?</div>
+                            </div>
+                            <div class="flex items-end gap-2">
+                                <div class="w-7 h-7 rounded-full bg-blue-500 flex items-center justify-center text-white font-bold text-[10px] shrink-0">JS</div>
+                                <div class="bg-gray-100 dark:bg-gray-800 rounded-2xl rounded-bl-sm px-4 py-2.5 text-sm max-w-xs">Great, it's 221 Baker Street, Apt 4B. Thank you!</div>
+                            </div>
+                        </div>
+                        <form id="chatForm" class="p-4 border-t border-gray-100 dark:border-gray-800 flex items-center gap-3">
+                            <input type="text" id="chatInput" placeholder="Type a reply..." class="flex-1 px-4 py-2.5 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 transition-colors">
+                            <button type="submit" class="w-10 h-10 shrink-0 rounded-full bg-brand-500 hover:bg-brand-600 text-white flex items-center justify-center transition-colors"><i class="fas fa-paper-plane text-sm"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script src="../assets/js/main.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var items = document.querySelectorAll('.conv-item');
+        var activeName = document.getElementById('activeName');
+        var activeAvatar = document.getElementById('activeAvatar');
+        var chatThread = document.getElementById('chatThread');
+        var search = document.getElementById('convSearch');
+
+        items.forEach(function(item) {
+            item.addEventListener('click', function() {
+                items.forEach(function(i) { i.classList.remove('bg-brand-50', 'dark:bg-brand-900/20'); });
+                this.classList.add('bg-brand-50', 'dark:bg-brand-900/20');
+                var name = this.getAttribute('data-name');
+                var initials = this.getAttribute('data-initials');
+                var avatarCls = this.getAttribute('data-avatar');
+                activeName.textContent = name;
+                activeAvatar.textContent = initials;
+                activeAvatar.className = 'w-10 h-10 rounded-full ' + avatarCls + ' flex items-center justify-center text-white font-bold text-sm';
+                chatThread.innerHTML = '<div class="flex items-end gap-2"><div class="w-7 h-7 rounded-full ' + avatarCls + ' flex items-center justify-center text-white font-bold text-[10px] shrink-0">' + initials + '</div><div class="bg-gray-100 dark:bg-gray-800 rounded-2xl rounded-bl-sm px-4 py-2.5 text-sm max-w-xs">Hi! Just checking in on my order.</div></div>';
+            });
+        });
+
+        if (search) {
+            search.addEventListener('input', function() {
+                var q = this.value.toLowerCase();
+                items.forEach(function(item) {
+                    item.style.display = item.textContent.toLowerCase().indexOf(q) > -1 ? '' : 'none';
+                });
+            });
+        }
+
+        var chatForm = document.getElementById('chatForm');
+        var chatInput = document.getElementById('chatInput');
+        if (chatForm) {
+            chatForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                var text = chatInput.value.trim();
+                if (!text) return;
+                var bubble = document.createElement('div');
+                bubble.className = 'flex items-end gap-2 justify-end';
+                bubble.innerHTML = '<div class="bg-brand-500 text-white rounded-2xl rounded-br-sm px-4 py-2.5 text-sm max-w-xs"></div>';
+                bubble.querySelector('div').textContent = text;
+                chatThread.appendChild(bubble);
+                chatThread.scrollTop = chatThread.scrollHeight;
+                chatInput.value = '';
+            });
+        }
+    });
+    </script>
+</body>
+</html>

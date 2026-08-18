@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <link rel="icon" type="image/svg+xml" href="../assets/css/favicon.svg">
+    <link rel="shortcut icon" href="../assets/css/favicon.svg">
+    <link rel="apple-touch-icon" href="../assets/css/favicon.svg">
+
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SwiftShip Express is launching soon. Sign up to get notified when our new delivery experience goes live.">
+    <meta name="keywords" content="SwiftShip launching soon, new delivery service, courier service launch, parcel delivery">
+    <meta name="robots" content="noindex, nofollow">
+    <meta property="og:title" content="Coming Soon | SwiftShip Express - Courier & Parcel Delivery">
+    <meta property="og:description" content="Something exciting is on its way. Stay tuned for our new delivery experience.">
+    <meta property="og:type" content="website">
+    <title>Coming Soon | SwiftShip Express - Courier & Parcel Delivery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = { darkMode:'class', theme:{ extend:{ colors:{ brand:{ 50:'#fff7ed',100:'#ffedd5',200:'#fed7aa',300:'#fdba74',400:'#fb923c',500:'#f97316',600:'#ea580c',700:'#c2410c',800:'#9a3412',900:'#7c2d12' } } } } }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/custom.css">
+<style>.swift-coming-flag{filter:drop-shadow(0 4px 6px rgba(0,0,0,.25));font-size:2rem}.swift-coming-flag-wrap{display:flex;align-items:center;justify-content:center;gap:.55rem;margin-bottom:.4rem}</style></head>
+<body class="bg-gray-900 text-gray-200">
+
+    <!-- Background -->
+    <div class="fixed inset-0 z-0">
+        <img src="https://images.unsplash.com/photo-1580674684081-7617fbf3d745?w=1920&h=1080&fit=crop" alt="" class="w-full h-full object-cover" aria-hidden="true">
+        <div class="absolute inset-0 bg-gray-900/80 backdrop-blur-sm"></div>
+    </div>
+
+    <!-- Theme Toggle -->
+    <div class="fixed top-6 right-6 z-50">
+        <button id="themeToggle" class="p-3 rounded-xl bg-white/10 backdrop-blur-md border border-white/10 hover:bg-white/20 transition-colors" aria-label="Toggle dark mode">
+            <i class="fas fa-moon dark:hidden text-white"></i><i class="fas fa-sun hidden dark:inline text-yellow-400"></i>
+        </button>
+    </div>
+
+    <!-- Coming Soon Content -->
+    <section class="relative z-10 min-h-screen flex items-center justify-center px-6" aria-label="Coming Soon">
+        <div class="max-w-3xl mx-auto text-center">
+            <!-- Logo -->
+            <div class="mb-8">
+                <a href="../index.html" class="inline-flex items-center gap-3" aria-label="SwiftShip Express Home">
+                    <div class="w-14 h-14 bg-brand-500 rounded-2xl flex items-center justify-center shadow-2xl shadow-brand-500/40"><i class="fas fa-shuttle-van text-white text-2xl"></i></div>
+                    <span class="text-2xl font-extrabold text-white"><span class="text-brand-500">Swift</span>Ship</span>
+                </a>
+            </div>
+
+            <!-- Heading -->
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">We're <span class="text-brand-500">Launching</span> Soon</h1>
+            <p class="text-lg sm:text-xl text-gray-300 max-w-xl mx-auto mb-12 leading-relaxed">Something exciting is on its way. Stay tuned for our new delivery experience.</p>
+
+            <!-- Countdown Timer -->
+            <div class="grid grid-cols-4 gap-3 sm:gap-6 max-w-lg mx-auto mb-12" id="countdown" aria-label="Countdown timer">
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 sm:p-6 border border-white/10">
+                    <div class="text-3xl sm:text-5xl font-extrabold text-brand-500" id="days">00</div>
+                    <div class="text-xs sm:text-sm text-gray-400 mt-2 font-medium uppercase tracking-wider">Days</div>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 sm:p-6 border border-white/10">
+                    <div class="text-3xl sm:text-5xl font-extrabold text-brand-500" id="hours">00</div>
+                    <div class="text-xs sm:text-sm text-gray-400 mt-2 font-medium uppercase tracking-wider">Hours</div>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 sm:p-6 border border-white/10">
+                    <div class="text-3xl sm:text-5xl font-extrabold text-brand-500" id="minutes">00</div>
+                    <div class="text-xs sm:text-sm text-gray-400 mt-2 font-medium uppercase tracking-wider">Minutes</div>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 sm:p-6 border border-white/10">
+                    <div class="text-3xl sm:text-5xl font-extrabold text-brand-500" id="seconds">00</div>
+                    <div class="text-xs sm:text-sm text-gray-400 mt-2 font-medium uppercase tracking-wider">Seconds</div>
+                </div>
+            </div>
+
+            <!-- Email Signup -->
+            <div class="max-w-md mx-auto mb-12">
+                <p class="text-sm text-gray-400 mb-4 font-medium">Get notified when we launch</p>
+                <form id="notifyForm" class="flex gap-3" novalidate>
+                    <div class="flex-1 relative">
+                        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"><i class="fas fa-envelope text-sm"></i></span>
+                        <input type="email" id="notifyEmail" class="w-full pl-11 pr-4 py-4 bg-white/10 backdrop-blur-md border border-white/10 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-all" placeholder="Enter your email" required aria-required="true">
+                    </div>
+                    <button type="submit" class="px-6 py-4 bg-brand-500 text-white font-bold rounded-xl hover:bg-brand-600 shadow-xl shadow-brand-500/25 transition-all hover:-translate-y-0.5 shrink-0">
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+
+            <!-- Social Icons -->
+            <div class="flex items-center justify-center gap-4">
+                <a href="https://www.facebook.com/" class="w-11 h-11 bg-white/10 backdrop-blur-md border border-white/10 rounded-xl flex items-center justify-center text-gray-300 hover:bg-brand-500 hover:text-white hover:border-brand-500 transition-all" aria-label="Facebook" target="_blank" rel="noopener noreferrer">>
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://twitter.com/" class="w-11 h-11 bg-white/10 backdrop-blur-md border border-white/10 rounded-xl flex items-center justify-center text-gray-300 hover:bg-brand-500 hover:text-white hover:border-brand-500 transition-all" aria-label="Twitter" target="_blank" rel="noopener noreferrer">>
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://www.instagram.com/" class="w-11 h-11 bg-white/10 backdrop-blur-md border border-white/10 rounded-xl flex items-center justify-center text-gray-300 hover:bg-brand-500 hover:text-white hover:border-brand-500 transition-all" aria-label="Instagram" target="_blank" rel="noopener noreferrer">>
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.linkedin.com/" class="w-11 h-11 bg-white/10 backdrop-blur-md border border-white/10 rounded-xl flex items-center justify-center text-gray-300 hover:bg-brand-500 hover:text-white hover:border-brand-500 transition-all" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">>
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script src="../assets/js/main.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Countdown timer - 30 days from now
+        var launchDate = new Date();
+        launchDate.setDate(launchDate.getDate() + 30);
+        launchDate.setHours(0, 0, 0, 0);
+
+        function updateCountdown() {
+            var now = new Date().getTime();
+            var distance = launchDate.getTime() - now;
+
+            if (distance < 0) {
+                document.getElementById('days').textContent = '00';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+                return;
+            }
+
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = days < 10 ? '0' + days : days;
+            document.getElementById('hours').textContent = hours < 10 ? '0' + hours : hours;
+            document.getElementById('minutes').textContent = minutes < 10 ? '0' + minutes : minutes;
+            document.getElementById('seconds').textContent = seconds < 10 ? '0' + seconds : seconds;
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // Email signup
+        var form = document.getElementById('notifyForm');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                var email = document.getElementById('notifyEmail').value.trim();
+                if (!email) {
+                    if (typeof showToast === 'function') showToast('Please enter your email address', 'warning');
+                    return;
+                }
+                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    if (typeof showToast === 'function') showToast('Please enter a valid email address', 'warning');
+                    return;
+                }
+                if (typeof showToast === 'function') showToast('You\'re on the list! We\'ll notify you when we launch.', 'success');
+                form.reset();
+            });
+        }
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 560">
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#111b31"/><stop offset="1" stop-color="#0b1325"/></linearGradient>
+ <filter id="glow"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<rect width="1000" height="560" rx="28" fill="url(#bg)"/>
+<path d="M105 190 L145 145 220 135 270 100 350 115 405 150 480 165 520 210 590 225 650 205 710 235 775 220 840 265 890 320 865 365 800 350 760 390 690 370 635 405 570 385 520 420 455 400 410 445 345 425 295 390 235 405 205 360 150 345 120 300Z" fill="#1f2d45" stroke="#52627c" stroke-width="5"/>
+<path d="M220 220 Q400 170 560 255 T830 310" fill="none" stroke="#ff6b35" stroke-width="5" stroke-dasharray="10 12" opacity=".8"/>
+<g fill="#ff6b35" filter="url(#glow)">
+<circle cx="220" cy="220" r="9"/><circle cx="350" cy="205" r="9"/><circle cx="455" cy="245" r="9"/><circle cx="560" cy="255" r="9"/><circle cx="680" cy="290" r="9"/><circle cx="830" cy="310" r="9"/>
+</g>
+<g fill="#fbbf24"><circle cx="300" cy="300" r="7"/><circle cx="400" cy="330" r="7"/><circle cx="520" cy="350" r="7"/><circle cx="640" cy="340" r="7"/></g>
+<g font-family="Arial,sans-serif" font-size="18" fill="#e5e7eb" font-weight="700">
+<text x="190" y="195">Seattle</text><text x="325" y="180">Denver</text><text x="430" y="225">Dallas</text><text x="535" y="235">Chicago</text><text x="655" y="270">New York</text><text x="790" y="290">Boston</text>
+</g>
+<text x="55" y="505" font-family="Arial,sans-serif" font-size="20" fill="#94a3b8">SwiftShip Express • Active delivery network</text>
+</svg>

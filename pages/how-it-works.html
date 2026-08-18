@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <link rel="icon" type="image/svg+xml" href="../assets/css/favicon.svg">
+    <link rel="shortcut icon" href="../assets/css/favicon.svg">
+    <link rel="apple-touch-icon" href="../assets/css/favicon.svg">
+
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn how SwiftShip Express works and where we deliver - our simple 6-step delivery process plus coverage across 50+ cities, 200+ pin codes, and international shipping to 200+ countries.">
+    <meta name="keywords" content="how SwiftShip works, courier delivery process, parcel shipping steps, same-day delivery, book courier online">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="How It Works & Coverage | SwiftShip Express - Courier & Parcel Delivery">
+    <meta property="og:description" content="Discover the simple 6-step SwiftShip delivery process and our coverage across 50+ cities with same-day, express, and international shipping options.">
+    <meta property="og:type" content="website">
+    <title>How It Works & Coverage | SwiftShip Express - Courier & Parcel Delivery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = { darkMode:'class', theme:{ extend:{ colors:{ brand:{ 50:'#fff7ed',100:'#ffedd5',200:'#fed7aa',300:'#fdba74',400:'#fb923c',500:'#f97316',600:'#ea580c',700:'#c2410c',800:'#9a3412',900:'#7c2d12' } } } } }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/custom.css">
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+
+    <!-- Preloader -->
+    <div class="preloader fixed inset-0 z-[9999] bg-white dark:bg-gray-900 flex items-center justify-center transition-opacity duration-500" id="preloader">
+        <div class="text-center">
+            <div class="relative w-20 h-20 mx-auto mb-4">
+                <div class="absolute inset-0 border-4 border-brand-200 dark:border-brand-800 rounded-full"></div>
+                <div class="absolute inset-0 border-4 border-transparent border-t-brand-500 rounded-full animate-spin"></div>
+                <i class="fas fa-shuttle-van absolute inset-0 flex items-center justify-center text-brand-500 text-xl"></i>
+            </div>
+            <p class="text-sm font-semibold text-gray-500 tracking-wider uppercase">SwiftShip Express</p>
+        </div>
+    </div>
+
+    <!-- ======================== MOBILE MENU OVERLAY ======================== -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 z-[9998] bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 lg:hidden" aria-hidden="true"></div>
+
+    <!-- ======================== MOBILE MENU ======================== -->
+    <div id="mobile-menu" class="fixed top-0 right-0 z-[9999] h-full w-80 max-w-[85vw] bg-white dark:bg-gray-900 shadow-2xl transform translate-x-full transition-transform duration-300 lg:hidden" role="dialog" aria-label="Mobile navigation">
+        <div class="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
+            <span class="text-xl font-bold text-brand-500">SwiftShip</span>
+            <button id="mobile-menu-close" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Close menu"><i class="fas fa-times text-xl"></i></button>
+        </div>
+        <nav class="p-6 space-y-1" aria-label="Mobile navigation links">
+            <div class="mobile-nav-item" data-submenu="home-mobile">
+                <button class="w-full flex items-center justify-between px-4 py-3 rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 font-medium transition-colors">
+                    <span><i class="fas fa-home mr-2 text-brand-500"></i> Home</span>
+                    <i class="fas fa-chevron-down text-xs transition-transform duration-200"></i>
+                </button>
+                <div id="home-mobile" class="hidden pl-6 space-y-1">
+                    <a href="../index.html" class="mobile-nav-link block px-4 py-2.5 text-sm rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors"><i class="fas fa-circle text-[6px] mr-2 text-brand-400"></i> Home Default</a>
+                    <a href="index-2.html" class="mobile-nav-link block px-4 py-2.5 text-sm rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors"><i class="fas fa-circle text-[6px] mr-2 text-brand-400"></i> Home Express</a>
+                </div>
+            </div>
+            <a href="about.html" class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 font-medium transition-colors">About</a>
+            <a href="services.html" class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 font-medium transition-colors">Services</a>
+            <a href="pricing.html" class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 font-medium transition-colors">Pricing</a>
+            <a href="how-it-works.html" class="mobile-nav-link block px-4 py-3 rounded-lg bg-brand-50 dark:bg-brand-900/20 text-brand-500 font-medium">How It Works</a>
+            <a href="blog.html" class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 font-medium transition-colors">Blog</a>
+            <a href="contact.html" class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 font-medium transition-colors">Contact</a>
+        </nav>
+        <div class="p-6 border-t border-gray-200 dark:border-gray-700 space-y-3">
+            <a href="login.html" class="block w-full text-center px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 font-semibold transition-colors">Login</a>
+            <a href="register.html" class="block w-full text-center px-4 py-3 bg-brand-500 text-white rounded-lg hover:bg-brand-600 font-semibold transition-colors">Register</a>
+        </div>
+    </div>
+
+    <!-- ======================== NAVBAR ======================== -->
+    <header id="navbar" class="fixed top-0 left-0 right-0 z-[100] transition-all duration-300 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md" role="banner">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 lg:h-20">
+                <a href="../index.html" class="flex items-center gap-2 shrink-0" aria-label="SwiftShip Express Home">
+                    <div class="w-10 h-10 bg-brand-500 rounded-xl flex items-center justify-center shadow-lg shadow-brand-500/30">
+                        <i class="fas fa-shuttle-van text-white text-lg"></i>
+                    </div>
+                    <span class="text-xl font-extrabold tracking-tight">
+                        <span class="text-brand-500">Swift</span><span class="dark:text-white">Ship</span>
+                    </span>
+                </a>
+                <nav class="hidden lg:flex items-center gap-1" aria-label="Main navigation">
+                    <div class="relative group">
+                        <button class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors inline-flex items-center gap-1">
+                            Home <i class="fas fa-chevron-down text-[10px] transition-transform group-hover:rotate-180"></i>
+                        </button>
+                        <div class="absolute top-full left-0 mt-1 w-48 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform scale-95 group-hover:scale-100 z-50 py-2">
+                            <a href="../index.html" class="block px-4 py-2.5 text-sm hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors"><i class="fas fa-home mr-2 text-brand-500"></i> Home Default</a>
+                            <a href="index-2.html" class="block px-4 py-2.5 text-sm hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors"><i class="fas fa-rocket mr-2 text-brand-500"></i> Home Express</a>
+                        </div>
+                    </div>
+                    <a href="about.html" class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors">About</a>
+                    <a href="services.html" class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors">Services</a>
+                    <a href="pricing.html" class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors">Pricing</a>
+                    <a href="how-it-works.html" class="px-3 py-2 rounded-lg text-sm font-medium bg-brand-50 dark:bg-brand-900/20 text-brand-500">How It Works</a>
+                    <a href="blog.html" class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors">Blog</a>
+                    <a href="contact.html" class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors">Contact</a>
+                </nav>
+                <div class="hidden lg:flex items-center gap-3">
+                    <button id="theme-toggle" class="p-2.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Toggle dark mode">
+                        <i class="fas fa-moon dark:hidden text-gray-600"></i>
+                        <i class="fas fa-sun hidden dark:inline text-yellow-400"></i>
+                    </button>
+                    <button id="rtl-toggle" class="p-2.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-sm font-bold" aria-label="Toggle text direction">RTL</button>
+                    <a href="login.html" class="px-4 py-2 text-sm font-semibold border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">Login</a>
+                    <a href="register.html" class="px-4 py-2 text-sm font-semibold bg-brand-500 text-white rounded-lg hover:bg-brand-600 shadow-lg shadow-brand-500/25 transition-all">Register</a>
+                </div>
+                <div class="flex lg:hidden items-center gap-2">
+                    <button id="theme-toggle-mobile" class="p-2.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Toggle dark mode">
+                        <i class="fas fa-moon dark:hidden text-gray-600"></i>
+                        <i class="fas fa-sun hidden dark:inline text-yellow-400"></i>
+                    </button>
+                    <button id="mobile-menu-open" class="p-2.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Open menu">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="relative pt-20 lg:pt-24" aria-label="How it works hero">
+        <div class="relative h-64 sm:h-80 lg:h-96 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1580674285054-bed31e145f59?w=1920&h=500&fit=crop" alt="SwiftShip Express delivery process overview" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-r from-gray-900/90 to-gray-900/60"></div>
+            <div class="absolute inset-0 flex items-center">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                    <nav class="text-sm text-gray-400 mb-4" aria-label="Breadcrumb"><a href="../index.html" class="hover:text-brand-500">Home</a> <i class="fas fa-chevron-right mx-2 text-xs"></i> <span class="text-white">How It Works & Coverage</span></nav>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white">How It Works & <span class="text-brand-500">Coverage</span></h1>
+                    <p class="text-lg text-gray-300 mt-4 max-w-xl">A seamless delivery experience in six simple steps — plus find out where we deliver.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6-Step Process Timeline -->
+    <section class="section-padding" aria-label="The SwiftShip delivery process">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-brand-500 font-semibold text-sm uppercase tracking-wider">The Process</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold mt-3 dark:text-white">Six Steps to <span class="text-brand-500">Delivery</span></h2>
+                <p class="text-gray-600 dark:text-gray-400 mt-4 max-w-2xl mx-auto">Our streamlined process ensures your parcel reaches its destination safely and on time. Here's how it works.</p>
+            </div>
+
+            <!-- Timeline -->
+            <div class="relative">
+                <!-- Vertical connecting line -->
+                <div class="absolute left-6 sm:left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-brand-400 via-brand-500 to-brand-600" aria-hidden="true"></div>
+
+                <!-- Step 1 -->
+                <div class="relative flex items-start gap-6 sm:gap-8 mb-12 animate-on-scroll">
+                    <div class="relative z-10 shrink-0">
+                        <div class="w-12 h-12 sm:w-16 sm:h-16 bg-brand-500 rounded-full flex items-center justify-center shadow-lg shadow-brand-500/30">
+                            <span class="text-white font-extrabold text-lg sm:text-xl">1</span>
+                        </div>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 sm:p-8 shadow-lg border border-gray-100 dark:border-gray-700 flex-1">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-12 h-12 bg-brand-500/10 rounded-xl flex items-center justify-center shrink-0"><i class="fas fa-laptop text-brand-500 text-xl"></i></div>
+                            <h3 class="text-xl sm:text-2xl font-bold dark:text-white">Book Online</h3>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Schedule a pickup via our website or mobile app in under two minutes. Enter your pickup and delivery details, choose your service level, and confirm your booking. You'll instantly receive a tracking number and estimated delivery window.</p>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="relative flex items-start gap-6 sm:gap-8 mb-12 animate-on-scroll">
+                    <div class="relative z-10 shrink-0">
+                        <div class="w-12 h-12 sm:w-16 sm:h-16 bg-brand-500 rounded-full flex items-center justify-center shadow-lg shadow-brand-500/30">
+                            <span class="text-white font-extrabold text-lg sm:text-xl">2</span>
+                        </div>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 sm:p-8 shadow-lg border border-gray-100 dark:border-gray-700 flex-1">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-12 h-12 bg-brand-500/10 rounded-xl flex items-center justify-center shrink-0"><i class="fas fa-box-open text-brand-500 text-xl"></i></div>
+                            <h3 class="text-xl sm:text-2xl font-bold dark:text-white">Pack Your Parcel</h3>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Use proper packaging to keep your items safe during transit. Premium account holders receive free branded packaging materials delivered to their door. For standard users, we recommend sturdy boxes with adequate cushioning for fragile items.</p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="relative flex items-start gap-6 sm:gap-8 mb-12 animate-on-scroll">
+                    <div class="relative z-10 shrink-0">
+                        <div class="w-12 h-12 sm:w-16 sm:h-16 bg-brand-500 rounded-full flex items-center justify-center shadow-lg shadow-brand-500/30">
+                            <span class="text-white font-extrabold text-lg sm:text-xl">3</span>
+                        </div>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 sm:p-8 shadow-lg border border-gray-100 dark:border-gray-700 flex-1">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-12 h-12 bg-brand-500/10 rounded-xl flex items-center justify-center shrink-0"><i class="fas fa-truck text-brand-500 text-xl"></i></div>
+                            <h3 class="text-xl sm:text-2xl font-bold dark:text-white">We Collect</h3>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Our professional courier arrives at your doorstep at the scheduled time. No need to drive to a drop-off point — we come to you. You'll receive a real-time notification when the courier is on the way, complete with their name and photo.</p>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="relative flex items-start gap-6 sm:gap-8 mb-12 animate-on-scroll">
+                    <div class="relative z-10 shrink-0">
+                        <div class="w-12 h-12 sm:w-16 sm:h-16 bg-brand-500 rounded-full flex items-center justify-center shadow-lg shadow-brand-500/30">
+                            <span class="text-white font-extrabold text-lg sm:text-xl">4</span>
+                        </div>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 sm:p-8 shadow-lg border border-gray-100 dark:border-gray-700 flex-1">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-12 h-12 bg-brand-500/10 rounded-xl flex items-center justify-center shrink-0"><i class="fas fa-map-marker-alt text-brand-500 text-xl"></i></div>
+                            <h3 class="text-xl sm:text-2xl font-bold dark:text-white">In Transit</h3>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Track your parcel in real-time via GPS on our dashboard. Watch its journey from pickup to delivery with live location updates, estimated arrival times, and milestone notifications at every stage of the delivery route.</p>
+                    </div>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="relative flex items-start gap-6 sm:gap-8 mb-12 animate-on-scroll">
+                    <div class="relative z-10 shrink-0">
+                        <div class="w-12 h-12 sm:w-16 sm:h-16 bg-brand-500 rounded-full flex items-center justify-center shadow-lg shadow-brand-500/30">
+                            <span class="text-white font-extrabold text-lg sm:text-xl">5</span>
+                        </div>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 sm:p-8 shadow-lg border border-gray-100 dark:border-gray-700 flex-1">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-12 h-12 bg-brand-500/10 rounded-xl flex items-center justify-center shrink-0"><i class="fas fa-bell text-brand-500 text-xl"></i></div>
+                            <h3 class="text-xl sm:text-2xl font-bold dark:text-white">Out for Delivery</h3>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Get notified when your parcel is on its way to the recipient. We send push notifications, SMS, and email alerts so the receiver knows exactly when to expect the delivery. Flexible rescheduling is available if the timing doesn't work.</p>
+                    </div>
+                </div>
+
+                <!-- Step 6 -->
+                <div class="relative flex items-start gap-6 sm:gap-8 animate-on-scroll">
+                    <div class="relative z-10 shrink-0">
+                        <div class="w-12 h-12 sm:w-16 sm:h-16 bg-brand-500 rounded-full flex items-center justify-center shadow-lg shadow-brand-500/30">
+                            <span class="text-white font-extrabold text-lg sm:text-xl">6</span>
+                        </div>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 sm:p-8 shadow-lg border border-gray-100 dark:border-gray-700 flex-1">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-12 h-12 bg-brand-500/10 rounded-xl flex items-center justify-center shrink-0"><i class="fas fa-check-circle text-brand-500 text-xl"></i></div>
+                            <h3 class="text-xl sm:text-2xl font-bold dark:text-white">Delivered</h3>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Confirmation with photo proof and optional signature. Both sender and receiver get instant delivery confirmation with a timestamped photo of the delivered parcel. An optional recipient signature provides an extra layer of security and proof of delivery.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- For Business vs For Individuals -->
+    <section class="section-padding-sm bg-gray-50 dark:bg-gray-800/50" aria-label="Compare business and individual features">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-brand-500 font-semibold text-sm uppercase tracking-wider">Who It's For</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold mt-3 dark:text-white">Built for <span class="text-brand-500">Everyone</span></h2>
+                <p class="text-gray-600 dark:text-gray-400 mt-4 max-w-2xl mx-auto">Whether you're a growing business or an individual sender, SwiftShip has the right tools for you.</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- For Business -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg border border-gray-100 dark:border-gray-700 animate-on-scroll">
+                    <div class="w-16 h-16 bg-brand-500/10 rounded-2xl flex items-center justify-center mb-6"><i class="fas fa-building text-brand-500 text-2xl"></i></div>
+                    <h3 class="text-2xl font-bold mb-2 dark:text-white">For Business</h3>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm mb-6">Enterprise-grade logistics solutions tailored to your operations.</p>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <div class="w-6 h-6 bg-brand-500/10 rounded-full flex items-center justify-center shrink-0 mt-0.5"><i class="fas fa-plug text-brand-500 text-xs"></i></div>
+                            <div><h4 class="font-semibold dark:text-white text-sm">API Integration</h4><p class="text-gray-500 dark:text-gray-400 text-sm">Seamlessly connect SwiftShip to your existing e-commerce platform, ERP, or warehouse management system via our RESTful API.</p></div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-6 h-6 bg-brand-500/10 rounded-full flex items-center justify-center shrink-0 mt-0.5"><i class="fas fa-layer-group text-brand-500 text-xs"></i></div>
+                            <div><h4 class="font-semibold dark:text-white text-sm">Bulk Shipping</h4><p class="text-gray-500 dark:text-gray-400 text-sm">Process hundreds of shipments at once with our bulk upload tool. CSV import, auto-label printing, and batch tracking included.</p></div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-6 h-6 bg-brand-500/10 rounded-full flex items-center justify-center shrink-0 mt-0.5"><i class="fas fa-user-tie text-brand-500 text-xs"></i></div>
+                            <div><h4 class="font-semibold dark:text-white text-sm">Dedicated Account Manager</h4><p class="text-gray-500 dark:text-gray-400 text-sm">A single point of contact who understands your business, handles escalations, and optimizes your shipping strategy.</p></div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-6 h-6 bg-brand-500/10 rounded-full flex items-center justify-center shrink-0 mt-0.5"><i class="fas fa-palette text-brand-500 text-xs"></i></div>
+                            <div><h4 class="font-semibold dark:text-white text-sm">Branded Tracking Pages</h4><p class="text-gray-500 dark:text-gray-400 text-sm">Customize the tracking page with your logo, colors, and branding for a consistent customer experience.</p></div>
+                        </li>
+                    </ul>
+                    <a href="register.html" class="inline-block mt-8 px-6 py-3 bg-brand-500 text-white font-semibold rounded-xl hover:bg-brand-600 shadow-lg shadow-brand-500/25 transition-all">Start Business Account</a>
+                </div>
+
+                <!-- For Individuals -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg border border-gray-100 dark:border-gray-700 animate-on-scroll">
+                    <div class="w-16 h-16 bg-brand-500/10 rounded-2xl flex items-center justify-center mb-6"><i class="fas fa-user text-brand-500 text-2xl"></i></div>
+                    <h3 class="text-2xl font-bold mb-2 dark:text-white">For Individuals</h3>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm mb-6">Simple, affordable shipping when you need it most.</p>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <div class="w-6 h-6 bg-brand-500/10 rounded-full flex items-center justify-center shrink-0 mt-0.5"><i class="fas fa-mouse-pointer text-brand-500 text-xs"></i></div>
+                            <div><h4 class="font-semibold dark:text-white text-sm">Easy Booking</h4><p class="text-gray-500 dark:text-gray-400 text-sm">Book a pickup in under two minutes with our intuitive web and mobile app. No account setup hassles — just enter and go.</p></div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-6 h-6 bg-brand-500/10 rounded-full flex items-center justify-center shrink-0 mt-0.5"><i class="fas fa-clock text-brand-500 text-xs"></i></div>
+                            <div><h4 class="font-semibold dark:text-white text-sm">Flexible Pickup Times</h4><p class="text-gray-500 dark:text-gray-400 text-sm">Choose from morning, afternoon, or evening pickup windows that fit your schedule — including weekends.</p></div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-6 h-6 bg-brand-500/10 rounded-full flex items-center justify-center shrink-0 mt-0.5"><i class="fas fa-credit-card text-brand-500 text-xs"></i></div>
+                            <div><h4 class="font-semibold dark:text-white text-sm">Multiple Payment Options</h4><p class="text-gray-500 dark:text-gray-400 text-sm">Pay with credit card, debit card, digital wallets, or cash on delivery. Invoicing available for repeat customers.</p></div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-6 h-6 bg-brand-500/10 rounded-full flex items-center justify-center shrink-0 mt-0.5"><i class="fas fa-calculator text-brand-500 text-xs"></i></div>
+                            <div><h4 class="font-semibold dark:text-white text-sm">Instant Quotes</h4><p class="text-gray-500 dark:text-gray-400 text-sm">Get transparent, upfront pricing before you book. No hidden fees — what you see is what you pay.</p></div>
+                        </li>
+                    </ul>
+                    <a href="register.html" class="inline-block mt-8 px-6 py-3 bg-brand-500 text-white font-semibold rounded-xl hover:bg-brand-600 shadow-lg shadow-brand-500/25 transition-all">Create Free Account</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="section-padding" aria-label="Watch how it works video">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-brand-500 font-semibold text-sm uppercase tracking-wider">See It in Action</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold mt-3 dark:text-white">Watch How It Works</h2>
+            </div>
+            <div class="relative rounded-2xl overflow-hidden shadow-2xl group cursor-pointer animate-on-scroll">
+                <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?w=800&h=450&fit=crop" alt="SwiftShip Express delivery process video preview" class="w-full aspect-video object-cover">
+                <div class="absolute inset-0 bg-gray-900/40 group-hover:bg-gray-900/50 transition-colors flex items-center justify-center">
+                    <div class="w-20 h-20 bg-brand-500 rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-play text-white text-2xl ml-1"></i>
+                    </div>
+                </div>
+                <div class="absolute bottom-6 left-6 right-6 text-white">
+                    <h3 class="text-xl font-bold mb-1">SwiftShip Express - Delivery Made Simple</h3>
+                    <p class="text-sm text-gray-300">2:34 minutes</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coverage Stats -->
+    <section class="section-padding-sm" aria-label="Coverage statistics">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 -mt-16 relative z-10">
+                <div class="card p-6 text-center animate-on-scroll">
+                    <div class="w-16 h-16 bg-brand-500/10 rounded-2xl flex items-center justify-center mx-auto mb-4"><i class="fas fa-city text-brand-500 text-2xl"></i></div>
+                    <div class="text-3xl font-extrabold text-brand-500"><span class="counter-value" data-target="50" data-suffix="+">0</span></div>
+                    <div class="text-gray-600 dark:text-gray-400 mt-2 font-medium text-sm">Cities Covered</div>
+                </div>
+                <div class="card p-6 text-center animate-on-scroll">
+                    <div class="w-16 h-16 bg-brand-500/10 rounded-2xl flex items-center justify-center mx-auto mb-4"><i class="fas fa-map-pin text-brand-500 text-2xl"></i></div>
+                    <div class="text-3xl font-extrabold text-brand-500"><span class="counter-value" data-target="200" data-suffix="+">0</span></div>
+                    <div class="text-gray-600 dark:text-gray-400 mt-2 font-medium text-sm">Pin Codes Served</div>
+                </div>
+                <div class="card p-6 text-center animate-on-scroll">
+                    <div class="w-16 h-16 bg-brand-500/10 rounded-2xl flex items-center justify-center mx-auto mb-4"><i class="fas fa-bolt text-brand-500 text-2xl"></i></div>
+                    <div class="text-3xl font-extrabold text-brand-500"><span class="counter-value" data-target="98" data-suffix="%">0</span></div>
+                    <div class="text-gray-600 dark:text-gray-400 mt-2 font-medium text-sm">Same-Day Coverage</div>
+                </div>
+                <div class="card p-6 text-center animate-on-scroll">
+                    <div class="w-16 h-16 bg-brand-500/10 rounded-2xl flex items-center justify-center mx-auto mb-4"><i class="fas fa-clock text-brand-500 text-2xl"></i></div>
+                    <div class="text-3xl font-extrabold text-brand-500">24/7</div>
+                    <div class="text-gray-600 dark:text-gray-400 mt-2 font-medium text-sm">Always Operating</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Coverage Map -->
+    <section class="section-padding" aria-label="Interactive coverage map">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-brand-500 font-semibold text-sm uppercase tracking-wider">Coverage Map</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold mt-3 dark:text-white">Where We <span class="text-brand-500">Deliver</span></h2>
+                <p class="text-gray-600 dark:text-gray-400 mt-4 max-w-2xl mx-auto">Our delivery network spans multiple tiers, offering different speeds based on your location.</p>
+            </div>
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Map Visual -->
+                <div class="lg:col-span-2 animate-on-scroll">
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl">
+                        <div class="relative w-full aspect-video overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-700 shadow-xl">
+<iframe
+  src="https://www.google.com/maps?q=United%20States&output=embed"
+  title="SwiftShip Express delivery coverage map"
+  class="absolute inset-0 w-full h-full border-0"
+  loading="lazy"
+  referrerpolicy="no-referrer-when-downgrade"
+  allowfullscreen>
+</iframe>
+</div>
+                        <div class="absolute inset-0 p-8">
+                            <!-- Tier 1 Markers - Same Day -->
+                            <div class="absolute top-[38%] left-[42%] group cursor-pointer">
+                                <div class="relative">
+                                    <div class="w-4 h-4 bg-brand-500 rounded-full shadow-lg shadow-brand-500/50 animate-pulse"></div>
+                                    <div class="absolute -top-1 -left-1 w-6 h-6 bg-brand-500/30 rounded-full animate-ping"></div>
+                                </div>
+                                <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5 bg-gray-900 text-white text-xs font-semibold rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">Dallas <span class="text-brand-400 ml-1">Same-Day</span></div>
+                            </div>
+                            <div class="absolute top-[52%] left-[38%] group cursor-pointer">
+                                <div class="relative">
+                                    <div class="w-4 h-4 bg-brand-500 rounded-full shadow-lg shadow-brand-500/50 animate-pulse"></div>
+                                    <div class="absolute -top-1 -left-1 w-6 h-6 bg-brand-500/30 rounded-full animate-ping"></div>
+                                </div>
+                                <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5 bg-gray-900 text-white text-xs font-semibold rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">Houston <span class="text-brand-400 ml-1">Same-Day</span></div>
+                            </div>
+                            <div class="absolute top-[46%] left-[40%] group cursor-pointer">
+                                <div class="relative">
+                                    <div class="w-4 h-4 bg-brand-500 rounded-full shadow-lg shadow-brand-500/50 animate-pulse"></div>
+                                    <div class="absolute -top-1 -left-1 w-6 h-6 bg-brand-500/30 rounded-full animate-ping"></div>
+                                </div>
+                                <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5 bg-gray-900 text-white text-xs font-semibold rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">Austin <span class="text-brand-400 ml-1">Same-Day</span></div>
+                            </div>
+                            <div class="absolute top-[49%] left-[39%] group cursor-pointer">
+                                <div class="relative">
+                                    <div class="w-4 h-4 bg-brand-500 rounded-full shadow-lg shadow-brand-500/50 animate-pulse"></div>
+                                    <div class="absolute -top-1 -left-1 w-6 h-6 bg-brand-500/30 rounded-full animate-ping"></div>
+                                </div>
+                                <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5 bg-gray-900 text-white text-xs font-semibold rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">San Antonio <span class="text-brand-400 ml-1">Same-Day</span></div>
+                            </div>
+                            <div class="absolute top-[40%] left-[41%] group cursor-pointer">
+                                <div class="relative">
+                                    <div class="w-4 h-4 bg-brand-500 rounded-full shadow-lg shadow-brand-500/50 animate-pulse"></div>
+                                    <div class="absolute -top-1 -left-1 w-6 h-6 bg-brand-500/30 rounded-full animate-ping"></div>
+                                </div>
+                                <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5 bg-gray-900 text-white text-xs font-semibold rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">Fort Worth <span class="text-brand-400 ml-1">Same-Day</span></div>
+                            </div>
+                            <!-- Tier 3 Markers -->
+                            <div class="absolute top-[36%] left-[44%] group cursor-pointer">
+                                <div class="relative"><div class="w-3 h-3 bg-yellow-500 rounded-full shadow-lg shadow-yellow-500/50"></div></div>
+                                <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5 bg-gray-900 text-white text-xs font-semibold rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">Oklahoma City <span class="text-yellow-400 ml-1">2-3 Days</span></div>
+                            </div>
+                            <div class="absolute top-[34%] left-[46%] group cursor-pointer">
+                                <div class="relative"><div class="w-3 h-3 bg-yellow-500 rounded-full shadow-lg shadow-yellow-500/50"></div></div>
+                                <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5 bg-gray-900 text-white text-xs font-semibold rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">Tulsa <span class="text-yellow-400 ml-1">2-3 Days</span></div>
+                            </div>
+                            <div class="absolute top-[32%] left-[50%] group cursor-pointer">
+                                <div class="relative"><div class="w-3 h-3 bg-yellow-500 rounded-full shadow-lg shadow-yellow-500/50"></div></div>
+                                <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5 bg-gray-900 text-white text-xs font-semibold rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">Little Rock <span class="text-yellow-400 ml-1">2-3 Days</span></div>
+                            </div>
+                            <div class="absolute top-[44%] left-[46%] group cursor-pointer">
+                                <div class="relative"><div class="w-3 h-3 bg-yellow-500 rounded-full shadow-lg shadow-yellow-500/50"></div></div>
+                                <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5 bg-gray-900 text-white text-xs font-semibold rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">Shreveport <span class="text-yellow-400 ml-1">2-3 Days</span></div>
+                            </div>
+                            <div class="absolute top-[28%] left-[43%] group cursor-pointer">
+                                <div class="relative"><div class="w-3 h-3 bg-yellow-500 rounded-full shadow-lg shadow-yellow-500/50"></div></div>
+                                <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5 bg-gray-900 text-white text-xs font-semibold rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">Amarillo <span class="text-yellow-400 ml-1">2-3 Days</span></div>
+                            </div>
+                        </div>
+                        <!-- Legend -->
+                        <div class="absolute bottom-4 left-4 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm rounded-xl p-4 shadow-lg">
+                            <h4 class="text-xs font-bold text-gray-800 dark:text-white mb-3 uppercase tracking-wider">Service Tiers</h4>
+                            <div class="space-y-2 text-xs">
+                                <div class="flex items-center gap-2"><div class="w-3 h-3 bg-brand-500 rounded-full"></div><span class="text-gray-700 dark:text-gray-300">Tier 1: Same-Day</span></div>
+                                <div class="flex items-center gap-2"><div class="w-3 h-3 bg-blue-500 rounded-full"></div><span class="text-gray-700 dark:text-gray-300">Tier 2: Next-Day</span></div>
+                                <div class="flex items-center gap-2"><div class="w-3 h-3 bg-yellow-500 rounded-full"></div><span class="text-gray-700 dark:text-gray-300">Tier 3: 2-3 Days</span></div>
+                                <div class="flex items-center gap-2"><div class="w-3 h-3 bg-gray-400 rounded-full"></div><span class="text-gray-700 dark:text-gray-300">Tier 4: 3-5 Days</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Coverage Highlights -->
+                    <div class="grid sm:grid-cols-2 gap-4 mt-6">
+                        <div class="card p-5 border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-xl shadow-lg">
+                            <div class="w-11 h-11 rounded-xl bg-brand-500/10 flex items-center justify-center mb-3">
+                                <i class="fas fa-location-dot text-brand-500"></i>
+                            </div>
+                            <div class="text-2xl font-extrabold dark:text-white">50+</div>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Cities currently covered</p>
+                        </div>
+                        <div class="card p-5 border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-xl shadow-lg">
+                            <div class="w-11 h-11 rounded-xl bg-blue-500/10 flex items-center justify-center mb-3">
+                                <i class="fas fa-route text-blue-500"></i>
+                            </div>
+                            <div class="text-2xl font-extrabold dark:text-white">4</div>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Delivery speed tiers</p>
+                        </div>
+                        <div class="card p-5 border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-xl shadow-lg">
+                            <div class="w-11 h-11 rounded-xl bg-yellow-500/10 flex items-center justify-center mb-3">
+                                <i class="fas fa-clock text-yellow-500"></i>
+                            </div>
+                            <div class="text-2xl font-extrabold dark:text-white">24/7</div>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Tracking visibility</p>
+                        </div>
+                        <div class="card p-5 border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-xl shadow-lg">
+                            <div class="w-11 h-11 rounded-xl bg-green-500/10 flex items-center justify-center mb-3">
+                                <i class="fas fa-shield-halved text-green-500"></i>
+                            </div>
+                            <div class="text-2xl font-extrabold dark:text-white">98%</div>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">On-time delivery rate</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 p-5 rounded-xl bg-gray-50 dark:bg-gray-800/80 border border-gray-100 dark:border-gray-700">
+                        <div class="flex items-start gap-3">
+                            <i class="fas fa-circle-info text-brand-500 mt-1"></i>
+                            <div>
+                                <h3 class="font-bold dark:text-white">Not sure which tier you need?</h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Enter your pickup and delivery locations during booking and SwiftShip will recommend the fastest available service for your route.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- City Lists -->
+                <div class="space-y-6 animate-on-scroll">
+                    <div class="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-lg border border-gray-100 dark:border-gray-700">
+                        <div class="flex items-center gap-3 mb-4"><div class="w-3 h-3 bg-brand-500 rounded-full"></div><h3 class="font-bold dark:text-white">Tier 1 &mdash; Same-Day</h3></div>
+                        <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-brand-500 text-xs"></i> Dallas</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-brand-500 text-xs"></i> Houston</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-brand-500 text-xs"></i> Austin</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-brand-500 text-xs"></i> San Antonio</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-brand-500 text-xs"></i> Fort Worth</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-lg border border-gray-100 dark:border-gray-700">
+                        <div class="flex items-center gap-3 mb-4"><div class="w-3 h-3 bg-blue-500 rounded-full"></div><h3 class="font-bold dark:text-white">Tier 2 &mdash; Next-Day</h3></div>
+                        <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-blue-500 text-xs"></i> Dallas Metro Area</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-blue-500 text-xs"></i> Houston Metro Area</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-blue-500 text-xs"></i> Austin Metro Area</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-blue-500 text-xs"></i> San Antonio Metro Area</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-lg border border-gray-100 dark:border-gray-700">
+                        <div class="flex items-center gap-3 mb-4"><div class="w-3 h-3 bg-yellow-500 rounded-full"></div><h3 class="font-bold dark:text-white">Tier 3 &mdash; 2-3 Days</h3></div>
+                        <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-yellow-500 text-xs"></i> Oklahoma City</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-yellow-500 text-xs"></i> Tulsa</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-yellow-500 text-xs"></i> Little Rock</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-yellow-500 text-xs"></i> Shreveport</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-yellow-500 text-xs"></i> Amarillo</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-lg border border-gray-100 dark:border-gray-700">
+                        <div class="flex items-center gap-3 mb-4"><div class="w-3 h-3 bg-gray-400 rounded-full"></div><h3 class="font-bold dark:text-white">Tier 4 &mdash; 3-5 Days</h3></div>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">National coverage available through our trusted partner network across all 50 states.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- City Search -->
+    <section class="section-padding-sm bg-gray-50 dark:bg-gray-800/50" aria-label="City search">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-2xl sm:text-3xl font-extrabold dark:text-white mb-4">Check Your Area</h2>
+            <p class="text-gray-600 dark:text-gray-400 mb-8">Enter a city name to see delivery availability and estimated times.</p>
+            <div class="relative max-w-xl mx-auto">
+                <input type="text" id="city-search" placeholder="Search city name..." class="w-full px-6 py-4 pr-14 rounded-2xl border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 focus:border-brand-500 focus:outline-none transition-colors text-lg shadow-lg" aria-label="Search city">
+                <button class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-brand-500 rounded-xl flex items-center justify-center text-white hover:bg-brand-600 transition-colors" aria-label="Search"><i class="fas fa-search"></i></button>
+            </div>
+            <div id="city-results" class="mt-6 text-left space-y-3 hidden">
+                <div class="city-result bg-white dark:bg-gray-800 rounded-xl p-5 shadow-lg border border-gray-100 dark:border-gray-700" data-city="dallas" data-tier="1">
+                    <div class="flex items-center justify-between"><div class="flex items-center gap-3"><div class="w-3 h-3 bg-brand-500 rounded-full"></div><div><h4 class="font-bold dark:text-white">Dallas</h4><p class="text-sm text-gray-500">Tier 1 &mdash; Same-Day Delivery</p></div></div><span class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-semibold rounded-full">Available</span></div>
+                </div>
+                <div class="city-result bg-white dark:bg-gray-800 rounded-xl p-5 shadow-lg border border-gray-100 dark:border-gray-700" data-city="houston" data-tier="1">
+                    <div class="flex items-center justify-between"><div class="flex items-center gap-3"><div class="w-3 h-3 bg-brand-500 rounded-full"></div><div><h4 class="font-bold dark:text-white">Houston</h4><p class="text-sm text-gray-500">Tier 1 &mdash; Same-Day Delivery</p></div></div><span class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-semibold rounded-full">Available</span></div>
+                </div>
+                <div class="city-result bg-white dark:bg-gray-800 rounded-xl p-5 shadow-lg border border-gray-100 dark:border-gray-700" data-city="austin" data-tier="1">
+                    <div class="flex items-center justify-between"><div class="flex items-center gap-3"><div class="w-3 h-3 bg-brand-500 rounded-full"></div><div><h4 class="font-bold dark:text-white">Austin</h4><p class="text-sm text-gray-500">Tier 1 &mdash; Same-Day Delivery</p></div></div><span class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-semibold rounded-full">Available</span></div>
+                </div>
+                <div class="city-result bg-white dark:bg-gray-800 rounded-xl p-5 shadow-lg border border-gray-100 dark:border-gray-700" data-city="san antonio" data-tier="1">
+                    <div class="flex items-center justify-between"><div class="flex items-center gap-3"><div class="w-3 h-3 bg-brand-500 rounded-full"></div><div><h4 class="font-bold dark:text-white">San Antonio</h4><p class="text-sm text-gray-500">Tier 1 &mdash; Same-Day Delivery</p></div></div><span class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-semibold rounded-full">Available</span></div>
+                </div>
+                <div class="city-result bg-white dark:bg-gray-800 rounded-xl p-5 shadow-lg border border-gray-100 dark:border-gray-700" data-city="fort worth" data-tier="1">
+                    <div class="flex items-center justify-between"><div class="flex items-center gap-3"><div class="w-3 h-3 bg-brand-500 rounded-full"></div><div><h4 class="font-bold dark:text-white">Fort Worth</h4><p class="text-sm text-gray-500">Tier 1 &mdash; Same-Day Delivery</p></div></div><span class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-semibold rounded-full">Available</span></div>
+                </div>
+                <div class="city-result bg-white dark:bg-gray-800 rounded-xl p-5 shadow-lg border border-gray-100 dark:border-gray-700" data-city="dallas metro" data-tier="2">
+                    <div class="flex items-center justify-between"><div class="flex items-center gap-3"><div class="w-3 h-3 bg-blue-500 rounded-full"></div><div><h4 class="font-bold dark:text-white">Dallas Metro Area</h4><p class="text-sm text-gray-500">Tier 2 &mdash; Next-Day Delivery</p></div></div><span class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-semibold rounded-full">Available</span></div>
+                </div>
+                <div class="city-result bg-white dark:bg-gray-800 rounded-xl p-5 shadow-lg border border-gray-100 dark:border-gray-700" data-city="houston metro" data-tier="2">
+                    <div class="flex items-center justify-between"><div class="flex items-center gap-3"><div class="w-3 h-3 bg-blue-500 rounded-full"></div><div><h4 class="font-bold dark:text-white">Houston Metro Area</h4><p class="text-sm text-gray-500">Tier 2 &mdash; Next-Day Delivery</p></div></div><span class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-semibold rounded-full">Available</span></div>
+                </div>
+                <div class="city-result bg-white dark:bg-gray-800 rounded-xl p-5 shadow-lg border border-gray-100 dark:border-gray-700" data-city="austin metro" data-tier="2">
+                    <div class="flex items-center justify-between"><div class="flex items-center gap-3"><div class="w-3 h-3 bg-blue-500 rounded-full"></div><div><h4 class="font-bold dark:text-white">Austin Metro Area</h4><p class="text-sm text-gray-500">Tier 2 &mdash; Next-Day Delivery</p></div></div><span class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-semibold rounded-full">Available</span></div>
+                </div>
+                <div class="city-result bg-white dark:bg-gray-800 rounded-xl p-5 shadow-lg border border-gray-100 dark:border-gray-700" data-city="san antonio metro" data-tier="2">
+                    <div class="flex items-center justify-between"><div class="flex items-center gap-3"><div class="w-3 h-3 bg-blue-500 rounded-full"></div><div><h4 class="font-bold dark:text-white">San Antonio Metro Area</h4><p class="text-sm text-gray-500">Tier 2 &mdash; Next-Day Delivery</p></div></div><span class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-semibold rounded-full">Available</span></div>
+                </div>
+                <div class="city-result bg-white dark:bg-gray-800 rounded-xl p-5 shadow-lg border border-gray-100 dark:border-gray-700" data-city="oklahoma city" data-tier="3">
+                    <div class="flex items-center justify-between"><div class="flex items-center gap-3"><div class="w-3 h-3 bg-yellow-500 rounded-full"></div><div><h4 class="font-bold dark:text-white">Oklahoma City</h4><p class="text-sm text-gray-500">Tier 3 &mdash; 2-3 Day Delivery</p></div></div><span class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-semibold rounded-full">Available</span></div>
+                </div>
+                <div class="city-result bg-white dark:bg-gray-800 rounded-xl p-5 shadow-lg border border-gray-100 dark:border-gray-700" data-city="tulsa" data-tier="3">
+                    <div class="flex items-center justify-between"><div class="flex items-center gap-3"><div class="w-3 h-3 bg-yellow-500 rounded-full"></div><div><h4 class="font-bold dark:text-white">Tulsa</h4><p class="text-sm text-gray-500">Tier 3 &mdash; 2-3 Day Delivery</p></div></div><span class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-semibold rounded-full">Available</span></div>
+                </div>
+                <div class="city-result bg-white dark:bg-gray-800 rounded-xl p-5 shadow-lg border border-gray-100 dark:border-gray-700" data-city="little rock" data-tier="3">
+                    <div class="flex items-center justify-between"><div class="flex items-center gap-3"><div class="w-3 h-3 bg-yellow-500 rounded-full"></div><div><h4 class="font-bold dark:text-white">Little Rock</h4><p class="text-sm text-gray-500">Tier 3 &mdash; 2-3 Day Delivery</p></div></div><span class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-semibold rounded-full">Available</span></div>
+                </div>
+                <div class="city-result bg-white dark:bg-gray-800 rounded-xl p-5 shadow-lg border border-gray-100 dark:border-gray-700" data-city="shreveport" data-tier="3">
+                    <div class="flex items-center justify-between"><div class="flex items-center gap-3"><div class="w-3 h-3 bg-yellow-500 rounded-full"></div><div><h4 class="font-bold dark:text-white">Shreveport</h4><p class="text-sm text-gray-500">Tier 3 &mdash; 2-3 Day Delivery</p></div></div><span class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-semibold rounded-full">Available</span></div>
+                </div>
+                <div class="city-result bg-white dark:bg-gray-800 rounded-xl p-5 shadow-lg border border-gray-100 dark:border-gray-700" data-city="amarillo" data-tier="3">
+                    <div class="flex items-center justify-between"><div class="flex items-center gap-3"><div class="w-3 h-3 bg-yellow-500 rounded-full"></div><div><h4 class="font-bold dark:text-white">Amarillo</h4><p class="text-sm text-gray-500">Tier 3 &mdash; 2-3 Day Delivery</p></div></div><span class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-semibold rounded-full">Available</span></div>
+                </div>
+                <p id="no-results" class="text-gray-500 dark:text-gray-400 text-sm py-4 hidden">No matching city found. <a href="contact.html" class="text-brand-500 hover:underline font-semibold">Contact us</a> to request delivery in your area.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Level by Region Table -->
+    <section class="section-padding" aria-label="Service levels by region">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-brand-500 font-semibold text-sm uppercase tracking-wider">Service Levels</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold mt-3 dark:text-white">Delivery Options by <span class="text-brand-500">Region</span></h2>
+                <p class="text-gray-600 dark:text-gray-400 mt-4 max-w-2xl mx-auto">Choose the speed that fits your needs. Availability depends on your location's service tier.</p>
+            </div>
+            <div class="overflow-x-auto animate-on-scroll">
+                <table class="w-full bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden">
+                    <thead>
+                        <tr class="bg-brand-500 text-white">
+                            <th class="text-left px-6 py-4 font-bold text-sm">Region / City</th>
+                            <th class="text-center px-6 py-4 font-bold text-sm">Standard (3-5 Days)</th>
+                            <th class="text-center px-6 py-4 font-bold text-sm">Express (1-2 Days)</th>
+                            <th class="text-center px-6 py-4 font-bold text-sm">Same-Day</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-100 dark:divide-gray-700">
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"><td class="px-6 py-4 font-semibold dark:text-white">Dallas</td><td class="px-6 py-4 text-center"><i class="fas fa-check-circle text-green-500"></i></td><td class="px-6 py-4 text-center"><i class="fas fa-check-circle text-green-500"></i></td><td class="px-6 py-4 text-center"><i class="fas fa-check-circle text-green-500"></i></td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"><td class="px-6 py-4 font-semibold dark:text-white">Houston</td><td class="px-6 py-4 text-center"><i class="fas fa-check-circle text-green-500"></i></td><td class="px-6 py-4 text-center"><i class="fas fa-check-circle text-green-500"></i></td><td class="px-6 py-4 text-center"><i class="fas fa-check-circle text-green-500"></i></td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"><td class="px-6 py-4 font-semibold dark:text-white">Austin</td><td class="px-6 py-4 text-center"><i class="fas fa-check-circle text-green-500"></i></td><td class="px-6 py-4 text-center"><i class="fas fa-check-circle text-green-500"></i></td><td class="px-6 py-4 text-center"><i class="fas fa-check-circle text-green-500"></i></td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"><td class="px-6 py-4 font-semibold dark:text-white">San Antonio</td><td class="px-6 py-4 text-center"><i class="fas fa-check-circle text-green-500"></i></td><td class="px-6 py-4 text-center"><i class="fas fa-check-circle text-green-500"></i></td><td class="px-6 py-4 text-center"><i class="fas fa-check-circle text-green-500"></i></td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"><td class="px-6 py-4 font-semibold dark:text-white">Fort Worth</td><td class="px-6 py-4 text-center"><i class="fas fa-check-circle text-green-500"></i></td><td class="px-6 py-4 text-center"><i class="fas fa-check-circle text-green-500"></i></td><td class="px-6 py-4 text-center"><i class="fas fa-check-circle text-green-500"></i></td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"><td class="px-6 py-4 font-semibold dark:text-white">Dallas Metro Area</td><td class="px-6 py-4 text-center"><i class="fas fa-check-circle text-green-500"></i></td><td class="px-6 py-4 text-center"><i class="fas fa-check-circle text-green-500"></i></td><td class="px-6 py-4 text-center"><i class="fas fa-minus-circle text-gray-400"></i></td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"><td class="px-6 py-4 font-semibold dark:text-white">Houston Metro Area</td><td class="px-6 py-4 text-center"><i class="fas fa-check-circle text-green-500"></i></td><td class="px-6 py-4 text-center"><i class="fas fa-check-circle text-green-500"></i></td><td class="px-6 py-4 text-center"><i class="fas fa-minus-circle text-gray-400"></i></td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"><td class="px-6 py-4 font-semibold dark:text-white">Austin Metro Area</td><td class="px-6 py-4 text-center"><i class="fas fa-check-circle text-green-500"></i></td><td class="px-6 py-4 text-center"><i class="fas fa-check-circle text-green-500"></i></td><td class="px-6 py-4 text-center"><i class="fas fa-minus-circle text-gray-400"></i></td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"><td class="px-6 py-4 font-semibold dark:text-white">Oklahoma City</td><td class="px-6 py-4 text-center"><i class="fas fa-check-circle text-green-500"></i></td><td class="px-6 py-4 text-center"><i class="fas fa-minus-circle text-gray-400"></i></td><td class="px-6 py-4 text-center"><i class="fas fa-minus-circle text-gray-400"></i></td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"><td class="px-6 py-4 font-semibold dark:text-white">Tulsa</td><td class="px-6 py-4 text-center"><i class="fas fa-check-circle text-green-500"></i></td><td class="px-6 py-4 text-center"><i class="fas fa-minus-circle text-gray-400"></i></td><td class="px-6 py-4 text-center"><i class="fas fa-minus-circle text-gray-400"></i></td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"><td class="px-6 py-4 font-semibold dark:text-white">Little Rock</td><td class="px-6 py-4 text-center"><i class="fas fa-check-circle text-green-500"></i></td><td class="px-6 py-4 text-center"><i class="fas fa-minus-circle text-gray-400"></i></td><td class="px-6 py-4 text-center"><i class="fas fa-minus-circle text-gray-400"></i></td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"><td class="px-6 py-4 font-semibold dark:text-white">Shreveport</td><td class="px-6 py-4 text-center"><i class="fas fa-check-circle text-green-500"></i></td><td class="px-6 py-4 text-center"><i class="fas fa-minus-circle text-gray-400"></i></td><td class="px-6 py-4 text-center"><i class="fas fa-minus-circle text-gray-400"></i></td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"><td class="px-6 py-4 font-semibold dark:text-white">Amarillo</td><td class="px-6 py-4 text-center"><i class="fas fa-check-circle text-green-500"></i></td><td class="px-6 py-4 text-center"><i class="fas fa-minus-circle text-gray-400"></i></td><td class="px-6 py-4 text-center"><i class="fas fa-minus-circle text-gray-400"></i></td></tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"><td class="px-6 py-4 font-semibold dark:text-white">National (Partner Network)</td><td class="px-6 py-4 text-center"><i class="fas fa-check-circle text-green-500"></i></td><td class="px-6 py-4 text-center"><i class="fas fa-minus-circle text-gray-400"></i></td><td class="px-6 py-4 text-center"><i class="fas fa-minus-circle text-gray-400"></i></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expansion Plans -->
+    <section class="section-padding-sm bg-gray-50 dark:bg-gray-800/50" aria-label="Expansion plans">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-brand-500 font-semibold text-sm uppercase tracking-wider">Growing Network</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold mt-3 dark:text-white">Coming <span class="text-brand-500">Soon</span></h2>
+                <p class="text-gray-600 dark:text-gray-400 mt-4 max-w-2xl mx-auto">We're expanding rapidly. These cities will have full SwiftShip service in the coming months.</p>
+            </div>
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                <div class="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-lg border border-gray-100 dark:border-gray-700 text-center animate-on-scroll">
+                    <div class="w-10 h-10 bg-brand-500/10 rounded-full flex items-center justify-center mx-auto mb-3"><i class="fas fa-map-pin text-brand-500 text-sm"></i></div>
+                    <h4 class="font-bold text-sm dark:text-white"><img src="https://flagcdn.com/80x60/us.png" srcset="https://flagcdn.com/160x120/us.png 2x" width="56" height="42" alt="United States flag" class="swift-city-flag-img"> Nashville</h4>
+                    <p class="text-xs text-gray-500 mt-1">Q1 2027</p>
+                </div>
+                <div class="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-lg border border-gray-100 dark:border-gray-700 text-center animate-on-scroll">
+                    <div class="w-10 h-10 bg-brand-500/10 rounded-full flex items-center justify-center mx-auto mb-3"><i class="fas fa-map-pin text-brand-500 text-sm"></i></div>
+                    <h4 class="font-bold text-sm dark:text-white"><img src="https://flagcdn.com/80x60/us.png" srcset="https://flagcdn.com/160x120/us.png 2x" width="56" height="42" alt="United States flag" class="swift-city-flag-img"> Memphis</h4>
+                    <p class="text-xs text-gray-500 mt-1">Q1 2027</p>
+                </div>
+                <div class="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-lg border border-gray-100 dark:border-gray-700 text-center animate-on-scroll">
+                    <div class="w-10 h-10 bg-brand-500/10 rounded-full flex items-center justify-center mx-auto mb-3"><i class="fas fa-map-pin text-brand-500 text-sm"></i></div>
+                    <h4 class="font-bold text-sm dark:text-white"><img src="https://flagcdn.com/80x60/us.png" srcset="https://flagcdn.com/160x120/us.png 2x" width="56" height="42" alt="United States flag" class="swift-city-flag-img"> New Orleans</h4>
+                    <p class="text-xs text-gray-500 mt-1">Q2 2027</p>
+                </div>
+                <div class="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-lg border border-gray-100 dark:border-gray-700 text-center animate-on-scroll">
+                    <div class="w-10 h-10 bg-brand-500/10 rounded-full flex items-center justify-center mx-auto mb-3"><i class="fas fa-map-pin text-brand-500 text-sm"></i></div>
+                    <h4 class="font-bold text-sm dark:text-white"><img src="https://flagcdn.com/80x60/us.png" srcset="https://flagcdn.com/160x120/us.png 2x" width="56" height="42" alt="United States flag" class="swift-city-flag-img"> Kansas City</h4>
+                    <p class="text-xs text-gray-500 mt-1">Q2 2027</p>
+                </div>
+                <div class="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-lg border border-gray-100 dark:border-gray-700 text-center animate-on-scroll">
+                    <div class="w-10 h-10 bg-brand-500/10 rounded-full flex items-center justify-center mx-auto mb-3"><i class="fas fa-map-pin text-brand-500 text-sm"></i></div>
+                    <h4 class="font-bold text-sm dark:text-white"><img src="https://flagcdn.com/80x60/us.png" srcset="https://flagcdn.com/160x120/us.png 2x" width="56" height="42" alt="United States flag" class="swift-city-flag-img"> El Paso</h4>
+                    <p class="text-xs text-gray-500 mt-1">Q2 2027</p>
+                </div>
+                <div class="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-lg border border-gray-100 dark:border-gray-700 text-center animate-on-scroll">
+                    <div class="w-10 h-10 bg-brand-500/10 rounded-full flex items-center justify-center mx-auto mb-3"><i class="fas fa-map-pin text-brand-500 text-sm"></i></div>
+                    <h4 class="font-bold text-sm dark:text-white"><img src="https://flagcdn.com/80x60/us.png" srcset="https://flagcdn.com/160x120/us.png 2x" width="56" height="42" alt="United States flag" class="swift-city-flag-img"> Albuquerque</h4>
+                    <p class="text-xs text-gray-500 mt-1">Q3 2027</p>
+                </div>
+                <div class="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-lg border border-gray-100 dark:border-gray-700 text-center animate-on-scroll">
+                    <div class="w-10 h-10 bg-brand-500/10 rounded-full flex items-center justify-center mx-auto mb-3"><i class="fas fa-map-pin text-brand-500 text-sm"></i></div>
+                    <h4 class="font-bold text-sm dark:text-white"><img src="https://flagcdn.com/80x60/us.png" srcset="https://flagcdn.com/160x120/us.png 2x" width="56" height="42" alt="United States flag" class="swift-city-flag-img"> Baton Rouge</h4>
+                    <p class="text-xs text-gray-500 mt-1">Q3 2027</p>
+                </div>
+                <div class="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-lg border border-gray-100 dark:border-gray-700 text-center animate-on-scroll">
+                    <div class="w-10 h-10 bg-brand-500/10 rounded-full flex items-center justify-center mx-auto mb-3"><i class="fas fa-map-pin text-brand-500 text-sm"></i></div>
+                    <h4 class="font-bold text-sm dark:text-white"><img src="https://flagcdn.com/80x60/us.png" srcset="https://flagcdn.com/160x120/us.png 2x" width="56" height="42" alt="United States flag" class="swift-city-flag-img"> Lubbock</h4>
+                    <p class="text-xs text-gray-500 mt-1">Q3 2027</p>
+                </div>
+                <div class="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-lg border border-gray-100 dark:border-gray-700 text-center animate-on-scroll">
+                    <div class="w-10 h-10 bg-brand-500/10 rounded-full flex items-center justify-center mx-auto mb-3"><i class="fas fa-map-pin text-brand-500 text-sm"></i></div>
+                    <h4 class="font-bold text-sm dark:text-white"><img src="https://flagcdn.com/80x60/us.png" srcset="https://flagcdn.com/160x120/us.png 2x" width="56" height="42" alt="United States flag" class="swift-city-flag-img"> Wichita Falls</h4>
+                    <p class="text-xs text-gray-500 mt-1">Q4 2027</p>
+                </div>
+                <div class="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-lg border border-gray-100 dark:border-gray-700 text-center animate-on-scroll">
+                    <div class="w-10 h-10 bg-brand-500/10 rounded-full flex items-center justify-center mx-auto mb-3"><i class="fas fa-map-pin text-brand-500 text-sm"></i></div>
+                    <h4 class="font-bold text-sm dark:text-white"><img src="https://flagcdn.com/80x60/us.png" srcset="https://flagcdn.com/160x120/us.png 2x" width="56" height="42" alt="United States flag" class="swift-city-flag-img"> Jackson, MS</h4>
+                    <p class="text-xs text-gray-500 mt-1">Q4 2027</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- International Coverage -->
+    <section class="section-padding" aria-label="International coverage">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 sm:p-12 shadow-xl border border-gray-100 dark:border-gray-700 animate-on-scroll">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <span class="text-brand-500 font-semibold text-sm uppercase tracking-wider">Beyond Borders</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold mt-3 mb-4 dark:text-white">International <span class="text-brand-500">Coverage</span></h2>
+                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-4">SwiftShip doesn't stop at the border. Our international shipping network reaches over 200 countries and territories worldwide, with express options delivering in as little as 3-5 business days.</p>
+                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">Full customs documentation support, real-time international tracking, and competitive rates make global shipping simple. Whether it's documents to London or packages to Tokyo, we've got you covered.</p>
+                        <div class="flex flex-wrap gap-4 mb-6">
+                            <div class="flex items-center gap-2 text-sm font-semibold dark:text-white"><i class="fas fa-globe text-brand-500"></i> 200+ Countries</div>
+                            <div class="flex items-center gap-2 text-sm font-semibold dark:text-white"><i class="fas fa-shield-alt text-brand-500"></i> Insured Shipments</div>
+                            <div class="flex items-center gap-2 text-sm font-semibold dark:text-white"><i class="fas fa-file-alt text-brand-500"></i> Customs Support</div>
+                        </div>
+                        <a href="service-details.html" class="inline-block px-6 py-3 bg-brand-500 text-white font-semibold rounded-xl hover:bg-brand-600 shadow-lg shadow-brand-500/25 transition-all">Learn More <i class="fas fa-arrow-right ml-2"></i></a>
+                    </div>
+                    <div class="text-center">
+                        <div class="relative w-64 h-64 mx-auto">
+                            <div class="absolute inset-0 bg-brand-500/10 rounded-full"></div>
+                            <div class="absolute inset-4 bg-brand-500/10 rounded-full"></div>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="text-center">
+                                    <div class="text-5xl font-extrabold text-brand-500">200+</div>
+                                    <div class="text-gray-600 dark:text-gray-400 font-semibold mt-1">Countries Served</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section-padding-sm bg-gray-50 dark:bg-gray-800/50" aria-label="Customer testimonials">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-brand-500 font-semibold text-sm uppercase tracking-wider">Testimonials</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold mt-3 dark:text-white">What Our Customers Say</h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="testimonial-card">
+                    <div class="quote-icon font-serif">"</div>
+                    <div class="stars mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">I was amazed at how easy the whole process was. I booked online, packed my box, and the courier showed up right on time. The real-time tracking meant I always knew where my parcel was. SwiftShip has completely replaced every other courier service I used.</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 bg-brand-500 rounded-full flex items-center justify-center text-white font-bold">JR</div>
+                        <div><h5 class="font-bold text-sm dark:text-white">Jennifer Rivera</h5><p class="text-xs text-gray-500">Small Business Owner, Dallas</p></div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="quote-icon font-serif">"</div>
+                    <div class="stars mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">As someone who regularly ships packages to family across the country, the simplicity of SwiftShip is unmatched. The photo proof of delivery gives me peace of mind, and the instant quote feature means I never have surprises at checkout. Five stars all the way.</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 bg-brand-500 rounded-full flex items-center justify-center text-white font-bold">MT</div>
+                        <div><h5 class="font-bold text-sm dark:text-white">Marcus Thompson</h5><p class="text-xs text-gray-500">Frequent Sender, Houston</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="relative py-20 overflow-hidden" aria-label="Call to action">
+        <img src="https://images.unsplash.com/photo-1591768793355-74d04bb6608f?w=1920&h=600&fit=crop" alt="SwiftShip delivery fleet" class="absolute inset-0 w-full h-full object-cover">
+        <div class="absolute inset-0 bg-brand-600/90"></div>
+        <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">Ready to Ship?</h2>
+            <p class="text-xl text-white/80 mb-8">Join 50,000+ businesses and individuals who trust SwiftShip with their deliveries.</p>
+            <div class="flex flex-wrap gap-4 justify-center">
+                <a href="register.html" class="px-8 py-4 bg-white text-brand-600 font-bold rounded-xl hover:bg-gray-100 shadow-xl transition-all hover:-translate-y-0.5"><i class="fas fa-user-plus mr-2"></i> Register Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 pt-16 pb-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+                <div>
+                    <a href="../index.html" class="flex items-center gap-2 mb-6">
+                        <div class="w-10 h-10 bg-brand-500 rounded-xl flex items-center justify-center"><i class="fas fa-shuttle-van text-white"></i></div>
+                        <span class="text-xl font-extrabold text-white"><span class="text-brand-500">Swift</span>Ship</span>
+                    </a>
+                    <p class="text-sm leading-relaxed mb-6">Fast, reliable courier and parcel delivery services. Same-day delivery, real-time tracking, and insured shipments across 50+ cities.</p>
+                    <div class="flex gap-3">
+                        <a href="https://www.facebook.com/" class="w-10 h-10 bg-gray-800 hover:bg-brand-500 rounded-lg flex items-center justify-center transition-colors" aria-label="Facebook" target="_blank" rel="noopener noreferrer">><i class="fab fa-facebook-f text-sm"></i></a>
+                        <a href="https://twitter.com/" class="w-10 h-10 bg-gray-800 hover:bg-brand-500 rounded-lg flex items-center justify-center transition-colors" aria-label="Twitter" target="_blank" rel="noopener noreferrer">><i class="fab fa-twitter text-sm"></i></a>
+                        <a href="https://www.instagram.com/" class="w-10 h-10 bg-gray-800 hover:bg-brand-500 rounded-lg flex items-center justify-center transition-colors" aria-label="Instagram" target="_blank" rel="noopener noreferrer">><i class="fab fa-instagram text-sm"></i></a>
+                        <a href="https://www.linkedin.com/" class="w-10 h-10 bg-gray-800 hover:bg-brand-500 rounded-lg flex items-center justify-center transition-colors" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">><i class="fab fa-linkedin-in text-sm"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-6">Quick Links</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="../index.html" class="hover:text-brand-500 transition-colors">Home</a></li>
+                        <li><a href="about.html" class="hover:text-brand-500 transition-colors">About Us</a></li>
+                        <li><a href="services.html" class="hover:text-brand-500 transition-colors">Services</a></li>
+                        <li><a href="pricing.html" class="hover:text-brand-500 transition-colors">Pricing</a></li>
+                        <li><a href="blog.html" class="hover:text-brand-500 transition-colors">Blog</a></li>
+                        <li><a href="contact.html" class="hover:text-brand-500 transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-6">Our Services</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="service-details.html" class="hover:text-brand-500 transition-colors">Document Delivery</a></li>
+                        <li><a href="service-details.html" class="hover:text-brand-500 transition-colors">Parcel Shipping</a></li>
+                        <li><a href="service-details.html" class="hover:text-brand-500 transition-colors">Same-Day Delivery</a></li>
+                        <li><a href="service-details.html" class="hover:text-brand-500 transition-colors">Bulk Cargo</a></li>
+                        <li><a href="service-details.html" class="hover:text-brand-500 transition-colors">International Shipping</a></li>
+                        <li><a href="service-details.html" class="hover:text-brand-500 transition-colors">Warehouse &amp; Fulfillment</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-6">Contact Us</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-start gap-3"><i class="fas fa-map-marker-alt text-brand-500 mt-1 shrink-0"></i><span>1200 Shipping Lane, Suite 400<br>Dallas, TX 75201</span></li>
+                        <li class="flex items-center gap-3"><i class="fas fa-phone text-brand-500 shrink-0"></i><a href="tel:+18005550199" class="hover:text-brand-500">1-800-555-0199</a></li>
+                        <li class="flex items-center gap-3"><i class="fas fa-envelope text-brand-500 shrink-0"></i><a href="mailto:support@swiftship.com" class="hover:text-brand-500">support@swiftship.com</a></li>
+                        <li class="flex items-center gap-3"><i class="fas fa-clock text-brand-500 shrink-0"></i><span>24/7 Customer Support</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
+                <p>&copy; 2026 SwiftShip Express. All rights reserved.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-brand-500">Privacy Policy</a>
+                    <a href="#" class="hover:text-brand-500">Terms of Service</a>
+                    <a href="#" class="hover:text-brand-500">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top -->
+    <button id="scroll-top" class="fixed bottom-8 right-8 z-50 w-12 h-12 bg-brand-500 text-white rounded-xl shadow-xl flex items-center justify-center opacity-0 invisible translate-y-4 hover:bg-brand-600 transition-all duration-300" aria-label="Scroll to top"><i class="fas fa-arrow-up"></i></button>
+    <script src="../assets/js/main.js"></script>
+
+    <!-- City Search Script -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var citySearch = document.getElementById('city-search');
+        var resultsContainer = document.getElementById('city-results');
+        var noResults = document.getElementById('no-results');
+        if (!citySearch) return;
+
+        var cityCards = resultsContainer.querySelectorAll('.city-result');
+
+        citySearch.addEventListener('input', function() {
+            var query = this.value.toLowerCase().trim();
+            var anyVisible = false;
+
+            if (query.length < 2) {
+                cityCards.forEach(function(c) { c.classList.add('hidden'); });
+                if (noResults) noResults.classList.add('hidden');
+                resultsContainer.classList.add('hidden');
+                return;
+            }
+
+            resultsContainer.classList.remove('hidden');
+            cityCards.forEach(function(card) {
+                var city = card.getAttribute('data-city');
+                if (city.indexOf(query) !== -1) {
+                    card.classList.remove('hidden');
+                    anyVisible = true;
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+
+            if (noResults) {
+                noResults.classList.toggle('hidden', anyVisible);
+            }
+        });
+    });
+    </script>
+</body>
+</html>

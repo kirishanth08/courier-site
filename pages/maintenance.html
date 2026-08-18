@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <link rel="icon" type="image/svg+xml" href="../assets/css/favicon.svg">
+    <link rel="shortcut icon" href="../assets/css/favicon.svg">
+    <link rel="apple-touch-icon" href="../assets/css/favicon.svg">
+
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SwiftShip Express is currently undergoing scheduled maintenance. We'll be back shortly with improved services.">
+    <meta name="keywords" content="SwiftShip maintenance, system upgrade, courier service update, scheduled maintenance">
+    <meta name="robots" content="noindex, nofollow">
+    <meta property="og:title" content="Scheduled Maintenance | SwiftShip Express">
+    <meta property="og:description" content="We're upgrading our systems to serve you better. Back shortly.">
+    <meta property="og:type" content="website">
+    <title>Scheduled Maintenance | SwiftShip Express - Courier & Parcel Delivery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = { darkMode:'class', theme:{ extend:{ colors:{ brand:{ 50:'#fff7ed',100:'#ffedd5',200:'#fed7aa',300:'#fdba74',400:'#fb923c',500:'#f97316',600:'#ea580c',700:'#c2410c',800:'#9a3412',900:'#7c2d12' } } } } }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/custom.css">
+    <style>
+        @keyframes gear-spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        @keyframes wrench-pulse {
+            0%, 100% { transform: rotate(-15deg) scale(1); }
+            50% { transform: rotate(15deg) scale(1.05); }
+        }
+        .gear-spin { animation: gear-spin 4s linear infinite; }
+        .wrench-pulse { animation: wrench-pulse 3s ease-in-out infinite; }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200">
+
+    <!-- Background -->
+    <div class="fixed inset-0 z-0">
+        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1920&h=1080&fit=crop" alt="" class="w-full h-full object-cover" aria-hidden="true">
+        <div class="absolute inset-0 bg-gray-900/85 backdrop-blur-sm"></div>
+    </div>
+
+    <!-- Theme Toggle -->
+    <div class="fixed top-6 right-6 z-50">
+        <button id="themeToggle" class="p-3 rounded-xl bg-white/10 backdrop-blur-md border border-white/10 hover:bg-white/20 transition-colors" aria-label="Toggle dark mode">
+            <i class="fas fa-moon dark:hidden text-white"></i><i class="fas fa-sun hidden dark:inline text-yellow-400"></i>
+        </button>
+    </div>
+
+    <!-- Maintenance Content -->
+    <section class="relative z-10 min-h-screen flex items-center justify-center px-6 py-20" aria-label="Maintenance mode">
+        <div class="max-w-2xl mx-auto text-center">
+            <!-- Animated Icon -->
+            <div class="relative mb-8 inline-block">
+                <div class="w-28 h-28 bg-brand-500/20 rounded-full flex items-center justify-center mx-auto relative">
+                    <i class="fas fa-cog text-brand-500 text-5xl gear-spin absolute"></i>
+                    <i class="fas fa-wrench text-white text-2xl wrench-pulse relative z-10"></i>
+                </div>
+            </div>
+
+            <!-- Heading -->
+            <h1 class="text-4xl sm:text-5xl font-extrabold text-white leading-tight mb-6">Scheduled <span class="text-brand-500">Maintenance</span></h1>
+            <p class="text-lg text-gray-300 max-w-lg mx-auto mb-4 leading-relaxed">We're currently upgrading our systems to serve you better. We'll be back shortly.</p>
+
+            <!-- Return Time -->
+            <div class="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/10 rounded-xl px-6 py-3 mb-10">
+                <i class="fas fa-clock text-brand-500"></i>
+                <span class="text-sm font-medium text-gray-300">Estimated completion: <span class="text-white font-semibold">August 20, 2026 at 6:00 AM EST</span></span>
+            </div>
+
+            <!-- Status Updates -->
+            <div class="bg-white/10 backdrop-blur-md border border-white/10 rounded-2xl p-6 sm:p-8 mb-10 text-left max-w-md mx-auto">
+                <h3 class="text-lg font-bold text-white mb-6 flex items-center gap-2">
+                    <i class="fas fa-list-check text-brand-500"></i> Status Updates
+                </h3>
+                <div class="space-y-4">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center shrink-0">
+                            <i class="fas fa-check text-green-400 text-sm"></i>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between">
+                                <span class="font-semibold text-white text-sm">System Check</span>
+                                <span class="text-xs font-semibold text-green-400 bg-green-500/10 px-3 py-1 rounded-full">Complete</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-brand-500/20 flex items-center justify-center shrink-0">
+                            <i class="fas fa-spinner fa-spin text-brand-500 text-sm"></i>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between">
+                                <span class="font-semibold text-white text-sm">Database Migration</span>
+                                <span class="text-xs font-semibold text-brand-400 bg-brand-500/10 px-3 py-1 rounded-full">In Progress</span>
+                            </div>
+                            <div class="mt-2 w-full h-1.5 bg-white/10 rounded-full overflow-hidden">
+                                <div class="h-full bg-brand-500 rounded-full" style="width: 65%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center shrink-0">
+                            <i class="fas fa-clock text-gray-500 text-sm"></i>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between">
+                                <span class="font-semibold text-white text-sm">Final Testing</span>
+                                <span class="text-xs font-semibold text-gray-400 bg-white/10 px-3 py-1 rounded-full">Pending</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact -->
+            <div class="bg-white/10 backdrop-blur-md border border-white/10 rounded-xl px-6 py-4 max-w-md mx-auto">
+                <p class="text-sm text-gray-300">
+                    <i class="fas fa-envelope text-brand-500 mr-2"></i>
+                    For urgent deliveries, contact us at
+                    <a href="mailto:support@swiftship.com" class="text-brand-400 font-semibold hover:text-brand-300 transition-colors">support@swiftship.com</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>

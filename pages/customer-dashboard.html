@@ -1,0 +1,841 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/svg+xml" href="../assets/css/favicon.svg">
+    <link rel="shortcut icon" href="../assets/css/favicon.svg">
+    <link rel="apple-touch-icon" href="../assets/css/favicon.svg">
+
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Dashboard | SwiftShip Express</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config={darkMode:'class',theme:{extend:{colors:{brand:{50:'#fff7ed',100:'#ffedd5',200:'#fed7aa',300:'#fdba74',400:'#fb923c',500:'#f97316',600:'#ea580c',700:'#c2410c',800:'#9a3412',900:'#7c2d12'}}}}}</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/custom.css">
+    <style>
+        .sidebar{width:260px;min-height:100vh;background:linear-gradient(180deg,#1e293b 0%,#0f172a 100%);position:fixed;left:0;top:0;z-index:40;transition:transform .3s ease;overflow-y:auto}
+        .sidebar.collapsed{transform:translateX(-260px)}
+        .sidebar-link{display:flex;align-items:center;gap:.75rem;padding:.625rem 1rem;color:#94a3b8;border-radius:.5rem;transition:all .2s;font-size:.875rem;margin:.125rem .75rem}
+        .sidebar-link:hover{background:rgba(249,115,22,.1);color:#f97316}
+        .sidebar-link.active{background:rgba(249,115,22,.15);color:#f97316;font-weight:600}
+        .sidebar-link i{width:1.25rem;text-align:center}
+        .dashboard-main{margin-left:260px;transition:margin-left .3s ease;min-height:100vh}
+        .dashboard-main.expanded{margin-left:0}
+        .tab-content{display:none}
+        .tab-content.active{display:block}
+        .data-table{width:100%;border-collapse:collapse}
+        .data-table thead{background:#f1f5f9}
+        .dark .data-table thead{background:#1e293b}
+        .data-table th{padding:.75rem 1rem;text-align:left;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:#64748b;border-bottom:2px solid #e2e8f0}
+        .dark .data-table th{color:#94a3b8;border-color:#334155}
+        .data-table td{padding:.75rem 1rem;font-size:.875rem;border-bottom:1px solid #f1f5f9}
+        .dark .data-table td{border-color:#1e293b}
+        .data-table tbody tr:hover{background:#fff7ed}
+        .dark .data-table tbody tr:hover{background:rgba(249,115,22,.05)}
+        .tracking-step{position:relative;padding-left:2rem;padding-bottom:1.5rem}
+        .tracking-step:last-child{padding-bottom:0}
+        .tracking-step::before{content:'';position:absolute;left:.625rem;top:1.75rem;bottom:0;width:2px;background:#e2e8f0}
+        .dark .tracking-step::before{background:#334155}
+        .tracking-step:last-child::before{display:none}
+        .tracking-step .step-dot{position:absolute;left:0;top:.25rem;width:1.25rem;height:1.25rem;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.625rem}
+        .tracking-step.completed .step-dot{background:#22c55e;color:#fff}
+        .tracking-step.active .step-dot{background:#f97316;color:#fff;animation:pulse-ring 2s infinite}
+        .tracking-step.pending .step-dot{background:#e2e8f0;color:#94a3b8}
+        .dark .tracking-step.pending .step-dot{background:#334155;color:#64748b}
+        @keyframes pulse-ring{0%{box-shadow:0 0 0 0 rgba(249,115,22,.4)}70%{box-shadow:0 0 0 8px rgba(249,115,22,0)}100%{box-shadow:0 0 0 0 rgba(249,115,22,0)}}
+        .status-badge{display:inline-flex;align-items:center;padding:.25rem .625rem;border-radius:9999px;font-size:.75rem;font-weight:600;gap:.375rem}
+        .status-delivered{background:#dcfce7;color:#16a34a}
+        .dark .status-delivered{background:rgba(34,197,94,.15);color:#4ade80}
+        .status-transit{background:#fef3c7;color:#d97706}
+        .dark .status-transit{background:rgba(245,158,11,.15);color:#fbbf24}
+        .status-pending{background:#e0e7ff;color:#4f46e5}
+        .dark .status-pending{background:rgba(99,102,241,.15);color:#818cf8}
+        .status-paid{background:#dcfce7;color:#16a34a}
+        .dark .status-paid{background:rgba(34,197,94,.15);color:#4ade80}
+        .status-pending-pay{background:#fef3c7;color:#d97706}
+        .dark .status-pending-pay{background:rgba(245,158,11,.15);color:#fbbf24}
+        .toggle-switch{position:relative;width:44px;height:24px;background:#cbd5e1;border-radius:12px;cursor:pointer;transition:.2s}
+        .toggle-switch.active{background:#f97316}
+        .toggle-switch::after{content:'';position:absolute;width:20px;height:20px;background:#fff;border-radius:50%;top:2px;left:2px;transition:.2s;box-shadow:0 1px 3px rgba(0,0,0,.15)}
+        .toggle-switch.active::after{left:22px}
+    </style>
+</head>
+<script>
+(function () {
+  if (sessionStorage.getItem('swiftshipRole') !== 'customer' ||
+      sessionStorage.getItem('swiftshipLoggedIn') !== 'true') {
+    window.location.replace('login.html');
+  }
+})();
+</script>
+<body class="bg-gray-100 dark:bg-gray-950 text-gray-800 dark:text-gray-200">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="p-5 border-b border-white/10">
+            <a href="../index.html" class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-brand-500 rounded-xl flex items-center justify-center shadow-lg shadow-brand-500/30">
+                    <i class="fas fa-shipping-fast text-white text-lg"></i>
+                </div>
+                <div>
+                    <span class="text-white font-bold text-lg tracking-tight">SwiftShip</span>
+                    <span class="text-brand-400 font-bold text-lg"> Express</span>
+                </div>
+            </a>
+        </div>
+        <div class="py-4">
+            <p class="px-6 mb-2 text-[0.65rem] uppercase tracking-widest text-slate-500 font-semibold">Main Menu</p>
+            <a href="#" class="sidebar-link active" data-tab="tab-dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+            <a href="#" class="sidebar-link" data-tab="tab-book"><i class="fas fa-calendar-plus"></i> Book Pickup</a>
+            <a href="#" class="sidebar-link" data-tab="tab-track"><i class="fas fa-search-location"></i> Track Shipment</a>
+            <a href="#" class="sidebar-link" data-tab="tab-history"><i class="fas fa-history"></i> Shipment History</a>
+            <a href="#" class="sidebar-link" data-tab="tab-receipts"><i class="fas fa-file-invoice"></i> My Receipts</a>
+            <a href="#" class="sidebar-link" data-tab="tab-settings"><i class="fas fa-user-cog"></i> Account Settings</a>
+        </div>
+        <div class="absolute bottom-0 left-0 right-0 p-4 border-t border-white/10">
+            <a href="../index.html" class="sidebar-link mb-1"><i class="fas fa-arrow-left"></i> Back to Site</a>
+            <a href="login.html" onclick="sessionStorage.clear()" class="sidebar-link text-red-400 hover:text-red-300"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="dashboard-main" id="dashboardMain">
+        <!-- Top Bar -->
+        <header class="sticky top-0 z-30 bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border-b border-gray-200 dark:border-gray-800">
+            <div class="flex items-center justify-between px-6 h-16">
+                <div class="flex items-center gap-4">
+                    <button id="sidebarToggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition">
+                        <i class="fas fa-bars text-gray-500 dark:text-gray-400"></i>
+                    </button>
+                    <h1 class="text-lg font-semibold hidden sm:block">Customer Dashboard</h1>
+                </div>
+                <div class="flex items-center gap-3">
+                    <button class="relative p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition">
+                        <i class="fas fa-bell text-gray-500 dark:text-gray-400"></i>
+                        <span class="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full"></span>
+                    </button>
+                    <button id="themeToggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition">
+                        <i class="fas fa-moon text-gray-500 dark:text-gray-400 dark:hidden"></i>
+                        <i class="fas fa-sun text-yellow-500 hidden dark:block"></i>
+                    </button>
+                    <button id="rtlToggle" type="button" class="px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition text-xs font-bold text-gray-600 dark:text-gray-300" aria-label="Toggle RTL direction">RTL</button>
+                    <div class="relative">
+                        <button id="userMenuBtn" class="flex items-center gap-3 pl-3 pr-1 py-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition">
+                            <span class="text-sm font-medium hidden md:block">John Doe</span>
+                            <div class="w-9 h-9 rounded-full bg-brand-500 flex items-center justify-center text-white font-bold text-sm">JD</div>
+                        </button>
+                        <div id="userDropdown" class="hidden absolute right-0 top-full mt-2 w-48 bg-white dark:bg-gray-800 rounded-xl shadow-xl border border-gray-200 dark:border-gray-700 py-2 z-50">
+                            <div class="px-4 py-2 border-b border-gray-100 dark:border-gray-700">
+                                <p class="text-sm font-semibold">John Doe</p>
+                                <p class="text-xs text-gray-500">john.doe@email.com</p>
+                            </div>
+                            <a href="#" class="flex items-center gap-2 px-4 py-2 text-sm hover:bg-gray-50 dark:hover:bg-gray-700 js-tab-link" data-tab="tab-settings"><i class="fas fa-user-cog w-4"></i> Account Settings</a>
+                            <a href="login.html" onclick="sessionStorage.clear()" class="flex items-center gap-2 px-4 py-2 text-sm text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20"><i class="fas fa-sign-out-alt w-4"></i> Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="p-6">
+            <!-- ===================== TAB 1: DASHBOARD ===================== -->
+            <div id="tab-dashboard" class="tab-content active">
+                <div class="mb-8">
+                    <h2 class="text-2xl font-bold mb-1">Welcome back, John!</h2>
+                    <p class="text-gray-500 dark:text-gray-400">Here's an overview of your shipping activity.</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
+                    <div class="bg-white dark:bg-gray-900 rounded-2xl p-5 border border-gray-200 dark:border-gray-800 shadow-sm hover:shadow-md transition">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="w-11 h-11 rounded-xl bg-brand-100 dark:bg-brand-900/30 flex items-center justify-center"><i class="fas fa-truck text-brand-500"></i></div>
+                            <span class="text-xs font-semibold text-brand-600 bg-brand-50 dark:bg-brand-900/20 px-2 py-1 rounded-full"><i class="fas fa-arrow-up mr-1"></i>2 new</span>
+                        </div>
+                        <p class="text-2xl font-bold">3</p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Active Shipments</p>
+                    </div>
+                    <div class="bg-white dark:bg-gray-900 rounded-2xl p-5 border border-gray-200 dark:border-gray-800 shadow-sm hover:shadow-md transition">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="w-11 h-11 rounded-xl bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center"><i class="fas fa-paper-plane text-blue-500"></i></div>
+                            <span class="text-xs font-semibold text-green-600 bg-green-50 dark:bg-green-900/20 px-2 py-1 rounded-full">+5 this month</span>
+                        </div>
+                        <p class="text-2xl font-bold">47</p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Total Sent</p>
+                    </div>
+                    <div class="bg-white dark:bg-gray-900 rounded-2xl p-5 border border-gray-200 dark:border-gray-800 shadow-sm hover:shadow-md transition">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="w-11 h-11 rounded-xl bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center"><i class="fas fa-box-open text-purple-500"></i></div>
+                            <span class="text-xs font-semibold text-green-600 bg-green-50 dark:bg-green-900/20 px-2 py-1 rounded-full">+3 this month</span>
+                        </div>
+                        <p class="text-2xl font-bold">23</p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Total Received</p>
+                    </div>
+                    <div class="bg-white dark:bg-gray-900 rounded-2xl p-5 border border-gray-200 dark:border-gray-800 shadow-sm hover:shadow-md transition">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="w-11 h-11 rounded-xl bg-green-100 dark:bg-green-900/30 flex items-center justify-center"><i class="fas fa-dollar-sign text-green-500"></i></div>
+                            <span class="text-xs font-semibold text-gray-500 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded-full">All time</span>
+                        </div>
+                        <p class="text-2xl font-bold">$1,240</p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Total Spent</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <div class="lg:col-span-2 bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm">
+                        <div class="px-6 py-4 border-b border-gray-100 dark:border-gray-800 flex items-center justify-between">
+                            <h3 class="font-semibold text-lg">Recent Activity</h3>
+                            <button class="text-sm text-brand-500 hover:text-brand-600 font-medium">View All</button>
+                        </div>
+                        <div class="divide-y divide-gray-50 dark:divide-gray-800">
+                            <div class="flex items-start gap-4 px-6 py-4">
+                                <div class="w-9 h-9 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center flex-shrink-0 mt-0.5"><i class="fas fa-check-circle text-green-500 text-sm"></i></div>
+                                <div class="flex-1 min-w-0"><p class="text-sm font-medium">Package SWH-3829471 delivered</p><p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Delivered to recipient in Houston, TX</p></div>
+                                <span class="text-xs text-gray-400 whitespace-nowrap">2h ago</span>
+                            </div>
+                            <div class="flex items-start gap-4 px-6 py-4">
+                                <div class="w-9 h-9 rounded-full bg-brand-100 dark:bg-brand-900/30 flex items-center justify-center flex-shrink-0 mt-0.5"><i class="fas fa-truck-loading text-brand-500 text-sm"></i></div>
+                                <div class="flex-1 min-w-0"><p class="text-sm font-medium">Shipment SWH-3829512 picked up</p><p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Collected from Dallas, TX</p></div>
+                                <span class="text-xs text-gray-400 whitespace-nowrap">5h ago</span>
+                            </div>
+                            <div class="flex items-start gap-4 px-6 py-4">
+                                <div class="w-9 h-9 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center flex-shrink-0 mt-0.5"><i class="fas fa-credit-card text-blue-500 text-sm"></i></div>
+                                <div class="flex-1 min-w-0"><p class="text-sm font-medium">Payment of $24.99 processed</p><p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Visa ending in 4242</p></div>
+                                <span class="text-xs text-gray-400 whitespace-nowrap">1d ago</span>
+                            </div>
+                            <div class="flex items-start gap-4 px-6 py-4">
+                                <div class="w-9 h-9 rounded-full bg-yellow-100 dark:bg-yellow-900/30 flex items-center justify-center flex-shrink-0 mt-0.5"><i class="fas fa-calendar-check text-yellow-500 text-sm"></i></div>
+                                <div class="flex-1 min-w-0"><p class="text-sm font-medium">Pickup scheduled for Aug 20</p><p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Morning window (9:00 AM - 12:00 PM)</p></div>
+                                <span class="text-xs text-gray-400 whitespace-nowrap">2d ago</span>
+                            </div>
+                            <div class="flex items-start gap-4 px-6 py-4">
+                                <div class="w-9 h-9 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center flex-shrink-0 mt-0.5"><i class="fas fa-star text-purple-500 text-sm"></i></div>
+                                <div class="flex-1 min-w-0"><p class="text-sm font-medium">Review submitted for SWH-3829300</p><p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">You gave 5 stars for fast delivery</p></div>
+                                <span class="text-xs text-gray-400 whitespace-nowrap">3d ago</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-5">
+                        <div class="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm p-6">
+                            <h3 class="font-semibold text-lg mb-4">Quick Actions</h3>
+                            <div class="space-y-3">
+                                <a href="#" data-tab="tab-book" class="js-tab-link flex items-center gap-3 p-3 rounded-xl bg-brand-50 dark:bg-brand-900/20 hover:bg-brand-100 dark:hover:bg-brand-900/30 transition group">
+                                    <div class="w-10 h-10 rounded-lg bg-brand-500 flex items-center justify-center text-white group-hover:scale-110 transition"><i class="fas fa-calendar-plus"></i></div>
+                                    <div><p class="text-sm font-semibold">Book Pickup</p><p class="text-xs text-gray-500 dark:text-gray-400">Schedule a new pickup</p></div>
+                                </a>
+                                <a href="#" data-tab="tab-track" class="js-tab-link flex items-center gap-3 p-3 rounded-xl bg-blue-50 dark:bg-blue-900/20 hover:bg-blue-100 dark:hover:bg-blue-900/30 transition group">
+                                    <div class="w-10 h-10 rounded-lg bg-blue-500 flex items-center justify-center text-white group-hover:scale-110 transition"><i class="fas fa-search-location"></i></div>
+                                    <div><p class="text-sm font-semibold">Track Shipment</p><p class="text-xs text-gray-500 dark:text-gray-400">Find your package</p></div>
+                                </a>
+                                <a href="#" data-tab="tab-history" class="js-tab-link flex items-center gap-3 p-3 rounded-xl bg-purple-50 dark:bg-purple-900/20 hover:bg-purple-100 dark:hover:bg-purple-900/30 transition group">
+                                    <div class="w-10 h-10 rounded-lg bg-purple-500 flex items-center justify-center text-white group-hover:scale-110 transition"><i class="fas fa-history"></i></div>
+                                    <div><p class="text-sm font-semibold">View History</p><p class="text-xs text-gray-500 dark:text-gray-400">Browse past shipments</p></div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="bg-gradient-to-br from-brand-500 to-brand-700 rounded-2xl p-6 text-white shadow-lg shadow-brand-500/20">
+                            <div class="flex items-center gap-2 mb-3"><i class="fas fa-calendar-alt text-brand-200"></i><h3 class="font-semibold">Next Pickup</h3></div>
+                            <p class="text-xl font-bold mb-1">Aug 20, 2026</p>
+                            <p class="text-brand-200 text-sm mb-4">Morning (9:00 AM - 12:00 PM)</p>
+                            <div class="bg-white/15 rounded-lg p-3 text-sm">
+                                <p class="flex items-center gap-2 mb-1"><i class="fas fa-map-marker-alt text-brand-200 w-4"></i> 742 Oak Street, Dallas, TX</p>
+                                <p class="flex items-center gap-2"><i class="fas fa-box text-brand-200 w-4"></i> 2 packages, 4.5 kg total</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ===================== TAB 2: BOOK PICKUP ===================== -->
+            <div id="tab-book" class="tab-content">
+                <div class="mb-8">
+                    <h2 class="text-2xl font-bold mb-1">Book a Pickup</h2>
+                    <p class="text-gray-500 dark:text-gray-400">Schedule a courier to collect your parcel.</p>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <form id="bookingForm" class="lg:col-span-2 space-y-6">
+                        <div class="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm p-6">
+                            <h3 class="font-semibold mb-4 flex items-center gap-2"><i class="fas fa-map-marker-alt text-brand-500"></i> Pickup Details</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-sm font-medium mb-1.5">Pickup Address <span class="text-red-500">*</span></label>
+                                    <textarea required rows="3" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition text-sm" placeholder="Enter full pickup address including street, city, state, and zip code"></textarea>
+                                </div>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-sm font-medium mb-1.5">Pickup Date <span class="text-red-500">*</span></label>
+                                        <input type="date" required class="w-full px-4 py-2.5 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition text-sm">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium mb-1.5">Time Window</label>
+                                        <select class="w-full px-4 py-2.5 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition text-sm">
+                                            <option>Morning (9:00 AM - 12:00 PM)</option>
+                                            <option>Afternoon (12:00 PM - 3:00 PM)</option>
+                                            <option>Evening (3:00 PM - 6:00 PM)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm p-6">
+                            <h3 class="font-semibold mb-4 flex items-center gap-2"><i class="fas fa-box text-brand-500"></i> Parcel Details</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-sm font-medium mb-1.5">Description</label>
+                                    <input type="text" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition text-sm" placeholder="e.g. Electronics, Documents, Clothing">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-1.5">Weight (kg) <span class="text-red-500">*</span></label>
+                                    <input type="number" required min="0.1" step="0.1" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition text-sm" placeholder="Enter weight in kg">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-1.5">Dimensions (cm)</label>
+                                    <div class="grid grid-cols-3 gap-3">
+                                        <div><label class="block text-xs text-gray-500 mb-1">Length</label><input type="number" min="1" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition text-sm" placeholder="L"></div>
+                                        <div><label class="block text-xs text-gray-500 mb-1">Width</label><input type="number" min="1" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition text-sm" placeholder="W"></div>
+                                        <div><label class="block text-xs text-gray-500 mb-1">Height</label><input type="number" min="1" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition text-sm" placeholder="H"></div>
+                                    </div>
+                                </div>
+                                <label class="flex items-center gap-3 cursor-pointer">
+                                    <input type="checkbox" class="w-4 h-4 text-brand-500 rounded border-gray-300 focus:ring-brand-500">
+                                    <span class="text-sm font-medium"><i class="fas fa-fragile mr-1 text-red-400"></i> Fragile - Handle with care</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm p-6">
+                            <h3 class="font-semibold mb-4 flex items-center gap-2"><i class="fas fa-shipping-fast text-brand-500"></i> Shipping Options</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-sm font-medium mb-1.5">Service Type</label>
+                                    <select class="w-full px-4 py-2.5 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition text-sm">
+                                        <option>Standard (3-5 days) - $12.99</option>
+                                        <option>Express (Next Day) - $24.99</option>
+                                        <option>Same-Day - $39.99</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-1.5">Delivery Address <span class="text-red-500">*</span></label>
+                                    <textarea required rows="3" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition text-sm" placeholder="Enter full delivery address"></textarea>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-1.5">Special Instructions</label>
+                                    <textarea rows="2" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition text-sm" placeholder="Any special delivery instructions (optional)"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="font-semibold flex items-center gap-2"><i class="fas fa-calculator text-brand-500"></i> Estimated Price</h3>
+                                <div class="text-right">
+                                    <p class="text-2xl font-bold text-brand-500">$24.99</p>
+                                    <p class="text-xs text-gray-500">Express (Next Day)</p>
+                                </div>
+                            </div>
+                            <button type="submit" class="w-full py-3 bg-brand-500 hover:bg-brand-600 text-white font-semibold rounded-xl transition shadow-lg shadow-brand-500/25 hover:shadow-brand-500/40">
+                                <i class="fas fa-calendar-check mr-2"></i>Schedule Pickup
+                            </button>
+                        </div>
+                    </form>
+                    <div class="space-y-5">
+                        <div class="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm p-6">
+                            <h3 class="font-semibold mb-4">Pricing Guide</h3>
+                            <div class="space-y-3 text-sm">
+                                <div class="flex justify-between py-2 border-b border-gray-100 dark:border-gray-800"><span class="text-gray-600 dark:text-gray-400">Standard (3-5 days)</span><span class="font-semibold">$12.99</span></div>
+                                <div class="flex justify-between py-2 border-b border-gray-100 dark:border-gray-800"><span class="text-gray-600 dark:text-gray-400">Express (Next Day)</span><span class="font-semibold">$24.99</span></div>
+                                <div class="flex justify-between py-2 border-b border-gray-100 dark:border-gray-800"><span class="text-gray-600 dark:text-gray-400">Same-Day</span><span class="font-semibold">$39.99</span></div>
+                                <div class="flex justify-between py-2"><span class="text-gray-600 dark:text-gray-400">Per kg surcharge</span><span class="font-semibold">+$2.50</span></div>
+                            </div>
+                        </div>
+                        <div class="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm p-6">
+                            <h3 class="font-semibold mb-3">Need Help?</h3>
+                            <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">Our support team is available 24/7 to assist you with bookings.</p>
+                            <a href="#" class="flex items-center gap-2 text-sm text-brand-500 hover:text-brand-600 font-medium"><i class="fas fa-headset"></i> Contact Support</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ===================== TAB 3: TRACK SHIPMENT ===================== -->
+            <div id="tab-track" class="tab-content">
+                <div class="mb-8">
+                    <h2 class="text-2xl font-bold mb-1">Track Shipment</h2>
+                    <p class="text-gray-500 dark:text-gray-400">Enter your tracking number to get real-time updates.</p>
+                </div>
+                <div class="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm p-6 mb-6">
+                    <div class="flex gap-3">
+                        <div class="relative flex-1">
+                            <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                            <input type="text" id="trackingInput" class="w-full pl-11 pr-4 py-3 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition text-sm" placeholder="Enter tracking number (e.g. SWH-3829471)" value="SWH-3829471">
+                        </div>
+                        <button id="trackBtn" class="px-6 py-3 bg-brand-500 hover:bg-brand-600 text-white font-semibold rounded-xl transition shadow-lg shadow-brand-500/25 hover:shadow-brand-500/40 whitespace-nowrap">
+                            <i class="fas fa-search mr-2"></i>Track
+                        </button>
+                    </div>
+                </div>
+                <div id="trackingResult" class="space-y-6">
+                    <div class="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm overflow-hidden">
+                        <div class="p-6 border-b border-gray-100 dark:border-gray-800 bg-gradient-to-r from-brand-50 to-transparent dark:from-brand-900/20">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                                <div>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 mb-1">Tracking Number</p>
+                                    <p class="text-xl font-bold font-mono">SWH-3829471</p>
+                                </div>
+                                <span class="status-badge status-transit text-sm px-4 py-1.5"><i class="fas fa-truck"></i> In Transit</span>
+                            </div>
+                            <div class="flex items-center gap-3 mt-4 text-sm text-gray-600 dark:text-gray-400">
+                                <span class="flex items-center gap-1"><i class="fas fa-map-marker-alt text-brand-500"></i> Dallas, TX</span>
+                                <i class="fas fa-arrow-right text-gray-300 dark:text-gray-600"></i>
+                                <span class="flex items-center gap-1"><i class="fas fa-flag-checkered text-brand-500"></i> Houston, TX</span>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="font-semibold mb-5">Shipment Progress</h4>
+                            <div class="space-y-0">
+                                <div class="tracking-step completed">
+                                    <div class="step-dot"><i class="fas fa-check"></i></div>
+                                    <div class="flex items-start justify-between">
+                                        <div><p class="font-semibold text-sm">Order Placed</p><p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Shipment registered in the system</p></div>
+                                        <span class="text-xs text-gray-400">Aug 15, 10:30 AM</span>
+                                    </div>
+                                </div>
+                                <div class="tracking-step completed">
+                                    <div class="step-dot"><i class="fas fa-check"></i></div>
+                                    <div class="flex items-start justify-between">
+                                        <div><p class="font-semibold text-sm">Picked Up</p><p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Package collected from sender</p></div>
+                                        <span class="text-xs text-gray-400">Aug 15, 2:45 PM</span>
+                                    </div>
+                                </div>
+                                <div class="tracking-step active">
+                                    <div class="step-dot"><i class="fas fa-truck"></i></div>
+                                    <div class="flex items-start justify-between">
+                                        <div><p class="font-semibold text-sm text-brand-500">In Transit</p><p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Package at distribution center</p></div>
+                                        <span class="text-xs text-gray-400">Aug 16, 8:00 AM</span>
+                                    </div>
+                                </div>
+                                <div class="tracking-step pending">
+                                    <div class="step-dot"><i class="fas fa-arrow-right"></i></div>
+                                    <div class="flex items-start justify-between">
+                                        <div><p class="font-semibold text-sm text-gray-400">Out for Delivery</p><p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Estimated delivery to recipient</p></div>
+                                        <span class="text-xs text-gray-400">Est. Aug 17</span>
+                                    </div>
+                                </div>
+                                <div class="tracking-step pending">
+                                    <div class="step-dot"><i class="fas fa-check"></i></div>
+                                    <div class="flex items-start justify-between">
+                                        <div><p class="font-semibold text-sm text-gray-400">Delivered</p><p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Package delivered to recipient</p></div>
+                                        <span class="text-xs text-gray-400">Est. Aug 17</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="px-6 pb-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
+                            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4">
+                                <p class="text-xs text-gray-500 dark:text-gray-400 mb-1">Service Type</p>
+                                <p class="font-semibold text-sm">Express (Next Day)</p>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4">
+                                <p class="text-xs text-gray-500 dark:text-gray-400 mb-1">Assigned Courier</p>
+                                <p class="font-semibold text-sm">Driver: Mike R., Vehicle #1247</p>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4">
+                                <p class="text-xs text-gray-500 dark:text-gray-400 mb-1">Estimated Delivery</p>
+                                <p class="font-semibold text-sm">Aug 17, 2026 by 6:00 PM</p>
+                            </div>
+                        </div>
+                        <div class="px-6 pb-6">
+                            <button class="px-5 py-2.5 border-2 border-brand-500 text-brand-500 hover:bg-brand-50 dark:hover:bg-brand-900/20 font-semibold rounded-xl transition text-sm">
+                                <i class="fas fa-download mr-2"></i>Download Receipt
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ===================== TAB 4: SHIPMENT HISTORY ===================== -->
+            <div id="tab-history" class="tab-content">
+                <div class="mb-8">
+                    <h2 class="text-2xl font-bold mb-1">Shipment History</h2>
+                    <p class="text-gray-500 dark:text-gray-400">View all your past and current shipments.</p>
+                </div>
+                <div class="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm">
+                    <div class="p-4 border-b border-gray-100 dark:border-gray-800 flex flex-col sm:flex-row gap-3">
+                        <div class="flex gap-2">
+                            <input type="date" class="px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-sm outline-none focus:ring-2 focus:ring-brand-500">
+                            <input type="date" class="px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-sm outline-none focus:ring-2 focus:ring-brand-500">
+                        </div>
+                        <select class="px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-sm outline-none focus:ring-2 focus:ring-brand-500">
+                            <option>All Status</option>
+                            <option>Delivered</option>
+                            <option>In Transit</option>
+                            <option>Pending</option>
+                        </select>
+                        <div class="relative flex-1">
+                            <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+                            <input type="text" placeholder="Search by tracking number..." class="w-full pl-9 pr-3 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-sm outline-none focus:ring-2 focus:ring-brand-500">
+                        </div>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Tracking #</th>
+                                    <th>Date</th>
+                                    <th>From</th>
+                                    <th>To</th>
+                                    <th>Weight</th>
+                                    <th>Service</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="font-mono font-semibold text-brand-500">SWH-3829471</td>
+                                    <td>Aug 15, 2026</td>
+                                    <td>Dallas, TX</td>
+                                    <td>Houston, TX</td>
+                                    <td>2.3 kg</td>
+                                    <td>Express</td>
+                                    <td><span class="status-badge status-transit"><i class="fas fa-circle text-[6px]"></i> In Transit</span></td>
+                                    <td><button class="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-400 hover:text-brand-500 transition" title="Download Receipt"><i class="fas fa-download"></i></button></td>
+                                </tr>
+                                <tr>
+                                    <td class="font-mono font-semibold text-brand-500">SWH-3829300</td>
+                                    <td>Aug 12, 2026</td>
+                                    <td>Dallas, TX</td>
+                                    <td>Austin, TX</td>
+                                    <td>1.1 kg</td>
+                                    <td>Standard</td>
+                                    <td><span class="status-badge status-delivered"><i class="fas fa-circle text-[6px]"></i> Delivered</span></td>
+                                    <td><button class="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-400 hover:text-brand-500 transition" title="Download Receipt"><i class="fas fa-download"></i></button></td>
+                                </tr>
+                                <tr>
+                                    <td class="font-mono font-semibold text-brand-500">SWH-3829187</td>
+                                    <td>Aug 10, 2026</td>
+                                    <td>Houston, TX</td>
+                                    <td>San Antonio, TX</td>
+                                    <td>5.7 kg</td>
+                                    <td>Same-Day</td>
+                                    <td><span class="status-badge status-delivered"><i class="fas fa-circle text-[6px]"></i> Delivered</span></td>
+                                    <td><button class="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-400 hover:text-brand-500 transition" title="Download Receipt"><i class="fas fa-download"></i></button></td>
+                                </tr>
+                                <tr>
+                                    <td class="font-mono font-semibold text-brand-500">SWH-3829055</td>
+                                    <td>Aug 8, 2026</td>
+                                    <td>Dallas, TX</td>
+                                    <td>Fort Worth, TX</td>
+                                    <td>0.8 kg</td>
+                                    <td>Standard</td>
+                                    <td><span class="status-badge status-delivered"><i class="fas fa-circle text-[6px]"></i> Delivered</span></td>
+                                    <td><button class="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-400 hover:text-brand-500 transition" title="Download Receipt"><i class="fas fa-download"></i></button></td>
+                                </tr>
+                                <tr>
+                                    <td class="font-mono font-semibold text-brand-500">SWH-3828923</td>
+                                    <td>Aug 6, 2026</td>
+                                    <td>Austin, TX</td>
+                                    <td>Dallas, TX</td>
+                                    <td>3.2 kg</td>
+                                    <td>Express</td>
+                                    <td><span class="status-badge status-delivered"><i class="fas fa-circle text-[6px]"></i> Delivered</span></td>
+                                    <td><button class="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-400 hover:text-brand-500 transition" title="Download Receipt"><i class="fas fa-download"></i></button></td>
+                                </tr>
+                                <tr>
+                                    <td class="font-mono font-semibold text-brand-500">SWH-3828801</td>
+                                    <td>Aug 4, 2026</td>
+                                    <td>Dallas, TX</td>
+                                    <td>Houston, TX</td>
+                                    <td>1.5 kg</td>
+                                    <td>Standard</td>
+                                    <td><span class="status-badge status-delivered"><i class="fas fa-circle text-[6px]"></i> Delivered</span></td>
+                                    <td><button class="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-400 hover:text-brand-500 transition" title="Download Receipt"><i class="fas fa-download"></i></button></td>
+                                </tr>
+                                <tr>
+                                    <td class="font-mono font-semibold text-brand-500">SWH-3828679</td>
+                                    <td>Aug 1, 2026</td>
+                                    <td>San Antonio, TX</td>
+                                    <td>Austin, TX</td>
+                                    <td>0.4 kg</td>
+                                    <td>Standard</td>
+                                    <td><span class="status-badge status-delivered"><i class="fas fa-circle text-[6px]"></i> Delivered</span></td>
+                                    <td><button class="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-400 hover:text-brand-500 transition" title="Download Receipt"><i class="fas fa-download"></i></button></td>
+                                </tr>
+                                <tr>
+                                    <td class="font-mono font-semibold text-brand-500">SWH-3829512</td>
+                                    <td>Aug 16, 2026</td>
+                                    <td>Dallas, TX</td>
+                                    <td>El Paso, TX</td>
+                                    <td>4.1 kg</td>
+                                    <td>Express</td>
+                                    <td><span class="status-badge status-pending"><i class="fas fa-circle text-[6px]"></i> Pending</span></td>
+                                    <td><button class="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-400 hover:text-brand-500 transition" title="Download Receipt"><i class="fas fa-download"></i></button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="px-6 py-4 border-t border-gray-100 dark:border-gray-800 flex items-center justify-between text-sm">
+                        <p class="text-gray-500 dark:text-gray-400">Showing 1-8 of 70 shipments</p>
+                        <div class="flex items-center gap-2">
+                            <button class="px-3 py-1.5 rounded-lg border border-gray-200 dark:border-gray-700 text-gray-400 cursor-not-allowed" disabled><i class="fas fa-chevron-left"></i></button>
+                            <button class="px-3 py-1.5 rounded-lg bg-brand-500 text-white font-semibold">1</button>
+                            <button class="px-3 py-1.5 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition">2</button>
+                            <button class="px-3 py-1.5 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition">3</button>
+                            <span class="px-1 text-gray-400">...</span>
+                            <button class="px-3 py-1.5 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition">9</button>
+                            <button class="px-3 py-1.5 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ===================== TAB 5: MY RECEIPTS ===================== -->
+            <div id="tab-receipts" class="tab-content">
+                <div class="mb-8">
+                    <h2 class="text-2xl font-bold mb-1">My Receipts</h2>
+                    <p class="text-gray-500 dark:text-gray-400">Download and manage your shipping receipts.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div class="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm p-6 hover:shadow-md transition">
+                        <div class="flex items-start justify-between mb-4">
+                            <div>
+                                <p class="text-xs text-gray-500 dark:text-gray-400">Receipt Number</p>
+                                <p class="font-bold font-mono text-lg">RCT-001234</p>
+                            </div>
+                            <span class="status-badge status-paid"><i class="fas fa-circle text-[6px]"></i> Paid</span>
+                        </div>
+                        <div class="space-y-2 text-sm mb-5">
+                            <div class="flex justify-between"><span class="text-gray-500 dark:text-gray-400">Date</span><span class="font-medium">Aug 15, 2026</span></div>
+                            <div class="flex justify-between"><span class="text-gray-500 dark:text-gray-400">Tracking #</span><a href="#" class="font-mono font-semibold text-brand-500 hover:text-brand-600 js-tab-link" data-tab="tab-track">SWH-3829471</a></div>
+                            <div class="flex justify-between"><span class="text-gray-500 dark:text-gray-400">Service</span><span class="font-medium">Express</span></div>
+                            <div class="flex justify-between border-t border-gray-100 dark:border-gray-800 pt-2 mt-2"><span class="text-gray-500 dark:text-gray-400 font-semibold">Amount</span><span class="font-bold text-lg">$24.99</span></div>
+                        </div>
+                        <button class="w-full py-2.5 border-2 border-brand-500 text-brand-500 hover:bg-brand-50 dark:hover:bg-brand-900/20 font-semibold rounded-xl transition text-sm">
+                            <i class="fas fa-file-pdf mr-2"></i>Download PDF
+                        </button>
+                    </div>
+                    <div class="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm p-6 hover:shadow-md transition">
+                        <div class="flex items-start justify-between mb-4">
+                            <div>
+                                <p class="text-xs text-gray-500 dark:text-gray-400">Receipt Number</p>
+                                <p class="font-bold font-mono text-lg">RCT-001235</p>
+                            </div>
+                            <span class="status-badge status-paid"><i class="fas fa-circle text-[6px]"></i> Paid</span>
+                        </div>
+                        <div class="space-y-2 text-sm mb-5">
+                            <div class="flex justify-between"><span class="text-gray-500 dark:text-gray-400">Date</span><span class="font-medium">Aug 12, 2026</span></div>
+                            <div class="flex justify-between"><span class="text-gray-500 dark:text-gray-400">Tracking #</span><a href="#" class="font-mono font-semibold text-brand-500 hover:text-brand-600 js-tab-link" data-tab="tab-track">SWH-3829300</a></div>
+                            <div class="flex justify-between"><span class="text-gray-500 dark:text-gray-400">Service</span><span class="font-medium">Standard</span></div>
+                            <div class="flex justify-between border-t border-gray-100 dark:border-gray-800 pt-2 mt-2"><span class="text-gray-500 dark:text-gray-400 font-semibold">Amount</span><span class="font-bold text-lg">$12.99</span></div>
+                        </div>
+                        <button class="w-full py-2.5 border-2 border-brand-500 text-brand-500 hover:bg-brand-50 dark:hover:bg-brand-900/20 font-semibold rounded-xl transition text-sm">
+                            <i class="fas fa-file-pdf mr-2"></i>Download PDF
+                        </button>
+                    </div>
+                    <div class="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm p-6 hover:shadow-md transition">
+                        <div class="flex items-start justify-between mb-4">
+                            <div>
+                                <p class="text-xs text-gray-500 dark:text-gray-400">Receipt Number</p>
+                                <p class="font-bold font-mono text-lg">RCT-001236</p>
+                            </div>
+                            <span class="status-badge status-pending-pay"><i class="fas fa-circle text-[6px]"></i> Pending</span>
+                        </div>
+                        <div class="space-y-2 text-sm mb-5">
+                            <div class="flex justify-between"><span class="text-gray-500 dark:text-gray-400">Date</span><span class="font-medium">Aug 16, 2026</span></div>
+                            <div class="flex justify-between"><span class="text-gray-500 dark:text-gray-400">Tracking #</span><a href="#" class="font-mono font-semibold text-brand-500 hover:text-brand-600 js-tab-link" data-tab="tab-track">SWH-3829512</a></div>
+                            <div class="flex justify-between"><span class="text-gray-500 dark:text-gray-400">Service</span><span class="font-medium">Express</span></div>
+                            <div class="flex justify-between border-t border-gray-100 dark:border-gray-800 pt-2 mt-2"><span class="text-gray-500 dark:text-gray-400 font-semibold">Amount</span><span class="font-bold text-lg">$24.99</span></div>
+                        </div>
+                        <button class="w-full py-2.5 border-2 border-brand-500 text-brand-500 hover:bg-brand-50 dark:hover:bg-brand-900/20 font-semibold rounded-xl transition text-sm">
+                            <i class="fas fa-file-pdf mr-2"></i>Download PDF
+                        </button>
+                    </div>
+                    <div class="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm p-6 hover:shadow-md transition">
+                        <div class="flex items-start justify-between mb-4">
+                            <div>
+                                <p class="text-xs text-gray-500 dark:text-gray-400">Receipt Number</p>
+                                <p class="font-bold font-mono text-lg">RCT-001237</p>
+                            </div>
+                            <span class="status-badge status-paid"><i class="fas fa-circle text-[6px]"></i> Paid</span>
+                        </div>
+                        <div class="space-y-2 text-sm mb-5">
+                            <div class="flex justify-between"><span class="text-gray-500 dark:text-gray-400">Date</span><span class="font-medium">Aug 10, 2026</span></div>
+                            <div class="flex justify-between"><span class="text-gray-500 dark:text-gray-400">Tracking #</span><a href="#" class="font-mono font-semibold text-brand-500 hover:text-brand-600 js-tab-link" data-tab="tab-track">SWH-3829187</a></div>
+                            <div class="flex justify-between"><span class="text-gray-500 dark:text-gray-400">Service</span><span class="font-medium">Same-Day</span></div>
+                            <div class="flex justify-between border-t border-gray-100 dark:border-gray-800 pt-2 mt-2"><span class="text-gray-500 dark:text-gray-400 font-semibold">Amount</span><span class="font-bold text-lg">$39.99</span></div>
+                        </div>
+                        <button class="w-full py-2.5 border-2 border-brand-500 text-brand-500 hover:bg-brand-50 dark:hover:bg-brand-900/20 font-semibold rounded-xl transition text-sm">
+                            <i class="fas fa-file-pdf mr-2"></i>Download PDF
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- ===================== TAB 6: ACCOUNT SETTINGS ===================== -->
+            <div id="tab-settings" class="tab-content">
+                <div class="mb-8">
+                    <h2 class="text-2xl font-bold mb-1">Account Settings</h2>
+                    <p class="text-gray-500 dark:text-gray-400">Manage your profile, addresses, and preferences.</p>
+                </div>
+                <div class="space-y-6">
+                    <!-- Profile Section -->
+                    <div class="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm p-6">
+                        <h3 class="font-semibold text-lg mb-5 flex items-center gap-2"><i class="fas fa-user text-brand-500"></i> Profile Information</h3>
+                        <div class="flex flex-col sm:flex-row items-start gap-6">
+                            <div class="relative">
+                                <div class="w-20 h-20 rounded-2xl bg-brand-500 flex items-center justify-center text-white text-2xl font-bold shadow-lg shadow-brand-500/30">JD</div>
+                                <button class="absolute -bottom-1 -right-1 w-7 h-7 bg-white dark:bg-gray-800 rounded-full border-2 border-gray-200 dark:border-gray-700 flex items-center justify-center hover:bg-brand-50 transition"><i class="fas fa-camera text-xs text-brand-500"></i></button>
+                            </div>
+                            <div class="flex-1 w-full space-y-4">
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-sm font-medium mb-1.5">Full Name</label>
+                                        <input type="text" value="John Doe" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition text-sm">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium mb-1.5">Email Address</label>
+                                        <input type="email" value="john.doe@email.com" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition text-sm">
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-sm font-medium mb-1.5">Phone Number</label>
+                                        <input type="tel" value="+1 (555) 123-4567" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition text-sm">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium mb-1.5">Company</label>
+                                        <input type="text" value="Doe Enterprises" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition text-sm">
+                                    </div>
+                                </div>
+                                <div class="flex justify-end">
+                                    <button class="px-5 py-2.5 bg-brand-500 hover:bg-brand-600 text-white font-semibold rounded-xl transition shadow-lg shadow-brand-500/25 hover:shadow-brand-500/40 text-sm">Save Changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Address Book -->
+                    <div class="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm p-6">
+                        <div class="flex items-center justify-between mb-5">
+                            <h3 class="font-semibold text-lg flex items-center gap-2"><i class="fas fa-address-book text-brand-500"></i> Address Book</h3>
+                            <button class="px-4 py-2 bg-brand-500 hover:bg-brand-600 text-white font-semibold rounded-xl transition text-sm"><i class="fas fa-plus mr-1"></i> Add Address</button>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="border border-gray-200 dark:border-gray-700 rounded-xl p-4 relative">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="px-2 py-0.5 bg-brand-100 dark:bg-brand-900/30 text-brand-600 dark:text-brand-400 text-xs font-semibold rounded-full">Home</span>
+                                    <span class="px-2 py-0.5 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 text-xs font-semibold rounded-full">Default</span>
+                                </div>
+                                <p class="text-sm font-medium">742 Oak Street</p>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Dallas, TX 75201</p>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">United States</p>
+                                <div class="flex gap-2 mt-3">
+                                    <button class="px-3 py-1.5 text-xs border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition"><i class="fas fa-edit mr-1"></i> Edit</button>
+                                    <button class="px-3 py-1.5 text-xs border border-red-200 dark:border-red-800 text-red-500 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 transition"><i class="fas fa-trash mr-1"></i> Delete</button>
+                                </div>
+                            </div>
+                            <div class="border border-gray-200 dark:border-gray-700 rounded-xl p-4 relative">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="px-2 py-0.5 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs font-semibold rounded-full">Office</span>
+                                </div>
+                                <p class="text-sm font-medium">1200 Commerce Blvd, Suite 400</p>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Houston, TX 77002</p>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">United States</p>
+                                <div class="flex gap-2 mt-3">
+                                    <button class="px-3 py-1.5 text-xs border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition"><i class="fas fa-edit mr-1"></i> Edit</button>
+                                    <button class="px-3 py-1.5 text-xs border border-red-200 dark:border-red-800 text-red-500 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 transition"><i class="fas fa-trash mr-1"></i> Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Notification Preferences -->
+                    <div class="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm p-6">
+                        <h3 class="font-semibold text-lg mb-5 flex items-center gap-2"><i class="fas fa-bell text-brand-500"></i> Notification Preferences</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between py-3 border-b border-gray-100 dark:border-gray-800">
+                                <div>
+                                    <p class="text-sm font-semibold">Email Notifications</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Receive shipment updates and promotional emails</p>
+                                </div>
+                                <div class="toggle-switch active" onclick="this.classList.toggle('active')"></div>
+                            </div>
+                            <div class="flex items-center justify-between py-3">
+                                <div>
+                                    <p class="text-sm font-semibold">SMS Notifications</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Get text alerts for delivery status changes</p>
+                                </div>
+                                <div class="toggle-switch active" onclick="this.classList.toggle('active')"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Change Password -->
+                    <div class="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm p-6">
+                        <h3 class="font-semibold text-lg mb-5 flex items-center gap-2"><i class="fas fa-lock text-brand-500"></i> Change Password</h3>
+                        <div class="max-w-md space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium mb-1.5">Current Password</label>
+                                <input type="password" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition text-sm" placeholder="Enter current password">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1.5">New Password</label>
+                                <input type="password" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition text-sm" placeholder="Enter new password">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1.5">Confirm New Password</label>
+                                <input type="password" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition text-sm" placeholder="Confirm new password">
+                            </div>
+                            <button class="px-5 py-2.5 bg-brand-500 hover:bg-brand-600 text-white font-semibold rounded-xl transition shadow-lg shadow-brand-500/25 hover:shadow-brand-500/40 text-sm">Update Password</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../assets/js/main.js"></script>
+    <script>
+    (function(){
+        const sidebar = document.getElementById('sidebar');
+        const main = document.getElementById('dashboardMain');
+        const toggle = document.getElementById('sidebarToggle');
+        const userBtn = document.getElementById('userMenuBtn');
+        const dropdown = document.getElementById('userDropdown');
+        const themeBtn = document.getElementById('themeToggle');
+        const trackBtn = document.getElementById('trackBtn');
+        const trackingResult = document.getElementById('trackingResult');
+
+        if(toggle){
+            toggle.addEventListener('click', function(){
+                sidebar.classList.toggle('collapsed');
+                main.classList.toggle('expanded');
+            });
+        }
+
+        if(userBtn){
+            userBtn.addEventListener('click', function(e){
+                e.stopPropagation();
+                dropdown.classList.toggle('hidden');
+            });
+            document.addEventListener('click', function(){
+                dropdown.classList.add('hidden');
+            });
+        }
+
+        function switchTab(tabId){
+            document.querySelectorAll('.tab-content').forEach(function(t){ t.classList.remove('active'); });
+            document.querySelectorAll('.sidebar-link[data-tab]').forEach(function(l){ l.classList.remove('active'); });
+            var tab = document.getElementById(tabId);
+            if(tab) tab.classList.add('active');
+            var link = document.querySelector('.sidebar-link[data-tab="'+tabId+'"]');
+            if(link) link.classList.add('active');
+        }
+
+        document.querySelectorAll('[data-tab]').forEach(function(el){
+            el.addEventListener('click', function(e){
+                e.preventDefault();
+                var tabId = this.getAttribute('data-tab');
+                switchTab(tabId);
+                if(dropdown) dropdown.classList.add('hidden');
+            });
+        });
+
+        if(trackBtn){
+            trackBtn.addEventListener('click', function(){
+                trackingResult.classList.remove('hidden');
+            });
+        }
+
+        if(typeof initDashboardSidebar === 'function') initDashboardSidebar();
+    })();
+    </script>
+</body>
+</html>
