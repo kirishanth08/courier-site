@@ -12,12 +12,15 @@
 <title>About Us | SwiftShip Express - Courier &amp; Parcel Delivery</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
-    tailwind.config = { darkMode:'class', theme:{ extend:{ colors:{ brand:{ 50:'#fff7ed',100:'#ffedd5',200:'#fed7aa',300:'#fdba74',400:'#fb923c',500:'#f97316',600:'#ea580c',700:'#c2410c',800:'#9a3412',900:'#7c2d12' } } } } }
+    tailwind.config = { darkMode:'class', theme:{ extend:{ colors:{ brand:{ 50:'#fff7ed',100:'#ffedd5',200:'#fed7aa',300:'#fdba74',400:'#fb923c',500:'#f97316',600:'#ea580c',700:'#c2410c',800:'#9a3412',900:'#7c2d12' } }, fontFamily:{ heading:['"Inter"','sans-serif'], body:['"Inter"','sans-serif'], sans:['"Inter"','sans-serif'] } } } }
     </script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 <link href="../assets/css/custom.css" rel="stylesheet"/>
 </head>
-<body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+<body class="font-sans bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200">
 <!-- Preloader -->
 <div class="preloader fixed inset-0 z-[9999] bg-white dark:bg-gray-900 flex items-center justify-center transition-opacity duration-500" id="preloader">
 <div class="text-center">
@@ -55,6 +58,7 @@
 <a class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 font-medium transition-colors" href="pricing.html">Pricing</a>
 <a class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 font-medium transition-colors" href="how-it-works.html">How It Works</a>
 <a class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 font-medium transition-colors" href="blog.html">Blog</a>
+<a class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 font-medium transition-colors" href="dashboard.html">Dashboard</a>
 <a class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 font-medium transition-colors" href="contact.html">Contact</a>
 </nav>
 <div class="p-6 border-t border-gray-200 dark:border-gray-700 space-y-3">
@@ -89,6 +93,7 @@
 <a class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors" href="pricing.html">Pricing</a>
 <a class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors" href="how-it-works.html">How It Works</a>
 <a class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors" href="blog.html">Blog</a>
+<a class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors" href="dashboard.html">Dashboard</a>
 <a class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors" href="contact.html">Contact</a>
 </nav>
 <div class="hidden lg:flex items-center gap-3">
@@ -119,7 +124,6 @@
 <div class="absolute inset-0 bg-gradient-to-r from-gray-900/90 to-gray-900/60"></div>
 <div class="absolute inset-0 flex items-center">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-<nav class="text-sm text-gray-400 mb-4"><a class="hover:text-brand-500" href="../index.html">Home</a> <i class="fas fa-chevron-right mx-2 text-xs"></i> <span class="text-white">About Us</span></nav>
 <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white">About <span class="text-brand-500">SwiftShip</span> Express</h1>
 <p class="text-lg text-gray-300 mt-4 max-w-xl">Delivering trust, one parcel at a time. Learn about our journey revolutionizing the courier industry.</p>
 </div>
@@ -270,30 +274,36 @@
 <h2 class="text-3xl sm:text-4xl font-extrabold mt-3 dark:text-white">What Our Clients Say</h2>
 </div>
 <div class="grid md:grid-cols-3 gap-8">
-<div class="testimonial-card">
-<div class="quote-icon font-serif">"</div>
-<div class="stars mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-<p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">SwiftShip has transformed our e-commerce fulfillment. Same-day delivery in Dallas means our customers get their orders within hours. The real-time tracking is a game-changer.</p>
-<div class="flex items-center gap-3">
-<div class="w-12 h-12 bg-brand-500 rounded-full flex items-center justify-center text-white font-bold">MR</div>
+<div class="bg-white dark:bg-gray-800 rounded-2xl p-8 border border-gray-100 dark:border-gray-700/60 shadow-sm flex flex-col justify-between h-full relative">
+<div class="flex items-center justify-between mb-4">
+<div class="stars flex gap-1 text-yellow-400"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+<i class="fas fa-quote-right text-brand-200 dark:text-brand-900/40 text-2xl"></i>
+</div>
+<p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed flex-1">SwiftShip has transformed our e-commerce fulfillment. Same-day delivery in Dallas means our customers get their orders within hours. The real-time tracking is a game-changer.</p>
+<div class="flex items-center gap-3 pt-4 border-t border-gray-100 dark:border-gray-700/50 mt-auto">
+<img alt="Michael Rodriguez" class="w-12 h-12 rounded-full object-cover border-2 border-brand-500/20" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face"/>
 <div><h5 class="font-bold text-sm dark:text-white">Michael Rodriguez</h5><p class="text-xs text-gray-500">CEO, ShopFast E-Commerce</p></div>
 </div>
 </div>
-<div class="testimonial-card">
-<div class="quote-icon font-serif">"</div>
-<div class="stars mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-<p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">As a law firm, we rely on SwiftShip for time-sensitive document delivery. Their express service has never let us down. Every legal filing arrives on time, every time.</p>
-<div class="flex items-center gap-3">
-<div class="w-12 h-12 bg-brand-500 rounded-full flex items-center justify-center text-white font-bold">LW</div>
+<div class="bg-white dark:bg-gray-800 rounded-2xl p-8 border border-gray-100 dark:border-gray-700/60 shadow-sm flex flex-col justify-between h-full relative">
+<div class="flex items-center justify-between mb-4">
+<div class="stars flex gap-1 text-yellow-400"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+<i class="fas fa-quote-right text-brand-200 dark:text-brand-900/40 text-2xl"></i>
+</div>
+<p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed flex-1">As a law firm, we rely on SwiftShip for time-sensitive document delivery. Their express service has never let us down. Every legal filing arrives on time, every time.</p>
+<div class="flex items-center gap-3 pt-4 border-t border-gray-100 dark:border-gray-700/50 mt-auto">
+<img alt="Linda Washington" class="w-12 h-12 rounded-full object-cover border-2 border-brand-500/20" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&h=100&fit=crop&crop=face"/>
 <div><h5 class="font-bold text-sm dark:text-white">Linda Washington</h5><p class="text-xs text-gray-500">Partner, Washington &amp; Associates</p></div>
 </div>
 </div>
-<div class="testimonial-card">
-<div class="quote-icon font-serif">"</div>
-<div class="stars mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-<p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">We ship thousands of medical supplies monthly. SwiftShip's bulk cargo service and cold-chain logistics have been instrumental in our supply chain operations.</p>
-<div class="flex items-center gap-3">
-<div class="w-12 h-12 bg-brand-500 rounded-full flex items-center justify-center text-white font-bold">AK</div>
+<div class="bg-white dark:bg-gray-800 rounded-2xl p-8 border border-gray-100 dark:border-gray-700/60 shadow-sm flex flex-col justify-between h-full relative">
+<div class="flex items-center justify-between mb-4">
+<div class="stars flex gap-1 text-yellow-400"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+<i class="fas fa-quote-right text-brand-200 dark:text-brand-900/40 text-2xl"></i>
+</div>
+<p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed flex-1">We ship thousands of medical supplies monthly. SwiftShip's bulk cargo service and cold-chain logistics have been instrumental in our supply chain operations.</p>
+<div class="flex items-center gap-3 pt-4 border-t border-gray-100 dark:border-gray-700/50 mt-auto">
+<img alt="Dr. Amanda Kim" class="w-12 h-12 rounded-full object-cover border-2 border-brand-500/20" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&h=100&fit=crop&crop=face"/>
 <div><h5 class="font-bold text-sm dark:text-white">Dr. Amanda Kim</h5><p class="text-xs text-gray-500">Director, MedSupply Corp</p></div>
 </div>
 </div>
@@ -324,10 +334,10 @@
 </a>
 <p class="text-sm leading-relaxed mb-6">Fast, reliable courier and parcel delivery services. Same-day delivery, real-time tracking, and insured shipments across 50+ cities.</p>
 <div class="flex gap-3">
-<a class="w-10 h-10 bg-gray-800 hover:bg-brand-500 rounded-lg flex items-center justify-center transition-colors" href="#"><i class="fab fa-facebook-f text-sm"></i></a>
-<a class="w-10 h-10 bg-gray-800 hover:bg-brand-500 rounded-lg flex items-center justify-center transition-colors" href="#"><i class="fab fa-twitter text-sm"></i></a>
-<a class="w-10 h-10 bg-gray-800 hover:bg-brand-500 rounded-lg flex items-center justify-center transition-colors" href="#"><i class="fab fa-instagram text-sm"></i></a>
-<a class="w-10 h-10 bg-gray-800 hover:bg-brand-500 rounded-lg flex items-center justify-center transition-colors" href="#"><i class="fab fa-linkedin-in text-sm"></i></a>
+<a aria-label="Facebook" class="w-10 h-10 bg-gray-800 hover:bg-brand-500 rounded-lg flex items-center justify-center transition-colors" href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f text-sm"></i></a>
+<a aria-label="X (Twitter)" class="w-10 h-10 bg-gray-800 hover:bg-brand-500 rounded-lg flex items-center justify-center transition-colors" href="https://twitter.com/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-x-twitter text-sm"></i></a>
+<a aria-label="Instagram" class="w-10 h-10 bg-gray-800 hover:bg-brand-500 rounded-lg flex items-center justify-center transition-colors" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram text-sm"></i></a>
+<a aria-label="LinkedIn" class="w-10 h-10 bg-gray-800 hover:bg-brand-500 rounded-lg flex items-center justify-center transition-colors" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in text-sm"></i></a>
 </div>
 </div>
 <div>
@@ -337,7 +347,9 @@
 <li><a class="hover:text-brand-500 transition-colors" href="about.html">About Us</a></li>
 <li><a class="hover:text-brand-500 transition-colors" href="services.html">Services</a></li>
 <li><a class="hover:text-brand-500 transition-colors" href="pricing.html">Pricing</a></li>
+<li><a class="hover:text-brand-500 transition-colors" href="how-it-works.html">How It Works</a></li>
 <li><a class="hover:text-brand-500 transition-colors" href="blog.html">Blog</a></li>
+<li><a class="hover:text-brand-500 transition-colors" href="dashboard.html">Dashboard</a></li>
 <li><a class="hover:text-brand-500 transition-colors" href="contact.html">Contact</a></li>
 </ul>
 </div>

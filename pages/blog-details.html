@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
     <link rel="icon" type="image/svg+xml" href="../assets/css/favicon.svg">
@@ -21,11 +21,14 @@
     <meta property="article:section" content="Delivery Tips">
     <title>10 Tips for Faster Parcel Delivery | SwiftShip Express Blog</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>tailwind.config={darkMode:'class',theme:{extend:{colors:{brand:{50:'#fff7ed',100:'#ffedd5',200:'#fed7aa',300:'#fdba74',400:'#fb923c',500:'#f97316',600:'#ea580c',700:'#c2410c',800:'#9a3412',900:'#7c2d12'}}}}}</script>
+    <script>tailwind.config={darkMode:'class',theme:{extend:{colors:{brand:{50:'#fff7ed',100:'#ffedd5',200:'#fed7aa',300:'#fdba74',400:'#fb923c',500:'#f97316',600:'#ea580c',700:'#c2410c',800:'#9a3412',900:'#7c2d12'}},fontFamily:{heading:['"Inter"','sans-serif'],body:['"Inter"','sans-serif'],sans:['"Inter"','sans-serif']}}}}</script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="../assets/css/custom.css">
 </head>
-<body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300">
+<body class="font-sans bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300">
 
     <!-- Preloader -->
     <div class="preloader fixed inset-0 z-[9999] bg-white dark:bg-gray-900 flex items-center justify-center" id="preloader" aria-label="Loading">
@@ -65,6 +68,7 @@
             <a href="pricing.html" class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 font-medium transition-colors">Pricing</a>
             <a href="how-it-works.html" class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 font-medium transition-colors">How It Works</a>
             <a href="blog.html" class="mobile-nav-link block px-4 py-3 rounded-lg bg-brand-50 dark:bg-brand-900/20 text-brand-500 font-medium">Blog</a>
+            <a href="dashboard.html" class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 font-medium transition-colors">Dashboard</a>
             <a href="contact.html" class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 font-medium transition-colors">Contact</a>
         </nav>
         <div class="p-6 border-t border-gray-200 dark:border-gray-700 space-y-3">
@@ -100,6 +104,7 @@
                     <a href="pricing.html" class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors">Pricing</a>
                     <a href="how-it-works.html" class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors">How It Works</a>
                     <a href="blog.html" class="px-3 py-2 rounded-lg text-sm font-medium bg-brand-50 dark:bg-brand-900/20 text-brand-500">Blog</a>
+                    <a href="dashboard.html" class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors">Dashboard</a>
                     <a href="contact.html" class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors">Contact</a>
                 </nav>
                 <div class="hidden lg:flex items-center gap-3">
@@ -130,17 +135,7 @@
             <div class="relative h-72 sm:h-80 lg:h-[28rem] overflow-hidden">
                 <img id="blog-hero" src="../assets/images/blog/blog-hero-banner.jpg" alt="Courier delivering parcels quickly and efficiently" class="w-full h-full object-cover">
                 <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/40 to-transparent dark:from-gray-950/90 dark:via-gray-950/50"></div>
-                <div class="absolute bottom-0 left-0 right-0 pb-12">
-                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <nav class="text-sm text-gray-400 mb-4" aria-label="Breadcrumb">
-                            <a href="../index.html" class="hover:text-brand-500 transition-colors">Home</a>
-                            <i class="fas fa-chevron-right mx-2 text-xs"></i>
-                            <a href="blog.html" class="hover:text-brand-500 transition-colors">Blog</a>
-                            <i class="fas fa-chevron-right mx-2 text-xs"></i>
-                            <span id="blog-breadcrumb" class="text-white">10 Tips for Faster Parcel Delivery</span>
-                        </nav>
-                    </div>
-                </div>
+                <span id="blog-breadcrumb" class="hidden"></span>
             </div>
         </section>
 
@@ -170,7 +165,7 @@
                             <div class="flex items-center gap-3">
                                 <span class="text-sm font-semibold text-gray-600 dark:text-gray-400">Share:</span>
                                 <a href="#" class="w-9 h-9 bg-blue-600 hover:bg-blue-700 text-white rounded-lg flex items-center justify-center transition-colors" aria-label="Share on Facebook"><i class="fab fa-facebook-f text-sm"></i></a>
-                                <a href="#" class="w-9 h-9 bg-sky-500 hover:bg-sky-600 text-white rounded-lg flex items-center justify-center transition-colors" aria-label="Share on Twitter"><i class="fab fa-twitter text-sm"></i></a>
+                                <a href="#" class="w-9 h-9 bg-black hover:bg-gray-800 text-white rounded-lg flex items-center justify-center transition-colors" aria-label="Share on X (Twitter)"><i class="fa-brands fa-x-twitter text-sm"></i></a>
                                 <a href="#" class="w-9 h-9 bg-blue-700 hover:bg-blue-800 text-white rounded-lg flex items-center justify-center transition-colors" aria-label="Share on LinkedIn"><i class="fab fa-linkedin-in text-sm"></i></a>
                                 <a href="#" class="w-9 h-9 bg-green-500 hover:bg-green-600 text-white rounded-lg flex items-center justify-center transition-colors" aria-label="Share on WhatsApp"><i class="fab fa-whatsapp text-sm"></i></a>
                                 <button class="w-9 h-9 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-600 dark:text-gray-300 rounded-lg flex items-center justify-center transition-colors" aria-label="Copy link" onclick="navigator.clipboard.writeText(window.location.href); this.innerHTML='<i class=\'fas fa-check text-sm\'></i>'; setTimeout(()=>this.innerHTML='<i class=\'fas fa-link text-sm\'></i>', 1500)">
@@ -406,7 +401,7 @@
                             <p class="text-sm text-brand-500 font-medium mb-3">Content &amp; Logistics Experts</p>
                             <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-5">Our team of logistics professionals and content writers share decades of combined experience in courier services, supply chain management, and last-mile delivery optimization.</p>
                             <div class="flex items-center justify-center gap-3">
-                                <a href="#" class="w-9 h-9 bg-gray-100 dark:bg-gray-700 hover:bg-brand-500 hover:text-white rounded-lg flex items-center justify-center transition-colors text-gray-500" aria-label="Twitter profile"><i class="fab fa-twitter text-sm"></i></a>
+                                <a href="#" class="w-9 h-9 bg-gray-100 dark:bg-gray-700 hover:bg-brand-500 hover:text-white rounded-lg flex items-center justify-center transition-colors text-gray-500" aria-label="X (Twitter) profile"><i class="fa-brands fa-x-twitter text-sm"></i></a>
                                 <a href="#" class="w-9 h-9 bg-gray-100 dark:bg-gray-700 hover:bg-brand-500 hover:text-white rounded-lg flex items-center justify-center transition-colors text-gray-500" aria-label="LinkedIn profile"><i class="fab fa-linkedin-in text-sm"></i></a>
                                 <a href="#" class="w-9 h-9 bg-gray-100 dark:bg-gray-700 hover:bg-brand-500 hover:text-white rounded-lg flex items-center justify-center transition-colors text-gray-500" aria-label="Website"><i class="fas fa-globe text-sm"></i></a>
                             </div>
@@ -563,10 +558,10 @@
                     </a>
                     <p class="text-sm leading-relaxed mb-6">SwiftShip Express is a premier courier and parcel delivery service, providing fast, reliable, and affordable shipping solutions across 50+ cities.</p>
                     <div class="flex items-center gap-3">
-                        <a href="https://www.facebook.com/" class="w-10 h-10 bg-gray-800 hover:bg-brand-500 rounded-lg flex items-center justify-center transition-colors" aria-label="Facebook" target="_blank" rel="noopener noreferrer">><i class="fab fa-facebook-f text-sm"></i></a>
-                        <a href="https://twitter.com/" class="w-10 h-10 bg-gray-800 hover:bg-brand-500 rounded-lg flex items-center justify-center transition-colors" aria-label="Twitter" target="_blank" rel="noopener noreferrer">><i class="fab fa-twitter text-sm"></i></a>
-                        <a href="https://www.instagram.com/" class="w-10 h-10 bg-gray-800 hover:bg-brand-500 rounded-lg flex items-center justify-center transition-colors" aria-label="Instagram" target="_blank" rel="noopener noreferrer">><i class="fab fa-instagram text-sm"></i></a>
-                        <a href="https://www.linkedin.com/" class="w-10 h-10 bg-gray-800 hover:bg-brand-500 rounded-lg flex items-center justify-center transition-colors" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">><i class="fab fa-linkedin-in text-sm"></i></a>
+                        <a href="https://www.facebook.com/" class="w-10 h-10 bg-gray-800 hover:bg-brand-500 rounded-lg flex items-center justify-center transition-colors" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f text-sm"></i></a>
+                        <a href="https://twitter.com/" class="w-10 h-10 bg-gray-800 hover:bg-brand-500 rounded-lg flex items-center justify-center transition-colors" aria-label="X (Twitter)" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-x-twitter text-sm"></i></a>
+                        <a href="https://www.instagram.com/" class="w-10 h-10 bg-gray-800 hover:bg-brand-500 rounded-lg flex items-center justify-center transition-colors" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram text-sm"></i></a>
+                        <a href="https://www.linkedin.com/" class="w-10 h-10 bg-gray-800 hover:bg-brand-500 rounded-lg flex items-center justify-center transition-colors" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in text-sm"></i></a>
                     </div>
                 </div>
                 <div>
@@ -575,7 +570,10 @@
                         <li><a href="../index.html" class="text-sm hover:text-brand-500 transition-colors">Home</a></li>
                         <li><a href="about.html" class="text-sm hover:text-brand-500 transition-colors">About Us</a></li>
                         <li><a href="services.html" class="text-sm hover:text-brand-500 transition-colors">Services</a></li>
+                        <li><a href="pricing.html" class="text-sm hover:text-brand-500 transition-colors">Pricing</a></li>
+                        <li><a href="how-it-works.html" class="text-sm hover:text-brand-500 transition-colors">How It Works</a></li>
                         <li><a href="blog.html" class="text-sm hover:text-brand-500 transition-colors">Blog</a></li>
+                        <li><a href="dashboard.html" class="text-sm hover:text-brand-500 transition-colors">Dashboard</a></li>
                         <li><a href="contact.html" class="text-sm hover:text-brand-500 transition-colors">Contact</a></li>
                     </ul>
                 </div>

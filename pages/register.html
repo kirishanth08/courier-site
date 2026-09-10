@@ -18,9 +18,13 @@
 <button type="button" id="theme-toggle" title="Toggle dark mode"><i class="fa-solid fa-moon"></i></button>
 <button type="button" id="rtl-toggle" title="Toggle RTL">RTL</button>
 </div>
-<div class="swift-auth-shell"><a href="../index.html" class="swift-company" aria-label="SwiftShip Express Home"><div class="swift-company-logo">S</div><div>SwiftShip</div></a>
-<h1 class="swift-auth-title">Create your account</h1>
-<p class="swift-auth-subtitle">Sign up to book and track your shipments</p>
+<div class="swift-auth-shell">
+<a href="../index.html" class="swift-company" aria-label="SwiftShip Express Home">
+    <div class="swift-company-logo"><i class="fa-solid fa-shuttle-van text-white"></i></div>
+    <div class="fw-bold fs-4"><span style="color: #f97316;">Swift</span><span>Ship</span></div>
+</a>
+<h1 class="swift-auth-title text-center">Create your account</h1>
+<p class="swift-auth-subtitle text-center">Sign up to book and track your shipments</p>
 <form class="swift-auth-form" id="authForm">
 
 <label class="form-label" for="firstName">Full Name</label>
@@ -51,7 +55,7 @@ document.getElementById('togglePassword')?.addEventListener('click',function(){
 });
 document.getElementById('authForm')?.addEventListener('submit',function(e){
  e.preventDefault();
- sessionStorage.setItem('swiftshipRole','customer'); sessionStorage.setItem('swiftshipLoggedIn','true'); location.href='customer-dashboard.html';
+ sessionStorage.setItem('swiftshipRole','customer'); sessionStorage.setItem('swiftshipLoggedIn','true'); location.href='dashboard.html';
 });
 </script>
 </body>

@@ -17,12 +17,15 @@
 <title>Contact Us | SwiftShip Express - Courier &amp; Parcel Delivery</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
-    tailwind.config = { darkMode:'class', theme:{ extend:{ colors:{ brand:{ 50:'#fff7ed',100:'#ffedd5',200:'#fed7aa',300:'#fdba74',400:'#fb923c',500:'#f97316',600:'#ea580c',700:'#c2410c',800:'#9a3412',900:'#7c2d12' } } } } }
+    tailwind.config = { darkMode:'class', theme:{ extend:{ colors:{ brand:{ 50:'#fff7ed',100:'#ffedd5',200:'#fed7aa',300:'#fdba74',400:'#fb923c',500:'#f97316',600:'#ea580c',700:'#c2410c',800:'#9a3412',900:'#7c2d12' } }, fontFamily:{ heading:['"Inter"','sans-serif'], body:['"Inter"','sans-serif'], sans:['"Inter"','sans-serif'] } } } }
     </script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 <link href="../assets/css/custom.css" rel="stylesheet"/>
 </head>
-<body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+<body class="font-sans bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200">
 <!-- Preloader -->
 <div class="preloader fixed inset-0 z-[9999] bg-white dark:bg-gray-900 flex items-center justify-center transition-opacity duration-500" id="preloader">
 <div class="text-center">
@@ -58,6 +61,7 @@
 <a class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 font-medium transition-colors" href="pricing.html">Pricing</a>
 <a class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 font-medium transition-colors" href="how-it-works.html">How It Works</a>
 <a class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 font-medium transition-colors" href="blog.html">Blog</a>
+<a class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 font-medium transition-colors" href="dashboard.html">Dashboard</a>
 <a class="mobile-nav-link block px-4 py-3 rounded-lg bg-brand-50 dark:bg-brand-900/20 text-brand-500 font-medium transition-colors" href="contact.html">Contact</a>
 </nav>
 <div class="p-6 border-t border-gray-200 dark:border-gray-700 space-y-3">
@@ -92,6 +96,7 @@
 <a class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors" href="pricing.html">Pricing</a>
 <a class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors" href="how-it-works.html">How It Works</a>
 <a class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors" href="blog.html">Blog</a>
+<a class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors" href="dashboard.html">Dashboard</a>
 <a class="px-3 py-2 rounded-lg text-sm font-medium bg-brand-50 dark:bg-brand-900/20 text-brand-500" href="contact.html">Contact</a>
 </nav>
 <div class="hidden lg:flex items-center gap-3">
@@ -122,7 +127,6 @@
 <div class="absolute inset-0 bg-gradient-to-r from-gray-900/90 to-gray-900/60"></div>
 <div class="absolute inset-0 flex items-center">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-<nav aria-label="Breadcrumb" class="text-sm text-gray-400 mb-4"><a class="hover:text-brand-500" href="../index.html">Home</a> <i class="fas fa-chevron-right mx-2 text-xs"></i> <span class="text-white">Contact</span></nav>
 <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white">Get in <span class="text-brand-500">Touch</span></h1>
 <p class="text-lg text-gray-300 mt-4 max-w-xl">Have a question or need a custom shipping solution? Our team is ready to help 24/7.</p>
 </div>
@@ -139,7 +143,7 @@
 <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">1200 Shipping Lane, Suite 400<br/>Dallas, TX 75201</p>
 </div>
 <div class="card p-6 text-center animate-on-scroll">
-<div class="w-16 h-16 bg-brand-500/10 rounded-2xl flex items-center justify-center mx-auto mb-4"><i class="fas fa-phone-alt text-brand-500 text-2xl"></i></div>
+<div class="w-16 h-16 bg-brand-500/10 rounded-2xl flex items-center justify-center mx-auto mb-4"><i class="fa-solid fa-phone text-brand-500 text-2xl"></i></div>
 <h3 class="font-bold text-lg mb-2 dark:text-white">Phone</h3>
 <p class="text-gray-600 dark:text-gray-400 text-sm"><a class="hover:text-brand-500" href="tel:+18005550199">1-800-555-0199</a></p>
 </div>
@@ -289,10 +293,10 @@
 </a>
 <p class="text-sm leading-relaxed mb-6">Fast, reliable courier and parcel delivery services. Same-day delivery, real-time tracking, and insured shipments across 50+ cities.</p>
 <div class="flex gap-3">
-<a aria-label="Facebook" class="w-10 h-10 bg-gray-800 hover:bg-brand-500 rounded-lg flex items-center justify-center transition-colors" href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">><i class="fab fa-facebook-f text-sm"></i></a>
-<a aria-label="Twitter" class="w-10 h-10 bg-gray-800 hover:bg-brand-500 rounded-lg flex items-center justify-center transition-colors" href="https://twitter.com/" target="_blank" rel="noopener noreferrer">><i class="fab fa-twitter text-sm"></i></a>
-<a aria-label="Instagram" class="w-10 h-10 bg-gray-800 hover:bg-brand-500 rounded-lg flex items-center justify-center transition-colors" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">><i class="fab fa-instagram text-sm"></i></a>
-<a aria-label="LinkedIn" class="w-10 h-10 bg-gray-800 hover:bg-brand-500 rounded-lg flex items-center justify-center transition-colors" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">><i class="fab fa-linkedin-in text-sm"></i></a>
+<a aria-label="Facebook" class="w-10 h-10 bg-gray-800 hover:bg-brand-500 rounded-lg flex items-center justify-center transition-colors" href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f text-sm"></i></a>
+<a aria-label="X (Twitter)" class="w-10 h-10 bg-gray-800 hover:bg-brand-500 rounded-lg flex items-center justify-center transition-colors" href="https://twitter.com/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-x-twitter text-sm"></i></a>
+<a aria-label="Instagram" class="w-10 h-10 bg-gray-800 hover:bg-brand-500 rounded-lg flex items-center justify-center transition-colors" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram text-sm"></i></a>
+<a aria-label="LinkedIn" class="w-10 h-10 bg-gray-800 hover:bg-brand-500 rounded-lg flex items-center justify-center transition-colors" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in text-sm"></i></a>
 </div>
 </div>
 <div>
@@ -302,7 +306,9 @@
 <li><a class="hover:text-brand-500 transition-colors" href="about.html">About Us</a></li>
 <li><a class="hover:text-brand-500 transition-colors" href="services.html">Services</a></li>
 <li><a class="hover:text-brand-500 transition-colors" href="pricing.html">Pricing</a></li>
+<li><a class="hover:text-brand-500 transition-colors" href="how-it-works.html">How It Works</a></li>
 <li><a class="hover:text-brand-500 transition-colors" href="blog.html">Blog</a></li>
+<li><a class="hover:text-brand-500 transition-colors" href="dashboard.html">Dashboard</a></li>
 <li><a class="hover:text-brand-500 transition-colors" href="contact.html">Contact</a></li>
 </ul>
 </div>

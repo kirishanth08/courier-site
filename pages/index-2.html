@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html class="scroll-smooth" lang="en">
 <head>
@@ -162,6 +162,7 @@
 <a class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 font-medium transition-colors" href="pricing.html">Pricing</a>
 <a class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 font-medium transition-colors" href="how-it-works.html">How It Works</a>
 <a class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 font-medium transition-colors" href="blog.html">Blog</a>
+<a class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 font-medium transition-colors" href="dashboard.html">Dashboard</a>
 <a class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 font-medium transition-colors" href="contact.html">Contact</a>
 </nav>
 <div class="p-6 border-t border-gray-200 dark:border-gray-700 space-y-3">
@@ -196,6 +197,7 @@
 <a class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors" href="pricing.html">Pricing</a>
 <a class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors" href="how-it-works.html">How It Works</a>
 <a class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors" href="blog.html">Blog</a>
+<a class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors" href="dashboard.html">Dashboard</a>
 <a class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors" href="contact.html">Contact</a>
 </nav>
 <div class="hidden lg:flex items-center gap-3">
@@ -390,18 +392,6 @@
 </div>
 </div>
 </div>
-<!-- Floating notification -->
-<div class="absolute -bottom-4 -left-4 bg-white dark:bg-gray-800 rounded-xl shadow-xl border border-gray-200 dark:border-gray-700 p-3 flex items-center gap-3 animate-bounce" style="animation-duration: 3s;">
-<div class="w-10 h-10 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center">
-<i class="fas fa-check text-green-500"></i>
-</div>
-<div>
-<div class="text-xs font-bold text-gray-900 dark:text-white">Delivered!</div>
-<div class="text-[10px] text-gray-500 dark:text-gray-400">Order #SWH-3829470</div>
-</div>
-</div>
-</div>
-</div>
 </div>
 </div>
 <!-- Scroll Indicator -->
@@ -425,8 +415,8 @@
 <!-- 3 Feature Cards -->
 <div class="grid md:grid-cols-3 gap-8">
 <!-- Same-Day Delivery -->
-<div class="group relative bg-white dark:bg-gray-800 rounded-3xl border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-2xl hover:shadow-brand-500/10 hover:-translate-y-2 transition-all duration-500">
-<div class="relative h-56 overflow-hidden">
+<div class="group relative bg-white dark:bg-gray-800 rounded-3xl border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-2xl hover:shadow-brand-500/10 hover:-translate-y-2 transition-all duration-500 flex flex-col h-full">
+<div class="relative h-56 overflow-hidden shrink-0">
 <img alt="Same-day delivery courier with parcels" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://images.unsplash.com/photo-1580674285054-bed31e145f59?w=600&amp;h=400&amp;fit=crop"/>
 <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
 <div class="absolute top-4 left-4 px-3 py-1.5 bg-red-500 text-white text-xs font-bold rounded-full uppercase tracking-wider flex items-center gap-1.5">
@@ -437,7 +427,7 @@
 <div class="text-sm font-semibold text-white/80">Hours Delivery</div>
 </div>
 </div>
-<div class="p-6">
+<div class="p-6 flex flex-col flex-1">
 <div class="flex items-center gap-3 mb-4">
 <div class="w-12 h-12 bg-red-100 dark:bg-red-900/30 rounded-2xl flex items-center justify-center">
 <i class="fas fa-bolt text-red-500 text-xl"></i>
@@ -445,7 +435,7 @@
 <h3 class="text-xl font-bold">Same-Day Delivery</h3>
 </div>
 <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-6">Need it there now? Our dedicated same-day fleet picks up and delivers within 4 hours. Perfect for urgent documents, medical supplies, and time-critical parcels.</p>
-<ul class="space-y-2 mb-6">
+<ul class="space-y-2 mb-6 flex-1">
 <li class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
 <i class="fas fa-check-circle text-green-500 shrink-0"></i> Priority handling &amp; dispatch
                                 </li>
@@ -459,15 +449,15 @@
 <i class="fas fa-check-circle text-green-500 shrink-0"></i> Photo proof of delivery
                                 </li>
 </ul>
-<a class="inline-flex items-center gap-2 text-brand-500 font-semibold text-sm hover:gap-3 transition-all" href="#">
+<a class="mt-auto inline-flex items-center gap-2 text-brand-500 font-semibold text-sm hover:gap-3 transition-all" href="#">
                                 Book Same-Day <i class="fas fa-arrow-right"></i>
 </a>
 </div>
 </div>
 <!-- Express Overnight -->
-<div class="group relative bg-white dark:bg-gray-800 rounded-3xl border-2 border-brand-500 overflow-hidden shadow-xl shadow-brand-500/10 hover:shadow-2xl hover:shadow-brand-500/20 hover:-translate-y-2 transition-all duration-500 md:scale-105">
+<div class="group relative bg-white dark:bg-gray-800 rounded-3xl border-2 border-brand-500 overflow-hidden shadow-xl shadow-brand-500/10 hover:shadow-2xl hover:shadow-brand-500/20 hover:-translate-y-2 transition-all duration-500 md:scale-105 flex flex-col h-full">
 <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-400 to-brand-600"></div>
-<div class="relative h-56 overflow-hidden">
+<div class="relative h-56 overflow-hidden shrink-0">
 <img alt="Express overnight courier service" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?w=600&amp;h=400&amp;fit=crop"/>
 <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
 <div class="absolute top-4 left-4 px-3 py-1.5 bg-brand-500 text-white text-xs font-bold rounded-full uppercase tracking-wider flex items-center gap-1.5">
@@ -478,7 +468,7 @@
 <div class="text-sm font-semibold text-white/80">Guaranteed Delivery</div>
 </div>
 </div>
-<div class="p-6">
+<div class="p-6 flex flex-col flex-1">
 <div class="flex items-center gap-3 mb-4">
 <div class="w-12 h-12 bg-brand-100 dark:bg-brand-900/30 rounded-2xl flex items-center justify-center">
 <i class="fas fa-shuttle-van text-brand-500 text-xl"></i>
@@ -486,7 +476,7 @@
 <h3 class="text-xl font-bold">Express Overnight</h3>
 </div>
 <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-6">Book by 8 PM and receive delivery by 10 AM the next morning. Our overnight network ensures your parcels travel while you sleep.</p>
-<ul class="space-y-2 mb-6">
+<ul class="space-y-2 mb-6 flex-1">
 <li class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
 <i class="fas fa-check-circle text-green-500 shrink-0"></i> Guaranteed morning delivery
                                 </li>
@@ -500,14 +490,14 @@
 <i class="fas fa-check-circle text-green-500 shrink-0"></i> Full insurance included
                                 </li>
 </ul>
-<a class="inline-flex items-center gap-2 text-brand-500 font-semibold text-sm hover:gap-3 transition-all" href="#">
+<a class="mt-auto inline-flex items-center gap-2 text-brand-500 font-semibold text-sm hover:gap-3 transition-all" href="#">
                                 Book Express <i class="fas fa-arrow-right"></i>
 </a>
 </div>
 </div>
 <!-- Scheduled Delivery -->
-<div class="group relative bg-white dark:bg-gray-800 rounded-3xl border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-2xl hover:shadow-brand-500/10 hover:-translate-y-2 transition-all duration-500">
-<div class="relative h-56 overflow-hidden">
+<div class="group relative bg-white dark:bg-gray-800 rounded-3xl border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-2xl hover:shadow-brand-500/10 hover:-translate-y-2 transition-all duration-500 flex flex-col h-full">
+<div class="relative h-56 overflow-hidden shrink-0">
 <img alt="Scheduled delivery service calendar planning" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=600&amp;h=400&amp;fit=crop"/>
 <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
 <div class="absolute top-4 left-4 px-3 py-1.5 bg-blue-500 text-white text-xs font-bold rounded-full uppercase tracking-wider flex items-center gap-1.5">
@@ -518,7 +508,7 @@
 <div class="text-sm font-semibold text-white/80">Date &amp; Time Slot</div>
 </div>
 </div>
-<div class="p-6">
+<div class="p-6 flex flex-col flex-1">
 <div class="flex items-center gap-3 mb-4">
 <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-2xl flex items-center justify-center">
 <i class="fas fa-calendar-check text-blue-500 text-xl"></i>
@@ -526,7 +516,7 @@
 <h3 class="text-xl font-bold">Scheduled Delivery</h3>
 </div>
 <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-6">Plan ahead with precision. Select your preferred delivery date and a 2-hour time window. Ideal for furniture, appliances, and planned shipments.</p>
-<ul class="space-y-2 mb-6">
+<ul class="space-y-2 mb-6 flex-1">
 <li class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
 <i class="fas fa-check-circle text-green-500 shrink-0"></i> 2-hour delivery windows
                                 </li>
@@ -540,7 +530,7 @@
 <i class="fas fa-check-circle text-green-500 shrink-0"></i> Flexible rescheduling
                                 </li>
 </ul>
-<a class="inline-flex items-center gap-2 text-brand-500 font-semibold text-sm hover:gap-3 transition-all" href="#">
+<a class="mt-auto inline-flex items-center gap-2 text-brand-500 font-semibold text-sm hover:gap-3 transition-all" href="#">
                                 Schedule Delivery <i class="fas fa-arrow-right"></i>
 </a>
 </div>
@@ -743,73 +733,73 @@
 </div>
 <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
 <!-- E-commerce -->
-<div class="group bg-gray-50 dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-6 hover:shadow-xl hover:shadow-brand-500/10 hover:-translate-y-1 transition-all duration-300">
+<div class="group bg-gray-50 dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-6 hover:shadow-xl hover:shadow-brand-500/10 hover:-translate-y-1 transition-all duration-300 flex flex-col h-full">
 <div class="w-14 h-14 bg-purple-100 dark:bg-purple-900/30 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
 <i class="fas fa-shopping-cart text-purple-500 text-xl"></i>
 </div>
 <h3 class="text-lg font-bold mb-2">E-commerce</h3>
-<p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4">Seamless integration with Shopify, WooCommerce, and Amazon. Bulk label printing, automated tracking updates, and flexible return handling.</p>
-<div class="flex items-center gap-2 text-sm">
+<p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4 flex-1">Seamless integration with Shopify, WooCommerce, and Amazon. Bulk label printing, automated tracking updates, and flexible return handling.</p>
+<div class="mt-auto flex items-center gap-2 text-sm">
 <span class="px-2 py-0.5 bg-purple-100 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400 rounded text-xs font-semibold">2-4hr Delivery</span>
 <span class="px-2 py-0.5 bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400 rounded text-xs font-semibold">50K+ daily</span>
 </div>
 </div>
 <!-- Healthcare -->
-<div class="group bg-gray-50 dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-6 hover:shadow-xl hover:shadow-brand-500/10 hover:-translate-y-1 transition-all duration-300">
+<div class="group bg-gray-50 dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-6 hover:shadow-xl hover:shadow-brand-500/10 hover:-translate-y-1 transition-all duration-300 flex flex-col h-full">
 <div class="w-14 h-14 bg-red-100 dark:bg-red-900/30 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
 <i class="fas fa-heartbeat text-red-500 text-xl"></i>
 </div>
 <h3 class="text-lg font-bold mb-2">Healthcare / Medical</h3>
-<p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4">Temperature-controlled delivery for lab samples, prescriptions, and medical equipment. HIPAA-compliant chain of custody documentation.</p>
-<div class="flex items-center gap-2 text-sm">
+<p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4 flex-1">Temperature-controlled delivery for lab samples, prescriptions, and medical equipment. HIPAA-compliant chain of custody documentation.</p>
+<div class="mt-auto flex items-center gap-2 text-sm">
 <span class="px-2 py-0.5 bg-red-100 dark:bg-red-900/20 text-red-600 dark:text-red-400 rounded text-xs font-semibold">1-2hr Urgent</span>
 <span class="px-2 py-0.5 bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400 rounded text-xs font-semibold">HIPAA Ready</span>
 </div>
 </div>
 <!-- Food & Beverage -->
-<div class="group bg-gray-50 dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-6 hover:shadow-xl hover:shadow-brand-500/10 hover:-translate-y-1 transition-all duration-300">
+<div class="group bg-gray-50 dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-6 hover:shadow-xl hover:shadow-brand-500/10 hover:-translate-y-1 transition-all duration-300 flex flex-col h-full">
 <div class="w-14 h-14 bg-amber-100 dark:bg-amber-900/30 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
 <i class="fas fa-utensils text-amber-500 text-xl"></i>
 </div>
 <h3 class="text-lg font-bold mb-2">Food &amp; Beverage</h3>
-<p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4">Insulated and refrigerated delivery options for restaurants, caterers, and food producers. Maintain freshness with our climate-controlled fleet.</p>
-<div class="flex items-center gap-2 text-sm">
+<p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4 flex-1">Insulated and refrigerated delivery options for restaurants, caterers, and food producers. Maintain freshness with our climate-controlled fleet.</p>
+<div class="mt-auto flex items-center gap-2 text-sm">
 <span class="px-2 py-0.5 bg-amber-100 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400 rounded text-xs font-semibold">Same-Day</span>
 <span class="px-2 py-0.5 bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400 rounded text-xs font-semibold">Temp Controlled</span>
 </div>
 </div>
 <!-- Legal Documents -->
-<div class="group bg-gray-50 dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-6 hover:shadow-xl hover:shadow-brand-500/10 hover:-translate-y-1 transition-all duration-300">
+<div class="group bg-gray-50 dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-6 hover:shadow-xl hover:shadow-brand-500/10 hover:-translate-y-1 transition-all duration-300 flex flex-col h-full">
 <div class="w-14 h-14 bg-indigo-100 dark:bg-indigo-900/30 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
 <i class="fas fa-gavel text-indigo-500 text-xl"></i>
 </div>
 <h3 class="text-lg font-bold mb-2">Legal Documents</h3>
-<p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4">Court filings, contracts, and confidential legal papers delivered with signature confirmation, notarized chain of custody, and time-stamped proof.</p>
-<div class="flex items-center gap-2 text-sm">
+<p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4 flex-1">Court filings, contracts, and confidential legal papers delivered with signature confirmation, notarized chain of custody, and time-stamped proof.</p>
+<div class="mt-auto flex items-center gap-2 text-sm">
 <span class="px-2 py-0.5 bg-indigo-100 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 rounded text-xs font-semibold">Secure</span>
 <span class="px-2 py-0.5 bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400 rounded text-xs font-semibold">Signed Proof</span>
 </div>
 </div>
 <!-- Retail -->
-<div class="group bg-gray-50 dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-6 hover:shadow-xl hover:shadow-brand-500/10 hover:-translate-y-1 transition-all duration-300">
+<div class="group bg-gray-50 dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-6 hover:shadow-xl hover:shadow-brand-500/10 hover:-translate-y-1 transition-all duration-300 flex flex-col h-full">
 <div class="w-14 h-14 bg-teal-100 dark:bg-teal-900/30 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
 <i class="fas fa-store text-teal-500 text-xl"></i>
 </div>
 <h3 class="text-lg font-bold mb-2">Retail</h3>
-<p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4">Store-to-door and store-to-store transfers. Inventory replenishment, customer order fulfillment, and scheduled bulk deliveries for retail chains.</p>
-<div class="flex items-center gap-2 text-sm">
+<p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4 flex-1">Store-to-door and store-to-store transfers. Inventory replenishment, customer order fulfillment, and scheduled bulk deliveries for retail chains.</p>
+<div class="mt-auto flex items-center gap-2 text-sm">
 <span class="px-2 py-0.5 bg-teal-100 dark:bg-teal-900/20 text-teal-600 dark:text-teal-400 rounded text-xs font-semibold">Express</span>
 <span class="px-2 py-0.5 bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400 rounded text-xs font-semibold">Bulk Ready</span>
 </div>
 </div>
 <!-- Manufacturing -->
-<div class="group bg-gray-50 dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-6 hover:shadow-xl hover:shadow-brand-500/10 hover:-translate-y-1 transition-all duration-300">
+<div class="group bg-gray-50 dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-6 hover:shadow-xl hover:shadow-brand-500/10 hover:-translate-y-1 transition-all duration-300 flex flex-col h-full">
 <div class="w-14 h-14 bg-slate-100 dark:bg-slate-700 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
 <i class="fas fa-industry text-slate-500 text-xl"></i>
 </div>
 <h3 class="text-lg font-bold mb-2">Manufacturing</h3>
-<p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4">Just-in-time parts delivery, raw material transport, and finished goods distribution. Dedicated routes for high-volume manufacturing clients.</p>
-<div class="flex items-center gap-2 text-sm">
+<p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4 flex-1">Just-in-time parts delivery, raw material transport, and finished goods distribution. Dedicated routes for high-volume manufacturing clients.</p>
+<div class="mt-auto flex items-center gap-2 text-sm">
 <span class="px-2 py-0.5 bg-slate-200 dark:bg-slate-600 text-slate-600 dark:text-slate-300 rounded text-xs font-semibold">Scheduled</span>
 <span class="px-2 py-0.5 bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400 rounded text-xs font-semibold">Heavy Cargo</span>
 </div>
@@ -983,7 +973,8 @@
 <div class="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white dark:from-gray-900 to-transparent z-10 pointer-events-none"></div>
 <div class="testimonial-track flex gap-8 w-max">
 <!-- Testimonial 1 -->
-<div class="flex-shrink-0 w-[380px] bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 border border-gray-200 dark:border-gray-700">
+<div class="flex-shrink-0 w-[380px] bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 border border-gray-200 dark:border-gray-700 flex flex-col justify-between">
+<div class="flex flex-col flex-1">
 <div class="flex items-center gap-1 mb-4">
 <i class="fas fa-star text-yellow-400"></i>
 <i class="fas fa-star text-yellow-400"></i>
@@ -991,11 +982,12 @@
 <i class="fas fa-star text-yellow-400"></i>
 <i class="fas fa-star text-yellow-400"></i>
 </div>
-<p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+<p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6 flex-1">
                             "Same-day delivery has transformed our e-commerce business. We can now offer 4-hour delivery to premium customers and our conversion rates jumped 35%. SwiftShip is our go-to courier partner."
                         </p>
-<div class="flex items-center gap-4">
-<div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-lg">EJ</div>
+</div>
+<div class="flex items-center gap-4 mt-auto">
+<img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&amp;h=150&amp;fit=crop&amp;crop=face" alt="Emily Johnson" class="w-12 h-12 rounded-full object-cover shadow-md border-2 border-purple-500/30 shrink-0"/>
 <div>
 <div class="font-bold">Emily Johnson</div>
 <div class="text-sm text-gray-500 dark:text-gray-400">CEO, LuxeBox E-commerce</div>
@@ -1003,7 +995,8 @@
 </div>
 </div>
 <!-- Testimonial 2 -->
-<div class="flex-shrink-0 w-[380px] bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 border border-gray-200 dark:border-gray-700">
+<div class="flex-shrink-0 w-[380px] bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 border border-gray-200 dark:border-gray-700 flex flex-col justify-between">
+<div class="flex flex-col flex-1">
 <div class="flex items-center gap-1 mb-4">
 <i class="fas fa-star text-yellow-400"></i>
 <i class="fas fa-star text-yellow-400"></i>
@@ -1011,11 +1004,12 @@
 <i class="fas fa-star text-yellow-400"></i>
 <i class="fas fa-star text-yellow-400"></i>
 </div>
-<p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+<p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6 flex-1">
                             "We ship critical lab samples and medical supplies daily. SwiftShip's temperature-controlled same-day service has been a lifesaver — literally. Their HIPAA compliance gives us full confidence."
                         </p>
-<div class="flex items-center gap-4">
-<div class="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center text-white font-bold text-lg">DT</div>
+</div>
+<div class="flex items-center gap-4 mt-auto">
+<img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=150&amp;h=150&amp;fit=crop&amp;crop=face" alt="Dr. Rachel Torres" class="w-12 h-12 rounded-full object-cover shadow-md border-2 border-red-500/30 shrink-0"/>
 <div>
 <div class="font-bold">Dr. Rachel Torres</div>
 <div class="text-sm text-gray-500 dark:text-gray-400">Lab Director, MedCore Diagnostics</div>
@@ -1023,7 +1017,8 @@
 </div>
 </div>
 <!-- Testimonial 3 -->
-<div class="flex-shrink-0 w-[380px] bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 border border-gray-200 dark:border-gray-700">
+<div class="flex-shrink-0 w-[380px] bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 border border-gray-200 dark:border-gray-700 flex flex-col justify-between">
+<div class="flex flex-col flex-1">
 <div class="flex items-center gap-1 mb-4">
 <i class="fas fa-star text-yellow-400"></i>
 <i class="fas fa-star text-yellow-400"></i>
@@ -1031,11 +1026,12 @@
 <i class="fas fa-star text-yellow-400"></i>
 <i class="fas fa-star-half-alt text-yellow-400"></i>
 </div>
-<p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+<p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6 flex-1">
                             "Express overnight service is incredibly reliable. We send legal filings across state lines every week — 100% on-time record over 18 months. The real-time tracking gives our clients peace of mind."
                         </p>
-<div class="flex items-center gap-4">
-<div class="w-12 h-12 bg-indigo-500 rounded-full flex items-center justify-center text-white font-bold text-lg">JW</div>
+</div>
+<div class="flex items-center gap-4 mt-auto">
+<img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&amp;h=150&amp;fit=crop&amp;crop=face" alt="James Whitfield" class="w-12 h-12 rounded-full object-cover shadow-md border-2 border-indigo-500/30 shrink-0"/>
 <div>
 <div class="font-bold">James Whitfield</div>
 <div class="text-sm text-gray-500 dark:text-gray-400">Partner, Whitfield &amp; Associates Law</div>
@@ -1043,7 +1039,8 @@
 </div>
 </div>
 <!-- Testimonial 4 -->
-<div class="flex-shrink-0 w-[380px] bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 border border-gray-200 dark:border-gray-700">
+<div class="flex-shrink-0 w-[380px] bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 border border-gray-200 dark:border-gray-700 flex flex-col justify-between">
+<div class="flex flex-col flex-1">
 <div class="flex items-center gap-1 mb-4">
 <i class="fas fa-star text-yellow-400"></i>
 <i class="fas fa-star text-yellow-400"></i>
@@ -1051,11 +1048,12 @@
 <i class="fas fa-star text-yellow-400"></i>
 <i class="fas fa-star text-yellow-400"></i>
 </div>
-<p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+<p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6 flex-1">
                             "Scheduled delivery is perfect for our restaurant chain. We set weekly ingredient deliveries and SwiftShip never misses a 2-hour window. The consistency is unmatched by any other courier."
                         </p>
-<div class="flex items-center gap-4">
-<div class="w-12 h-12 bg-amber-500 rounded-full flex items-center justify-center text-white font-bold text-lg">LM</div>
+</div>
+<div class="flex items-center gap-4 mt-auto">
+<img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=150&amp;h=150&amp;fit=crop&amp;crop=face" alt="Linda Martinez" class="w-12 h-12 rounded-full object-cover shadow-md border-2 border-amber-500/30 shrink-0"/>
 <div>
 <div class="font-bold">Linda Martinez</div>
 <div class="text-sm text-gray-500 dark:text-gray-400">Operations Dir, Bella Cucina Group</div>
@@ -1064,7 +1062,8 @@
 </div>
 <!-- Duplicate set for infinite scroll effect -->
 <!-- Testimonial 1 (duplicate) -->
-<div class="flex-shrink-0 w-[380px] bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 border border-gray-200 dark:border-gray-700">
+<div class="flex-shrink-0 w-[380px] bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 border border-gray-200 dark:border-gray-700 flex flex-col justify-between">
+<div class="flex flex-col flex-1">
 <div class="flex items-center gap-1 mb-4">
 <i class="fas fa-star text-yellow-400"></i>
 <i class="fas fa-star text-yellow-400"></i>
@@ -1072,11 +1071,12 @@
 <i class="fas fa-star text-yellow-400"></i>
 <i class="fas fa-star text-yellow-400"></i>
 </div>
-<p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+<p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6 flex-1">
                             "Same-day delivery has transformed our e-commerce business. We can now offer 4-hour delivery to premium customers and our conversion rates jumped 35%. SwiftShip is our go-to courier partner."
                         </p>
-<div class="flex items-center gap-4">
-<div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-lg">EJ</div>
+</div>
+<div class="flex items-center gap-4 mt-auto">
+<img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&amp;h=150&amp;fit=crop&amp;crop=face" alt="Emily Johnson" class="w-12 h-12 rounded-full object-cover shadow-md border-2 border-purple-500/30 shrink-0"/>
 <div>
 <div class="font-bold">Emily Johnson</div>
 <div class="text-sm text-gray-500 dark:text-gray-400">CEO, LuxeBox E-commerce</div>
@@ -1084,7 +1084,8 @@
 </div>
 </div>
 <!-- Testimonial 2 (duplicate) -->
-<div class="flex-shrink-0 w-[380px] bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 border border-gray-200 dark:border-gray-700">
+<div class="flex-shrink-0 w-[380px] bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 border border-gray-200 dark:border-gray-700 flex flex-col justify-between">
+<div class="flex flex-col flex-1">
 <div class="flex items-center gap-1 mb-4">
 <i class="fas fa-star text-yellow-400"></i>
 <i class="fas fa-star text-yellow-400"></i>
@@ -1092,11 +1093,12 @@
 <i class="fas fa-star text-yellow-400"></i>
 <i class="fas fa-star text-yellow-400"></i>
 </div>
-<p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+<p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6 flex-1">
                             "We ship critical lab samples and medical supplies daily. SwiftShip's temperature-controlled same-day service has been a lifesaver — literally. Their HIPAA compliance gives us full confidence."
                         </p>
-<div class="flex items-center gap-4">
-<div class="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center text-white font-bold text-lg">DT</div>
+</div>
+<div class="flex items-center gap-4 mt-auto">
+<img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=150&amp;h=150&amp;fit=crop&amp;crop=face" alt="Dr. Rachel Torres" class="w-12 h-12 rounded-full object-cover shadow-md border-2 border-red-500/30 shrink-0"/>
 <div>
 <div class="font-bold">Dr. Rachel Torres</div>
 <div class="text-sm text-gray-500 dark:text-gray-400">Lab Director, MedCore Diagnostics</div>
@@ -1104,7 +1106,8 @@
 </div>
 </div>
 <!-- Testimonial 3 (duplicate) -->
-<div class="flex-shrink-0 w-[380px] bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 border border-gray-200 dark:border-gray-700">
+<div class="flex-shrink-0 w-[380px] bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 border border-gray-200 dark:border-gray-700 flex flex-col justify-between">
+<div class="flex flex-col flex-1">
 <div class="flex items-center gap-1 mb-4">
 <i class="fas fa-star text-yellow-400"></i>
 <i class="fas fa-star text-yellow-400"></i>
@@ -1112,11 +1115,12 @@
 <i class="fas fa-star text-yellow-400"></i>
 <i class="fas fa-star-half-alt text-yellow-400"></i>
 </div>
-<p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+<p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6 flex-1">
                             "Express overnight service is incredibly reliable. We send legal filings across state lines every week — 100% on-time record over 18 months. The real-time tracking gives our clients peace of mind."
                         </p>
-<div class="flex items-center gap-4">
-<div class="w-12 h-12 bg-indigo-500 rounded-full flex items-center justify-center text-white font-bold text-lg">JW</div>
+</div>
+<div class="flex items-center gap-4 mt-auto">
+<img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&amp;h=150&amp;fit=crop&amp;crop=face" alt="James Whitfield" class="w-12 h-12 rounded-full object-cover shadow-md border-2 border-indigo-500/30 shrink-0"/>
 <div>
 <div class="font-bold">James Whitfield</div>
 <div class="text-sm text-gray-500 dark:text-gray-400">Partner, Whitfield &amp; Associates Law</div>
@@ -1124,7 +1128,8 @@
 </div>
 </div>
 <!-- Testimonial 4 (duplicate) -->
-<div class="flex-shrink-0 w-[380px] bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 border border-gray-200 dark:border-gray-700">
+<div class="flex-shrink-0 w-[380px] bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 border border-gray-200 dark:border-gray-700 flex flex-col justify-between">
+<div class="flex flex-col flex-1">
 <div class="flex items-center gap-1 mb-4">
 <i class="fas fa-star text-yellow-400"></i>
 <i class="fas fa-star text-yellow-400"></i>
@@ -1132,11 +1137,12 @@
 <i class="fas fa-star text-yellow-400"></i>
 <i class="fas fa-star text-yellow-400"></i>
 </div>
-<p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+<p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6 flex-1">
                             "Scheduled delivery is perfect for our restaurant chain. We set weekly ingredient deliveries and SwiftShip never misses a 2-hour window. The consistency is unmatched by any other courier."
                         </p>
-<div class="flex items-center gap-4">
-<div class="w-12 h-12 bg-amber-500 rounded-full flex items-center justify-center text-white font-bold text-lg">LM</div>
+</div>
+<div class="flex items-center gap-4 mt-auto">
+<img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=150&amp;h=150&amp;fit=crop&amp;crop=face" alt="Linda Martinez" class="w-12 h-12 rounded-full object-cover shadow-md border-2 border-amber-500/30 shrink-0"/>
 <div>
 <div class="font-bold">Linda Martinez</div>
 <div class="text-sm text-gray-500 dark:text-gray-400">Operations Dir, Bella Cucina Group</div>
@@ -1323,16 +1329,16 @@
 </div>
 <p class="text-sm leading-relaxed mb-6">SwiftShip Express is a premier courier and parcel delivery service, providing fast, reliable, and affordable shipping solutions across 50+ cities.</p>
 <div class="flex items-center gap-3">
-<a aria-label="Facebook" class="w-10 h-10 bg-gray-800 hover:bg-brand-500 rounded-lg flex items-center justify-center transition-colors" href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">>
+<a aria-label="Facebook" class="w-10 h-10 bg-gray-800 hover:bg-brand-500 rounded-lg flex items-center justify-center transition-colors" href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
 <i class="fab fa-facebook-f text-sm"></i>
 </a>
-<a aria-label="Twitter" class="w-10 h-10 bg-gray-800 hover:bg-brand-500 rounded-lg flex items-center justify-center transition-colors" href="https://twitter.com/" target="_blank" rel="noopener noreferrer">>
-<i class="fab fa-twitter text-sm"></i>
+<a aria-label="X (Twitter)" class="w-10 h-10 bg-gray-800 hover:bg-brand-500 rounded-lg flex items-center justify-center transition-colors" href="https://twitter.com/" target="_blank" rel="noopener noreferrer">
+<i class="fa-brands fa-x-twitter text-sm"></i>
 </a>
-<a aria-label="Instagram" class="w-10 h-10 bg-gray-800 hover:bg-brand-500 rounded-lg flex items-center justify-center transition-colors" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">>
+<a aria-label="Instagram" class="w-10 h-10 bg-gray-800 hover:bg-brand-500 rounded-lg flex items-center justify-center transition-colors" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
 <i class="fab fa-instagram text-sm"></i>
 </a>
-<a aria-label="LinkedIn" class="w-10 h-10 bg-gray-800 hover:bg-brand-500 rounded-lg flex items-center justify-center transition-colors" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">>
+<a aria-label="LinkedIn" class="w-10 h-10 bg-gray-800 hover:bg-brand-500 rounded-lg flex items-center justify-center transition-colors" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">
 <i class="fab fa-linkedin-in text-sm"></i>
 </a>
 </div>
@@ -1342,23 +1348,25 @@
 <h4 class="text-white font-bold mb-6">Quick Links</h4>
 <ul class="space-y-3">
 <li><a class="text-sm hover:text-brand-500 transition-colors" href="../index.html">Home</a></li>
-<li><a class="text-sm hover:text-brand-500 transition-colors" href="index-2.html">Home 2</a></li>
-<li><a class="text-sm hover:text-brand-500 transition-colors" href="#services">Services</a></li>
-<li><a class="text-sm hover:text-brand-500 transition-colors" href="#pricing">Pricing</a></li>
-<li><a class="text-sm hover:text-brand-500 transition-colors" href="#coverage">Coverage Area</a></li>
-<li><a class="text-sm hover:text-brand-500 transition-colors" href="#">Blog</a></li>
+<li><a class="text-sm hover:text-brand-500 transition-colors" href="about.html">About Us</a></li>
+<li><a class="text-sm hover:text-brand-500 transition-colors" href="services.html">Services</a></li>
+<li><a class="text-sm hover:text-brand-500 transition-colors" href="pricing.html">Pricing</a></li>
+<li><a class="text-sm hover:text-brand-500 transition-colors" href="how-it-works.html">How It Works</a></li>
+<li><a class="text-sm hover:text-brand-500 transition-colors" href="blog.html">Blog</a></li>
+<li><a class="text-sm hover:text-brand-500 transition-colors" href="dashboard.html">Dashboard</a></li>
+<li><a class="text-sm hover:text-brand-500 transition-colors" href="contact.html">Contact</a></li>
 </ul>
 </div>
 <!-- Column 3: Services -->
 <div>
 <h4 class="text-white font-bold mb-6">Our Services</h4>
 <ul class="space-y-3">
-<li><a class="text-sm hover:text-brand-500 transition-colors" href="#services">Same-Day Delivery</a></li>
-<li><a class="text-sm hover:text-brand-500 transition-colors" href="#services">Express Overnight</a></li>
-<li><a class="text-sm hover:text-brand-500 transition-colors" href="#services">Scheduled Delivery</a></li>
-<li><a class="text-sm hover:text-brand-500 transition-colors" href="#services">Document Delivery</a></li>
-<li><a class="text-sm hover:text-brand-500 transition-colors" href="#services">Parcel Shipping</a></li>
-<li><a class="text-sm hover:text-brand-500 transition-colors" href="#services">Warehouse &amp; Fulfillment</a></li>
+<li><a class="text-sm hover:text-brand-500 transition-colors" href="services.html">Same-Day Delivery</a></li>
+<li><a class="text-sm hover:text-brand-500 transition-colors" href="services.html">Express Overnight</a></li>
+<li><a class="text-sm hover:text-brand-500 transition-colors" href="services.html">Scheduled Delivery</a></li>
+<li><a class="text-sm hover:text-brand-500 transition-colors" href="services.html">Document Delivery</a></li>
+<li><a class="text-sm hover:text-brand-500 transition-colors" href="services.html">Parcel Shipping</a></li>
+<li><a class="text-sm hover:text-brand-500 transition-colors" href="services.html">Warehouse &amp; Fulfillment</a></li>
 </ul>
 </div>
 <!-- Column 4: Contact & Newsletter -->

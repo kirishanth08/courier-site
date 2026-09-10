@@ -16,9 +16,12 @@
 <button id="rtl-toggle" type="button" title="Toggle RTL">RTL</button>
 </div>
 <div class="swift-login-shell">
-<a href="../index.html" class="swift-company" aria-label="SwiftShip Express Home"><div class="swift-company-logo">S</div><div>SwiftShip</div></a>
-<h1 class="swift-login-title">Welcome back</h1>
-<p class="swift-login-subtitle">Sign in to access your dashboard</p>
+<a href="../index.html" class="swift-company" aria-label="SwiftShip Express Home">
+    <div class="swift-company-logo"><i class="fa-solid fa-shuttle-van text-white"></i></div>
+    <div class="fw-bold fs-4"><span style="color: #f97316;">Swift</span><span>Ship</span></div>
+</a>
+<h1 class="swift-login-title text-center">Welcome back</h1>
+<p class="swift-login-subtitle text-center">Sign in to access your dashboard</p>
 <form class="swift-login-form" id="loginForm">
 <label class="form-label" for="email">Email Address</label>
 <div class="swift-input-wrap"><i class="fa-regular fa-envelope swift-input-icon"></i><input id="email" type="email" class="form-control" placeholder="you@example.com" required></div>
@@ -36,6 +39,6 @@
 <script src="../assets/js/main.js"></script>
 <script>
 document.getElementById('togglePassword')?.addEventListener('click',function(){const i=document.getElementById('password'),x=this.querySelector('i'),s=i.type==='text';i.type=s?'password':'text';x.className=s?'fa-solid fa-eye':'fa-solid fa-eye-slash';});
-document.getElementById('loginForm')?.addEventListener('submit',function(e){e.preventDefault();sessionStorage.setItem('swiftshipRole','customer'); sessionStorage.setItem('swiftshipLoggedIn','true'); location.href='customer-dashboard.html';});
+document.getElementById('loginForm')?.addEventListener('submit',function(e){e.preventDefault();sessionStorage.setItem('swiftshipRole','customer'); sessionStorage.setItem('swiftshipLoggedIn','true'); location.href='dashboard.html';});
 </script>
 </body></html>

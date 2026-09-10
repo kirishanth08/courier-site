@@ -15,9 +15,12 @@
     <title>404 - Page Not Found | SwiftShip Express</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-    tailwind.config = { darkMode:'class', theme:{ extend:{ colors:{ brand:{ 50:'#fff7ed',100:'#ffedd5',200:'#fed7aa',300:'#fdba74',400:'#fb923c',500:'#f97316',600:'#ea580c',700:'#c2410c',800:'#9a3412',900:'#7c2d12' } } } } }
+    tailwind.config = { darkMode:'class', theme:{ extend:{ colors:{ brand:{ 50:'#fff7ed',100:'#ffedd5',200:'#fed7aa',300:'#fdba74',400:'#fb923c',500:'#f97316',600:'#ea580c',700:'#c2410c',800:'#9a3412',900:'#7c2d12' } }, fontFamily:{ heading:['"Inter"','sans-serif'], body:['"Inter"','sans-serif'], sans:['"Inter"','sans-serif'] } } } }
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="../assets/css/custom.css">
     <style>
         @keyframes truck-bounce {
@@ -105,7 +108,7 @@
                 <a href="../index.html" class="btn-primary">
                     <i class="fas fa-home"></i> Go Home
                 </a>
-                <a href="customer-dashboard.html" class="btn-secondary">
+                <a href="dashboard.html" class="btn-secondary">
                     <i class="fas fa-shipping-fast"></i> Track Shipment
                 </a>
             </div>
@@ -135,7 +138,7 @@
                 var val = searchInput.value.trim();
                 if (!val) return;
                 if (/^[A-Za-z0-9]{8,15}$/.test(val)) {
-                    window.location.href = 'customer-dashboard.html?tracking=' + encodeURIComponent(val);
+                    window.location.href = 'dashboard.html?tracking=' + encodeURIComponent(val);
                 } else {
                     window.location.href = '../index.html?q=' + encodeURIComponent(val);
                 }

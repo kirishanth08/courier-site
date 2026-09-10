@@ -4,364 +4,767 @@
     <link rel="icon" type="image/svg+xml" href="../assets/css/favicon.svg">
     <link rel="shortcut icon" href="../assets/css/favicon.svg">
     <link rel="apple-touch-icon" href="../assets/css/favicon.svg">
-
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="SwiftShip Express Admin Dashboard - Manage shipments, track deliveries, and monitor business analytics.">
-    <meta name="robots" content="noindex, follow">
-    <title>Dashboard | SwiftShip Express</title>
+    <meta name="description" content="SwiftShip Express - Dedicated Customer Dashboard. Track shipments, schedule pickups, manage deliveries, and view invoices in real time.">
+    <title>Customer Dashboard | SwiftShip Express</title>
+    <!-- TailwindCSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>tailwind.config={darkMode:'class',theme:{extend:{colors:{brand:{50:'#fff7ed',100:'#ffedd5',200:'#fed7aa',300:'#fdba74',400:'#fb923c',500:'#f97316',600:'#ea580c',700:'#c2410c',800:'#9a3412',900:'#7c2d12'}}}}}</script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="../assets/css/custom.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#fff7ed',
+                            100: '#ffedd5',
+                            200: '#fed7aa',
+                            300: '#fdba74',
+                            400: '#fb923c',
+                            500: '#f97316',
+                            600: '#ea580c',
+                            700: '#c2410c',
+                            800: '#9a3412',
+                            900: '#7c2d12',
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['"Inter"', 'sans-serif'],
+                        body: ['"Inter"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Font Awesome CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+    <!-- Custom CSS -->
+    <link href="../assets/css/custom.css" rel="stylesheet"/>
+    <style>
+        .pulse-beacon {
+            position: relative;
+        }
+        .pulse-beacon::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 9999px;
+            background: rgba(249, 115, 22, 0.4);
+            animation: beacon-ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+        }
+        @keyframes beacon-ping {
+            0% { transform: scale(0.9); opacity: 1; }
+            100% { transform: scale(2.2); opacity: 0; }
+        }
+    </style>
 </head>
-<script>
-(function () {
-  if (sessionStorage.getItem('swiftshipRole') !== 'admin' ||
-      sessionStorage.getItem('swiftshipLoggedIn') !== 'true') {
-    window.location.replace('admin-login.html');
-  }
-})();
-</script>
-<body class="bg-gray-100 dark:bg-gray-950 text-gray-800 dark:text-gray-200">
+<body class="font-body bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-300 min-h-screen flex flex-col">
 
-    <div class="preloader fixed inset-0 z-[9999] bg-white dark:bg-gray-900 flex items-center justify-center transition-opacity duration-500" id="preloader">
+    <!-- ======================== PRELOADER ======================== -->
+    <div class="fixed inset-0 z-[9999] flex items-center justify-center bg-white dark:bg-gray-900 transition-opacity duration-500" id="preloader">
         <div class="text-center">
             <div class="relative w-20 h-20 mx-auto mb-4">
                 <div class="absolute inset-0 border-4 border-brand-200 dark:border-brand-800 rounded-full"></div>
                 <div class="absolute inset-0 border-4 border-transparent border-t-brand-500 rounded-full animate-spin"></div>
                 <i class="fas fa-shuttle-van absolute inset-0 flex items-center justify-center text-brand-500 text-xl"></i>
             </div>
-            <p class="text-sm font-semibold text-gray-500 tracking-wider uppercase">Loading</p>
+            <p class="text-sm font-semibold text-gray-500 dark:text-gray-400 tracking-wider uppercase">Loading Dashboard</p>
         </div>
     </div>
 
-    <aside class="sidebar bg-gray-900 dark:bg-gray-950 border-r-0">
-        <div class="px-6 py-5 border-b border-gray-800">
-            <a href="../index.html" class="flex items-center gap-3" aria-label="SwiftShip Express Home">
-                <div class="w-10 h-10 bg-brand-500 rounded-xl flex items-center justify-center shadow-lg shadow-brand-500/30">
-                    <i class="fas fa-shuttle-van text-white"></i>
-                </div>
-                <span class="text-xl font-extrabold text-white sidebar-logo-text">Swift<span class="text-brand-500">Ship</span></span>
-            </a>
-        </div>
-        <nav class="py-4" aria-label="Dashboard navigation">
-            <div class="px-6 mb-2"><span class="text-xs font-semibold text-gray-500 uppercase tracking-wider sidebar-label">Main</span></div>
-            <a href="dashboard.html" class="sidebar-link active">
-                <i class="fas fa-tachometer-alt w-5 text-center"></i>
-                <span class="sidebar-label">Dashboard</span>
-            </a>
-            <a href="shipments.html" class="sidebar-link text-gray-400">
-                <i class="fas fa-box w-5 text-center"></i>
-                <span class="sidebar-label">Shipments</span>
-            </a>
-            <a href="orders.html" class="sidebar-link text-gray-400">
-                <i class="fas fa-shopping-cart w-5 text-center"></i>
-                <span class="sidebar-label">Orders</span>
-            </a>
-            <a href="users.html" class="sidebar-link text-gray-400">
-                <i class="fas fa-users w-5 text-center"></i>
-                <span class="sidebar-label">Users</span>
-            </a>
-            <div class="px-6 mb-2 mt-6"><span class="text-xs font-semibold text-gray-500 uppercase tracking-wider sidebar-label">Communication</span></div>
-            <a href="messages.html" class="sidebar-link text-gray-400 relative">
-                <i class="fas fa-envelope w-5 text-center"></i>
-                <span class="sidebar-label">Messages</span>
-                <span class="absolute right-3 top-1/2 -translate-y-1/2 bg-red-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center sidebar-label">3</span>
-            </a>
-            <div class="px-6 mb-2 mt-6"><span class="text-xs font-semibold text-gray-500 uppercase tracking-wider sidebar-label">Management</span></div>
-            <a href="pricing.html" class="sidebar-link text-gray-400">
-                <i class="fas fa-dollar-sign w-5 text-center"></i>
-                <span class="sidebar-label">Pricing</span>
-            </a>
-            <a href="settings.html" class="sidebar-link text-gray-400">
-                <i class="fas fa-cog w-5 text-center"></i>
-                <span class="sidebar-label">Settings</span>
-            </a>
-        </nav>
-        <div class="absolute bottom-0 left-0 right-0 border-t border-gray-800 bg-gray-900 dark:bg-gray-950 p-4">
-            <a href="../index.html" class="sidebar-link text-gray-400">
-                <i class="fas fa-arrow-left w-5 text-center"></i>
-                <span class="sidebar-label">Back to Site</span>
-            </a>
-            <a href="admin-login.html" onclick="sessionStorage.clear()" class="sidebar-link text-gray-400">
-                <i class="fas fa-sign-out-alt w-5 text-center"></i>
-                <span class="sidebar-label">Logout</span>
-            </a>
-        </div>
-    </aside>
+    <!-- ======================== MOBILE MENU OVERLAY ======================== -->
+    <div aria-hidden="true" class="fixed inset-0 z-[9998] bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 lg:hidden" id="mobile-menu-overlay"></div>
 
-    <div class="dashboard-main">
-        <header class="sticky top-0 z-50 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 transition-colors">
-            <div class="flex items-center justify-between h-16 px-6">
-                <div class="flex items-center gap-4">
-                    <button id="sidebarToggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-gray-500" aria-label="Toggle sidebar">
-                        <i class="fas fa-bars text-lg"></i>
-                    </button>
-                    <div>
-                        <nav class="hidden sm:flex items-center gap-1.5 text-xs text-gray-400 mb-0.5" aria-label="Breadcrumb">
-                            <a href="dashboard.html" class="hover:text-brand-500 transition-colors">Dashboard</a>
-                            <i class="fas fa-chevron-right text-[9px]"></i>
-                            <span class="text-gray-500 dark:text-gray-400">Overview</span>
-                        </nav>
-                        <h1 class="text-base sm:text-lg font-bold dark:text-white leading-tight">Dashboard</h1>
-                    </div>
+    <!-- ======================== MOBILE MENU ======================== -->
+    <div aria-label="Mobile navigation" class="fixed top-0 right-0 z-[9999] h-full w-80 max-w-[85vw] bg-white dark:bg-gray-900 shadow-2xl transform translate-x-full transition-transform duration-300 lg:hidden" id="mobile-menu" role="dialog">
+        <div class="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
+            <span class="text-xl font-bold text-brand-500">SwiftShip</span>
+            <button aria-label="Close menu" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" id="mobile-menu-close">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+        </div>
+        <nav aria-label="Mobile navigation links" class="p-6 space-y-1">
+            <div class="mobile-nav-item" data-submenu="home-mobile">
+                <button class="w-full flex items-center justify-between px-4 py-3 rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 font-medium transition-colors">
+                    <span><i class="fas fa-home mr-2 text-brand-500"></i> Home</span>
+                    <i class="fas fa-chevron-down text-xs transition-transform duration-200"></i>
+                </button>
+                <div class="hidden pl-6 space-y-1" id="home-mobile">
+                    <a class="mobile-nav-link block px-4 py-2.5 text-sm rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors" href="../index.html"><i class="fas fa-circle text-[6px] mr-2 text-brand-400"></i> Home Default</a>
+                    <a class="mobile-nav-link block px-4 py-2.5 text-sm rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors" href="index-2.html"><i class="fas fa-circle text-[6px] mr-2 text-brand-400"></i> Home Express</a>
                 </div>
-                <div class="flex items-center gap-3">
-                    <div class="relative hidden md:block">
-                        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"><i class="fas fa-search text-sm"></i></span>
-                        <input type="text" placeholder="Search shipments, orders..." class="pl-10 pr-4 py-2 w-64 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 transition-colors">
+            </div>
+            <a class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 font-medium transition-colors" href="about.html">About</a>
+            <a class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 font-medium transition-colors" href="services.html">Services</a>
+            <a class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 font-medium transition-colors" href="pricing.html">Pricing</a>
+            <a class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 font-medium transition-colors" href="how-it-works.html">How It Works</a>
+            <a class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 font-medium transition-colors" href="blog.html">Blog</a>
+            <a class="mobile-nav-link block px-4 py-3 rounded-lg bg-brand-50 dark:bg-brand-900/20 text-brand-500 font-medium transition-colors" href="dashboard.html">Dashboard</a>
+            <a class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 font-medium transition-colors" href="contact.html">Contact</a>
+        </nav>
+        <div class="p-6 border-t border-gray-200 dark:border-gray-700 space-y-3">
+            <a class="block w-full text-center px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 font-semibold transition-colors" href="login.html">Login</a>
+            <a class="block w-full text-center px-4 py-3 bg-brand-500 text-white rounded-lg hover:bg-brand-600 font-semibold transition-colors" href="register.html">Register</a>
+        </div>
+    </div>
+
+    <!-- ======================== NAVBAR ======================== -->
+    <header class="fixed top-0 left-0 right-0 z-[100] transition-all duration-300 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md" id="navbar" role="banner">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 lg:h-20">
+                <!-- Logo -->
+                <a aria-label="SwiftShip Express Home" class="flex items-center gap-2 shrink-0" href="../index.html">
+                    <div class="w-10 h-10 bg-brand-500 rounded-xl flex items-center justify-center shadow-lg shadow-brand-500/30">
+                        <i class="fas fa-shuttle-van text-white text-lg"></i>
                     </div>
-                    <div class="relative">
-                        <button class="dropdown-trigger relative p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-gray-500" aria-label="Notifications">
-                            <i class="fas fa-bell text-lg"></i>
-                            <span class="absolute top-1 right-1 w-4 h-4 bg-red-500 text-white text-[9px] font-bold rounded-full flex items-center justify-center">5</span>
+                    <span class="text-xl font-extrabold tracking-tight">
+                        <span class="text-brand-500">Swift</span><span class="dark:text-white">Ship</span>
+                    </span>
+                </a>
+                <!-- Desktop Nav -->
+                <nav aria-label="Main navigation" class="hidden lg:flex items-center gap-1">
+                    <div class="relative group">
+                        <button class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors inline-flex items-center gap-1">
+                            Home <i class="fas fa-chevron-down text-[10px] transition-transform group-hover:rotate-180"></i>
                         </button>
-                        <div class="dropdown-menu w-80">
-                            <div class="px-4 py-3 border-b border-gray-100 dark:border-gray-800 flex items-center justify-between">
-                                <span class="text-sm font-bold dark:text-white">Notifications</span>
-                                <a href="messages.html" class="text-xs font-semibold text-brand-500 hover:text-brand-600">View all</a>
-                            </div>
-                            <a href="shipments.html" class="dropdown-item"><i class="fas fa-truck text-brand-500"></i> Shipment #SS10234 delivered</a>
-                            <a href="orders.html" class="dropdown-item"><i class="fas fa-shopping-cart text-blue-500"></i> New order #ORD-2291 received</a>
-                            <a href="messages.html" class="dropdown-item"><i class="fas fa-envelope text-purple-500"></i> 3 unread messages</a>
-                            <a href="users.html" class="dropdown-item"><i class="fas fa-user-plus text-green-500"></i> New user registered</a>
+                        <div class="absolute top-full left-0 mt-1 w-48 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform scale-95 group-hover:scale-100 z-50 py-2">
+                            <a class="block px-4 py-2.5 text-sm hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors" href="../index.html"><i class="fas fa-home mr-2 text-brand-500"></i> Home Default</a>
+                            <a class="block px-4 py-2.5 text-sm hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors" href="index-2.html"><i class="fas fa-rocket mr-2 text-brand-500"></i> Home Express</a>
                         </div>
                     </div>
-                    <button id="themeToggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-gray-500" aria-label="Toggle dark mode">
-                        <i class="fas fa-moon dark:hidden"></i>
+                    <a class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors" href="about.html">About</a>
+                    <a class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors" href="services.html">Services</a>
+                    <a class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors" href="pricing.html">Pricing</a>
+                    <a class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors" href="how-it-works.html">How It Works</a>
+                    <a class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors" href="blog.html">Blog</a>
+                    <a class="px-3 py-2 rounded-lg text-sm font-medium bg-brand-50 dark:bg-brand-900/20 text-brand-500" href="dashboard.html">Dashboard</a>
+                    <a class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors" href="contact.html">Contact</a>
+                </nav>
+                <!-- Desktop Actions -->
+                <div class="hidden lg:flex items-center gap-3">
+                    <button aria-label="Toggle dark mode" class="p-2.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" id="theme-toggle">
+                        <i class="fas fa-moon dark:hidden text-gray-600"></i>
                         <i class="fas fa-sun hidden dark:inline text-yellow-400"></i>
                     </button>
-                    <button id="rtlToggle" type="button" class="px-3 py-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors text-xs font-bold text-gray-600 dark:text-gray-300" aria-label="Toggle RTL direction">RTL</button>
-                    <div class="relative">
-                        <button class="dropdown-trigger flex items-center gap-3 pl-3 pr-2 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
-                            <div class="w-9 h-9 bg-brand-500 rounded-full flex items-center justify-center text-white font-bold text-sm">AU</div>
-                            <div class="hidden md:block text-left">
-                                <p class="text-sm font-semibold dark:text-white leading-tight">Admin User</p>
-                                <p class="text-xs text-gray-500 leading-tight">Super Admin</p>
-                            </div>
-                            <i class="fas fa-chevron-down text-xs text-gray-400 hidden md:inline"></i>
-                        </button>
-                        <div class="dropdown-menu">
-                            <a href="settings.html#profile" class="dropdown-item"><i class="fas fa-user"></i> My Profile</a>
-                            <a href="settings.html" class="dropdown-item"><i class="fas fa-cog"></i> Account Settings</a>
-                            <a href="messages.html" class="dropdown-item"><i class="fas fa-bell"></i> Notifications</a>
-                            <div class="border-t border-gray-200 dark:border-gray-700 my-1"></div>
-                            <a href="admin-login.html" onclick="sessionStorage.clear()" class="dropdown-item text-red-500"><i class="fas fa-sign-out-alt"></i> Logout</a>
-                        </div>
-                    </div>
+                    <button aria-label="Toggle text direction" class="p-2.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-sm font-bold" id="rtl-toggle">RTL</button>
+                    <a class="px-4 py-2 text-sm font-semibold border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors" href="login.html">Login</a>
+                    <a class="px-4 py-2 text-sm font-semibold bg-brand-500 text-white rounded-lg hover:bg-brand-600 shadow-lg shadow-brand-500/25 transition-all" href="register.html">Register</a>
+                </div>
+                <!-- Mobile Hamburger -->
+                <div class="flex lg:hidden items-center gap-2">
+                    <button aria-label="Toggle dark mode" class="p-2.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" id="theme-toggle-mobile">
+                        <i class="fas fa-moon dark:hidden text-gray-600"></i>
+                        <i class="fas fa-sun hidden dark:inline text-yellow-400"></i>
+                    </button>
+                    <button aria-label="Open menu" class="p-2.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" id="mobile-menu-open">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
                 </div>
             </div>
-        </header>
+        </div>
+    </header>
 
-        <main class="p-6">
-            <div class="bg-gradient-to-r from-brand-500 to-brand-600 rounded-2xl p-6 sm:p-8 mb-6 text-white relative overflow-hidden">
-                <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-32 translate-x-32"></div>
-                <div class="absolute bottom-0 right-24 w-32 h-32 bg-white/5 rounded-full translate-y-16"></div>
-                <div class="relative z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+    <!-- ======================== DASHBOARD MAIN CONTENT ======================== -->
+    <main class="flex-1 pt-24 lg:pt-28 pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- Welcome Header Banner -->
+            <div class="relative overflow-hidden bg-gradient-to-r from-gray-900 via-gray-900 to-gray-800 dark:from-gray-900 dark:via-black dark:to-gray-950 text-white rounded-3xl p-6 sm:p-10 mb-8 shadow-xl border border-gray-800">
+                <div class="absolute top-0 right-0 w-96 h-96 bg-brand-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
+                <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
                     <div>
-                        <h1 class="text-2xl sm:text-3xl font-extrabold mb-1">Good Morning, Admin</h1>
-                        <p class="text-white/80" id="dashboardDate"></p>
+                        <div class="inline-flex items-center gap-2 px-3 py-1 bg-brand-500/20 border border-brand-500/30 rounded-full text-xs font-semibold text-brand-400 mb-3">
+                            <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span> Verified Customer Account
+                        </div>
+                        <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight">
+                            Welcome back, <span class="text-brand-500">Alex Morgan</span>!
+                        </h1>
+                        <p class="text-gray-300 text-sm sm:text-base mt-2 max-w-xl">
+                            You have <strong class="text-white">3 active shipments</strong> on the move. Your express parcel <span class="text-brand-400 font-mono">#SWH-982410</span> is out for delivery today.
+                        </p>
                     </div>
-                    <div class="flex gap-3">
-                        <a href="shipments.html" class="inline-flex items-center gap-2 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white font-semibold px-5 py-2.5 rounded-xl transition-colors text-sm">
-                            <i class="fas fa-plus"></i> New Shipment
+                    <div class="flex flex-wrap gap-3">
+                        <button onclick="document.getElementById('bookingModal').classList.remove('hidden')" class="inline-flex items-center gap-2 px-6 py-3.5 bg-brand-500 text-white font-bold rounded-xl hover:bg-brand-600 shadow-lg shadow-brand-500/30 transition-all hover:-translate-y-0.5 text-sm">
+                            <i class="fas fa-plus-circle"></i> Book New Delivery
+                        </button>
+                        <a href="#tracking-section" class="inline-flex items-center gap-2 px-5 py-3.5 bg-white/10 text-white font-semibold rounded-xl hover:bg-white/20 backdrop-blur-sm border border-white/20 transition-all text-sm">
+                            <i class="fas fa-search-location"></i> Track Package
                         </a>
                     </div>
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-6">
-                <a href="shipments.html" class="stats-card">
-                    <div class="stats-icon bg-green-100 dark:bg-green-900/30 text-green-600"><i class="fas fa-truck"></i></div>
-                    <div class="flex-1 min-w-0">
-                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-0.5">Total Deliveries</p>
-                        <p class="text-2xl font-extrabold dark:text-white">12,847</p>
-                        <p class="text-xs text-green-600 font-semibold mt-1"><i class="fas fa-arrow-up mr-1"></i>12.5% from last month</p>
+            <!-- KPI Metric Cards Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
+                <!-- Stat 1 -->
+                <div class="bg-white dark:bg-gray-800/80 rounded-2xl p-6 border border-gray-200 dark:border-gray-700/70 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Active Shipments</span>
+                        <div class="w-10 h-10 rounded-xl bg-brand-100 dark:bg-brand-900/30 flex items-center justify-center text-brand-500 text-lg">
+                            <i class="fas fa-truck-moving"></i>
+                        </div>
                     </div>
-                </a>
-                <a href="shipments.html" class="stats-card">
-                    <div class="stats-icon bg-blue-100 dark:bg-blue-900/30 text-blue-600"><i class="fas fa-box"></i></div>
-                    <div class="flex-1 min-w-0">
-                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-0.5">Active Shipments</p>
-                        <p class="text-2xl font-extrabold dark:text-white">1,234</p>
-                        <p class="text-xs text-gray-500 mt-1">Currently in transit</p>
+                    <div class="text-3xl font-extrabold text-gray-900 dark:text-white">3</div>
+                    <div class="flex items-center gap-1.5 mt-2 text-xs font-medium text-green-600 dark:text-green-400">
+                        <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                        2 arriving before 5:00 PM
                     </div>
-                </a>
-                <a href="orders.html" class="stats-card">
-                    <div class="stats-icon bg-purple-100 dark:bg-purple-900/30 text-purple-600"><i class="fas fa-dollar-sign"></i></div>
-                    <div class="flex-1 min-w-0">
-                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-0.5">Revenue</p>
-                        <p class="text-2xl font-extrabold dark:text-white">$284,590</p>
-                        <p class="text-xs text-green-600 font-semibold mt-1"><i class="fas fa-arrow-up mr-1"></i>8.2% from last month</p>
+                </div>
+                <!-- Stat 2 -->
+                <div class="bg-white dark:bg-gray-800/80 rounded-2xl p-6 border border-gray-200 dark:border-gray-700/70 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Total Delivered</span>
+                        <div class="w-10 h-10 rounded-xl bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 text-lg">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
                     </div>
-                </a>
-                <a href="orders.html" class="stats-card">
-                    <div class="stats-icon bg-orange-100 dark:bg-orange-900/30 text-orange-600"><i class="fas fa-clock"></i></div>
-                    <div class="flex-1 min-w-0">
-                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-0.5">Pending Orders</p>
-                        <p class="text-2xl font-extrabold dark:text-white">156</p>
-                        <p class="text-xs text-orange-600 font-semibold mt-1">Requires attention</p>
+                    <div class="text-3xl font-extrabold text-gray-900 dark:text-white">48</div>
+                    <div class="flex items-center gap-1 text-xs font-medium text-gray-500 dark:text-gray-400 mt-2">
+                        <i class="fas fa-arrow-up text-green-500 mr-1"></i> <span class="font-bold text-green-600 dark:text-green-400">14%</span> more than last month
                     </div>
-                </a>
+                </div>
+                <!-- Stat 3 -->
+                <div class="bg-white dark:bg-gray-800/80 rounded-2xl p-6 border border-gray-200 dark:border-gray-700/70 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Shipping Spend</span>
+                        <div class="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 text-lg">
+                            <i class="fas fa-wallet"></i>
+                        </div>
+                    </div>
+                    <div class="text-3xl font-extrabold text-gray-900 dark:text-white">$1,248.50</div>
+                    <div class="text-xs text-gray-500 dark:text-gray-400 mt-2">
+                        Tier 2 Volume Discount Applied (-18%)
+                    </div>
+                </div>
+                <!-- Stat 4 -->
+                <div class="bg-white dark:bg-gray-800/80 rounded-2xl p-6 border border-gray-200 dark:border-gray-700/70 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Scheduled Pickups</span>
+                        <div class="w-10 h-10 rounded-xl bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-purple-600 text-lg">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                    </div>
+                    <div class="text-3xl font-extrabold text-gray-900 dark:text-white">1</div>
+                    <div class="text-xs text-brand-600 dark:text-brand-400 font-semibold mt-2">
+                        Today at 3:30 PM (Dallas HQ)
+                    </div>
+                </div>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
-                <div class="lg:col-span-2 bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 p-6">
+            <!-- Live Tracking & Route Interactive Showcase -->
+            <div id="tracking-section" class="bg-white dark:bg-gray-800/90 rounded-3xl p-6 sm:p-8 border border-gray-200 dark:border-gray-700 shadow-xl mb-8">
+                <div class="flex flex-col md:flex-row items-start md:items-center justify-between pb-6 mb-6 border-b border-gray-200 dark:border-gray-700 gap-4">
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="px-3 py-1 bg-brand-100 dark:bg-brand-900/40 text-brand-600 dark:text-brand-400 font-bold text-xs rounded-full uppercase">Priority Express</span>
+                            <span class="px-3 py-1 bg-green-100 dark:bg-green-900/40 text-green-600 dark:text-green-400 font-bold text-xs rounded-full flex items-center gap-1.5">
+                                <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> Out for Delivery
+                            </span>
+                        </div>
+                        <h2 class="text-xl sm:text-2xl font-bold mt-2 text-gray-900 dark:text-white flex items-center gap-2">
+                            Live Shipment: <span class="font-mono text-brand-500">SWH-982410</span>
+                        </h2>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Medical Diagnostics Samples & Documents &bull; Weight: 2.4 kg</p>
+                    </div>
+                    <!-- Quick Track Search -->
+                    <div class="w-full md:w-auto">
+                        <form onsubmit="event.preventDefault(); alert('Tracking data updated for ' + document.getElementById('trackingInput').value);" class="flex gap-2">
+                            <div class="relative flex-1 md:w-64">
+                                <i class="fas fa-search absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
+                                <input id="trackingInput" type="text" value="SWH-982410" placeholder="Enter tracking number..." class="w-full pl-9 pr-3 py-2 text-xs sm:text-sm bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-xl focus:outline-none focus:border-brand-500 dark:focus:border-brand-500 transition-colors">
+                            </div>
+                            <button type="submit" class="px-4 py-2 bg-brand-500 text-white rounded-xl text-xs sm:text-sm font-semibold hover:bg-brand-600 transition-colors">Track</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- 4 Step Interactive Timeline -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8 relative">
+                    <!-- Step 1 -->
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-full bg-green-500 text-white flex items-center justify-center shrink-0 shadow-md">
+                            <i class="fas fa-check text-sm"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-400 dark:text-gray-500 uppercase font-semibold">Step 1</p>
+                            <h4 class="font-bold text-sm text-gray-900 dark:text-white">Order Confirmed</h4>
+                            <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Today &bull; 08:15 AM</p>
+                            <span class="text-[11px] text-green-600 dark:text-green-400 font-medium">Dallas Hub</span>
+                        </div>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-full bg-green-500 text-white flex items-center justify-center shrink-0 shadow-md">
+                            <i class="fas fa-check text-sm"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-400 dark:text-gray-500 uppercase font-semibold">Step 2</p>
+                            <h4 class="font-bold text-sm text-gray-900 dark:text-white">Picked Up &amp; Scanned</h4>
+                            <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Today &bull; 09:40 AM</p>
+                            <span class="text-[11px] text-green-600 dark:text-green-400 font-medium">Courier Marcus T.</span>
+                        </div>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-full bg-brand-500 text-white flex items-center justify-center shrink-0 shadow-lg shadow-brand-500/40 pulse-beacon">
+                            <i class="fas fa-truck text-sm"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-brand-600 dark:text-brand-400 uppercase font-bold">Step 3 &bull; In Transit</p>
+                            <h4 class="font-bold text-sm text-gray-900 dark:text-white">Out for Delivery</h4>
+                            <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Departed Hub &bull; 11:20 AM</p>
+                            <span class="text-[11px] text-brand-500 font-semibold">Van #482 (Live GPS On)</span>
+                        </div>
+                    </div>
+                    <!-- Step 4 -->
+                    <div class="flex items-start gap-4 opacity-60">
+                        <div class="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-500 flex items-center justify-center shrink-0">
+                            <i class="fas fa-box text-sm"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-400 uppercase font-semibold">Step 4</p>
+                            <h4 class="font-bold text-sm text-gray-900 dark:text-white">Delivery Confirmed</h4>
+                            <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Estimated 02:45 PM</p>
+                            <span class="text-[11px] text-gray-400">Photo &amp; Signature required</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Driver & Route Snapshot Box -->
+                <div class="bg-gray-50 dark:bg-gray-900/60 rounded-2xl p-5 border border-gray-200 dark:border-gray-700/60 flex flex-col md:flex-row items-center justify-between gap-6">
+                    <div class="flex items-center gap-4 w-full md:w-auto">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=faces" alt="Assigned Courier" class="w-14 h-14 rounded-2xl object-cover shadow-md border-2 border-brand-500">
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <h4 class="font-bold text-gray-900 dark:text-white">David Miller</h4>
+                                <span class="text-xs bg-brand-100 dark:bg-brand-900/40 text-brand-600 dark:text-brand-400 font-bold px-2 py-0.5 rounded"><i class="fas fa-star text-yellow-500 text-[10px] mr-1"></i>4.98</span>
+                            </div>
+                            <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Assigned SwiftShip Express Courier &bull; 1,420+ deliveries</p>
+                            <div class="flex items-center gap-3 mt-1.5 text-xs">
+                                <a href="tel:+18005550199" class="text-brand-600 dark:text-brand-400 hover:underline font-semibold"><i class="fas fa-phone mr-1"></i> Call Courier</a>
+                                <span class="text-gray-300 dark:text-gray-700">&bull;</span>
+                                <span class="text-gray-500 dark:text-gray-400"><i class="fas fa-shield-alt mr-1 text-green-500"></i> Contact Masked</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-4 w-full md:w-auto justify-end">
+                        <div class="text-right">
+                            <p class="text-xs text-gray-400 uppercase font-semibold">Delivery Address</p>
+                            <p class="text-sm font-bold text-gray-900 dark:text-white">742 Evergreen Terrace, Dallas, TX</p>
+                            <p class="text-xs text-brand-500 font-semibold">Gate Code: #4892</p>
+                        </div>
+                        <button onclick="alert('GPS tracking coordinates: 32.7767° N, 96.7970° W. Vehicle is 1.8 miles away.');" class="px-4 py-2.5 bg-brand-500/10 hover:bg-brand-500/20 text-brand-600 dark:text-brand-400 font-bold text-xs rounded-xl transition-colors border border-brand-500/20">
+                            <i class="fas fa-map-marker-alt mr-1.5"></i> View GPS Map
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Shipments Table Section -->
+            <div id="orders-table" class="bg-white dark:bg-gray-800/90 rounded-3xl p-6 sm:p-8 border border-gray-200 dark:border-gray-700 shadow-xl mb-8">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+                    <div>
+                        <h2 class="text-xl font-bold text-gray-900 dark:text-white">Recent Shipments &amp; Deliveries</h2>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Manage, re-order, download proof of delivery, and track past orders.</p>
+                    </div>
+                    <!-- Filter Pills -->
+                    <div class="flex items-center gap-1.5 bg-gray-100 dark:bg-gray-900 p-1 rounded-xl text-xs font-semibold">
+                        <button class="px-3 py-1.5 bg-white dark:bg-gray-800 rounded-lg shadow-sm text-brand-600 dark:text-brand-400 font-bold">All (48)</button>
+                        <button class="px-3 py-1.5 text-gray-600 dark:text-gray-400 hover:text-brand-500">In Transit (3)</button>
+                        <button class="px-3 py-1.5 text-gray-600 dark:text-gray-400 hover:text-brand-500">Delivered (44)</button>
+                        <button class="px-3 py-1.5 text-gray-600 dark:text-gray-400 hover:text-brand-500">Pending (1)</button>
+                    </div>
+                </div>
+
+                <!-- Table -->
+                <div class="overflow-x-auto rounded-2xl border border-gray-200 dark:border-gray-700">
+                    <table class="w-full text-left border-collapse text-sm">
+                        <thead class="bg-gray-50 dark:bg-gray-900/80 text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 border-b border-gray-200 dark:border-gray-700">
+                            <tr>
+                                <th class="py-3.5 px-4">Tracking ID</th>
+                                <th class="py-3.5 px-4">Recipient / Destination</th>
+                                <th class="py-3.5 px-4">Service Speed</th>
+                                <th class="py-3.5 px-4">Date Sent</th>
+                                <th class="py-3.5 px-4">Status</th>
+                                <th class="py-3.5 px-4 text-right">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-100 dark:divide-gray-700/60 font-medium">
+                            <!-- Row 1 -->
+                            <tr class="hover:bg-brand-50/40 dark:hover:bg-gray-700/30 transition-colors">
+                                <td class="py-4 px-4">
+                                    <div class="font-mono font-bold text-brand-600 dark:text-brand-400">SWH-982410</div>
+                                    <span class="text-[11px] text-gray-400">Express Document</span>
+                                </td>
+                                <td class="py-4 px-4">
+                                    <div class="font-semibold text-gray-900 dark:text-white">MedSupply Center</div>
+                                    <div class="text-xs text-gray-500">Dallas, TX 75201</div>
+                                </td>
+                                <td class="py-4 px-4">
+                                    <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400">
+                                        <i class="fas fa-bolt text-[10px]"></i> Same-Day
+                                    </span>
+                                </td>
+                                <td class="py-4 px-4 text-xs text-gray-600 dark:text-gray-300">Today, 08:15 AM</td>
+                                <td class="py-4 px-4">
+                                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span> Out for Delivery
+                                    </span>
+                                </td>
+                                <td class="py-4 px-4 text-right">
+                                    <button onclick="alert('Viewing live route for SWH-982410');" class="px-3 py-1.5 text-xs font-bold bg-brand-500 text-white rounded-lg hover:bg-brand-600 transition-colors">
+                                        Track
+                                    </button>
+                                </td>
+                            </tr>
+                            <!-- Row 2 -->
+                            <tr class="hover:bg-brand-50/40 dark:hover:bg-gray-700/30 transition-colors">
+                                <td class="py-4 px-4">
+                                    <div class="font-mono font-bold text-brand-600 dark:text-brand-400">SWH-881290</div>
+                                    <span class="text-[11px] text-gray-400">Parcel Cargo (18kg)</span>
+                                </td>
+                                <td class="py-4 px-4">
+                                    <div class="font-semibold text-gray-900 dark:text-white">Apex Logistics Hub</div>
+                                    <div class="text-xs text-gray-500">Houston, TX 77002</div>
+                                </td>
+                                <td class="py-4 px-4">
+                                    <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-brand-100 dark:bg-brand-900/30 text-brand-600 dark:text-brand-400">
+                                        <i class="fas fa-shuttle-van text-[10px]"></i> Express Next-Day
+                                    </span>
+                                </td>
+                                <td class="py-4 px-4 text-xs text-gray-600 dark:text-gray-300">Yesterday, 04:30 PM</td>
+                                <td class="py-4 px-4">
+                                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400">
+                                        In Transit
+                                    </span>
+                                </td>
+                                <td class="py-4 px-4 text-right">
+                                    <button onclick="alert('Viewing live route for SWH-881290');" class="px-3 py-1.5 text-xs font-bold bg-brand-500 text-white rounded-lg hover:bg-brand-600 transition-colors">
+                                        Track
+                                    </button>
+                                </td>
+                            </tr>
+                            <!-- Row 3 -->
+                            <tr class="hover:bg-brand-50/40 dark:hover:bg-gray-700/30 transition-colors">
+                                <td class="py-4 px-4">
+                                    <div class="font-mono font-bold text-brand-600 dark:text-brand-400">SWH-776412</div>
+                                    <span class="text-[11px] text-gray-400">Legal Contract (Signed)</span>
+                                </td>
+                                <td class="py-4 px-4">
+                                    <div class="font-semibold text-gray-900 dark:text-white">Sterling Legal Group</div>
+                                    <div class="text-xs text-gray-500">Austin, TX 73301</div>
+                                </td>
+                                <td class="py-4 px-4">
+                                    <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300">
+                                        Standard 2-Day
+                                    </span>
+                                </td>
+                                <td class="py-4 px-4 text-xs text-gray-600 dark:text-gray-300">Sep 8, 2026</td>
+                                <td class="py-4 px-4">
+                                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400">
+                                        <i class="fas fa-check text-[10px]"></i> Delivered
+                                    </span>
+                                </td>
+                                <td class="py-4 px-4 text-right">
+                                    <button onclick="alert('Receipt downloaded for SWH-776412 (PDF)');" class="px-3 py-1.5 text-xs font-medium border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                                        <i class="fas fa-file-pdf mr-1 text-red-500"></i> Receipt
+                                    </button>
+                                </td>
+                            </tr>
+                            <!-- Row 4 -->
+                            <tr class="hover:bg-brand-50/40 dark:hover:bg-gray-700/30 transition-colors">
+                                <td class="py-4 px-4">
+                                    <div class="font-mono font-bold text-brand-600 dark:text-brand-400">SWH-665123</div>
+                                    <span class="text-[11px] text-gray-400">Electronics Equipment</span>
+                                </td>
+                                <td class="py-4 px-4">
+                                    <div class="font-semibold text-gray-900 dark:text-white">TechFlow Dynamics</div>
+                                    <div class="text-xs text-gray-500">Chicago, IL 60601</div>
+                                </td>
+                                <td class="py-4 px-4">
+                                    <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400">
+                                        <i class="fas fa-bolt text-[10px]"></i> Same-Day
+                                    </span>
+                                </td>
+                                <td class="py-4 px-4 text-xs text-gray-600 dark:text-gray-300">Sep 5, 2026</td>
+                                <td class="py-4 px-4">
+                                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400">
+                                        <i class="fas fa-check text-[10px]"></i> Delivered
+                                    </span>
+                                </td>
+                                <td class="py-4 px-4 text-right">
+                                    <button onclick="alert('Receipt downloaded for SWH-665123 (PDF)');" class="px-3 py-1.5 text-xs font-medium border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                                        <i class="fas fa-file-pdf mr-1 text-red-500"></i> Receipt
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Saved Addresses & Quick Action Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Frequent Addresses -->
+                <div class="lg:col-span-2 bg-white dark:bg-gray-800/90 rounded-3xl p-6 sm:p-8 border border-gray-200 dark:border-gray-700 shadow-xl">
                     <div class="flex items-center justify-between mb-6">
                         <div>
-                            <h2 class="text-lg font-bold dark:text-white">Revenue Overview</h2>
-                            <p class="text-sm text-gray-500 dark:text-gray-400">Monthly revenue for 2026</p>
+                            <h3 class="text-lg font-bold text-gray-900 dark:text-white">Saved Delivery Addresses</h3>
+                            <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Quickly dispatch pickups without re-entering addresses.</p>
                         </div>
-                        <div class="flex gap-2">
-                            <button class="px-3 py-1.5 text-xs font-semibold bg-brand-500 text-white rounded-lg">12 Months</button>
-                            <button type="button" class="px-3 py-1.5 text-xs font-semibold bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded-lg">Full Report</button>
-                        </div>
+                        <button onclick="alert('Add new address modal opened.');" class="px-3 py-1.5 text-xs font-bold bg-brand-50 dark:bg-brand-900/30 text-brand-600 dark:text-brand-400 rounded-xl hover:bg-brand-100 transition-colors">
+                            <i class="fas fa-plus mr-1"></i> Add Address
+                        </button>
                     </div>
-                    <div class="relative w-full overflow-hidden" style="height:300px">
-                        <canvas id="revenueChart" class="chart-line w-full" data-values="[18200,22400,19800,24600,21300,28100,26400,30200,27800,32500,29100,35400]" data-labels='["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]'></canvas>
-                    </div>
-                    <div class="grid grid-cols-3 gap-3 mt-4 pt-4 border-t border-gray-100 dark:border-gray-800">
-                        <div class="rounded-xl bg-orange-50 dark:bg-orange-900/20 p-3">
-                            <p class="text-xs text-gray-500 dark:text-gray-400">YTD Revenue</p>
-                            <p class="text-lg font-extrabold text-orange-600 dark:text-orange-400">$304.3K</p>
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div class="p-4 rounded-2xl border border-brand-500/40 bg-brand-50/20 dark:bg-brand-950/20 relative">
+                            <span class="absolute top-4 right-4 text-[10px] font-bold uppercase tracking-wider bg-brand-500 text-white px-2 py-0.5 rounded">Default</span>
+                            <div class="flex items-center gap-2 font-bold text-sm text-gray-900 dark:text-white">
+                                <i class="fas fa-building text-brand-500"></i> Corporate HQ
+                            </div>
+                            <p class="text-xs text-gray-600 dark:text-gray-300 mt-2 leading-relaxed">
+                                1200 Shipping Lane, Suite 400<br/>Dallas, TX 75201 &bull; Phone: (214) 555-0199
+                            </p>
+                            <div class="mt-3 flex items-center gap-2">
+                                <button onclick="document.getElementById('bookingModal').classList.remove('hidden')" class="text-xs font-bold text-brand-500 hover:underline">Ship to this address &rarr;</button>
+                            </div>
                         </div>
-                        <div class="rounded-xl bg-green-50 dark:bg-green-900/20 p-3">
-                            <p class="text-xs text-gray-500 dark:text-gray-400">Growth</p>
-                            <p class="text-lg font-extrabold text-green-600 dark:text-green-400">+18.6%</p>
-                        </div>
-                        <div class="rounded-xl bg-blue-50 dark:bg-blue-900/20 p-3">
-                            <p class="text-xs text-gray-500 dark:text-gray-400">Avg / Month</p>
-                            <p class="text-lg font-extrabold text-blue-600 dark:text-blue-400">$25.4K</p>
+                        <div class="p-4 rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 relative">
+                            <div class="flex items-center gap-2 font-bold text-sm text-gray-900 dark:text-white">
+                                <i class="fas fa-warehouse text-blue-500"></i> Distribution Warehouse
+                            </div>
+                            <p class="text-xs text-gray-600 dark:text-gray-300 mt-2 leading-relaxed">
+                                450 Logistics Parkway, Dock 14<br/>Fort Worth, TX 76102 &bull; Phone: (817) 555-0144
+                            </p>
+                            <div class="mt-3 flex items-center gap-2">
+                                <button onclick="document.getElementById('bookingModal').classList.remove('hidden')" class="text-xs font-bold text-brand-500 hover:underline">Ship to this address &rarr;</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 p-6 self-start">
-                    <div class="mb-4">
-                        <h2 class="text-lg font-bold dark:text-white">Deliveries by Type</h2>
-                        <p class="text-sm text-gray-500 dark:text-gray-400">Distribution breakdown</p>
+
+                <!-- Account Support Card -->
+                <div class="bg-gradient-to-br from-brand-500 to-brand-600 text-white rounded-3xl p-6 sm:p-8 shadow-xl flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center text-xl mb-4 backdrop-blur-sm">
+                            <i class="fas fa-headset text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Dedicated Support Manager</h3>
+                        <p class="text-white/80 text-sm leading-relaxed mb-6">
+                            Have an urgent package or custom bulk shipping request? Your account specialist is available 24/7.
+                        </p>
+                        <div class="bg-white/10 rounded-xl p-3 backdrop-blur-sm mb-6 space-y-2 text-xs">
+                            <div class="flex items-center justify-between">
+                                <span class="text-white/70">Representative</span>
+                                <span class="font-bold">Sarah Jenkins</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-white/70">Direct Line</span>
+                                <span class="font-bold">1-800-555-0199 ext. 42</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-white/70">Response Time</span>
+                                <span class="font-bold text-green-300">&lt; 5 minutes</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="flex justify-center items-center mb-3 min-h-[150px]">
-                        <canvas width="170" height="170" class="chart-doughnut" data-values="[3200,4100,2800,1600,1100]" data-labels='["Documents","Parcels","Same-Day","Bulk","International"]' data-colors='["#f97316","#3b82f6","#22c55e","#a855f7","#06b6d4"]'></canvas>
-                    </div>
-                    <div class="space-y-2">
-                        <div class="flex items-center justify-between text-sm"><div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-brand-500"></span><span class="text-gray-600 dark:text-gray-400">Documents</span></div><span class="font-semibold dark:text-white">3,200</span></div>
-                        <div class="flex items-center justify-between text-sm"><div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-blue-500"></span><span class="text-gray-600 dark:text-gray-400">Parcels</span></div><span class="font-semibold dark:text-white">4,100</span></div>
-                        <div class="flex items-center justify-between text-sm"><div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-green-500"></span><span class="text-gray-600 dark:text-gray-400">Same-Day</span></div><span class="font-semibold dark:text-white">2,800</span></div>
-                        <div class="flex items-center justify-between text-sm"><div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-purple-500"></span><span class="text-gray-600 dark:text-gray-400">Bulk</span></div><span class="font-semibold dark:text-white">1,600</span></div>
-                        <div class="flex items-center justify-between text-sm"><div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-cyan-500"></span><span class="text-gray-600 dark:text-gray-400">International</span></div><span class="font-semibold dark:text-white">1,100</span></div>
-                    </div>
+                    <a href="contact.html" class="block text-center py-3 bg-white text-brand-600 font-bold rounded-xl hover:bg-gray-100 transition-colors text-sm shadow-md">
+                        Contact Support Team
+                    </a>
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 xl:grid-cols-3 gap-6 mb-6">
-                <div class="xl:col-span-2 bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800">
-                    <div class="flex items-center justify-between p-6 pb-0">
-                        <div>
-                            <h2 class="text-lg font-bold dark:text-white">Recent Shipments</h2>
-                            <p class="text-sm text-gray-500 dark:text-gray-400">Latest tracking updates</p>
-                        </div>
-                        <a href="shipments.html" class="text-sm font-semibold text-brand-500 hover:text-brand-600 transition-colors">View All <i class="fas fa-arrow-right ml-1"></i></a>
-                    </div>
-                    <div class="overflow-x-auto">
-                        <table class="data-table">
-                            <thead><tr><th>Tracking ID</th><th>Sender</th><th>Receiver</th><th>Status</th><th>Weight</th><th>Date</th><th>Action</th></tr></thead>
-                            <tbody>
-                                <tr>
-                                    <td class="font-semibold text-brand-500">#SS10234</td><td>John Smith</td><td>Emma Wilson</td>
-                                    <td><span class="badge badge-success">Delivered</span></td><td>2.5 kg</td><td class="text-gray-500 dark:text-gray-400">Aug 18, 2026</td>
-                                    <td><div class="flex gap-1"><a href="shipments.html" class="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 hover:text-brand-500 transition-colors" title="View"><i class="fas fa-eye text-sm"></i></a></div></td>
-                                </tr>
-                                <tr>
-                                    <td class="font-semibold text-brand-500">#SS10233</td><td>Sarah Connor</td><td>Mike Johnson</td>
-                                    <td><span class="badge badge-info">In Transit</span></td><td>5.1 kg</td><td class="text-gray-500 dark:text-gray-400">Aug 17, 2026</td>
-                                    <td><div class="flex gap-1"><a href="shipments.html" class="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 hover:text-brand-500 transition-colors" title="View"><i class="fas fa-eye text-sm"></i></a></div></td>
-                                </tr>
-                                <tr>
-                                    <td class="font-semibold text-brand-500">#SS10232</td><td>David Lee</td><td>Lisa Park</td>
-                                    <td><span class="badge badge-warning">Pending</span></td><td>1.8 kg</td><td class="text-gray-500 dark:text-gray-400">Aug 17, 2026</td>
-                                    <td><div class="flex gap-1"><a href="shipments.html" class="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 hover:text-brand-500 transition-colors" title="View"><i class="fas fa-eye text-sm"></i></a></div></td>
-                                </tr>
-                                <tr>
-                                    <td class="font-semibold text-brand-500">#SS10231</td><td>Anna Brown</td><td>Tom Harris</td>
-                                    <td><span class="badge badge-primary">Out for Delivery</span></td><td>3.4 kg</td><td class="text-gray-500 dark:text-gray-400">Aug 16, 2026</td>
-                                    <td><div class="flex gap-1"><a href="shipments.html" class="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 hover:text-brand-500 transition-colors" title="View"><i class="fas fa-eye text-sm"></i></a></div></td>
-                                </tr>
-                                <tr>
-                                    <td class="font-semibold text-brand-500">#SS10230</td><td>James White</td><td>Priya Patel</td>
-                                    <td><span class="badge badge-success">Delivered</span></td><td>0.8 kg</td><td class="text-gray-500 dark:text-gray-400">Aug 16, 2026</td>
-                                    <td><div class="flex gap-1"><a href="shipments.html" class="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 hover:text-brand-500 transition-colors" title="View"><i class="fas fa-eye text-sm"></i></a></div></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+        </div>
+    </main>
 
-                <div class="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 p-6">
-                    <div class="flex items-center justify-between mb-6">
-                        <div>
-                            <h2 class="text-lg font-bold dark:text-white">Recent Messages</h2>
-                            <p class="text-sm text-gray-500 dark:text-gray-400">Latest conversations</p>
-                        </div>
-                        <a href="messages.html" class="text-sm font-semibold text-brand-500 hover:text-brand-600 transition-colors">View All</a>
-                    </div>
-                    <div class="space-y-4">
-                        <a href="messages.html" class="flex items-start gap-3 p-3 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
-                            <div class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center text-white font-bold text-sm shrink-0">JS</div>
-                            <div class="flex-1 min-w-0">
-                                <div class="flex items-center justify-between mb-0.5"><h4 class="text-sm font-semibold dark:text-white">John Smith</h4><span class="text-xs text-gray-400 shrink-0">2m ago</span></div>
-                                <p class="text-sm text-gray-500 dark:text-gray-400 truncate">Hi, I need to update the delivery address for order #SS10234...</p>
-                            </div>
-                        </a>
-                        <a href="messages.html" class="flex items-start gap-3 p-3 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
-                            <div class="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center text-white font-bold text-sm shrink-0">EW</div>
-                            <div class="flex-1 min-w-0">
-                                <div class="flex items-center justify-between mb-0.5"><h4 class="text-sm font-semibold dark:text-white">Emma Wilson</h4><span class="text-xs text-gray-400 shrink-0">15m ago</span></div>
-                                <p class="text-sm text-gray-500 dark:text-gray-400 truncate">Thank you for the quick delivery! The package arrived in perfect condition.</p>
-                            </div>
-                        </a>
-                        <a href="messages.html" class="flex items-start gap-3 p-3 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
-                            <div class="w-10 h-10 rounded-full bg-purple-500 flex items-center justify-center text-white font-bold text-sm shrink-0">SC</div>
-                            <div class="flex-1 min-w-0">
-                                <div class="flex items-center justify-between mb-0.5"><h4 class="text-sm font-semibold dark:text-white">Sarah Connor</h4><span class="text-xs text-gray-400 shrink-0">1h ago</span></div>
-                                <p class="text-sm text-gray-500 dark:text-gray-400 truncate">Could you provide an estimated delivery time for my international shipment?</p>
-                            </div>
-                        </a>
-                    </div>
+    <!-- ======================== BOOKING MODAL ======================== -->
+    <div id="bookingModal" class="hidden fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+        <div class="bg-white dark:bg-gray-800 rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl border border-gray-200 dark:border-gray-700 relative animate-in fade-in zoom-in duration-200">
+            <button onclick="document.getElementById('bookingModal').classList.add('hidden')" class="absolute top-5 right-5 p-2 rounded-lg text-gray-400 hover:text-gray-600 dark:hover:text-gray-200">
+                <i class="fas fa-times text-lg"></i>
+            </button>
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 bg-brand-500 rounded-xl flex items-center justify-center text-white text-lg">
+                    <i class="fas fa-calendar-plus"></i>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white">Schedule Quick Pickup</h3>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">A courier will arrive within your chosen time window.</p>
                 </div>
             </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-                <a href="shipments.html" class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6 flex flex-col items-center gap-3 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
-                    <div class="w-14 h-14 bg-brand-100 dark:bg-brand-900/30 text-brand-500 rounded-xl flex items-center justify-center text-xl group-hover:bg-brand-500 group-hover:text-white transition-colors"><i class="fas fa-plus"></i></div>
-                    <h3 class="font-bold dark:text-white">New Shipment</h3>
-                    <p class="text-sm text-gray-500 dark:text-gray-400 text-center">Create a new shipment order</p>
-                </a>
-                <a href="shipments.html" class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6 flex flex-col items-center gap-3 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
-                    <div class="w-14 h-14 bg-blue-100 dark:bg-blue-900/30 text-blue-500 rounded-xl flex items-center justify-center text-xl group-hover:bg-blue-500 group-hover:text-white transition-colors"><i class="fas fa-search-location"></i></div>
-                    <h3 class="font-bold dark:text-white">Track Package</h3>
-                    <p class="text-sm text-gray-500 dark:text-gray-400 text-center">Look up a tracking number</p>
-                </a>
-                <a href="users.html" class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6 flex flex-col items-center gap-3 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
-                    <div class="w-14 h-14 bg-purple-100 dark:bg-purple-900/30 text-purple-500 rounded-xl flex items-center justify-center text-xl group-hover:bg-purple-500 group-hover:text-white transition-colors"><i class="fas fa-users-cog"></i></div>
-                    <h3 class="font-bold dark:text-white">Manage Users</h3>
-                    <p class="text-sm text-gray-500 dark:text-gray-400 text-center">Administer user accounts</p>
-                </a>
-            </div>
-
-        </main>
+            <form onsubmit="event.preventDefault(); alert('Pickup booked successfully! Tracking ID: SWH-' + Math.floor(100000 + Math.random()*900000)); document.getElementById('bookingModal').classList.add('hidden');" class="space-y-4 text-xs sm:text-sm">
+                <div>
+                    <label class="block font-semibold mb-1 text-gray-700 dark:text-gray-300">Pickup Location</label>
+                    <input type="text" class="w-full px-3 py-2 rounded-xl bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white" value="1200 Shipping Lane, Suite 400, Dallas, TX" required>
+                </div>
+                <div>
+                    <label class="block font-semibold mb-1 text-gray-700 dark:text-gray-300">Delivery Destination</label>
+                    <input type="text" class="w-full px-3 py-2 rounded-xl bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white" placeholder="Recipient address, city, state" required>
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block font-semibold mb-1 text-gray-700 dark:text-gray-300">Service Speed</label>
+                        <select class="w-full px-3 py-2 rounded-xl bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white">
+                            <option>Same-Day (Under 4h) - $25.00</option>
+                            <option>Express Overnight - $14.99</option>
+                            <option>Standard (1-2 Days) - $8.99</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block font-semibold mb-1 text-gray-700 dark:text-gray-300">Package Weight</label>
+                        <input type="text" class="w-full px-3 py-2 rounded-xl bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white" value="2.5 kg">
+                    </div>
+                </div>
+                <div>
+                    <label class="block font-semibold mb-1 text-gray-700 dark:text-gray-300">Pickup Time Slot</label>
+                    <div class="grid grid-cols-3 gap-2">
+                        <label class="border border-brand-500 bg-brand-50/50 dark:bg-brand-900/30 p-2 rounded-xl text-center cursor-pointer">
+                            <input type="radio" name="slot" checked class="hidden">
+                            <span class="block font-bold text-brand-600 dark:text-brand-400">1-3 PM</span>
+                            <span class="text-[10px] text-gray-500">Today</span>
+                        </label>
+                        <label class="border border-gray-200 dark:border-gray-700 p-2 rounded-xl text-center cursor-pointer">
+                            <input type="radio" name="slot" class="hidden">
+                            <span class="block font-bold">3-5 PM</span>
+                            <span class="text-[10px] text-gray-500">Today</span>
+                        </label>
+                        <label class="border border-gray-200 dark:border-gray-700 p-2 rounded-xl text-center cursor-pointer">
+                            <input type="radio" name="slot" class="hidden">
+                            <span class="block font-bold">Tomorrow</span>
+                            <span class="text-[10px] text-gray-500">Morning</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="pt-2">
+                    <button type="submit" class="w-full py-3 bg-brand-500 text-white font-bold rounded-xl hover:bg-brand-600 shadow-lg shadow-brand-500/30 transition-all text-sm">
+                        Confirm &amp; Book Courier
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
+
+    <!-- ======================== FOOTER ======================== -->
+    <footer class="bg-gray-900 dark:bg-black text-gray-300 pt-16 pb-8 mt-auto" id="contact" role="contentinfo">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <!-- Column 1: Company Info -->
+                <div>
+                    <div class="flex items-center gap-2 mb-6">
+                        <div class="w-10 h-10 bg-brand-500 rounded-xl flex items-center justify-center shadow-lg shadow-brand-500/30">
+                            <i class="fas fa-shuttle-van text-white text-lg"></i>
+                        </div>
+                        <span class="text-xl font-extrabold">
+                            <span class="text-brand-500">Swift</span><span class="text-white">Ship</span>
+                        </span>
+                    </div>
+                    <p class="text-sm leading-relaxed mb-6">SwiftShip Express is a premier courier and parcel delivery service, providing fast, reliable, and affordable shipping solutions across 50+ cities.</p>
+                    <div class="flex items-center gap-3">
+                        <a aria-label="Facebook" class="w-10 h-10 bg-gray-800 hover:bg-brand-500 rounded-lg flex items-center justify-center transition-colors" href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-facebook-f text-sm"></i>
+                        </a>
+                        <a aria-label="X (Twitter)" class="w-10 h-10 bg-gray-800 hover:bg-brand-500 rounded-lg flex items-center justify-center transition-colors" href="https://twitter.com/" target="_blank" rel="noopener noreferrer">
+                            <i class="fa-brands fa-x-twitter text-sm"></i>
+                        </a>
+                        <a aria-label="Instagram" class="w-10 h-10 bg-gray-800 hover:bg-brand-500 rounded-lg flex items-center justify-center transition-colors" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-instagram text-sm"></i>
+                        </a>
+                        <a aria-label="LinkedIn" class="w-10 h-10 bg-gray-800 hover:bg-brand-500 rounded-lg flex items-center justify-center transition-colors" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-linkedin-in text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Column 2: Quick Links -->
+                <div>
+                    <h4 class="text-white font-bold mb-6">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a class="text-sm hover:text-brand-500 transition-colors" href="../index.html">Home</a></li>
+                        <li><a class="text-sm hover:text-brand-500 transition-colors" href="about.html">About Us</a></li>
+                        <li><a class="text-sm hover:text-brand-500 transition-colors" href="services.html">Services</a></li>
+                        <li><a class="text-sm hover:text-brand-500 transition-colors" href="pricing.html">Pricing</a></li>
+                        <li><a class="text-sm hover:text-brand-500 transition-colors" href="how-it-works.html">How It Works</a></li>
+                        <li><a class="text-sm hover:text-brand-500 transition-colors" href="blog.html">Blog</a></li>
+                        <li><a class="text-sm hover:text-brand-500 transition-colors" href="dashboard.html">Dashboard</a></li>
+                        <li><a class="text-sm hover:text-brand-500 transition-colors" href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <!-- Column 3: Services -->
+                <div>
+                    <h4 class="text-white font-bold mb-6">Our Services</h4>
+                    <ul class="space-y-3">
+                        <li><a class="text-sm hover:text-brand-500 transition-colors" href="service-details.html">Document Delivery</a></li>
+                        <li><a class="text-sm hover:text-brand-500 transition-colors" href="service-details.html">Parcel Shipping</a></li>
+                        <li><a class="text-sm hover:text-brand-500 transition-colors" href="service-details.html">Same-Day Delivery</a></li>
+                        <li><a class="text-sm hover:text-brand-500 transition-colors" href="service-details.html">Bulk Cargo</a></li>
+                        <li><a class="text-sm hover:text-brand-500 transition-colors" href="service-details.html">International Shipping</a></li>
+                        <li><a class="text-sm hover:text-brand-500 transition-colors" href="service-details.html">Warehouse &amp; Fulfillment</a></li>
+                    </ul>
+                </div>
+                <!-- Column 4: Contact & Newsletter -->
+                <div>
+                    <h4 class="text-white font-bold mb-6">Contact Us</h4>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start gap-3 text-sm">
+                            <i class="fas fa-map-marker-alt text-brand-500 mt-0.5 shrink-0"></i>
+                            <span>1200 Shipping Lane, Suite 400<br/>Dallas, TX 75201</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-sm">
+                            <i class="fa-solid fa-phone text-brand-500 shrink-0"></i>
+                            <a class="hover:text-brand-500 transition-colors" href="tel:+18005550199">1-800-555-0199</a>
+                        </li>
+                        <li class="flex items-center gap-3 text-sm">
+                            <i class="fas fa-envelope text-brand-500 shrink-0"></i>
+                            <a class="hover:text-brand-500 transition-colors" href="mailto:support@swiftship.com">support@swiftship.com</a>
+                        </li>
+                        <li class="flex items-center gap-3 text-sm">
+                            <i class="fas fa-clock text-brand-500 shrink-0"></i>
+                            <span>24/7 Customer Support</span>
+                        </li>
+                    </ul>
+                    <h4 class="text-white font-bold mb-4 text-sm">Subscribe to Updates</h4>
+                    <form aria-label="Newsletter signup" class="flex gap-2">
+                        <input aria-label="Email address for newsletter" class="flex-1 bg-gray-800 border border-gray-700 rounded-lg px-4 py-2.5 text-sm text-white placeholder-gray-500 outline-none focus:border-brand-500 transition-colors" placeholder="Your email" type="email" required/>
+                        <button aria-label="Subscribe" class="px-4 py-2.5 bg-brand-500 text-white rounded-lg hover:bg-brand-600 transition-colors shrink-0" type="submit">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <!-- Bottom Bar -->
+            <div class="border-t border-gray-800 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
+                <p>&copy; 2026 SwiftShip Express. All rights reserved.</p>
+                <div class="flex gap-6">
+                    <a class="hover:text-brand-500 transition-colors" href="#">Privacy Policy</a>
+                    <a class="hover:text-brand-500 transition-colors" href="#">Terms of Service</a>
+                    <a class="hover:text-brand-500 transition-colors" href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button aria-label="Scroll to top" class="fixed bottom-8 right-8 z-50 w-12 h-12 bg-brand-500 text-white rounded-xl shadow-xl flex items-center justify-center opacity-0 invisible translate-y-4 hover:bg-brand-600 transition-all duration-300" id="scroll-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
     <script src="../assets/js/main.js"></script>
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var dateEl = document.getElementById('dashboardDate');
-        if (dateEl) {
-            var now = new Date();
-            var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            dateEl.textContent = now.toLocaleDateString('en-US', options);
-        }
-    });
+        // Ensure preloader dismisses
+        window.addEventListener('load', function () {
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                preloader.style.opacity = '0';
+                setTimeout(() => preloader.style.display = 'none', 500);
+            }
+        });
+        // Set customer role in session so other internal views know
+        sessionStorage.setItem('swiftshipRole', 'customer');
+        sessionStorage.setItem('swiftshipLoggedIn', 'true');
     </script>
 </body>
 </html>

@@ -17,12 +17,15 @@
 <title>Pricing | SwiftShip Express - Courier &amp; Parcel Delivery</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
-    tailwind.config = { darkMode:'class', theme:{ extend:{ colors:{ brand:{ 50:'#fff7ed',100:'#ffedd5',200:'#fed7aa',300:'#fdba74',400:'#fb923c',500:'#f97316',600:'#ea580c',700:'#c2410c',800:'#9a3412',900:'#7c2d12' } } } } }
+    tailwind.config = { darkMode:'class', theme:{ extend:{ colors:{ brand:{ 50:'#fff7ed',100:'#ffedd5',200:'#fed7aa',300:'#fdba74',400:'#fb923c',500:'#f97316',600:'#ea580c',700:'#c2410c',800:'#9a3412',900:'#7c2d12' } }, fontFamily:{ heading:['"Inter"','sans-serif'], body:['"Inter"','sans-serif'], sans:['"Inter"','sans-serif'] } } } }
     </script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 <link href="../assets/css/custom.css" rel="stylesheet"/>
 </head>
-<body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+<body class="font-sans bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200">
 <!-- Preloader -->
 <div class="preloader fixed inset-0 z-[9999] bg-white dark:bg-gray-900 flex items-center justify-center transition-opacity duration-500" id="preloader">
 <div class="text-center">
@@ -58,6 +61,7 @@
 <a class="mobile-nav-link block px-4 py-3 rounded-lg bg-brand-50 dark:bg-brand-900/20 text-brand-500 font-medium" href="pricing.html">Pricing</a>
 <a class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 font-medium transition-colors" href="how-it-works.html">How It Works</a>
 <a class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 font-medium transition-colors" href="blog.html">Blog</a>
+<a class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 font-medium transition-colors" href="dashboard.html">Dashboard</a>
 <a class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 font-medium transition-colors" href="contact.html">Contact</a>
 </nav>
 <div class="p-6 border-t border-gray-200 dark:border-gray-700 space-y-3">
@@ -92,6 +96,7 @@
 <a class="px-3 py-2 rounded-lg text-sm font-medium bg-brand-50 dark:bg-brand-900/20 text-brand-500" href="pricing.html">Pricing</a>
 <a class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors" href="how-it-works.html">How It Works</a>
 <a class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors" href="blog.html">Blog</a>
+<a class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors" href="dashboard.html">Dashboard</a>
 <a class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:text-brand-500 transition-colors" href="contact.html">Contact</a>
 </nav>
 <div class="hidden lg:flex items-center gap-3">
@@ -122,7 +127,6 @@
 <div class="absolute inset-0 bg-gradient-to-r from-gray-900/90 to-gray-900/60"></div>
 <div class="absolute inset-0 flex items-center">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-<nav aria-label="Breadcrumb" class="text-sm text-gray-400 mb-4"><a class="hover:text-brand-500" href="../index.html">Home</a> <i class="fas fa-chevron-right mx-2 text-xs"></i> <span class="text-white">Pricing</span></nav>
 <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white">Transparent <span class="text-brand-500">Delivery</span> Pricing</h1>
 <p class="text-lg text-gray-300 mt-4 max-w-xl">No hidden fees. No surprises. Get the best rates for every delivery need, from documents to freight.</p>
 </div>
@@ -309,25 +313,33 @@
 <h2 class="text-3xl sm:text-4xl font-extrabold mt-3 dark:text-white">Bulk &amp; Volumetric Pricing</h2>
 </div>
 <div class="grid md:grid-cols-2 gap-8">
-<div class="card p-8 animate-on-scroll">
+<div class="card p-8 animate-on-scroll flex flex-col justify-between h-full">
+<div>
 <div class="w-16 h-16 bg-brand-500/10 rounded-2xl flex items-center justify-center mb-6"><i class="fas fa-warehouse text-brand-500 text-2xl"></i></div>
 <h3 class="text-2xl font-bold mb-4 dark:text-white">Bulk Shipping Discounts</h3>
 <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">Ship more, save more. Our tiered volume discount program rewards businesses that ship regularly with significant cost savings.</p>
-<ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
-<li class="flex items-start gap-3"><i class="fas fa-check-circle text-brand-500 mt-0.5 shrink-0"></i><span><strong class="dark:text-white">10-49 shipments/month:</strong> 10% off base rates</span></li>
-<li class="flex items-start gap-3"><i class="fas fa-check-circle text-brand-500 mt-0.5 shrink-0"></i><span><strong class="dark:text-white">50-199 shipments/month:</strong> 18% off base rates</span></li>
-<li class="flex items-start gap-3"><i class="fas fa-check-circle text-brand-500 mt-0.5 shrink-0"></i><span><strong class="dark:text-white">200-499 shipments/month:</strong> 25% off base rates</span></li>
-<li class="flex items-start gap-3"><i class="fas fa-check-circle text-brand-500 mt-0.5 shrink-0"></i><span><strong class="dark:text-white">500+ shipments/month:</strong> Custom enterprise pricing</span></li>
+<div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 mb-6">
+<p class="text-sm text-gray-500 dark:text-gray-400 mb-3 font-semibold uppercase tracking-wider">Volume Discount Tiers</p>
+<ul class="space-y-2.5 text-sm text-gray-600 dark:text-gray-400">
+<li class="flex items-center justify-between"><span class="font-medium dark:text-white"><i class="fas fa-check-circle text-brand-500 mr-2"></i>10–49 shipments/month:</span> <span class="text-brand-500 font-bold">10% off</span></li>
+<li class="flex items-center justify-between"><span class="font-medium dark:text-white"><i class="fas fa-check-circle text-brand-500 mr-2"></i>50–199 shipments/month:</span> <span class="text-brand-500 font-bold">18% off</span></li>
+<li class="flex items-center justify-between"><span class="font-medium dark:text-white"><i class="fas fa-check-circle text-brand-500 mr-2"></i>200–499 shipments/month:</span> <span class="text-brand-500 font-bold">25% off</span></li>
+<li class="flex items-center justify-between"><span class="font-medium dark:text-white"><i class="fas fa-check-circle text-brand-500 mr-2"></i>500+ shipments/month:</span> <span class="text-brand-500 font-bold">Custom rates</span></li>
 </ul>
 </div>
-<div class="card p-8 animate-on-scroll">
+</div>
+<p class="text-sm text-gray-600 dark:text-gray-400">Volume discounts apply automatically to your monthly invoicing once approved for our corporate shipping partner program.</p>
+</div>
+<div class="card p-8 animate-on-scroll flex flex-col justify-between h-full">
+<div>
 <div class="w-16 h-16 bg-brand-500/10 rounded-2xl flex items-center justify-center mb-6"><i class="fas fa-ruler-combined text-brand-500 text-2xl"></i></div>
 <h3 class="text-2xl font-bold mb-4 dark:text-white">Volumetric Weight</h3>
 <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">For large but lightweight packages, the shipping rate is based on volumetric (dimensional) weight rather than actual weight to ensure fair pricing.</p>
 <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 mb-6">
-<p class="text-sm text-gray-500 dark:text-gray-400 mb-2 font-semibold uppercase tracking-wider">Formula</p>
+<p class="text-sm text-gray-500 dark:text-gray-400 mb-3 font-semibold uppercase tracking-wider">Calculation Formula</p>
 <p class="text-lg font-bold dark:text-white">Volumetric Weight = (L × W × H) ÷ 5000</p>
-<p class="text-xs text-gray-400 dark:text-gray-500 mt-2">Dimensions in centimeters. Result in kilograms.</p>
+<p class="text-xs text-gray-400 dark:text-gray-500 mt-2">Dimensions in centimeters (cm). Result calculated in kilograms (kg).</p>
+</div>
 </div>
 <p class="text-sm text-gray-600 dark:text-gray-400">The greater of actual weight or volumetric weight is used to calculate the final shipping rate. This ensures consistent and fair pricing across all package sizes.</p>
 </div>
@@ -406,10 +418,10 @@
 </a>
 <p class="text-sm leading-relaxed mb-6">Fast, reliable courier and parcel delivery services. Same-day delivery, real-time tracking, and insured shipments across 50+ cities.</p>
 <div class="flex gap-3">
-<a aria-label="Facebook" class="w-10 h-10 bg-gray-800 hover:bg-brand-500 rounded-lg flex items-center justify-center transition-colors" href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">><i class="fab fa-facebook-f text-sm"></i></a>
-<a aria-label="Twitter" class="w-10 h-10 bg-gray-800 hover:bg-brand-500 rounded-lg flex items-center justify-center transition-colors" href="https://twitter.com/" target="_blank" rel="noopener noreferrer">><i class="fab fa-twitter text-sm"></i></a>
-<a aria-label="Instagram" class="w-10 h-10 bg-gray-800 hover:bg-brand-500 rounded-lg flex items-center justify-center transition-colors" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">><i class="fab fa-instagram text-sm"></i></a>
-<a aria-label="LinkedIn" class="w-10 h-10 bg-gray-800 hover:bg-brand-500 rounded-lg flex items-center justify-center transition-colors" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">><i class="fab fa-linkedin-in text-sm"></i></a>
+<a aria-label="Facebook" class="w-10 h-10 bg-gray-800 hover:bg-brand-500 rounded-lg flex items-center justify-center transition-colors" href="https://www.facebook.com/" rel="noopener noreferrer" target="_blank"><i class="fab fa-facebook-f text-sm"></i></a>
+<a aria-label="X (Twitter)" class="w-10 h-10 bg-gray-800 hover:bg-brand-500 rounded-lg flex items-center justify-center transition-colors" href="https://twitter.com/" rel="noopener noreferrer" target="_blank"><i class="fa-brands fa-x-twitter text-sm"></i></a>
+<a aria-label="Instagram" class="w-10 h-10 bg-gray-800 hover:bg-brand-500 rounded-lg flex items-center justify-center transition-colors" href="https://www.instagram.com/" rel="noopener noreferrer" target="_blank"><i class="fab fa-instagram text-sm"></i></a>
+<a aria-label="LinkedIn" class="w-10 h-10 bg-gray-800 hover:bg-brand-500 rounded-lg flex items-center justify-center transition-colors" href="https://www.linkedin.com/" rel="noopener noreferrer" target="_blank"><i class="fab fa-linkedin-in text-sm"></i></a>
 </div>
 </div>
 <div>
@@ -419,7 +431,9 @@
 <li><a class="hover:text-brand-500 transition-colors" href="about.html">About Us</a></li>
 <li><a class="hover:text-brand-500 transition-colors" href="services.html">Services</a></li>
 <li><a class="hover:text-brand-500 transition-colors" href="pricing.html">Pricing</a></li>
+<li><a class="hover:text-brand-500 transition-colors" href="how-it-works.html">How It Works</a></li>
 <li><a class="hover:text-brand-500 transition-colors" href="blog.html">Blog</a></li>
+<li><a class="hover:text-brand-500 transition-colors" href="dashboard.html">Dashboard</a></li>
 <li><a class="hover:text-brand-500 transition-colors" href="contact.html">Contact</a></li>
 </ul>
 </div>

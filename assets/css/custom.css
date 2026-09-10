@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
 /* ============================================
    SwiftShip Courier Template - Custom Styles
    ============================================ */
@@ -48,7 +50,7 @@
 html { scroll-behavior: smooth; scroll-padding-top: 80px; }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
   background-color: var(--bg-primary);
   color: var(--text-primary);
   transition: var(--transition);
@@ -435,6 +437,20 @@ ul { list-style: none; }
   border-radius: var(--radius);
   overflow: hidden;
   transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.blog-card > a {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
+}
+.blog-card .p-6 {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 .blog-card:hover {
   box-shadow: var(--shadow-xl);
@@ -1706,10 +1722,10 @@ body {
 /* SwiftShip compact auth v2 */
 .swift-auth-page,.swift-login-page{min-height:100vh;background:#fff;display:flex;align-items:center;justify-content:center;padding:24px 20px}
 .swift-auth-shell,.swift-login-shell{width:min(100%,520px)}
-.swift-company{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:18px;color:#111827;font-size:1.35rem;font-weight:800}
-.swift-company-logo{width:42px;height:42px;border-radius:11px;background:#ff6b35;color:#fff;display:grid;place-items:center;font-size:21px;font-weight:900;box-shadow:0 6px 16px rgba(255,107,53,.18)}
-.swift-auth-title,.swift-login-title{font-size:clamp(2rem,4vw,2.65rem)!important;letter-spacing:-1.5px!important;margin-bottom:8px!important}
-.swift-auth-subtitle,.swift-login-subtitle{font-size:1rem!important;margin:0 0 24px!important}
+.swift-company{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:20px;color:#111827;font-size:1.35rem;font-weight:800;text-decoration:none}
+.swift-company-logo{width:42px;height:42px;border-radius:12px;background:#f97316;color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:0 8px 16px rgba(249,115,22,.28)}
+.swift-auth-title,.swift-login-title{font-size:clamp(1.4rem,2.5vw,1.75rem)!important;letter-spacing:-0.5px!important;margin-bottom:6px!important;text-align:center!important;font-weight:800!important}
+.swift-auth-subtitle,.swift-login-subtitle{font-size:0.95rem!important;margin:0 0 22px!important;text-align:center!important;color:#64748b}
 .swift-auth-form .form-label,.swift-login-form .form-label{font-size:.9rem!important;margin-bottom:7px!important}
 .swift-auth-form .form-control,.swift-login-form .form-control{height:50px!important;border-radius:10px!important;font-size:.98rem!important}
 .swift-auth-form .form-control{padding:0 15px!important}
@@ -1733,6 +1749,37 @@ body {
  .swift-login-form .swift-input-wrap{margin-bottom:14px!important}
  .swift-divider{margin:18px 0 12px!important}
  .swift-create{margin:16px 0 12px!important}
+}
+
+/* 1024px Responsive Navbar Alignment Fix */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  #navbar .max-w-7xl {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+  #navbar nav a, #navbar nav button {
+    padding-left: 0.45rem !important;
+    padding-right: 0.45rem !important;
+    font-size: 0.8125rem !important;
+    white-space: nowrap !important;
+  }
+  #navbar .gap-1 {
+    gap: 0.125rem !important;
+  }
+  #navbar .gap-3 {
+    gap: 0.35rem !important;
+  }
+  #navbar a.px-4 {
+    padding-left: 0.65rem !important;
+    padding-right: 0.65rem !important;
+    font-size: 0.8125rem !important;
+    white-space: nowrap !important;
+  }
+  #navbar button#rtl-toggle {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+    font-size: 0.75rem !important;
+  }
 }
 
 /* SwiftShip auth full dark mode fix */
