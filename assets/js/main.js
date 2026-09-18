@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
   initRateCalculator();
   initShipmentTracker();
   initBookingForm();
+  initNewsletterForms();
   initBlogFilter();
   initFAQAccordion();
   initDashboardSidebar();
@@ -387,6 +388,22 @@ function initBookingForm() {
     } else {
       showToast('Please fill in all required fields', 'error');
     }
+  });
+}
+
+/* ---------- Newsletter Forms ---------- */
+function initNewsletterForms() {
+  document.querySelectorAll('footer form, .newsletter-form').forEach(function(form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var input = form.querySelector('input[type="email"]');
+      if (input && input.value.trim()) {
+        showToast('Thank you for subscribing to SwiftShip updates!', 'success');
+        form.reset();
+      } else {
+        showToast('Please enter a valid email address', 'warning');
+      }
+    });
   });
 }
 
