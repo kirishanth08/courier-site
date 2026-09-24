@@ -21,6 +21,10 @@
 <div class="swift-auth-shell"><a href="../index.html" class="swift-company" aria-label="SwiftShip Express Home"><div class="swift-company-logo">S</div><div>SwiftShip</div></a>
 <h1 class="swift-auth-title">Admin login</h1>
 <p class="swift-auth-subtitle">Sign in to access the SwiftShip administration dashboard</p>
+<div id="authAlert" class="alert alert-success d-none align-items-center gap-2 p-3 my-3 rounded-3 shadow-sm border-0" style="background: rgba(34, 197, 94, 0.15); color: #16a34a; font-weight: 500;" role="alert">
+<i class="fa-solid fa-circle-check fs-5 shrink-0"></i>
+<div id="authAlertMsg">Admin authenticated successfully! (Dummy Mode - No redirect)</div>
+</div>
 <form class="swift-auth-form" id="authForm">
 
 <label class="form-label" for="email">Email Address</label>
@@ -49,7 +53,21 @@ document.getElementById('togglePassword')?.addEventListener('click',function(){
 });
 document.getElementById('authForm')?.addEventListener('submit',function(e){
  e.preventDefault();
- sessionStorage.setItem('swiftshipRole','admin'); sessionStorage.setItem('swiftshipLoggedIn','true'); location.href='dashboard.html';
+ const btn = this.querySelector('button[type="submit"]');
+ const origContent = btn.innerHTML;
+ btn.disabled = true;
+ btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Authenticating...';
+ setTimeout(function() {
+     btn.disabled = false;
+     btn.innerHTML = origContent;
+     const alertBox = document.getElementById('authAlert');
+     const alertMsg = document.getElementById('authAlertMsg');
+     if (alertBox && alertMsg) {
+         alertMsg.innerHTML = '<strong>Success!</strong> Admin sign in successful. (Dummy Mode)';
+         alertBox.classList.remove('d-none');
+         alertBox.classList.add('d-flex');
+     }
+ }, 500);
 });
 </script>
 </body>

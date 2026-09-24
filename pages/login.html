@@ -22,6 +22,10 @@
 </a>
 <h1 class="swift-login-title text-center">Welcome back</h1>
 <p class="swift-login-subtitle text-center">Sign in to access your dashboard</p>
+<div id="authAlert" class="alert alert-success d-none align-items-center gap-2 p-3 my-3 rounded-3 shadow-sm border-0" style="background: rgba(34, 197, 94, 0.15); color: #16a34a; font-weight: 500;" role="alert">
+<i class="fa-solid fa-circle-check fs-5 shrink-0"></i>
+<div id="authAlertMsg">Signed in successfully! (Dummy Mode - No redirect)</div>
+</div>
 <form class="swift-login-form" id="loginForm">
 <label class="form-label" for="email">Email Address</label>
 <div class="swift-input-wrap"><i class="fa-regular fa-envelope swift-input-icon"></i><input id="email" type="email" class="form-control" placeholder="you@example.com" required></div>
@@ -39,6 +43,35 @@
 <script src="../assets/js/main.js"></script>
 <script>
 document.getElementById('togglePassword')?.addEventListener('click',function(){const i=document.getElementById('password'),x=this.querySelector('i'),s=i.type==='text';i.type=s?'password':'text';x.className=s?'fa-solid fa-eye':'fa-solid fa-eye-slash';});
-document.getElementById('loginForm')?.addEventListener('submit',function(e){e.preventDefault();sessionStorage.setItem('swiftshipRole','customer'); sessionStorage.setItem('swiftshipLoggedIn','true'); location.href='dashboard.html';});
+document.getElementById('loginForm')?.addEventListener('submit',function(e){
+    e.preventDefault();
+    const btn = this.querySelector('button[type="submit"]');
+    const origContent = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Signing in...';
+    setTimeout(function() {
+        btn.disabled = false;
+        btn.innerHTML = origContent;
+        const alertBox = document.getElementById('authAlert');
+        const alertMsg = document.getElementById('authAlertMsg');
+        if (alertBox && alertMsg) {
+            alertMsg.innerHTML = '<strong>Success!</strong> You have signed in successfully. (Dummy Mode)';
+            alertBox.classList.remove('d-none');
+            alertBox.classList.add('d-flex');
+        }
+    }, 500);
+});
+document.querySelectorAll('.swift-social').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+        const provider = this.textContent.trim();
+        const alertBox = document.getElementById('authAlert');
+        const alertMsg = document.getElementById('authAlertMsg');
+        if (alertBox && alertMsg) {
+            alertMsg.innerHTML = '<strong>Success!</strong> ' + provider + ' sign-in successful. (Dummy Mode)';
+            alertBox.classList.remove('d-none');
+            alertBox.classList.add('d-flex');
+        }
+    });
+});
 </script>
 </body></html>

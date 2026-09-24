@@ -25,6 +25,10 @@
 </a>
 <h1 class="swift-auth-title text-center">Create your account</h1>
 <p class="swift-auth-subtitle text-center">Sign up to book and track your shipments</p>
+<div id="authAlert" class="alert alert-success d-none align-items-center gap-2 p-3 my-3 rounded-3 shadow-sm border-0" style="background: rgba(34, 197, 94, 0.15); color: #16a34a; font-weight: 500;" role="alert">
+<i class="fa-solid fa-circle-check fs-5 shrink-0"></i>
+<div id="authAlertMsg">Account created successfully! (Dummy Mode - No redirect)</div>
+</div>
 <form class="swift-auth-form" id="authForm">
 
 <label class="form-label" for="firstName">Full Name</label>
@@ -55,7 +59,21 @@ document.getElementById('togglePassword')?.addEventListener('click',function(){
 });
 document.getElementById('authForm')?.addEventListener('submit',function(e){
  e.preventDefault();
- sessionStorage.setItem('swiftshipRole','customer'); sessionStorage.setItem('swiftshipLoggedIn','true'); location.href='dashboard.html';
+ const btn = this.querySelector('button[type="submit"]');
+ const origContent = btn.innerHTML;
+ btn.disabled = true;
+ btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Creating account...';
+ setTimeout(function() {
+     btn.disabled = false;
+     btn.innerHTML = origContent;
+     const alertBox = document.getElementById('authAlert');
+     const alertMsg = document.getElementById('authAlertMsg');
+     if (alertBox && alertMsg) {
+         alertMsg.innerHTML = '<strong>Success!</strong> Account created successfully. (Dummy Mode)';
+         alertBox.classList.remove('d-none');
+         alertBox.classList.add('d-flex');
+     }
+ }, 500);
 });
 </script>
 </body>
